@@ -7,7 +7,6 @@ type SubmenuType = 'none' | 'what-we-do' | 'get-involved' | 'sponsor'
 
 export default function Navbar() {
   const [drawerOpen, setDrawerOpen] = useState(false)
-  const [langOpen, setLangOpen] = useState(false)
   const [activeSubmenu, setActiveSubmenu] = useState<SubmenuType>('none')
   const [scrolled, setScrolled] = useState(false)
   const location = useLocation()
@@ -27,13 +26,6 @@ export default function Navbar() {
     }
     setDrawerOpen(!drawerOpen)
   }
-  const toggleLang = () => setLangOpen(!langOpen)
-
-  const languages = [
-    { code: 'en', label: 'English' },
-    { code: 'nl', label: 'Nederlands' },
-    { code: 'pt', label: 'Português' },
-  ]
 
   const submenus = {
     'what-we-do': {

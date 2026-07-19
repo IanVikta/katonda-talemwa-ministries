@@ -2,7 +2,6 @@ import { Link } from 'react-router-dom'
 import Navbar from '../components/Navbar'
 import { FooterHome } from '../components/Footer'
 import MaterialIcon from '../components/ui/MaterialIcon'
-import logo from '../assets/logo.png'
 
 export default function WhoWeArePage() {
   return (
