@@ -13,7 +13,7 @@ export default function WatotoVillagesPage() {
       <main>
         <section className="relative h-[819px] flex items-center overflow-hidden">
           <div className="absolute inset-0 z-0">
-            <img className="w-full h-full object-cover" src={IMAGES.villagesHero} alt="Smiling Ugandan children in a village" />
+            <img className="w-full h-full object-cover object-bottom" src={IMAGES.villagesHero} alt="Smiling Ugandan children in a village" />
             <div className="absolute inset-0 bg-deep-black opacity-40" />
           </div>
           <div className="relative z-10 w-full px-4 md:px-margin-desktop max-w-(--spacing-container-max) mx-auto">
