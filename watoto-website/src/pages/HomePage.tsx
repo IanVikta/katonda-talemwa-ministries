@@ -18,9 +18,9 @@ export default function HomePage() {
         </div>
         <div className="relative z-10 max-w-4xl mx-auto space-y-8 px-4">
           <h1 className="font-headline text-headline-xl text-pure-white uppercase md:text-6xl text-4xl">
-            Celebrating Christ,
+            Empowered by Christ,
             <br />
-            Caring for Community
+            Transforming Communities
           </h1>
           <div className="w-full max-w-lg mx-auto gradient-line mb-6" />
           <p className="text-body-lg text-pure-white/90 max-w-2xl mx-auto">
