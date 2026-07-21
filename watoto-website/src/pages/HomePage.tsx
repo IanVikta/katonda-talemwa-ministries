@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import Navbar from '../components/Navbar'
 import { FooterHome } from '../components/Footer'
 import MaterialIcon from '../components/ui/MaterialIcon'
+import ScrollReveal from '../components/ScrollReveal'
 import { IMAGES } from '../data/content'
 
 export default function HomePage() {
@@ -68,25 +69,25 @@ export default function HomePage() {
               Learn More
             </Link>
           </div>
-          <div className="order-1 md:order-2 relative group">
+          <ScrollReveal animation="fade-left" className="order-1 md:order-2 relative group">
             <div className="absolute -right-4 -bottom-4 w-full h-full bg-primary/10 -z-10 group-hover:-right-6 group-hover:-bottom-6 transition-all" />
             <div
               className="w-full aspect-square bg-cover bg-center border-b-8 border-primary"
               style={{ backgroundImage: `url('${IMAGES.villages}')` }}
             />
-          </div>
+          </ScrollReveal>
         </div>
       </section>
 
       <section className="py-section-padding bg-surface-container-low">
         <div className="max-w-(--spacing-container-max) mx-auto px-4 md:px-margin-desktop grid md:grid-cols-2 gap-20 items-center">
-          <div className="relative group">
+          <ScrollReveal animation="fade-right" className="relative group">
             <div className="absolute -left-4 -bottom-4 w-full h-full bg-action-yellow/10 -z-10 group-hover:-left-6 group-hover:-bottom-6 transition-all" />
             <div
               className="w-full aspect-video md:aspect-square bg-cover bg-center border-b-8 border-action-yellow"
               style={{ backgroundImage: `url('${IMAGES.babyWatoto}')` }}
             />
-          </div>
+          </ScrollReveal>
           <div>
             <span className="text-primary font-bold text-label-bold uppercase tracking-wider mb-2 block">Baby Katonda Talemwa</span>
             <h2 className="font-headline text-headline-lg mb-6 leading-tight">
@@ -128,25 +129,25 @@ export default function HomePage() {
               Learn More
             </button>
           </div>
-          <div className="order-1 md:order-2 relative group">
+          <ScrollReveal animation="zoom-in" className="order-1 md:order-2 relative group">
             <div className="absolute -right-4 -bottom-4 w-full h-full bg-error/10 -z-10 group-hover:-right-6 group-hover:-bottom-6 transition-all" />
             <div
               className="w-full aspect-square bg-cover bg-center border-b-8 border-error"
               style={{ backgroundImage: `url('${IMAGES.neighbourhood}')` }}
             />
-          </div>
+          </ScrollReveal>
         </div>
       </section>
 
       <section className="py-section-padding bg-surface-container">
         <div className="max-w-(--spacing-container-max) mx-auto px-4 md:px-margin-desktop grid md:grid-cols-2 gap-20 items-center">
-          <div className="relative group">
+          <ScrollReveal animation="rotate-in" className="relative group">
             <div className="absolute -left-4 -bottom-4 w-full h-full bg-trust-blue/10 -z-10 group-hover:-left-6 group-hover:-bottom-6 transition-all" />
             <div
               className="w-full aspect-square bg-cover bg-center border-b-8 border-trust-blue"
               style={{ backgroundImage: `url('${IMAGES.girlSchool}')` }}
             />
-          </div>
+          </ScrollReveal>
           <div>
             <span className="text-primary font-bold text-label-bold uppercase tracking-wider mb-2 block">Keep a Girl in School</span>
             <h2 className="font-headline text-headline-lg mb-6 leading-tight">
@@ -211,13 +212,13 @@ export default function HomePage() {
               Learn More
             </a>
           </div>
-          <div className="order-1 md:order-2 relative group">
+          <ScrollReveal animation="flip-up" className="order-1 md:order-2 relative group">
             <div className="absolute -right-4 -bottom-4 w-full h-full bg-primary/10 -z-10 group-hover:-right-6 group-hover:-bottom-6 transition-all" />
             <div
               className="w-full aspect-square bg-cover bg-center border-b-8 border-primary rounded-xl overflow-hidden shadow-lg"
               style={{ backgroundImage: `url('${IMAGES.spiritualGrowth}')` }}
             />
-          </div>
+          </ScrollReveal>
         </div>
       </section>
 
