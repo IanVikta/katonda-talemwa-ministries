@@ -18,7 +18,7 @@ export default function HomePage() {
           />
         </div>
         <div className="relative z-10 max-w-4xl mx-auto space-y-8 px-4">
-          <h1 className="font-headline text-headline-xl text-pure-white uppercase md:text-6xl text-4xl">
+          <h1 className="font-headline text-headline-xl text-pure-white uppercase">
             Empowered by Christ,
             <br />
             Transforming Communities
