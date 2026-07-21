@@ -170,38 +170,61 @@ export default function WatotoVillagesPage() {
           </div>
         </section>
 
-        <section className="bg-primary py-section-padding text-pure-white">
-          <div className="px-4 md:px-margin-desktop max-w-(--spacing-container-max) mx-auto flex flex-col md:flex-row items-center gap-16">
-            <div className="md:w-1/2 relative">
-              <div className="relative z-10 rounded-xl overflow-hidden shadow-2xl border-4 border-action-yellow">
-                <img className="w-full aspect-[4/5] object-cover" src={IMAGES.watotoMother} alt="Katonda Talemwa Mother with children" />
+        <section className="relative py-section-padding bg-gradient-to-br from-primary via-tertiary-container to-deep-black text-pure-white overflow-hidden">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-action-yellow/10 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute bottom-0 left-0 w-96 h-96 bg-trust-blue/20 rounded-full blur-3xl pointer-events-none" />
+
+          <div className="relative z-10 px-4 md:px-margin-desktop max-w-(--spacing-container-max) mx-auto grid md:grid-cols-12 gap-12 lg:gap-16 items-center">
+            <ScrollReveal animation="fade-right" className="md:col-span-6 relative">
+              <div className="relative z-10 rounded-2xl overflow-hidden shadow-2xl border-2 border-action-yellow/80 group">
+                <img
+                  className="w-full aspect-[4/5] object-cover group-hover:scale-105 transition-transform duration-700"
+                  src={IMAGES.watotoMother}
+                  alt="Katonda Talemwa Mother with children"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-deep-black/60 via-transparent to-transparent opacity-80" />
+
+                <div className="absolute bottom-6 left-6 right-6 bg-pure-white/10 backdrop-blur-md border border-pure-white/20 p-4 rounded-xl text-pure-white">
+                  <p className="text-xs uppercase tracking-widest text-action-yellow font-bold mb-1">The Heartbeat</p>
+                  <p className="text-sm font-semibold">Raising the next generation of African leaders with unconditional love.</p>
+                </div>
               </div>
-              <div className="absolute -top-6 -left-6 w-32 h-32 bg-action-yellow -z-10 rounded-lg" />
-              <div className="absolute -bottom-6 -right-6 w-48 h-48 bg-trust-blue -z-10 opacity-20 rounded-full blur-3xl" />
-            </div>
-            <div className="md:w-1/2">
-              <h2 className="font-headline text-headline-lg mb-6 leading-tight">
-                THE KATONDA TALEMWA MOTHER:
-                <br />
-                <span className="text-action-yellow underline">THE HEART OF EVERY HOME</span>
+
+              <div className="absolute -top-4 -left-4 w-full h-full border-2 border-action-yellow/30 rounded-2xl -z-10" />
+            </ScrollReveal>
+
+            <ScrollReveal animation="fade-left" className="md:col-span-6 space-y-6">
+              <span className="inline-block bg-action-yellow/20 text-action-yellow text-xs uppercase font-bold tracking-widest px-4 py-1.5 rounded-full border border-action-yellow/30">
+                The Katonda Talemwa Mother
+              </span>
+
+              <h2 className="font-headline text-headline-lg leading-tight font-black uppercase">
+                The Heart of <br />
+                <span className="text-action-yellow">Every Home</span>
               </h2>
-              <p className="text-body-lg mb-6 opacity-90 italic">
-                &ldquo;I didn&apos;t just get a job; I found my calling. These children are my life, and watching them grow into leaders is my greatest joy.&rdquo; — Mother Grace
+
+              <div className="bg-pure-white/10 backdrop-blur-md border-l-4 border-action-yellow p-6 rounded-r-xl relative">
+                <p className="text-body-lg font-light italic leading-relaxed text-pure-white/95">
+                  &ldquo;I didn&apos;t just get a job; I found my calling. These children are my life, and watching them grow into leaders is my greatest joy.&rdquo;
+                </p>
+                <p className="mt-3 text-sm font-bold text-action-yellow tracking-wider uppercase">— Mother Grace</p>
+              </div>
+
+              <p className="text-body-md text-pure-white/80 leading-relaxed">
+                Each Katonda Talemwa mother is a widow or a woman with a deep passion to care for vulnerable children. She provides emotional stability, spiritual guidance, and unconditional love that every child needs to flourish. She isn&apos;t a staff member; she is Mom.
               </p>
-              <p className="mb-8 opacity-80">
-                Each Katonda Talemwa mother is a widow or a woman with a passion to care for children. She provides the emotional stability, spiritual guidance, and unconditional love that every child needs to flourish. She isn&apos;t a staff member; she is Mom.
-              </p>
-              <div className="grid grid-cols-2 gap-6">
-                <div className="bg-on-primary-fixed-variant p-4 rounded-lg">
-                  <h4 className="font-headline text-headline-md text-action-yellow mb-1">3,000+</h4>
-                  <p className="font-bold text-label-bold">Children in Care</p>
+
+              <div className="grid grid-cols-2 gap-4 pt-2">
+                <div className="bg-pure-white/10 backdrop-blur-md border border-pure-white/15 p-5 rounded-xl text-center hover:border-action-yellow/50 transition-all">
+                  <h4 className="font-headline text-3xl md:text-4xl text-action-yellow font-black mb-1">3,000+</h4>
+                  <p className="text-xs uppercase font-bold tracking-wider opacity-90">Children in Care</p>
                 </div>
-                <div className="bg-on-primary-fixed-variant p-4 rounded-lg">
-                  <h4 className="font-headline text-headline-md text-action-yellow mb-1">400+</h4>
-                  <p className="font-bold text-label-bold">Active Mothers</p>
+                <div className="bg-pure-white/10 backdrop-blur-md border border-pure-white/15 p-5 rounded-xl text-center hover:border-action-yellow/50 transition-all">
+                  <h4 className="font-headline text-3xl md:text-4xl text-action-yellow font-black mb-1">400+</h4>
+                  <p className="text-xs uppercase font-bold tracking-wider opacity-90">Active Mothers</p>
                 </div>
               </div>
-            </div>
+            </ScrollReveal>
           </div>
         </section>
 

@@ -141,7 +141,7 @@ export const IMAGES = {
   church: '/images/church-1.jpg',
   villagesHero: '/images/villages-family.jpg',
   spiritualGrowth: '/images/choir.jpg',
-  watotoMother: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDokPv7xL4QxzKaXFGE9JHtcX8mDUpqXr0wRYOec9evJdlzrT_dCiPQuJgTZqlL8pmUpk3NogeqfXtDKpgUNVRyWxfuJMk3Xj7uBb61Y7yp373WHqyvIGC68iqpT06r7nYFafNlMQxOafiS3RAJAxLv9cSmeOpfMd8XLGmutOsP6sJrYDaYu4BKGhqr0zchZ-IrwSP61z__ZJiaLHLfwq7cOmHg3yWxWSvOjI_VPUdb-qBWzNM6qoXpxMkmPMd0ZeuS1lDnEpziIjs',
+  watotoMother: '/images/mother.jpg',
   samuelCard: 'https://lh3.googleusercontent.com/aida-public/AB6AXuC1d-IqepttNZNtfb4n74R5nN8-AONvFjqf2lw0hkseRunpA4wEKnodClshsbkVCPD-1Kh7enuSQP4O9ykOreb4VLsxQF06IcI-JB9Sc1pVg49XbwDbQLhrFACYPbBDZ7qTGR45Jol2J7-B2oBmoc81DOccpwNWa3IndATWm8JVkdd-9hhwwgkSurBnc-VS4QJ-stykqHU1-J-IFgaTn6HYQSq35NTC9PXNNPqq2yos-DFjtieUy3d_ab1bs3rSH8gdn3trURRb2nQ',
   babyHero: 'https://lh3.googleusercontent.com/aida-public/AB6AXuB7ZFiyCd-zuVvUi-0OmddhdIjLDAn0GyakIFih_rfN_pEnRHog443WYiNg9e1Ss04RBhDxpVA6-LrUhHPJq8Yl1OM7XH2Bzwy5LefcG2GCwLAa3CQuXH3ZL9wxSK4RwB74PlDkW7U7cuUePZTIW3MlqIK1nosuuth3Lbb4JRZG_j04IYTx4T2kwGXx7BIXaOzoZz3-6BDKDzI5HzT8eB1oFrsrojXm72nuu1mVx4FYfUahdZIluvQJ6Kjj_AkjRoxjExTgrVa_kXI',
   rescue: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBT0wuQmp36cLMbKTkfDpkfke8QDEFoQUV5S0vI0RLFPM4-1aq1sbuVyfDbCTCZLZWTZswY-dEXrmpAwoxcZrhrA6GLQ74f_DmKyb-tubb08v6tcYBbbWoN_jlRegBxukeLlcaMncZl9eLdFRyk_t7LWEuJOnq45Ej1IC5H1KUcdbuSE_eTfBKW5IxBojsHvjSjsbSNkHVrtphMDuBZnacNh86MqBIe4UgdSBGWCSsmTZgpoiCYAoEDzB0Av6_tdxPcgJp61rSFPvc',
