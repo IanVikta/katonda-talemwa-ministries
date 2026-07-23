@@ -39,12 +39,12 @@ export function UnifiedFooter() {
           <div className="lg:col-span-4 space-y-5">
             <Link
               to="/"
-              className="flex items-center hover:opacity-90 transition-opacity shrink-0 inline-block"
+              className="flex items-center hover:opacity-90 transition-opacity shrink-0 inline-block border-none outline-none focus:outline-none focus:ring-0"
             >
               <img
                 src={logo}
                 alt="Katonda Talemwa Ministries"
-                className="h-12 w-auto object-contain"
+                className="h-12 w-auto object-contain border-none outline-none focus:outline-none focus:ring-0 select-none"
               />
             </Link>
             

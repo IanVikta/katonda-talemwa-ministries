@@ -1,458 +1,397 @@
 import { Link } from 'react-router-dom'
+import { useEffect } from 'react'
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 import Navbar from '../components/Navbar'
 import { FooterProgram } from '../components/Footer'
-import ScrollReveal from '../components/ScrollReveal'
 import MaterialIcon from '../components/ui/MaterialIcon'
 import { children, IMAGES } from '../data/content'
 
 export default function WatotoVillagesPage() {
+  useEffect(() => {
+    AOS.init({ duration: 700, easing: 'ease-out-cubic', once: true, offset: 60 })
+  }, [])
+
   return (
-    <div className="bg-surface text-on-surface selection:bg-action-yellow selection:text-deep-black overflow-x-hidden page-enter">
+    <div className="bg-surface text-on-surface selection:bg-action-yellow selection:text-deep-black overflow-x-hidden font-body page-enter">
       <Navbar />
 
       <main>
-        {/* Hero Section */}
-        <section className="relative min-h-[85vh] md:h-[90vh] flex items-center overflow-hidden">
+
+        {/* ── CINEMATIC HERO: Full-bleed image with bold overlay text ── */}
+        <section className="relative min-h-screen flex flex-col justify-end overflow-hidden">
           <div className="absolute inset-0 z-0">
-            <img className="w-full h-full object-cover object-bottom" src={IMAGES.villagesHero} alt="Smiling Ugandan children in a village" />
-            <div className="absolute inset-0 bg-deep-black/40" />
+            <img
+              className="w-full h-full object-cover object-bottom"
+              src={IMAGES.villagesHero}
+              alt="Katonda Talemwa Village children"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-deep-black via-deep-black/50 to-transparent" />
           </div>
-          <div className="relative z-10 w-full px-4 md:px-margin-desktop max-w-(--spacing-container-max) mx-auto">
-            <ScrollReveal animation="zoom-in" duration={800} className="max-w-3xl">
-              <span className="inline-block text-xs font-bold uppercase tracking-widest text-action-yellow mb-4">
-                Our Core Mission
-              </span>
-              <h1 className="font-headline text-[2rem] sm:text-[3rem] md:text-[4rem] text-pure-white mb-6 leading-none font-black uppercase tracking-tight">
-                Katonda Talemwa Villages: <br />
-                Where the Lost Find a <span className="text-action-yellow">Family</span>
-              </h1>
-              <p className="text-body-lg text-pure-white/95 mb-10 max-w-2xl font-light leading-relaxed">
-                A Katonda Talemwa village is a safe, nurturing place where orphaned and vulnerable children can truly experience the unconditional love of a family through holistic care, quality education, and unwavering faith.
-              </p>
-              <div className="flex flex-wrap gap-4">
-                <Link
-                  to="/sponsor"
-                  className="bg-secondary text-pure-white font-headline text-button-text px-8 py-4 uppercase tracking-widest hover:bg-secondary/90 active:scale-95 transition-all font-bold rounded-none"
-                >
-                  Sponsor a Child
-                </Link>
-                <button className="border border-pure-white text-pure-white font-headline text-button-text px-8 py-4 uppercase tracking-widest hover:bg-pure-white hover:text-deep-black active:scale-95 transition-all font-bold rounded-none flex items-center gap-2">
-                  <MaterialIcon name="play_arrow" className="text-xl" />
-                  Watch Their Story
-                </button>
-              </div>
-            </ScrollReveal>
-          </div>
-        </section>
 
-        {/* Intro Pillars Section */}
-        <section className="py-24 bg-surface-container-low border-b border-outline-variant/30 relative">
-          <div className="relative z-10 max-w-(--spacing-container-max) mx-auto px-4 md:px-margin-desktop">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-              
-              {/* Left Column: Heading and Text */}
-              <ScrollReveal animation="fade-right" duration={700} className="lg:col-span-5 space-y-6 lg:sticky lg:top-24">
-                <span className="text-vibrant-green font-bold text-label-bold uppercase tracking-widest block border-l-4 border-vibrant-green pl-3">
-                  Holistic Care
+          {/* Bottom-anchored hero text */}
+          <div className="relative z-10 max-w-(--spacing-container-max) mx-auto px-4 md:px-margin-desktop pb-20 pt-40">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-end">
+              <div data-aos="fade-right" className="space-y-6">
+                <span className="text-[10px] uppercase font-extrabold tracking-widest text-action-yellow block">
+                  Our Core Mission — Est. 1994
                 </span>
-                <h2 className="font-headline text-headline-lg text-deep-black uppercase font-black leading-tight tracking-tight">
-                  A child needs more <br />
-                  than a house, <br />
-                  <span className="text-vibrant-green font-black">a child needs a home and a family</span>
-                </h2>
-                <div className="h-1 w-20 bg-vibrant-green" />
-                <p className="text-body-lg text-on-surface-variant font-light leading-relaxed">
-                  Our villages provide a holistic ecosystem containing everything needed for vulnerable children to grow up healthy, educated, and prepared for a bright future.
+                <h1 className="font-headline text-5xl sm:text-7xl font-black uppercase leading-none tracking-tight text-pure-white">
+                  A Village. <br />
+                  A Family. <br />
+                  <span className="text-action-yellow">A Future.</span>
+                </h1>
+              </div>
+              <div data-aos="fade-left" data-aos-delay="150" className="space-y-6">
+                <p className="text-base font-light text-pure-white/90 leading-relaxed">
+                  Where orphaned and abandoned children across Uganda and South Sudan find not just shelter, but a real mother, real siblings, and the unconditional love of a true family.
                 </p>
-                <div className="pt-4">
+                <div className="flex flex-wrap gap-4">
                   <Link
-                    to="/sponsor"
-                    className="inline-block bg-vibrant-green text-pure-white font-headline text-button-text px-8 py-4 uppercase tracking-widest hover:bg-vibrant-green/90 transition-all font-bold rounded-none"
+                    to="/sponsor?tab=mother"
+                    className="bg-vibrant-green text-pure-white font-headline text-xs font-black uppercase tracking-widest px-8 py-4 hover:brightness-110 active:scale-95 transition-all rounded-none"
                   >
-                    Partner With Us
+                    Sponsor a Mother
                   </Link>
-                </div>
-              </ScrollReveal>
-
-              {/* Right Column: Geometric Grid of Pillars */}
-              <ScrollReveal animation="fade-left" duration={700} className="lg:col-span-7 bg-surface border border-outline-variant/60 shadow-lg rounded-none overflow-hidden">
-                <div className="grid grid-cols-1 sm:grid-cols-2 divide-y divide-x divide-outline-variant/40">
-                  {[
-                    { icon: 'school', title: 'Education', desc: 'Primary, secondary, and vocational training supporting 100% literacy.' },
-                    { icon: 'medical_services', title: 'Medical Care', desc: 'On-site clinical support, immunizations, and general healthcare.' },
-                    { icon: 'sports_soccer', title: 'Sports Academy', desc: 'Talent development, physical fitness, and teamwork coaching.' },
-                    { icon: 'music_note', title: 'Worship Academy', desc: 'Creative expression, musical instrumentation, and choir training.' },
-                    { icon: 'menu_book', title: 'Discipleship', desc: 'Christian values, spiritual guidance, and character building.' },
-                    { icon: 'eco', title: 'Sustainability', desc: 'Environmental agricultural projects and renewable energy systems.' }
-                  ].map((pillar) => (
-                    <div
-                      key={pillar.title}
-                      className="p-8 bg-surface relative overflow-hidden transition-all duration-300 group flex flex-col justify-between min-h-[240px] hover:bg-vibrant-green/[0.02] cursor-pointer"
-                    >
-                      {/* Icon with scale and lift transition */}
-                      <div className="text-vibrant-green mb-6 transform group-hover:-translate-y-2 group-hover:scale-110 transition-all duration-300 ease-out">
-                        <MaterialIcon name={pillar.icon} size={36} />
-                      </div>
-                      
-                      {/* Text details */}
-                      <div className="space-y-2 relative z-10">
-                        <h3 className="text-md font-bold text-deep-black uppercase tracking-wider group-hover:text-vibrant-green transition-colors duration-300">
-                          {pillar.title}
-                        </h3>
-                        <p className="text-xs text-on-surface-variant leading-relaxed font-light">
-                          {pillar.desc}
-                        </p>
-                      </div>
-
-                      {/* Sliding bottom indicator */}
-                      <div className="absolute bottom-0 left-0 right-0 h-1 bg-vibrant-green scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300 ease-out" />
-                    </div>
-                  ))}
-                </div>
-              </ScrollReveal>
-
-            </div>
-          </div>
-        </section>
-
-        {/* Model Section */}
-        <section className="py-24 bg-surface-container">
-          <div className="max-w-(--spacing-container-max) mx-auto px-4 md:px-margin-desktop grid md:grid-cols-12 gap-16 items-center">
-            <ScrollReveal animation="fade-right" duration={700} className="md:col-span-6 space-y-6">
-              <span className="text-vibrant-green font-bold text-label-bold uppercase tracking-widest block border-l-4 border-vibrant-green pl-3">
-                The Family Model
-              </span>
-              <h2 className="font-headline text-headline-lg font-black text-deep-black leading-tight uppercase tracking-tight">
-                OUR MODEL IS CENTERED <br />
-                AROUND <span className="text-vibrant-green">FAMILIES</span>
-              </h2>
-              <div className="h-1 w-20 bg-secondary" />
-              <p className="text-on-surface-variant leading-relaxed text-body-lg font-light">
-                Instead of large, institutional orphanages, Katonda Talemwa builds family-oriented villages. Each home contains a Katonda Talemwa Mother who commits to raising seven orphaned or abandoned children as siblings.
-              </p>
-              <p className="text-on-surface-variant leading-relaxed font-light">
-                The village is a secure, vibrant community containing a nursery, primary school, high school, vocational center, healthcare clinic, and community church. This model ensures children grow up with a true sense of belonging.
-              </p>
-            </ScrollReveal>
-            <ScrollReveal animation="zoom-in" duration={800} className="md:col-span-6 relative">
-              <div className="relative aspect-video border border-outline-variant/60 rounded-none shadow-lg overflow-hidden group cursor-pointer">
-                <img
-                  className="w-full h-full object-cover brightness-90"
-                  src={IMAGES.villages}
-                  alt="Katonda Talemwa Village Community Model"
-                />
-                <div className="absolute inset-0 bg-deep-black/30 group-hover:bg-deep-black/40 transition-colors" />
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-16 h-16 bg-secondary text-pure-white flex items-center justify-center shadow-lg group-hover:scale-105 active:scale-95 transition-all duration-300 rounded-none">
-                    <MaterialIcon name="play_arrow" className="text-4xl translate-x-0.5" filled />
-                  </div>
-                </div>
-                <div className="absolute bottom-4 left-6 right-6 flex justify-between items-center text-pure-white text-sm font-bold z-10">
-                  <div className="flex items-center gap-2">
-                    <span className="w-2 h-2 bg-action-yellow" />
-                    <span>Watch: The Village Model</span>
-                  </div>
-                  <span className="bg-deep-black/80 px-3 py-1 text-xs border border-pure-white/10 font-mono rounded-none">2:45</span>
-                </div>
-              </div>
-            </ScrollReveal>
-          </div>
-        </section>
-
-        {/* Bento Grid - The Village Life */}
-        <section className="py-24 bg-surface-container-low border-t border-outline-variant/30 relative">
-          <div className="relative z-10 px-4 md:px-margin-desktop max-w-(--spacing-container-max) mx-auto">
-            <ScrollReveal animation="fade-down" className="text-center mb-16">
-              <span className="text-vibrant-green font-bold text-label-bold uppercase tracking-widest block mb-2">Vibrant Communities</span>
-              <h2 className="font-headline text-headline-lg text-deep-black uppercase font-black tracking-tight">The Village Life</h2>
-              <div className="h-1.5 w-24 bg-action-yellow mx-auto mt-4" />
-              <p className="text-body-lg text-on-surface-variant max-w-3xl mx-auto mt-6 font-light">
-                More than just houses, our villages are vibrant communities designed to foster physical, emotional, and spiritual growth.
-              </p>
-            </ScrollReveal>
-
-            <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
-              {/* Card 1: Family Home */}
-              <ScrollReveal animation="fade-right" duration={700} className="md:col-span-8 bg-surface rounded-none p-8 border border-outline-variant/60 flex flex-col justify-between overflow-hidden relative group hover:shadow-md transition-all duration-300">
-                <div className="z-10 relative">
-                  <div className="w-12 h-12 bg-vibrant-green/5 flex items-center justify-center mb-6 rounded-none">
-                    <MaterialIcon name="home" className="text-vibrant-green text-3xl" filled />
-                  </div>
-                  <h3 className="font-headline text-headline-md text-deep-black mb-4 uppercase font-black">The Family Home</h3>
-                  <p className="text-on-surface-variant mb-8 max-w-lg leading-relaxed text-body-md font-light">
-                    Every child is placed in a family unit consisting of a mother and seven siblings. This isn&apos;t an institution; it&apos;s a real home where children build lifelong bonds, share chores, study together, and learn what it means to be part of a family.
-                  </p>
-                  <a href="#" className="text-vibrant-green font-headline text-sm font-black uppercase tracking-wider hover:text-secondary inline-flex items-center gap-2 transition-colors">
-                    Learn more about family units <MaterialIcon name="arrow_forward" className="text-sm" />
-                  </a>
-                </div>
-                <div className="absolute -right-6 -bottom-6 text-on-surface/[0.02] group-hover:text-vibrant-green/[0.04] transition-colors pointer-events-none">
-                  <MaterialIcon name="family_restroom" className="text-[200px]" />
-                </div>
-              </ScrollReveal>
-
-              {/* Card 2: Education */}
-              <ScrollReveal animation="fade-left" duration={700} delay={100} className="md:col-span-4 bg-primary rounded-none p-8 text-pure-white flex flex-col justify-between relative overflow-hidden group hover:shadow-md transition-all duration-300">
-                <div className="z-10">
-                  <div className="w-10 h-10 bg-pure-white/10 flex items-center justify-center mb-6 rounded-none">
-                    <MaterialIcon name="school" className="text-action-yellow text-xl" />
-                  </div>
-                  <h3 className="font-headline text-headline-md mb-3 uppercase font-black">Education</h3>
-                  <p className="opacity-90 text-sm leading-relaxed font-light">
-                    From early childhood learning to primary, secondary, and vocational training, we ensure every child receives quality schooling to unlock their potential.
-                  </p>
-                </div>
-                <div className="mt-8 pt-6 border-t border-pure-white/20 z-10">
-                  <div className="flex justify-between text-xs font-bold uppercase tracking-wider mb-2">
-                    <span className="text-action-yellow">Literacy Rate</span>
-                    <span>100%</span>
-                  </div>
-                  <div className="w-full h-2 bg-pure-white/10 rounded-none overflow-hidden">
-                    <div className="w-full h-full bg-action-yellow" />
-                  </div>
-                </div>
-              </ScrollReveal>
-
-              {/* Card 3: Healthcare */}
-              <ScrollReveal animation="fade-right" duration={700} delay={150} className="md:col-span-4 bg-secondary rounded-none p-8 text-pure-white flex flex-col justify-between relative overflow-hidden group hover:shadow-md transition-all duration-300">
-                <div className="z-10">
-                  <div className="w-10 h-10 bg-pure-white/10 flex items-center justify-center mb-6 rounded-none">
-                    <MaterialIcon name="medical_services" className="text-action-yellow text-xl" />
-                  </div>
-                  <h3 className="font-headline text-headline-md mb-3 uppercase font-black">Healthcare</h3>
-                  <p className="opacity-90 text-sm leading-relaxed font-light">
-                    Comprehensive medical and emotional care is provided within each village through our clinics, ensuring healthy physical development and psychological support.
-                  </p>
-                </div>
-                <div className="mt-8 pt-6 border-t border-pure-white/20 text-xs font-semibold tracking-wider flex items-center gap-2">
-                  <MaterialIcon name="check_circle" className="text-action-yellow text-sm" />
-                  <span>On-site clinics & pharmacies</span>
-                </div>
-              </ScrollReveal>
-
-              {/* Card 4: Spiritual Growth */}
-              <ScrollReveal animation="fade-left" duration={700} delay={200} className="md:col-span-8 bg-surface rounded-none border border-outline-variant/60 overflow-hidden flex flex-col md:flex-row group hover:shadow-md transition-all duration-300">
-                <div className="md:w-1/2 p-8 flex flex-col justify-between">
-                  <div>
-                    <div className="w-10 h-10 bg-vibrant-green/5 flex items-center justify-center mb-6 rounded-none">
-                      <MaterialIcon name="auto_awesome" className="text-vibrant-green text-xl" />
-                    </div>
-                    <h3 className="font-headline text-headline-md text-deep-black mb-3 uppercase font-black">Spiritual Growth</h3>
-                    <p className="text-on-surface-variant text-sm leading-relaxed mb-6 font-light">
-                      Faith is the foundation of everything we do. Children are nurtured in their relationship with Christ through weekly church service, home prayers, and dedicated discipleship programs.
-                    </p>
-                  </div>
-                  <span className="text-xs uppercase tracking-widest text-vibrant-green font-bold">Rescuing hearts, changing lives</span>
-                </div>
-                <div className="md:w-1/2 min-h-[220px] relative overflow-hidden">
-                  <img className="w-full h-full object-cover" src={IMAGES.spiritualGrowth} alt="Children in prayer" />
-                  <div className="absolute inset-0 bg-surface/10" />
-                </div>
-              </ScrollReveal>
-            </div>
-          </div>
-        </section>
-
-        {/* Mother Section */}
-        <section className="relative py-28 bg-surface-container border-y border-outline-variant/30 overflow-hidden">
-          <div className="relative z-10 px-4 md:px-margin-desktop max-w-(--spacing-container-max) mx-auto space-y-16">
-            
-            {/* Section Header & Large Testimonial Quote */}
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-              <ScrollReveal animation="fade-right" duration={700} className="lg:col-span-5 space-y-4">
-                <span className="inline-block border-l-4 border-vibrant-green pl-3 text-vibrant-green text-xs uppercase font-bold tracking-widest">
-                  Holistic Caregivers
-                </span>
-                <h2 className="font-headline text-headline-xl leading-none font-black uppercase text-deep-black tracking-tight">
-                  The Heart of <br />
-                  <span className="text-vibrant-green">Every Home</span>
-                </h2>
-                <div className="h-1 w-20 bg-vibrant-green" />
-              </ScrollReveal>
-              
-              <ScrollReveal animation="flip-up" delay={200} duration={800} className="lg:col-span-7 bg-surface border border-outline-variant/40 border-l-8 border-l-vibrant-green p-8 md:p-10 rounded-none relative shadow-sm">
-                <p className="text-xl md:text-2xl font-light italic leading-relaxed text-deep-black">
-                  &ldquo;I didn&apos;t just get a job; I found my calling. These children are my life, and watching them grow into leaders is my greatest joy.&rdquo;
-                </p>
-                <div className="mt-6 flex items-center gap-3">
-                  <div className="w-8 h-0.5 bg-vibrant-green" />
-                  <p className="text-sm font-black text-vibrant-green tracking-widest uppercase">Mother Grace</p>
-                </div>
-              </ScrollReveal>
-            </div>
-
-            {/* Editorial Grid Content */}
-            <div className="grid grid-cols-1 md:grid-cols-12 gap-10 items-stretch">
-              
-              {/* Left Side: Framed Image */}
-              <ScrollReveal animation="zoom-in" duration={700} className="md:col-span-5 border border-outline-variant/60 p-2 bg-surface flex flex-col justify-between h-full rounded-none shadow-sm">
-                <img
-                  className="w-full aspect-[4/3] object-cover"
-                  src={IMAGES.watotoMother}
-                  alt="Katonda Talemwa Mother with children"
-                />
-                <div className="p-4 bg-surface-container-low mt-2 border border-outline-variant/30">
-                  <span className="text-xs uppercase tracking-widest text-vibrant-green font-bold block mb-1">A Mother's Devotion</span>
-                  <p className="text-xs font-light text-on-surface-variant leading-relaxed">Raising the next generation of African leaders with unconditional, motherly love.</p>
-                </div>
-              </ScrollReveal>
-
-              {/* Right Side: Paragraph Narrative & Statistics Grid */}
-              <div className="md:col-span-7 flex flex-col justify-between gap-8">
-                <ScrollReveal animation="fade-left" duration={600} className="space-y-6">
-                  <h3 className="font-headline text-xl font-bold uppercase text-vibrant-green border-b border-outline-variant/40 pb-4">
-                    Calling & Commitment
-                  </h3>
-                  <p className="text-body-md text-on-surface-variant leading-relaxed font-light">
-                    Each Katonda Talemwa mother is a widow or a woman with a deep passion to care for vulnerable children. She commits to raising seven orphaned or abandoned children as siblings.
-                  </p>
-                  <p className="text-body-md text-on-surface-variant leading-relaxed font-light">
-                    She isn&apos;t a staff member; she is Mom. She runs the household, cooks meals, helps with homework, guides them in their relationship with Christ, and creates a true family unit in every sense.
-                  </p>
-                </ScrollReveal>
-
-                <div className="grid grid-cols-2 gap-6 mt-auto">
-                  <ScrollReveal animation="flip-up" delay={150} duration={500} className="border border-outline-variant/60 p-6 bg-surface hover:border-vibrant-green/60 transition-colors rounded-none text-center shadow-sm">
-                    <h4 className="font-headline text-4xl text-vibrant-green font-black mb-1">3,000+</h4>
-                    <p className="text-xs uppercase font-bold tracking-wider text-on-surface-variant font-medium">Children in Care</p>
-                  </ScrollReveal>
-                  <ScrollReveal animation="flip-up" delay={300} duration={500} className="border border-outline-variant/60 p-6 bg-surface hover:border-vibrant-green/60 transition-colors rounded-none text-center shadow-sm">
-                    <h4 className="font-headline text-4xl text-vibrant-green font-black mb-1">400+</h4>
-                    <p className="text-xs uppercase font-bold tracking-wider text-on-surface-variant font-medium">Active Mothers</p>
-                  </ScrollReveal>
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </section>
-
-        {/* Stories of Transformation Section */}
-        <section className="py-24 bg-surface border-y border-outline-variant/30">
-          <div className="max-w-(--spacing-container-max) mx-auto px-4 md:px-margin-desktop">
-            <ScrollReveal animation="fade-down" className="text-center mb-16">
-              <span className="text-vibrant-green font-bold text-label-bold uppercase tracking-widest block mb-2">Restoring Hope</span>
-              <h2 className="font-headline text-headline-lg font-black text-deep-black uppercase tracking-tight">Stories of Transformation</h2>
-              <div className="h-1.5 w-24 bg-secondary mx-auto mt-4" />
-            </ScrollReveal>
-
-            <div className="grid md:grid-cols-2 gap-10 max-w-5xl mx-auto">
-              {/* Gerald Story */}
-              <ScrollReveal animation="fade-right" duration={700} className="bg-surface rounded-none border border-outline-variant/60 overflow-hidden shadow-md flex flex-col md:flex-row hover:shadow-lg transition-all duration-300 group">
-                <div className="md:w-1/2 h-72 md:h-auto relative overflow-hidden">
-                  <img
-                    className="w-full h-full object-cover"
-                    src={children.find(c => c.id === 'gerald')?.image || IMAGES.villagesHero}
-                    alt="Gerald"
-                  />
-                  <span className="absolute top-4 left-4 bg-vibrant-green text-pure-white text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-none shadow-sm">
-                    Child Story
-                  </span>
-                </div>
-                <div className="md:w-1/2 p-8 flex flex-col justify-between bg-surface-container-low rounded-none">
-                  <div>
-                    <h3 className="font-headline font-black text-2xl text-deep-black mb-3">Meet Gerald</h3>
-                    <p className="text-sm text-on-surface-variant leading-relaxed mb-6 font-light">
-                      {children.find(c => c.id === 'gerald')?.description || 'Gerald lost both parents but has found a home, a mother, and brothers in a Katonda Talemwa Village.'}
-                    </p>
-                  </div>
                   <Link
                     to="/sponsor?tab=child"
-                    className="text-vibrant-green font-headline text-sm font-black uppercase tracking-wider hover:text-secondary flex items-center gap-2 group transition-colors mt-4"
+                    className="border border-pure-white/60 text-pure-white font-headline text-xs font-black uppercase tracking-widest px-8 py-4 hover:border-pure-white hover:bg-pure-white/10 transition-all rounded-none"
                   >
-                    Sponsor Gerald
-                    <MaterialIcon name="arrow_forward" className="group-hover:translate-x-1.5 transition-transform" />
+                    Sponsor a Child
                   </Link>
                 </div>
-              </ScrollReveal>
+              </div>
+            </div>
+          </div>
 
-              {/* Phiona Story */}
-              <ScrollReveal animation="fade-left" duration={700} delay={200} className="bg-surface rounded-none border border-outline-variant/60 overflow-hidden shadow-md flex flex-col md:flex-row hover:shadow-lg transition-all duration-300 group">
-                <div className="md:w-1/2 h-72 md:h-auto relative overflow-hidden">
-                  <img
-                    className="w-full h-full object-cover"
-                    src={children.find(c => c.id === 'mama_phiona')?.image || IMAGES.watotoMother}
-                    alt="Mama Phiona"
-                  />
-                  <span className="absolute top-4 left-4 bg-secondary text-pure-white text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-none shadow-sm">
-                    Mother Story
-                  </span>
+          {/* Scroll indicator */}
+          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 text-pure-white/50">
+            <span className="text-[9px] uppercase tracking-widest font-bold">Scroll</span>
+            <MaterialIcon name="keyboard_arrow_down" className="text-xl animate-bounce" />
+          </div>
+        </section>
+
+        {/* ── KEY NUMBERS STRIP ── */}
+        <section className="bg-vibrant-green border-b-4 border-action-yellow">
+          <div className="max-w-(--spacing-container-max) mx-auto px-4 md:px-margin-desktop grid grid-cols-2 md:grid-cols-4 divide-x divide-pure-white/20">
+            {[
+              { stat: '10', suffix: '+', label: 'Village Communities' },
+              { stat: '3,000', suffix: '+', label: 'Children in Care' },
+              { stat: '400', suffix: '+', label: 'Village Mothers' },
+              { stat: '30', suffix: '+', label: 'Years of Ministry' },
+            ].map(({ stat, suffix, label }, i) => (
+              <div key={label} data-aos="fade-up" data-aos-delay={i * 80} className="py-10 px-6 text-pure-white text-center">
+                <div className="font-headline text-3xl sm:text-4xl font-black text-action-yellow">{stat}{suffix}</div>
+                <p className="text-xs font-bold uppercase tracking-widest mt-1 opacity-80">{label}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* ── THE VILLAGE MODEL: Two-column narrative ── */}
+        <section className="py-24 bg-surface border-b border-outline-variant/30">
+          <div className="max-w-(--spacing-container-max) mx-auto px-4 md:px-margin-desktop grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+
+            <div data-aos="fade-right" className="space-y-8">
+              <div className="space-y-3">
+                <span className="text-[10px] uppercase font-extrabold tracking-widest text-vibrant-green block">The Family Model</span>
+                <h2 className="font-headline text-4xl sm:text-5xl font-black uppercase text-deep-black leading-none">
+                  Not an <br />
+                  <span className="text-vibrant-green">Orphanage.</span> <br />
+                  A Home.
+                </h2>
+                <div className="w-16 h-1 bg-action-yellow" />
+              </div>
+              <p className="text-sm text-on-surface-variant font-light leading-relaxed">
+                Unlike large institutional orphanages, a Katonda Talemwa Village is built around real family units. Each home contains one dedicated mother who commits to raising exactly seven children as her own — cooking for them, helping with homework, worshipping together, and growing old together.
+              </p>
+              <p className="text-sm text-on-surface-variant font-light leading-relaxed">
+                These are not just houses. They are addresses where children can say &ldquo;I live there, and that is my mother.&rdquo; The village includes a nursery, primary school, secondary school, vocational center, healthcare clinic, and community church — everything needed for a child to thrive without ever leaving the safety of community.
+              </p>
+              <div className="flex gap-6">
+                <div className="border-l-4 border-vibrant-green pl-4">
+                  <div className="font-headline text-2xl font-black text-vibrant-green">7</div>
+                  <p className="text-xs uppercase font-bold tracking-wider text-on-surface-variant">Children per family</p>
                 </div>
-                <div className="md:w-1/2 p-8 flex flex-col justify-between bg-surface-container-low rounded-none">
-                  <div>
-                    <h3 className="font-headline font-black text-2xl text-deep-black mb-3">Meet Mama Phiona</h3>
-                    <p className="text-sm text-on-surface-variant leading-relaxed mb-6 font-light">
-                      {children.find(c => c.id === 'mama_phiona')?.description || 'Phiona is a dedicated Katonda Talemwa Mother who has cared for over 15 children. She provides love and guidance.'}
-                    </p>
+                <div className="border-l-4 border-action-yellow pl-4">
+                  <div className="font-headline text-2xl font-black text-deep-black">1</div>
+                  <p className="text-xs uppercase font-bold tracking-wider text-on-surface-variant">Dedicated Mother</p>
+                </div>
+                <div className="border-l-4 border-outline-variant pl-4">
+                  <div className="font-headline text-2xl font-black text-deep-black">∞</div>
+                  <p className="text-xs uppercase font-bold tracking-wider text-on-surface-variant">Years of love</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Right: video still with play button */}
+            <div data-aos="zoom-in" data-aos-delay="100" className="relative border border-outline-variant/60 rounded-none overflow-hidden group cursor-pointer shadow-sm">
+              <img
+                className="w-full aspect-video object-cover brightness-90 group-hover:brightness-100 transition-all duration-500"
+                src={IMAGES.villages}
+                alt="Katonda Talemwa Village"
+              />
+              <div className="absolute inset-0 bg-deep-black/20 group-hover:bg-deep-black/30 transition-colors" />
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="w-16 h-16 bg-vibrant-green text-pure-white flex items-center justify-center group-hover:scale-110 active:scale-95 transition-all">
+                  <MaterialIcon name="play_arrow" className="text-4xl translate-x-0.5" filled />
+                </div>
+              </div>
+              <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-deep-black/80 to-transparent flex items-center justify-between">
+                <span className="text-pure-white text-xs font-bold flex items-center gap-2">
+                  <span className="w-2 h-2 bg-action-yellow" /> Watch: Life in the Village
+                </span>
+                <span className="text-pure-white text-xs font-mono bg-deep-black/60 px-2 py-0.5">2:45</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ── VILLAGE PILLARS: 6-pillar editorial grid ── */}
+        <section className="py-24 bg-surface-container-low border-b border-outline-variant/30">
+          <div className="max-w-(--spacing-container-max) mx-auto px-4 md:px-margin-desktop space-y-14">
+            <div data-aos="fade-up" className="text-center space-y-3 max-w-xl mx-auto">
+              <span className="text-[10px] uppercase font-extrabold tracking-widest text-vibrant-green block">What the Village Provides</span>
+              <h2 className="font-headline text-4xl font-black uppercase text-deep-black leading-none">
+                Six Pillars of <br />
+                <span className="text-vibrant-green">Holistic Care</span>
+              </h2>
+              <div className="w-16 h-1 bg-action-yellow mx-auto" />
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-outline-variant/40 border border-outline-variant/40">
+              {[
+                { icon: 'school', title: 'Quality Education', desc: 'From nursery through university — every child receives full academic support including fees, books, and tutoring. Literacy rate: 100%.' },
+                { icon: 'medical_services', title: 'Healthcare', desc: 'On-site clinics provide immunisations, daily wellness monitoring, dental care, optical screening, and emergency medical response.' },
+                { icon: 'church', title: 'Spiritual Discipleship', desc: 'Faith is foundational. Weekly worship, home devotions, Bible study, and pastoral mentoring build children with character that lasts.' },
+                { icon: 'sports_soccer', title: 'Sports & Fitness', desc: 'Every child participates in structured sports — football, netball, athletics — building teamwork, discipline, and physical wellbeing.' },
+                { icon: 'music_note', title: 'Worship Academy', desc: 'Instrument lessons in keyboard, guitar, drums, and vocals. Our children perform across Uganda and internationally.' },
+                { icon: 'eco', title: 'Sustainability Projects', desc: 'Village gardens, poultry farms, and renewable energy systems teach life skills while reducing environmental footprint.' },
+              ].map((pillar, i) => (
+                <div
+                  key={pillar.title}
+                  data-aos="fade-up"
+                  data-aos-delay={Math.min(i, 2) * 100}
+                  className="bg-surface p-8 group hover:bg-vibrant-green/5 hover:border-vibrant-green transition-all duration-300 flex flex-col gap-5 relative overflow-hidden"
+                >
+                  <div className="w-10 h-10 bg-vibrant-green/10 border border-vibrant-green/20 flex items-center justify-center group-hover:bg-vibrant-green group-hover:border-vibrant-green transition-all">
+                    <MaterialIcon name={pillar.icon} className="text-vibrant-green group-hover:text-pure-white text-lg transition-colors" />
+                  </div>
+                  <div className="space-y-2">
+                    <h3 className="font-headline text-sm font-black uppercase text-deep-black tracking-wide group-hover:text-vibrant-green transition-colors">{pillar.title}</h3>
+                    <p className="text-sm text-on-surface-variant font-light leading-relaxed">{pillar.desc}</p>
+                  </div>
+                  {/* Hover accent line */}
+                  <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-vibrant-green scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300" />
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── THE MOTHER: Bold editorial double column ── */}
+        <section className="py-24 bg-deep-black text-pure-white border-b border-outline-variant/10">
+          <div className="max-w-(--spacing-container-max) mx-auto px-4 md:px-margin-desktop">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-0 border border-pure-white/10">
+
+              {/* Photo panel */}
+              <div data-aos="zoom-in" className="lg:col-span-5 relative min-h-[500px]">
+                <img
+                  className="w-full h-full object-cover absolute inset-0"
+                  src={IMAGES.watotoMother}
+                  alt="Katonda Talemwa Mother"
+                />
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent to-deep-black/30" />
+                <div className="absolute bottom-8 left-8 space-y-1">
+                  <span className="text-[10px] font-extrabold uppercase tracking-widest text-action-yellow bg-vibrant-green/90 px-3 py-1 block w-fit">
+                    Village Mother
+                  </span>
+                  <h3 className="font-headline text-xl font-black uppercase">Mother Grace</h3>
+                  <p className="text-xs opacity-70">Serving since 2008 · Gulu Village</p>
+                </div>
+              </div>
+
+              {/* Content panel */}
+              <div data-aos="fade-left" data-aos-delay="100" className="lg:col-span-7 p-10 md:p-16 flex flex-col justify-between gap-12">
+                <div className="space-y-6">
+                  <span className="text-[10px] uppercase font-extrabold tracking-widest text-action-yellow block">The Heart of Every Home</span>
+                  <h2 className="font-headline text-4xl font-black uppercase leading-none">
+                    She is not staff. <br />
+                    <span className="text-vibrant-green">She is Mom.</span>
+                  </h2>
+                  <div className="w-16 h-0.5 bg-action-yellow" />
+                  <p className="text-sm font-light opacity-90 leading-relaxed">
+                    A Katonda Talemwa Mother is a widow or a woman called to a life of service. She commits to raising seven orphaned children as her own — permanently. She cooks, disciplines, celebrates, comforts, and prays with every child in her home.
+                  </p>
+                  <blockquote className="border-l-4 border-vibrant-green pl-6 italic text-lg font-light opacity-90">
+                    &ldquo;I didn&apos;t just get a job; I found my calling. These children are my life, and watching them grow into leaders is my greatest joy.&rdquo;
+                    <footer className="not-italic text-xs font-black uppercase tracking-widest text-action-yellow mt-3 block">— Mother Grace</footer>
+                  </blockquote>
+                </div>
+
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="border border-pure-white/10 p-6 bg-pure-white/5">
+                    <div className="font-headline text-3xl font-black text-vibrant-green">400+</div>
+                    <p className="text-xs uppercase font-bold tracking-wider mt-1 opacity-70">Active Village Mothers</p>
+                  </div>
+                  <div className="border border-pure-white/10 p-6 bg-pure-white/5">
+                    <div className="font-headline text-3xl font-black text-action-yellow">15 yrs</div>
+                    <p className="text-xs uppercase font-bold tracking-wider mt-1 opacity-70">Average Commitment</p>
                   </div>
                   <Link
                     to="/sponsor?tab=mother"
-                    className="text-vibrant-green font-headline text-sm font-black uppercase tracking-wider hover:text-secondary flex items-center gap-2 group transition-colors mt-4"
+                    data-aos="fade-up"
+                    data-aos-delay="200"
+                    className="col-span-2 bg-vibrant-green text-pure-white text-center font-headline text-xs font-black uppercase tracking-widest px-8 py-4 hover:brightness-110 active:scale-95 transition-all rounded-none"
                   >
-                    Sponsor a Mother
-                    <MaterialIcon name="arrow_forward" className="group-hover:translate-x-1.5 transition-transform" />
+                    Sponsor a Village Mother — $38/mo
                   </Link>
                 </div>
-              </ScrollReveal>
+              </div>
             </div>
           </div>
         </section>
 
-        {/* Ready to Change a Life? CTA section */}
-        <section className="py-24 px-4 md:px-margin-desktop max-w-(--spacing-container-max) mx-auto text-center overflow-hidden">
-          <ScrollReveal animation="zoom-in" duration={850} className="bg-[#0d1f2d] border border-pure-white/10 p-12 md:p-24 relative overflow-hidden shadow-2xl text-pure-white rounded-none">
-            <h2 className="font-headline text-headline-lg mb-6 font-black uppercase relative z-10 tracking-tight">Ready to change a life?</h2>
-            <p className="text-body-lg opacity-90 mb-16 max-w-2xl mx-auto font-light leading-relaxed relative z-10">
-              By sponsoring a child in a Katonda Talemwa Village, you aren&apos;t just sending money—you&apos;re providing a family, an education, and a future filled with hope.
-            </p>
-
-            <div className="flex flex-col lg:flex-row justify-center items-center gap-12 relative z-10 max-w-5xl mx-auto">
-              {/* Samuel Profile Showcase */}
-              <ScrollReveal animation="rotate-in" delay={200} duration={800} className="bg-surface text-on-surface p-4 rounded-none shadow-2xl w-full max-w-2xl border border-outline-variant/60 hover:scale-[1.01] transition-transform duration-300 flex flex-col sm:flex-row gap-6">
-                {/* Image on the left */}
-                <div className="relative overflow-hidden rounded-none w-full sm:w-1/2 aspect-square flex-shrink-0">
-                  <img className="w-full h-full object-cover" src={IMAGES.samuelCard} alt="Samuel, 8" />
-                  <span className="absolute bottom-4 left-4 bg-secondary text-pure-white text-xs font-bold px-3 py-1 uppercase tracking-wider rounded-none">
-                    Waiting for Sponsor
-                  </span>
-                </div>
-                {/* Title & contents on the right */}
-                <div className="flex flex-col justify-between p-2 text-left w-full sm:w-1/2">
-                  <div>
-                    <h4 className="font-headline text-headline-md text-vibrant-green mb-2 font-black uppercase tracking-tight">Meet Samuel, 8</h4>
-                    <p className="text-sm text-on-surface-variant leading-relaxed font-light mb-6">
-                      Samuel dreams of becoming a doctor. He loves football and his favorite color is green.
-                    </p>
-                  </div>
-                  <Link
-                    to="/sponsor?tab=child"
-                    className="block w-full text-center bg-secondary text-pure-white font-headline text-button-text py-4 rounded-none hover:bg-secondary/90 transition-all uppercase tracking-widest font-black"
-                  >
-                    Sponsor Samuel
-                  </Link>
-                </div>
-              </ScrollReveal>
-
-              {/* Action column */}
-              <ScrollReveal animation="fade-left" delay={300} duration={700} className="flex flex-col gap-6 items-center lg:items-start text-center lg:text-left">
-                <span className="font-black text-sm tracking-widest text-action-yellow uppercase">Or explore more lives</span>
-                <h3 className="font-headline text-3xl font-black uppercase max-w-xs leading-tight tracking-tight">
-                  Help us rewrite <span className="text-action-yellow">their stories</span>
-                </h3>
-                <p className="text-pure-white/80 max-w-sm text-sm font-light leading-relaxed">
-                  There are many children like Samuel who are waiting for a sponsor to help provide them with nutrition, education, and loving care.
-                </p>
-                <Link
-                  to="/sponsor"
-                  className="bg-pure-white text-vibrant-green font-headline text-button-text px-10 py-4 rounded-none uppercase tracking-widest flex items-center justify-center gap-3 group hover:bg-action-yellow hover:text-deep-black transition-all shadow-lg font-black mt-4"
-                >
-                  View All Children
-                  <MaterialIcon name="arrow_forward" className="group-hover:translate-x-1.5 transition-transform" />
-                </Link>
-              </ScrollReveal>
+        {/* ── STORIES OF TRANSFORMATION ── */}
+        <section className="py-24 bg-surface-container border-b border-outline-variant/30">
+          <div className="max-w-(--spacing-container-max) mx-auto px-4 md:px-margin-desktop space-y-14">
+            <div data-aos="fade-up" className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+              <div className="space-y-3">
+                <span className="text-[10px] uppercase font-extrabold tracking-widest text-vibrant-green block">Real Lives Changed</span>
+                <h2 className="font-headline text-4xl font-black uppercase text-deep-black leading-none">
+                  Stories of <br />
+                  <span className="text-vibrant-green">Transformation</span>
+                </h2>
+                <div className="w-16 h-1 bg-action-yellow" />
+              </div>
+              <Link to="/sponsor" className="text-xs font-headline font-black uppercase tracking-widest text-vibrant-green flex items-center gap-2 hover:gap-4 transition-all">
+                See All Profiles <MaterialIcon name="arrow_forward" className="text-sm" />
+              </Link>
             </div>
-          </ScrollReveal>
+
+            {/* Horizontal magazine-style story cards */}
+            <div className="space-y-px">
+              {[
+                {
+                  id: 'gerald',
+                  fallbackImage: IMAGES.villagesHero,
+                  tag: 'Child Story',
+                  name: 'Gerald',
+                  location: 'Gulu Village, Uganda',
+                  quote: 'I used to cry every night. Now I have brothers, a mother, and a dream to become an engineer.',
+                  fallbackDesc: 'Gerald lost both parents to illness when he was 4. He arrived at the Gulu village malnourished and silent. Today he is top of his class in mathematics.',
+                  cta: 'Sponsor a Child',
+                  link: '/sponsor?tab=child',
+                  bgAccent: 'bg-vibrant-green',
+                },
+                {
+                  id: 'mama_phiona',
+                  fallbackImage: IMAGES.watotoMother,
+                  tag: 'Mother Story',
+                  name: 'Mama Phiona',
+                  location: 'Kampala Village, Uganda',
+                  quote: 'When my husband died I thought my life was over. Katonda Talemwa gave me 7 children and a purpose.',
+                  fallbackDesc: 'Phiona became a village mother in 2010. She has raised over 15 children and continues to mentor new mothers joining the programme.',
+                  cta: 'Sponsor a Mother',
+                  link: '/sponsor?tab=mother',
+                  bgAccent: 'bg-secondary',
+                },
+              ].map((story, i) => {
+                const profile = children.find(c => c.id === story.id)
+                return (
+                  <div
+                    key={story.id}
+                    data-aos={i === 0 ? 'fade-right' : 'fade-left'}
+                    className="grid grid-cols-1 md:grid-cols-12 border border-outline-variant/50 overflow-hidden group"
+                  >
+                    {/* Image */}
+                    <div className={`md:col-span-4 relative min-h-[280px] ${i === 1 ? 'md:order-2' : ''}`}>
+                      <img
+                        className="w-full h-full object-cover absolute inset-0 group-hover:scale-105 transition-transform duration-500"
+                        src={profile?.image || story.fallbackImage}
+                        alt={story.name}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-deep-black/60 to-transparent" />
+                      <span className={`absolute top-4 left-4 text-pure-white text-[10px] font-black uppercase tracking-widest px-3 py-1 ${story.bgAccent}`}>
+                        {story.tag}
+                      </span>
+                    </div>
+
+                    {/* Content */}
+                    <div className={`md:col-span-8 p-10 md:p-12 bg-surface flex flex-col justify-between gap-8 ${i === 1 ? 'md:order-1' : ''}`}>
+                      <div className="space-y-4">
+                        <div>
+                          <span className="text-[10px] uppercase font-bold tracking-widest text-on-surface-variant">{story.location}</span>
+                          <h3 className="font-headline text-2xl font-black uppercase text-deep-black mt-1">Meet {story.name}</h3>
+                        </div>
+                        <p className="text-lg italic font-light text-deep-black leading-relaxed border-l-4 border-vibrant-green pl-4">
+                          &ldquo;{story.quote}&rdquo;
+                        </p>
+                        <p className="text-sm text-on-surface-variant font-light leading-relaxed">
+                          {profile?.description || story.fallbackDesc}
+                        </p>
+                      </div>
+                      <Link
+                        to={story.link}
+                        className="w-full sm:w-auto text-center bg-deep-black text-pure-white font-headline text-xs font-black uppercase tracking-widest px-8 py-4 hover:bg-vibrant-green active:scale-95 transition-all rounded-none self-start"
+                      >
+                        {story.cta}
+                      </Link>
+                    </div>
+                  </div>
+                )
+              })}
+            </div>
+          </div>
         </section>
+
+        {/* ── CLOSING CTA: Split panel ── */}
+        <section className="grid grid-cols-1 md:grid-cols-2 border-t border-outline-variant/30">
+          {/* Left: Samuel sponsor card */}
+          <div data-aos="fade-right" className="bg-surface-container-low p-12 md:p-16 flex flex-col justify-center space-y-6 border-r border-outline-variant/30">
+            <span className="text-[10px] uppercase font-extrabold tracking-widest text-vibrant-green block">Meet Samuel, Age 8</span>
+            <div className="border border-outline-variant/60 overflow-hidden rounded-none">
+              <img className="w-full aspect-video object-cover" src={IMAGES.samuelCard} alt="Samuel" />
+            </div>
+            <p className="text-sm text-on-surface-variant font-light leading-relaxed">
+              Samuel dreams of becoming a doctor. He is in Primary 3, loves football, and asks his mother to pray with him every night before bed.
+            </p>
+            <Link
+              to="/sponsor?tab=child"
+              className="w-full text-center bg-vibrant-green text-pure-white font-headline text-xs font-black uppercase tracking-widest px-8 py-4 hover:brightness-110 active:scale-95 transition-all rounded-none"
+            >
+              Sponsor Samuel — $38/mo
+            </Link>
+          </div>
+
+          {/* Right: General CTA */}
+          <div data-aos="fade-left" className="bg-deep-black text-pure-white p-12 md:p-16 flex flex-col justify-center space-y-6">
+            <span className="text-[10px] uppercase font-extrabold tracking-widest text-action-yellow block">Ready to Change a Life?</span>
+            <h2 className="font-headline text-4xl font-black uppercase leading-none">
+              Help us <br />
+              <span className="text-vibrant-green">rewrite</span> <br />
+              their story.
+            </h2>
+            <p className="text-sm font-light opacity-90 leading-relaxed">
+              By sponsoring a child or mother in a Katonda Talemwa Village, you&apos;re not just sending money — you&apos;re providing a family, an education, and a future filled with hope and dignity.
+            </p>
+            <div className="flex flex-col gap-3">
+              <Link
+                to="/sponsor?tab=child"
+                className="text-center bg-action-yellow text-deep-black font-headline text-xs font-black uppercase tracking-widest px-8 py-4 hover:brightness-110 active:scale-95 transition-all rounded-none"
+              >
+                Sponsor a Child
+              </Link>
+              <Link
+                to="/sponsor?tab=mother"
+                className="text-center border border-pure-white/30 text-pure-white font-headline text-xs font-black uppercase tracking-widest px-8 py-4 hover:border-pure-white hover:bg-pure-white/10 transition-all rounded-none"
+              >
+                Sponsor a Village Mother
+              </Link>
+            </div>
+          </div>
+        </section>
+
       </main>
 
       <FooterProgram highlightProgram="villages" />

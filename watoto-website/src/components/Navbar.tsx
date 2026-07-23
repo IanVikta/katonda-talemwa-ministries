@@ -33,27 +33,27 @@ export default function Navbar() {
       links: [
         { label: 'Katonda Talemwa Villages', to: '/katonda-villages' },
         { label: 'Baby Katonda Talemwa', to: '/baby-katonda' },
-        { label: 'Katonda Talemwa Neighbourhood', to: '#' },
-        { label: 'Keep a Girl in School', to: '#' },
-        { label: 'Katonda Talemwa Church', to: '#' },
+        { label: 'Katonda Talemwa Neighbourhood', to: '/katonda-neighbourhood' },
+        { label: 'Keep a Girl in School', to: '/keep-a-girl' },
+        { label: 'Katonda Talemwa Church', to: '/katonda-church' },
       ]
     },
     'get-involved': {
       title: 'Get Involved',
       links: [
         { label: 'Donate Now', to: '/donate' },
-        { label: 'Volunteer / Go', to: '#' },
-        { label: 'Pray With Us', to: '#' },
-        { label: 'Careers', to: '#' },
+        { label: 'Volunteer / Go', to: '/volunteer' },
+        { label: 'Pray With Us', to: '/pray-with-us' },
+        { label: 'Careers', to: '/careers' },
       ]
     },
     'sponsor': {
       title: 'Sponsor',
       links: [
         { label: 'Sponsor a Child', to: '/sponsor?tab=child' },
-        { label: 'Sponsor a Baby', to: '/sponsor?tab=baby' },
-        { label: 'Sponsor a Katonda Talemwa Mother', to: '/sponsor?tab=mother' },
-        { label: 'Sponsor a Neighbourhood Mother', to: '/sponsor?tab=neighbourhood-mother' },
+        { label: 'Sponsor a Baby', to: '/baby-katonda' },
+        { label: 'Sponsor a Katonda Talemwa Mother', to: '/katonda-villages' },
+        { label: 'Sponsor a Neighbourhood Mother', to: '/katonda-neighbourhood' },
       ]
     }
   }
@@ -69,7 +69,7 @@ export default function Navbar() {
     { label: 'Donate', to: '/donate' },
     { label: 'Sponsor', submenu: 'sponsor' as const },
     { label: 'Financials', to: '#' },
-    { label: 'Katonda Talemwa Church', to: '#' },
+    { label: 'Katonda Talemwa Church', to: '/katonda-church' },
     { label: 'Contact Us', to: '/contact' },
     { label: 'Store', to: '#' },
     { label: 'Stay Connected', to: '#' },
@@ -82,27 +82,27 @@ export default function Navbar() {
       submenu: [
         { label: 'Katonda Talemwa Villages', to: '/katonda-villages' },
         { label: 'Baby Katonda Talemwa', to: '/baby-katonda' },
-        { label: 'Katonda Talemwa Neighbourhood', to: '#' },
-        { label: 'Keep a Girl in School', to: '#' },
-        { label: 'Katonda Talemwa Church', to: '#' },
+        { label: 'Katonda Talemwa Neighbourhood', to: '/katonda-neighbourhood' },
+        { label: 'Keep a Girl in School', to: '/keep-a-girl' },
+        { label: 'Katonda Talemwa Church', to: '/katonda-church' },
       ]
     },
     {
       label: 'Sponsor',
       submenu: [
         { label: 'Sponsor a Child', to: '/sponsor?tab=child' },
-        { label: 'Sponsor a Baby', to: '/sponsor?tab=baby' },
-        { label: 'Sponsor a Katonda Talemwa Mother', to: '/sponsor?tab=mother' },
-        { label: 'Sponsor a Neighbourhood Mother', to: '/sponsor?tab=neighbourhood-mother' },
+        { label: 'Sponsor a Baby', to: '/baby-katonda' },
+        { label: 'Sponsor a Katonda Talemwa Mother', to: '/katonda-villages' },
+        { label: 'Sponsor a Neighbourhood Mother', to: '/katonda-neighbourhood' },
       ]
     },
     {
       label: 'Get Involved',
       submenu: [
         { label: 'Donate Now', to: '/donate' },
-        { label: 'Volunteer / Go', to: '#' },
-        { label: 'Pray With Us', to: '#' },
-        { label: 'Careers', to: '#' },
+        { label: 'Volunteer / Go', to: '/volunteer' },
+        { label: 'Pray With Us', to: '/pray-with-us' },
+        { label: 'Careers', to: '/careers' },
       ]
     },
     { label: 'Who We Are', to: '/who-we-are' },
@@ -121,12 +121,12 @@ export default function Navbar() {
         {/* Logo */}
         <Link
           to="/"
-          className="flex items-center hover:opacity-90 transition-opacity shrink-0"
+          className="flex items-center hover:opacity-90 transition-opacity shrink-0 border-none outline-none focus:outline-none focus:ring-0"
         >
           <img
             src={logo}
             alt="Katonda Talemwa Ministries"
-            className={`w-auto object-contain transition-all duration-300 ${
+            className={`w-auto object-contain transition-all duration-300 border-none outline-none focus:outline-none focus:ring-0 select-none ${
               scrolled ? 'h-12' : 'h-16'
             }`}
           />

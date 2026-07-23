@@ -1,306 +1,364 @@
 import { Link } from 'react-router-dom'
+import { useEffect, useRef, useState } from 'react'
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 import Navbar from '../components/Navbar'
 import { FooterProgram } from '../components/Footer'
-import ScrollReveal from '../components/ScrollReveal'
 import MaterialIcon from '../components/ui/MaterialIcon'
 import { children, IMAGES } from '../data/content'
 
-const timelineSteps = [
-  { num: 1, title: 'Discovery', desc: 'Prompt rescue from crisis situations.' },
-  { num: 2, title: 'Stability', desc: 'Clinical care and weight gain tracking.' },
-  { num: 3, title: 'Nurturing', desc: 'Cognitive and motor skill development.' },
-  { num: 4, title: 'Family', desc: 'Integration into a village home.' },
-]
+// ── Animated counter ─────────────────────────────────────────
+function CountUp({ end, suffix = '', duration = 1800 }: { end: number; suffix?: string; duration?: number }) {
+  const [count, setCount] = useState(0)
+  const [started, setStarted] = useState(false)
+  const ref = useRef<HTMLSpanElement>(null)
 
-const stats = [
-  { value: '24/7', label: 'Emergency Rescue' },
-  { value: '3,000+', label: 'Babies Rescued' },
-  { value: '100%', label: 'Medical Support' },
-  { value: '20+', label: 'Years of Care' },
-]
+  useEffect(() => {
+    const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) { setStarted(true); obs.disconnect() } }, { threshold: 0.2 })
+    if (ref.current) obs.observe(ref.current)
+    return () => obs.disconnect()
+  }, [])
+
+  useEffect(() => {
+    if (!started) return
+    let frame: number
+    let start: number | null = null
+    const tick = (ts: number) => {
+      if (!start) start = ts
+      const p = Math.min((ts - start) / duration, 1)
+      setCount(Math.floor(p * (2 - p) * end))
+      if (p < 1) frame = requestAnimationFrame(tick)
+      else setCount(end)
+    }
+    frame = requestAnimationFrame(tick)
+    return () => cancelAnimationFrame(frame)
+  }, [started, end, duration])
+
+  return <span ref={ref}>{count.toLocaleString()}{suffix}</span>
+}
 
 export default function BabyWatotoPage() {
+  useEffect(() => {
+    AOS.init({ duration: 700, easing: 'ease-out-cubic', once: true, offset: 60 })
+  }, [])
+
   return (
-    <div className="bg-surface text-on-surface overflow-x-hidden page-enter">
+    <div className="bg-surface text-on-surface selection:bg-action-yellow selection:text-deep-black overflow-x-hidden font-body page-enter">
       <Navbar />
 
       <main>
-        <section className="relative h-[819px] min-h-[600px] flex items-center overflow-hidden">
-          <div className="absolute inset-0 z-0">
-            <div
-              className="w-full h-full bg-cover bg-center"
-              style={{ backgroundImage: `url('${IMAGES.babyHero}')` }}
-            />
-            <div className="absolute inset-0 bg-gradient-to-r from-deep-black/70 via-deep-black/40 to-transparent" />
-          </div>
-          <div className="container mx-auto px-4 md:px-margin-desktop relative z-10">
-            <div className="max-w-3xl">
-              <span className="inline-block px-4 py-1 bg-secondary text-pure-white font-bold text-label-bold uppercase tracking-widest mb-6">
-                Baby Katonda Talemwa
+
+        {/* ── HERO: Full-bleed with left text + right image split ── */}
+        <section className="grid grid-cols-1 lg:grid-cols-2 min-h-screen pt-20">
+          {/* Left: Content */}
+          <div className="bg-deep-black text-pure-white flex flex-col justify-center px-8 md:px-16 py-20 space-y-8">
+            <div data-aos="fade-right">
+              <span className="text-[10px] uppercase font-extrabold tracking-widest text-action-yellow block mb-4">
+                Baby Katonda Talemwa — Est. 2003
               </span>
-              <h1 className="font-headline text-headline-xl text-pure-white mb-6 uppercase">
-                Rescuing the Lost, <span className="text-action-yellow">Giving Hope</span>
+              <h1 className="font-headline text-5xl sm:text-6xl font-black uppercase leading-none tracking-tight">
+                Rescued. <br />
+                <span className="text-action-yellow">Loved.</span> <br />
+                Restored.
               </h1>
-              <p className="text-body-lg text-pure-white/90 mb-10 max-w-xl">
-                When a baby is abandoned or left without a family, Baby Katonda Talemwa is there to provide immediate, life-saving care and a home filled with love.
-              </p>
-              <div className="flex flex-wrap gap-4">
-                <Link
-                  to="/sponsor?tab=baby"
-                  className="bg-secondary text-pure-white px-10 py-4 rounded-full font-headline text-button-text uppercase tracking-widest hover:brightness-110 transition-all flex items-center gap-2 shadow-lg font-bold"
-                >
-                  Sponsor a Baby
-                  <MaterialIcon name="favorite" />
-                </Link>
-                <button className="bg-transparent border-2 border-pure-white text-pure-white px-10 py-4 rounded-full font-headline text-button-text uppercase tracking-widest hover:bg-pure-white hover:text-deep-black transition-all font-bold">
-                  Our Journey
-                </button>
+            </div>
+            <p data-aos="fade-right" data-aos-delay="100" className="text-base font-light opacity-90 leading-relaxed max-w-md">
+              When a newborn is abandoned in a hospital ward, left in a field, or surrendered by a desperate mother — our emergency rescue team answers the call within hours, 24 hours a day.
+            </p>
+            <div data-aos="fade-right" data-aos-delay="200" className="flex flex-wrap gap-4 pt-2">
+              <Link
+                to="/sponsor?tab=baby"
+                className="bg-vibrant-green text-pure-white font-headline text-xs font-black uppercase tracking-widest px-8 py-4 hover:brightness-110 active:scale-95 transition-all rounded-none flex items-center gap-2"
+              >
+                Sponsor a Baby <MaterialIcon name="favorite" className="text-action-yellow text-sm" />
+              </Link>
+              <a
+                href="#rescue-process"
+                className="border border-pure-white/50 text-pure-white font-headline text-xs font-black uppercase tracking-widest px-8 py-4 hover:border-pure-white hover:bg-pure-white/10 transition-all rounded-none"
+              >
+                How We Rescue
+              </a>
+            </div>
+          </div>
+
+          {/* Right: Hero Image */}
+          <div className="relative min-h-[60vh] lg:min-h-0">
+            <img
+              className="w-full h-full object-cover object-center absolute inset-0"
+              src={IMAGES.babyHero}
+              alt="Baby Katonda Talemwa rescue"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-deep-black/60 to-transparent" />
+            {/* Floating stat */}
+            <div className="absolute bottom-8 left-8 bg-vibrant-green text-pure-white p-6 border-t-4 border-action-yellow max-w-[180px] rounded-none">
+              <div className="font-headline text-3xl font-black text-action-yellow">
+                <CountUp end={3000} suffix="+" />
               </div>
+              <p className="text-xs font-bold uppercase tracking-wider mt-1 opacity-90">Babies Rescued</p>
             </div>
           </div>
         </section>
 
-        <section className="bg-primary py-12">
-          <div className="max-w-(--spacing-container-max) mx-auto px-4 md:px-margin-desktop grid grid-cols-2 md:grid-cols-4 gap-gutter text-center">
-            {stats.map(({ value, label }) => (
-              <div key={label}>
-                <div className="font-headline text-headline-lg text-action-yellow">{value}</div>
-                <div className="font-bold text-label-bold text-pure-white/80 uppercase">{label}</div>
+        {/* ── STAT STRIP ── */}
+        <section className="bg-vibrant-green py-10">
+          <div className="max-w-(--spacing-container-max) mx-auto px-4 md:px-margin-desktop grid grid-cols-2 md:grid-cols-4 gap-8 text-center text-pure-white">
+            {[
+              { end: 24, suffix: '/7', label: 'Emergency Rescue' },
+              { end: 3000, suffix: '+', label: 'Babies Rescued' },
+              { end: 100, suffix: '%', label: 'Medical Support' },
+              { end: 20, suffix: '+', label: 'Years of Care' },
+            ].map(({ end, suffix, label }) => (
+              <div key={label} data-aos="fade-up">
+                <div className="font-headline text-4xl font-black text-action-yellow">
+                  <CountUp end={end} suffix={suffix} />
+                </div>
+                <p className="text-xs font-bold uppercase tracking-widest mt-1 opacity-80">{label}</p>
               </div>
             ))}
           </div>
         </section>
 
-        {/* Loving Family Section */}
-        <section className="py-20 bg-surface">
-          <div className="max-w-(--spacing-container-max) mx-auto px-4 md:px-margin-desktop grid md:grid-cols-2 gap-16 items-center">
-            <div className="order-2 md:order-1 space-y-6">
-              <span className="text-primary font-bold text-label-bold uppercase tracking-widest block">Loving Family</span>
-              <h2 className="font-headline text-headline-lg font-black text-deep-black leading-tight uppercase">
-                HOLISTIC <br />
-                NURTURING <span className="text-primary">CARE</span>
+        {/* ── RESCUE PROCESS: Horizontal Steps ── */}
+        <section id="rescue-process" className="py-24 bg-surface border-b border-outline-variant/30">
+          <div className="max-w-(--spacing-container-max) mx-auto px-4 md:px-margin-desktop space-y-16">
+            <div data-aos="fade-up" className="space-y-3">
+              <span className="text-[10px] uppercase font-extrabold tracking-widest text-vibrant-green block">The Rescue Journey</span>
+              <h2 className="font-headline text-4xl sm:text-5xl font-black uppercase text-deep-black leading-none">
+                From Crisis <br />
+                <span className="text-vibrant-green">to Belonging</span>
               </h2>
-              <p className="text-on-surface-variant leading-relaxed">
-                Because infants require highly specialized attention, Baby Katonda Talemwa operates with a 1:4 nanny-to-baby ratio. Each child receives round-the-clock medical monitoring, custom nutritional formulas, early development play, and lots of hugs.
-              </p>
-              <p className="text-on-surface-variant leading-relaxed">
-                We believe that every child deserves to feel the secure attachment and warmth of a loving parent from their earliest days.
-              </p>
+              <div className="w-16 h-1 bg-action-yellow" />
             </div>
-            <div className="order-1 md:order-2 relative group">
-              <div className="absolute -left-4 -bottom-4 w-full h-full bg-primary/10 -z-10 group-hover:-left-6 group-hover:-bottom-6 transition-all" />
-              <div
-                className="w-full aspect-square bg-cover bg-center border-b-8 border-primary rounded-2xl overflow-hidden shadow-lg"
-                style={{ backgroundImage: `url('${IMAGES.babyWatoto}')` }}
-              />
-            </div>
-          </div>
-        </section>
 
-        <section className="py-section-padding px-4 md:px-margin-desktop max-w-(--spacing-container-max) mx-auto">
-          <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-4">
-            <div className="max-w-2xl">
-              <h2 className="font-headline text-headline-lg text-deep-black uppercase mb-4">
-                A Holistic Approach to <span className="text-primary">Life</span>
-              </h2>
-              <p className="text-body-lg text-on-surface-variant">
-                We don&apos;t just provide a bed; we provide a future. From the moment of rescue to the day they transition to their forever family.
-              </p>
-            </div>
-            <div className="flex gap-2">
-              <div className="w-12 h-1 bg-action-yellow" />
-              <div className="w-12 h-1 bg-primary" />
-              <div className="w-12 h-1 bg-trust-blue" />
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-12 md:grid-rows-2 gap-6 h-auto md:h-[800px]">
-            <ScrollReveal className="md:col-span-8 md:row-span-1 bg-pure-white border border-outline-variant p-8 flex flex-col md:flex-row gap-8 bento-card">
-              <div className="md:w-1/2">
-                <span className="text-primary font-bold text-label-bold uppercase tracking-widest mb-4 block">Stage 01</span>
-                <h3 className="font-headline text-headline-md text-deep-black mb-4">Emergency Rescue</h3>
-                <p className="text-on-surface-variant mb-6">
-                  Our team is available round the clock to respond to reports of abandoned babies. We coordinate with local authorities to ensure immediate safety and medical assessment.
-                </p>
-                <button className="flex items-center gap-2 text-primary font-headline text-button-text uppercase tracking-widest hover:gap-4 transition-all">
-                  Learn About Rescue <MaterialIcon name="arrow_forward" />
-                </button>
-              </div>
-              <div className="md:w-1/2 h-64 md:h-auto rounded-lg overflow-hidden">
-                <div className="w-full h-full bg-cover bg-center" style={{ backgroundImage: `url('${IMAGES.rescue}')` }} />
-              </div>
-            </ScrollReveal>
-
-            <ScrollReveal className="md:col-span-4 md:row-span-2 bg-primary text-pure-white p-8 flex flex-col justify-between bento-card">
-              <div>
-                <span className="text-action-yellow font-bold text-label-bold uppercase tracking-widest mb-4 block">Nutrition</span>
-                <h3 className="font-headline text-headline-md mb-4 uppercase">
-                  Scientific <br />
-                  Care
-                </h3>
-                <p className="opacity-90">
-                  Every infant receives a customized nutritional plan. Malnourished babies are carefully monitored by our clinical team to reach their healthy milestones.
-                </p>
-              </div>
-              <div className="mt-8 rounded-lg overflow-hidden border-2 border-action-yellow/30">
-                <div className="w-full h-48 bg-cover bg-center" style={{ backgroundImage: `url('${IMAGES.nutrition}')` }} />
-              </div>
-            </ScrollReveal>
-
-            <ScrollReveal className="md:col-span-4 md:row-span-1 bg-surface-container-high p-8 flex flex-col justify-center bento-card">
-              <span className="text-trust-blue font-bold text-label-bold uppercase tracking-widest mb-4 block">Medical support</span>
-              <h3 className="font-headline text-headline-md text-deep-black mb-4">Specialized Clinic</h3>
-              <p className="text-on-surface-variant">
-                Our on-site medical staff provides 24/7 monitoring, ensuring that every cough, fever, or developmental need is addressed instantly.
-              </p>
-            </ScrollReveal>
-
-            <ScrollReveal className="md:col-span-4 md:row-span-1 bg-pure-white border border-outline-variant p-8 flex flex-col justify-center bento-card">
-              <span className="text-vibrant-green font-bold text-label-bold uppercase tracking-widest mb-4 block">The Mother&apos;s Love</span>
-              <h3 className="font-headline text-headline-md text-deep-black mb-4">Forever Family</h3>
-              <p className="text-on-surface-variant">
-                Once healthy, babies transition into Katonda Talemwa Villages, where they are welcomed into a permanent family with a loving mother and siblings.
-              </p>
-            </ScrollReveal>
-          </div>
-        </section>
-
-        <section className="bg-surface-container py-section-padding">
-          <div className="max-w-(--spacing-container-max) mx-auto px-4 md:px-margin-desktop">
-            <div className="text-center mb-16">
-              <h2 className="font-headline text-headline-lg text-deep-black uppercase">
-                The Path to a <span className="text-primary">Bright Future</span>
-              </h2>
-            </div>
-            <div className="relative">
-              <div className="absolute top-1/2 left-0 w-full h-1 bg-outline-variant -translate-y-1/2 hidden md:block" />
-              <div className="grid grid-cols-1 md:grid-cols-4 gap-gutter relative z-10">
-                {timelineSteps.map(({ num, title, desc }) => (
-                  <div key={num} className="bg-pure-white p-6 border border-outline-variant rounded-lg text-center">
-                    <div className="w-12 h-12 bg-primary text-pure-white rounded-full flex items-center justify-center mx-auto mb-4 font-bold">
-                      {num}
-                    </div>
-                    <h4 className="font-bold text-label-bold text-deep-black uppercase mb-2">{title}</h4>
-                    <p className="text-sm text-on-surface-variant">{desc}</p>
+            {/* Step cards — horizontal editorial strip */}
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-0 border border-outline-variant/60">
+              {[
+                { num: '01', icon: 'emergency', title: 'Discovery & Alert', desc: 'Neighbours, hospitals, and local police alert our 24/7 rescue hotline the moment a baby is found in distress.' },
+                { num: '02', icon: 'local_hospital', title: 'Stabilisation', desc: 'Our clinical nurses assess and stabilise the baby immediately. Malnourished infants receive emergency IV nutrition and warmth.' },
+                { num: '03', icon: 'child_care', title: '1:4 Nanny Care', desc: 'Each baby is assigned a dedicated nanny who tracks feeding schedules, milestones, and emotional development around the clock.' },
+                { num: '04', icon: 'home', title: 'Forever Family', desc: 'Once healthy and stable, babies graduate into a permanent Katonda Talemwa village home with a mother and siblings.' },
+              ].map((step, i) => (
+                <div
+                  key={step.num}
+                  data-aos="fade-up"
+                  data-aos-delay={i * 100}
+                  className={`p-8 flex flex-col gap-6 border-r border-outline-variant/60 last:border-r-0 ${i % 2 === 0 ? 'bg-surface' : 'bg-surface-container-low'}`}
+                >
+                  <div className="flex items-start justify-between">
+                    <MaterialIcon name={step.icon} className="text-vibrant-green text-3xl" />
+                    <span className="font-headline text-5xl font-black text-outline-variant/30 leading-none">{step.num}</span>
                   </div>
-                ))}
+                  <div className="space-y-2 flex-1">
+                    <h3 className="font-headline text-base font-black uppercase text-deep-black tracking-wide">{step.title}</h3>
+                    <p className="text-sm text-on-surface-variant font-light leading-relaxed">{step.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── CARE MODEL: Asymmetric bento grid ── */}
+        <section className="py-24 bg-surface-container-low border-b border-outline-variant/30">
+          <div className="max-w-(--spacing-container-max) mx-auto px-4 md:px-margin-desktop space-y-12">
+            <div data-aos="fade-up" className="text-center space-y-3 max-w-lg mx-auto">
+              <span className="text-[10px] uppercase font-extrabold tracking-widest text-vibrant-green block">Our Care Model</span>
+              <h2 className="font-headline text-4xl font-black uppercase text-deep-black leading-none">
+                A Holistic Approach to Life
+              </h2>
+              <div className="w-16 h-1 bg-action-yellow mx-auto" />
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
+              {/* Large feature card */}
+              <div data-aos="fade-right" className="md:col-span-7 bg-deep-black text-pure-white p-10 flex flex-col justify-between min-h-[380px] rounded-none overflow-hidden relative">
+                <div
+                  className="absolute inset-0 bg-cover bg-center opacity-20"
+                  style={{ backgroundImage: `url('${IMAGES.babyWatoto}')` }}
+                />
+                <div className="relative z-10 space-y-4">
+                  <MaterialIcon name="favorite" className="text-action-yellow text-4xl" filled />
+                  <h3 className="font-headline text-2xl font-black uppercase leading-tight">Emotional & Developmental Nurturing</h3>
+                  <p className="text-sm font-light opacity-90 leading-relaxed max-w-md">
+                    Infants need more than nutrition — they need touch, eye contact, voice, and routine. Our nannies rotate in 8-hour shifts to ensure each baby receives undivided, emotionally present care through every stage of early development.
+                  </p>
+                </div>
+                <div className="relative z-10 mt-8 flex items-center gap-3">
+                  <div className="w-10 h-10 bg-vibrant-green flex items-center justify-center rounded-none">
+                    <MaterialIcon name="check" className="text-pure-white" />
+                  </div>
+                  <span className="text-xs font-bold uppercase tracking-widest text-action-yellow">1:4 Nanny-to-Baby Ratio</span>
+                </div>
+              </div>
+
+              {/* Two stacked small cards */}
+              <div className="md:col-span-5 flex flex-col gap-6">
+                <div data-aos="fade-left" data-aos-delay="100" className="bg-vibrant-green text-pure-white p-8 flex-1 rounded-none">
+                  <MaterialIcon name="vaccines" className="text-action-yellow text-3xl mb-4" />
+                  <h3 className="font-headline text-lg font-black uppercase mb-3">Specialised Medical Clinic</h3>
+                  <p className="text-sm font-light opacity-90 leading-relaxed">
+                    On-site pediatric nurses monitor every infant's weight gain, immunisations, and developmental milestones with hospital-grade equipment. No cough or fever goes unattended.
+                  </p>
+                </div>
+                <div data-aos="fade-left" data-aos-delay="200" className="bg-surface border border-outline-variant/60 p-8 flex-1 rounded-none">
+                  <MaterialIcon name="nutrition" className="text-vibrant-green text-3xl mb-4" />
+                  <h3 className="font-headline text-lg font-black uppercase text-deep-black mb-3">Custom Nutrition Plans</h3>
+                  <p className="text-sm text-on-surface-variant font-light leading-relaxed">
+                    Each baby receives a clinically-designed feeding schedule — from therapeutic formula for malnourished infants to age-appropriate solid foods introduced at exactly the right milestone.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Jayson Rescue Story Section */}
-        <section className="py-20 bg-surface border-y border-outline-variant/30">
+        {/* ── BABY JAYSON RESCUE STORY: Full-width editorial ── */}
+        <section className="py-24 bg-surface border-b border-outline-variant/30">
           <div className="max-w-(--spacing-container-max) mx-auto px-4 md:px-margin-desktop">
-            <div className="text-center mb-16">
-              <span className="text-primary font-bold text-label-bold uppercase tracking-widest block mb-2">Rescue Story</span>
-              <h2 className="font-headline text-headline-lg font-black text-deep-black uppercase">Given A Future Full Of Hope</h2>
-              <div className="h-1.5 w-24 bg-secondary mx-auto mt-4" />
-            </div>
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-0 border border-outline-variant/60 overflow-hidden">
 
-            <div className="bg-surface-container rounded-2xl border border-outline-variant/50 overflow-hidden shadow-md max-w-4xl mx-auto flex flex-col md:flex-row hover:shadow-lg transition-all duration-300">
-              <div className="md:w-1/2 h-64 md:h-auto relative">
+              {/* Image column */}
+              <div data-aos="zoom-in" className="lg:col-span-5 relative min-h-[400px]">
                 <img
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover absolute inset-0"
                   src={children.find(c => c.id === 'jayson')?.image || IMAGES.rescue}
                   alt="Baby Jayson"
                 />
-              </div>
-              <div className="md:w-1/2 p-10 flex flex-col justify-between">
-                <div className="space-y-4">
-                  <span className="bg-secondary/15 text-secondary px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide inline-block">Baby Rescue</span>
-                  <h3 className="font-headline font-bold text-2xl text-deep-black">Meet Baby Jayson</h3>
-                  <p className="text-on-surface-variant leading-relaxed text-sm">
-                    {children.find(c => c.id === 'jayson')?.description || 'Jayson was rescued from a crisis situation when he was only 2 weeks old. He is growing stronger every day under nanny care.'}
+                <div className="absolute inset-0 bg-gradient-to-t from-deep-black/70 to-transparent" />
+                <div className="absolute bottom-6 left-6 text-pure-white space-y-1">
+                  <span className="text-[10px] font-extrabold uppercase tracking-widest text-action-yellow bg-vibrant-green/90 px-3 py-1 block w-fit">
+                    Rescue Story
+                  </span>
+                  <h3 className="font-headline text-xl font-black uppercase">Baby Jayson</h3>
+                  <p className="text-xs opacity-80 flex items-center gap-1">
+                    <MaterialIcon name="place" className="text-xs" /> Gulu, Uganda
                   </p>
                 </div>
-                <Link
-                  to="/sponsor?tab=baby"
-                  className="mt-8 text-primary font-headline text-sm font-black uppercase tracking-widest hover:text-secondary hover:gap-3 flex items-center gap-2 group transition-all"
-                >
-                  Sponsor Jayson
-                  <MaterialIcon name="arrow_forward" className="group-hover:translate-x-1 transition-transform" />
-                </Link>
+              </div>
+
+              {/* Content column */}
+              <div data-aos="fade-left" data-aos-delay="100" className="lg:col-span-7 p-10 md:p-14 bg-[#fcfbf9] flex flex-col justify-between gap-10">
+                <div className="space-y-6">
+                  <span className="text-vibrant-green font-bold text-xs uppercase tracking-widest block border-l-4 border-vibrant-green pl-3">
+                    A Life Reclaimed
+                  </span>
+                  <h2 className="font-headline text-3xl font-black uppercase text-deep-black leading-tight">
+                    &ldquo;He weighed just <br />
+                    1.4 kg when we found him.&rdquo;
+                  </h2>
+                  <p className="text-sm text-on-surface-variant font-light leading-relaxed">
+                    Baby Jayson was discovered abandoned at the entrance of the Gulu Regional Referral Hospital at barely two weeks old. His body temperature was dangerously low and he showed signs of severe malnourishment.
+                  </p>
+                  <p className="text-sm text-on-surface-variant font-light leading-relaxed">
+                    Within four hours, our rescue team had him in the Baby Katonda Talemwa ward receiving IV nutrition and warmth therapy. Today, Jayson crawls with purpose, laughs with his nanny, and is a picture of health — a daily reminder of why this work matters.
+                  </p>
+                </div>
+                <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-6 border-t border-outline-variant/40">
+                  <blockquote className="font-serif italic text-sm text-on-surface-variant">
+                    &ldquo;Every baby deserves to know they are wanted.&rdquo;
+                  </blockquote>
+                  <Link
+                    to="/sponsor?tab=baby"
+                    className="w-full sm:w-auto bg-vibrant-green text-pure-white px-8 py-4 rounded-none font-headline text-xs font-black uppercase tracking-widest hover:brightness-110 active:scale-95 transition-all text-center"
+                  >
+                    Sponsor Jayson
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
         </section>
 
-        <section className="py-section-padding">
-          <div className="max-w-(--spacing-container-max) mx-auto px-4 md:px-margin-desktop grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div className="order-2 lg:order-1">
-              <div className="aspect-square relative">
-                <div className="absolute -top-4 -left-4 w-24 h-24 bg-action-yellow/20 rounded-full blur-xl" />
-                <div
-                  className="w-full h-full bg-cover bg-center rounded-xl overflow-hidden shadow-2xl relative z-10"
-                  style={{ backgroundImage: `url('${IMAGES.sponsorshipBaby}')` }}
+        {/* ── ASHA'S IMPACT: Sponsorship CTA with image ── */}
+        <section className="py-24 bg-surface-container">
+          <div className="max-w-(--spacing-container-max) mx-auto px-4 md:px-margin-desktop">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-stretch">
+
+              {/* Left: Framed Photo */}
+              <div data-aos="zoom-in" className="lg:col-span-5 border border-outline-variant/60 p-2 bg-surface shadow-sm rounded-none flex flex-col">
+                <img
+                  className="w-full aspect-square object-cover rounded-none"
+                  src={IMAGES.sponsorshipBaby}
+                  alt="Asha growing strong"
                 />
-                <div className="absolute -bottom-8 -right-8 bg-pure-white p-6 rounded-lg shadow-xl z-20 border border-outline-variant max-w-xs">
-                  <p className="text-on-surface-variant italic">
-                    &ldquo;Asha was found when she was only 3 days old. Today, she is the smartest in her class.&rdquo;
-                  </p>
-                  <div className="mt-4 flex items-center gap-2">
-                    <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center">
-                      <MaterialIcon name="verified" className="text-primary text-sm" />
-                    </div>
-                    <span className="font-bold text-label-bold">Impact Story</span>
-                  </div>
+                <div className="p-4 bg-surface-container-low mt-2 border border-outline-variant/30 text-center">
+                  <span className="text-[10px] uppercase tracking-widest text-vibrant-green font-bold block mb-1">Impact Story</span>
+                  <p className="text-[11px] font-semibold text-deep-black">&ldquo;Asha was found at 3 days old. Today, she is top of her class.&rdquo;</p>
                 </div>
               </div>
-            </div>
-            <div className="order-1 lg:order-2">
-              <h2 className="font-headline text-headline-lg text-deep-black uppercase mb-6 leading-tight">
-                Become a <br />
-                <span className="text-primary">Life-Sustainer</span>
-              </h2>
-              <p className="text-body-lg text-on-surface-variant mb-8">
-                Your monthly sponsorship of $38 provides a baby with life-saving formula, specialized medical care, and the dedicated attention of our nannies.
-              </p>
-              <ul className="space-y-4 mb-10">
-                {[
-                  'Personal connection through updates and letters.',
-                  'Guaranteed access to top-tier pediatric medical care.',
-                  '100% of your gift goes directly to the care of your baby.',
-                ].map((item) => (
-                  <li key={item} className="flex items-start gap-4">
-                    <MaterialIcon name="check_circle" className="text-vibrant-green mt-1" filled />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-              <div className="bg-surface-container-low p-8 rounded-xl border border-outline-variant">
-                <div className="flex justify-between items-center mb-6">
-                  <div className="text-primary font-headline text-headline-md">
-                    $38<span className="text-on-surface-variant text-body-md font-normal">/month</span>
+
+              {/* Right: Sponsorship detail */}
+              <div data-aos="fade-left" data-aos-delay="150" className="lg:col-span-7 flex flex-col justify-between gap-8">
+                <div className="space-y-5">
+                  <span className="text-[10px] uppercase font-extrabold tracking-widest text-vibrant-green block border-l-4 border-vibrant-green pl-3">
+                    Become a Life-Sustainer
+                  </span>
+                  <h2 className="font-headline text-4xl font-black uppercase text-deep-black leading-none">
+                    Your $38 <br />
+                    <span className="text-vibrant-green">Saves a Life</span>
+                  </h2>
+                  <p className="text-sm text-on-surface-variant font-light leading-relaxed max-w-md">
+                    Your monthly sponsorship covers a baby's life-saving formula, specialized medical care, nanny staffing, and emotional development programmes. Every dollar stays in the programme.
+                  </p>
+                </div>
+
+                {/* What's included list */}
+                <div className="border border-outline-variant/50 rounded-none divide-y divide-outline-variant/40">
+                  {[
+                    '1:4 nanny-to-baby dedicated care ratio',
+                    'Full clinical monitoring and immunisations',
+                    'Custom nutrition formula and solid foods',
+                    'Transition into a forever village family',
+                    'Personal progress letters sent to your inbox',
+                  ].map((item) => (
+                    <div key={item} className="py-3.5 px-5 flex items-center gap-3 text-sm text-deep-black font-semibold">
+                      <MaterialIcon name="check_circle" className="text-vibrant-green text-base" filled />
+                      <span>{item}</span>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="bg-surface-container-low border border-outline-variant/50 p-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+                  <div className="space-y-1">
+                    <span className="text-[10px] uppercase tracking-widest text-on-surface-variant font-bold block">Monthly Gift</span>
+                    <div className="font-headline text-3xl font-black text-vibrant-green">
+                      $38 <span className="text-on-surface-variant text-sm font-normal">/ month</span>
+                    </div>
                   </div>
-                  <div className="bg-action-yellow/20 px-3 py-1 rounded-full text-secondary font-bold text-label-bold uppercase">
-                    Tax Deductible
+                  <div className="flex items-center gap-3 flex-wrap">
+                    <span className="text-[10px] uppercase font-bold tracking-widest text-action-yellow bg-vibrant-green px-3 py-1.5 rounded-none whitespace-nowrap">
+                      Tax Deductible
+                    </span>
+                    <Link
+                      to="/sponsor?tab=baby"
+                      className="bg-vibrant-green text-pure-white px-8 py-4 rounded-none font-headline text-xs font-black uppercase tracking-widest hover:brightness-110 active:scale-95 transition-all"
+                    >
+                      Start Sponsorship
+                    </Link>
                   </div>
                 </div>
-                <Link
-                  to="/sponsor?tab=baby"
-                  className="block w-full text-center bg-secondary text-pure-white py-5 rounded-full font-headline text-button-text uppercase tracking-widest shadow-lg hover:brightness-110 hover:-translate-y-0.5 transition-all font-bold"
-                >
-                  Start Your Sponsorship
-                </Link>
               </div>
             </div>
           </div>
         </section>
 
-        <section className="bg-deep-black py-section-padding overflow-hidden relative">
-          <div className="absolute top-0 right-0 opacity-10 translate-x-1/4 -translate-y-1/4">
+        {/* ── CLOSING QUOTE ── */}
+        <section className="bg-deep-black py-20 text-center relative overflow-hidden">
+          <div className="absolute top-0 right-0 opacity-5 translate-x-1/4 -translate-y-1/4">
             <MaterialIcon name="format_quote" className="text-[300px] text-pure-white" filled />
           </div>
-          <div className="max-w-4xl mx-auto px-4 md:px-margin-desktop relative z-10 text-center">
-            <h2 className="font-headline text-headline-lg text-pure-white italic mb-8">
-              &ldquo;We cannot change the world for everyone, but for this one baby, their whole world is about to change.&rdquo;
-            </h2>
-            <p className="font-bold text-label-bold text-action-yellow uppercase tracking-widest">
-              — Marilyn Skinner, Co-Founder
-            </p>
+          <div className="relative z-10 max-w-3xl mx-auto px-4">
+            <div data-aos="fade-up">
+              <p className="font-serif italic text-2xl md:text-3xl text-pure-white leading-relaxed mb-6">
+                &ldquo;We cannot change the world for everyone, but for this one baby, their whole world is about to change.&rdquo;
+              </p>
+              <p className="font-headline text-xs font-black uppercase tracking-widest text-action-yellow">
+                — Marilyn Skinner, Co-Founder, Watoto
+              </p>
+            </div>
           </div>
         </section>
+
       </main>
 
       <FooterProgram highlightProgram="baby-watoto" />
