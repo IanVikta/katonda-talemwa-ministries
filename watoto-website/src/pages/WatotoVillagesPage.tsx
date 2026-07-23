@@ -22,7 +22,7 @@ export default function WatotoVillagesPage() {
               <span className="inline-block text-xs font-bold uppercase tracking-widest text-action-yellow mb-4">
                 Our Core Mission
               </span>
-              <h1 className="font-headline text-[3rem] md:text-[4rem] text-pure-white mb-6 leading-none font-black uppercase tracking-tight">
+              <h1 className="font-headline text-[2rem] sm:text-[3rem] md:text-[4rem] text-pure-white mb-6 leading-none font-black uppercase tracking-tight">
                 Katonda Talemwa Villages: <br />
                 Where the Lost Find a <span className="text-action-yellow">Family</span>
               </h1>
