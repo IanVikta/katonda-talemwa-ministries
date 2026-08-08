@@ -55,7 +55,6 @@ export default function DonatePage() {
             <h1 className="font-headline text-headline-xl mb-4 font-black uppercase leading-tight tracking-wide">
               Donate <span className="text-action-yellow">Today</span>
             </h1>
-            <div className="w-full max-w-xs mx-auto gradient-line mb-6" />
             <p className="max-w-2xl mx-auto text-body-lg opacity-90 font-light leading-relaxed">
               Every donation helps us provide shelter, education, healthcare, and a loving home to vulnerable children and mothers. 
             </p>
@@ -72,14 +71,9 @@ export default function DonatePage() {
               Your Gift <span className="text-primary font-black">Changes Stories</span>
             </h2>
             <p className="text-body-md text-on-surface-variant max-w-3xl mx-auto leading-relaxed">
-              Katonda Talemwa Ministries relies on the generosity of supporters around the globe to carry out its operations in Uganda and South Sudan. Whether you support our child villages, baby rescue home, neighbourhood programs, or spiritual missions, your seed makes a measurable difference. 100% of your donations go directly to funding our local programs.
+              Katonda Talemwa Ministries relies on the generosity of supporters around the globe to carry out its operations in Uganda and South Sudan. Whether you support our child villages, baby rescue home, education & healthcare, or spiritual missions, your seed makes a measurable difference. 100% of your donations go directly to funding our local programs.
             </p>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 pt-6">
-              <div className="p-4 bg-surface border border-outline-variant/40 rounded-xl space-y-2 hover:shadow-md transition-shadow">
-                <MaterialIcon name="home" className="text-secondary text-2xl" />
-                <h4 className="font-bold text-xs text-deep-black uppercase tracking-wider">Housing</h4>
-                <p className="text-xxs text-on-surface-variant leading-relaxed">Safe homes & loving families</p>
-              </div>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-6">
               <div className="p-4 bg-surface border border-outline-variant/40 rounded-xl space-y-2 hover:shadow-md transition-shadow">
                 <MaterialIcon name="school" className="text-vibrant-green text-2xl" />
                 <h4 className="font-bold text-xs text-deep-black uppercase tracking-wider">Education</h4>

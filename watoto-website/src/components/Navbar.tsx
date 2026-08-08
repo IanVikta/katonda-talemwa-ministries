@@ -3,11 +3,55 @@ import { Link, useLocation } from 'react-router-dom'
 import MaterialIcon from './ui/MaterialIcon'
 import logo from '../assets/logo.png'
 
-type SubmenuType = 'none' | 'what-we-do' | 'get-involved' | 'sponsor'
+interface SubmenuItem {
+  label: string
+  to: string
+  icon: string
+  desc: string
+}
+
+interface MenuItem {
+  label: string
+  to?: string
+  submenu?: SubmenuItem[]
+}
+
+const menuConfig: MenuItem[] = [
+  { label: 'Home', to: '/' },
+  {
+    label: 'What We Do',
+    submenu: [
+      { label: 'Katonda Talemwa Ministries', to: '/katonda-villages', icon: 'holiday_village', desc: 'Family-style home care' },
+      { label: "Emmanuel Baby's Home", to: '/emmanuel-baby-home', icon: 'child_friendly', desc: 'Newborn rescue & shelter' },
+      { label: 'The Esther Mission', to: '/keep-a-girl', icon: 'female', desc: 'Keep a girl in school' },
+      { label: 'Katonda Talemwa Church', to: '/katonda-church', icon: 'church', desc: 'Community & spiritual life' },
+    ]
+  },
+  {
+    label: 'Sponsor',
+    submenu: [
+      { label: 'Sponsor a Child', to: '/sponsor?tab=child', icon: 'child_care', desc: 'Education & healthcare support' },
+      { label: 'Sponsor a Baby', to: '/emmanuel-baby-home', icon: 'baby_changing_station', desc: 'Emergency nutrition & care' },
+      { label: 'Sponsor a Katonda Talemwa Mother', to: '/katonda-villages', icon: 'diversity_1', desc: 'Village family support' },
+    ]
+  },
+  {
+    label: 'Get Involved',
+    submenu: [
+      { label: 'Donate Now', to: '/donate', icon: 'volunteer_activism', desc: 'Immediate financial support' },
+      { label: 'Volunteer / Go', to: '/volunteer', icon: 'flight_takeoff', desc: 'Volunteer opportunities' },
+      { label: 'Exchange Program', to: '/exchange-program', icon: 'public', desc: 'Mission trips & cultural exchange' },
+      { label: 'Pray With Us', to: '/pray-with-us', icon: 'brightness_high', desc: 'Spiritual intercession & updates' },
+      { label: 'Careers', to: '/careers', icon: 'work', desc: 'Join our team & make impact' },
+    ]
+  },
+  { label: 'Who We Are', to: '/who-we-are' },
+  { label: 'Contact Us', to: '/contact' },
+]
 
 export default function Navbar() {
   const [drawerOpen, setDrawerOpen] = useState(false)
-  const [activeSubmenu, setActiveSubmenu] = useState<SubmenuType>('none')
+  const [openSubmenus, setOpenSubmenus] = useState<Record<string, boolean>>({})
   const [scrolled, setScrolled] = useState(false)
   const location = useLocation()
 
@@ -22,92 +66,17 @@ export default function Navbar() {
 
   const toggleDrawer = () => {
     if (drawerOpen) {
-      setActiveSubmenu('none')
+      setOpenSubmenus({})
     }
     setDrawerOpen(!drawerOpen)
   }
 
-  const submenus = {
-    'what-we-do': {
-      title: 'What We Do',
-      links: [
-        { label: 'Katonda Talemwa Villages', to: '/katonda-villages' },
-        { label: 'Baby Katonda Talemwa', to: '/baby-katonda' },
-        { label: 'Katonda Talemwa Neighbourhood', to: '/katonda-neighbourhood' },
-        { label: 'Keep a Girl in School', to: '/keep-a-girl' },
-        { label: 'Katonda Talemwa Church', to: '/katonda-church' },
-      ]
-    },
-    'get-involved': {
-      title: 'Get Involved',
-      links: [
-        { label: 'Donate Now', to: '/donate' },
-        { label: 'Volunteer / Go', to: '/volunteer' },
-        { label: 'Pray With Us', to: '/pray-with-us' },
-        { label: 'Careers', to: '/careers' },
-      ]
-    },
-    'sponsor': {
-      title: 'Sponsor',
-      links: [
-        { label: 'Sponsor a Child', to: '/sponsor?tab=child' },
-        { label: 'Sponsor a Baby', to: '/baby-katonda' },
-        { label: 'Sponsor a Katonda Talemwa Mother', to: '/katonda-villages' },
-        { label: 'Sponsor a Neighbourhood Mother', to: '/katonda-neighbourhood' },
-      ]
-    }
+  const toggleSubmenu = (label: string) => {
+    setOpenSubmenus(prev => ({
+      ...prev,
+      [label]: !prev[label]
+    }))
   }
-
-  const mainMenuItems = [
-    { label: 'Home', to: '/' },
-    { label: 'What We Do', submenu: 'what-we-do' as const },
-    { label: "Katonda Talemwa Children's Choir", to: '#' },
-    { label: 'Katonda Talemwa Tours', to: '#' },
-    { label: 'Who We Are', to: '/who-we-are' },
-    { label: 'Stories of Impact', to: '#' },
-    { label: 'Get Involved', submenu: 'get-involved' as const },
-    { label: 'Donate', to: '/donate' },
-    { label: 'Sponsor', submenu: 'sponsor' as const },
-    { label: 'Financials', to: '#' },
-    { label: 'Katonda Talemwa Church', to: '/katonda-church' },
-    { label: 'Contact Us', to: '/contact' },
-    { label: 'Store', to: '#' },
-    { label: 'Stay Connected', to: '#' },
-  ]
-
-  const menuConfig = [
-    { label: 'Home', to: '/' },
-    {
-      label: 'What We Do',
-      submenu: [
-        { label: 'Katonda Talemwa Villages', to: '/katonda-villages' },
-        { label: 'Baby Katonda Talemwa', to: '/baby-katonda' },
-        { label: 'Katonda Talemwa Neighbourhood', to: '/katonda-neighbourhood' },
-        { label: 'Keep a Girl in School', to: '/keep-a-girl' },
-        { label: 'Katonda Talemwa Church', to: '/katonda-church' },
-      ]
-    },
-    {
-      label: 'Sponsor',
-      submenu: [
-        { label: 'Sponsor a Child', to: '/sponsor?tab=child' },
-        { label: 'Sponsor a Baby', to: '/baby-katonda' },
-        { label: 'Sponsor a Katonda Talemwa Mother', to: '/katonda-villages' },
-        { label: 'Sponsor a Neighbourhood Mother', to: '/katonda-neighbourhood' },
-      ]
-    },
-    {
-      label: 'Get Involved',
-      submenu: [
-        { label: 'Donate Now', to: '/donate' },
-        { label: 'Volunteer / Go', to: '/volunteer' },
-        { label: 'Pray With Us', to: '/pray-with-us' },
-        { label: 'Careers', to: '/careers' },
-      ]
-    },
-    { label: 'Who We Are', to: '/who-we-are' },
-    { label: 'Contact Us', to: '/contact' },
-  ]
 
   return (
     <header
@@ -199,7 +168,9 @@ export default function Navbar() {
           {/* Animated Hamburger Menu (Visible on Mobile/Tablet) */}
           <button
             onClick={toggleDrawer}
-            className="relative w-10 h-10 flex flex-col justify-center items-center group lg:hidden z-[60] cursor-pointer"
+            className={`relative w-11 h-11 flex flex-col justify-center items-center group lg:hidden z-[60] cursor-pointer rounded-full transition-all duration-300 ${
+              drawerOpen ? 'bg-white/[0.04] border border-white/[0.08] hover:bg-white/[0.08]' : ''
+            }`}
             aria-label="Toggle menu"
           >
             <div className="relative w-6 h-5">
@@ -233,123 +204,185 @@ export default function Navbar() {
 
       {/* Slide-out Navigation Drawer */}
       <div
-        className={`fixed top-0 right-0 h-screen w-full sm:w-[400px] bg-[#009E3D] z-55 shadow-2xl transition-transform duration-300 flex flex-col ${
+        className={`fixed top-0 right-0 h-screen w-full sm:w-[440px] bg-[#043417] z-55 shadow-[0_0_50px_rgba(0,0,0,0.5)] transition-transform duration-500 ease-out flex flex-col ${
           drawerOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
       >
         {/* Drawer Header */}
-        <div className="flex justify-between items-center px-6 pt-6 pb-4">
+        <div className="relative flex justify-between items-center px-8 pt-8 pb-6 border-b border-white/10 shrink-0">
           <Link to="/" onClick={toggleDrawer} className="hover:opacity-90 transition-opacity">
             <img
               src={logo}
               alt="Katonda Talemwa Ministries"
-              className="h-10 w-auto object-contain"
+              className="h-12 w-auto object-contain select-none filter drop-shadow-[0_2px_8px_rgba(255,255,255,0.15)]"
             />
           </Link>
-          {/* Hamburger button acts as the close toggle from the main header (z-60 floating) */}
-          <div className="w-10 h-10" /> 
+          <div className="w-11 h-11" /> 
         </div>
 
         {/* Drawer Links Content */}
-        <div className="flex-1 overflow-y-auto px-8 py-6 space-y-5">
-          {activeSubmenu === 'none' ? (
-            /* Main List */
-            <div className="flex flex-col space-y-4">
-              {mainMenuItems.map((item) => {
-                if (item.submenu) {
-                  return (
+        <div className="relative flex-1 overflow-y-auto px-8 py-6 custom-scrollbar space-y-6">
+          
+          {/* Call to Action Buttons */}
+          <div className="grid grid-cols-2 gap-4 mb-2">
+            <Link
+              to="/donate"
+              onClick={toggleDrawer}
+              className="flex items-center justify-center gap-2 py-3.5 rounded-xl bg-white text-[#043417] font-headline text-xs font-bold uppercase tracking-wider hover:bg-white/95 active:scale-95 transition-all shadow-md"
+            >
+              <MaterialIcon name="volunteer_activism" className="text-sm" />
+              Donate
+            </Link>
+            <Link
+              to="/sponsor"
+              onClick={toggleDrawer}
+              className="flex items-center justify-center gap-2 py-3.5 rounded-xl bg-action-yellow text-deep-black font-headline text-xs font-bold uppercase tracking-wider hover:bg-action-yellow/90 active:scale-95 transition-all shadow-md"
+            >
+              <MaterialIcon name="child_care" className="text-sm" />
+              Sponsor
+            </Link>
+          </div>
+
+          <div className="h-px bg-white/10 w-full" />
+
+          {/* Unified Navigation Items */}
+          <div className="flex flex-col gap-1">
+            {menuConfig.map((item, index) => {
+              const itemStyle = {
+                animationDelay: drawerOpen ? `${(index + 1) * 50}ms` : '0ms'
+              }
+
+              if (item.submenu) {
+                const isExpanded = !!openSubmenus[item.label]
+
+                return (
+                  <div
+                    key={item.label}
+                    style={itemStyle}
+                    className={`w-full border-b border-white/10 ${
+                      drawerOpen ? 'animate-nav-item' : 'opacity-0'
+                    }`}
+                  >
                     <button
-                      key={item.label}
-                      onClick={() => setActiveSubmenu(item.submenu)}
-                      className="flex justify-between items-center w-full py-2.5 text-pure-white hover:text-action-yellow text-md font-headline font-black uppercase tracking-wider transition-colors text-left"
+                      onClick={() => toggleSubmenu(item.label)}
+                      className="flex items-center justify-between w-full py-4 text-left cursor-pointer group/sec"
                     >
-                      <span>{item.label}</span>
-                      <MaterialIcon name="chevron_right" className="text-pure-white/70" />
+                      <span className="text-sm font-headline font-bold uppercase tracking-wider text-white group-hover/sec:text-action-yellow transition-colors duration-300">
+                        {item.label}
+                      </span>
+                      <MaterialIcon
+                        name="expand_more"
+                        className={`text-white/60 transition-transform duration-300 ${
+                          isExpanded ? 'rotate-180 text-action-yellow' : 'group-hover/sec:text-white/80'
+                        }`}
+                      />
                     </button>
-                  )
-                } else {
-                  return (
+
+                    {/* Expanded submenu links */}
+                    <div
+                      className={`grid transition-all duration-300 ease-in-out ${
+                        isExpanded ? 'grid-rows-[1fr] opacity-100 mb-2' : 'grid-rows-[0fr] opacity-0 pointer-events-none'
+                      }`}
+                    >
+                      <div className="overflow-hidden">
+                        <div className="flex flex-col gap-1 pb-4">
+                          {item.submenu.map((sub) => {
+                            const isSubLinkActive = location.pathname === sub.to || (location.pathname + location.search) === sub.to
+                            return (
+                              <Link
+                                key={sub.label}
+                                to={sub.to}
+                                onClick={toggleDrawer}
+                                className="flex items-center gap-3.5 py-3 hover:pl-2 transition-all duration-200 group/sublink text-left"
+                              >
+                                <MaterialIcon name={sub.icon} className={`text-lg transition-colors ${
+                                  isSubLinkActive ? 'text-action-yellow' : 'text-white/60 group-hover/sublink:text-action-yellow'
+                                }`} />
+                                <div className="flex flex-col">
+                                  <span className={`text-xs font-headline font-bold tracking-wider transition-colors duration-200 ${
+                                    isSubLinkActive ? 'text-action-yellow' : 'text-white group-hover/sublink:text-action-yellow'
+                                  }`}>
+                                    {sub.label}
+                                  </span>
+                                  <span className="text-[10px] text-white/50 leading-none mt-1 font-body font-light">
+                                    {sub.desc}
+                                  </span>
+                                </div>
+                              </Link>
+                            )
+                          })}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )
+              } else {
+                const isLinkActive = location.pathname === item.to
+                return (
+                  <div
+                    key={item.label}
+                    style={itemStyle}
+                    className={`w-full border-b border-white/10 ${
+                      drawerOpen ? 'animate-nav-item' : 'opacity-0'
+                    }`}
+                  >
                     <Link
-                      key={item.label}
                       to={item.to || '#'}
                       onClick={toggleDrawer}
-                      className="block py-2.5 text-pure-white hover:text-action-yellow text-md font-headline font-black uppercase tracking-wider transition-colors text-left"
+                      className={`block py-4 text-sm font-headline font-bold uppercase tracking-wider transition-colors duration-200 hover:text-action-yellow text-left ${
+                        isLinkActive ? 'text-action-yellow' : 'text-white'
+                      }`}
                     >
                       {item.label}
                     </Link>
-                  )
-                }
-              })}
-            </div>
-          ) : (
-            /* Submenu List */
-            <div className="space-y-6">
-              <button
-                onClick={() => setActiveSubmenu('none')}
-                className="flex items-center gap-2 text-pure-white hover:text-action-yellow font-headline text-sm font-black uppercase tracking-wider py-2 transition-colors"
-              >
-                <MaterialIcon name="arrow_back" className="text-lg" />
-                <span>Back to Menu</span>
-              </button>
-
-              <div className="h-px bg-pure-white/20 w-full mb-6" />
-
-              <h3 className="text-action-yellow font-headline text-xl font-black uppercase tracking-widest mb-6">
-                {submenus[activeSubmenu].title}
-              </h3>
-
-              <div className="flex flex-col space-y-4">
-                {submenus[activeSubmenu].links.map((link) => (
-                  <Link
-                    key={link.label}
-                    to={link.to}
-                    onClick={toggleDrawer}
-                    className="block py-2.5 text-pure-white hover:text-action-yellow text-md font-headline font-black uppercase tracking-wider transition-colors text-left"
-                  >
-                    {link.label}
-                  </Link>
-                ))}
-              </div>
-            </div>
-          )}
+                  </div>
+                )
+              }
+            })}
+          </div>
         </div>
 
         {/* Drawer Footer Socials */}
-        <div className="p-8 border-t border-pure-white/10 bg-[#008c36] flex flex-col items-center gap-5">
-          {/* Socials */}
-          <div className="flex gap-6 justify-center items-center">
-            {/* Facebook */}
-            <a href="#" aria-label="Facebook">
-              <svg className="w-5 h-5 fill-current text-pure-white hover:text-action-yellow transition-all hover:scale-110" viewBox="0 0 24 24">
-                <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/>
-              </svg>
-            </a>
-            {/* Twitter */}
-            <a href="#" aria-label="Twitter">
-              <svg className="w-5 h-5 fill-current text-pure-white hover:text-action-yellow transition-all hover:scale-110" viewBox="0 0 24 24">
-                <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
-              </svg>
-            </a>
-            {/* Instagram */}
-            <a href="#" aria-label="Instagram">
-              <svg className="w-5 h-5 fill-current text-pure-white hover:text-action-yellow transition-all hover:scale-110" viewBox="0 0 24 24">
-                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
-              </svg>
-            </a>
-            {/* YouTube */}
-            <a href="#" aria-label="YouTube">
-              <svg className="w-5 h-5 fill-current text-pure-white hover:text-action-yellow transition-all hover:scale-110" viewBox="0 0 24 24">
-                <path d="M23.498 6.163a3.003 3.003 0 00-2.11-2.11C19.517 3.545 12 3.545 12 3.545s-7.517 0-9.388.507a3.003 3.003 0 00-2.11 2.11C0 8.033 0 12 0 12s0 3.967.502 5.837a3.003 3.003 0 002.11 2.11c1.871.507 9.388.507 9.388.507s7.517 0 9.388-.507a3.003 3.003 0 002.11-2.11C24 15.967 24 12 24 12s0-3.967-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-              </svg>
-            </a>
-            {/* Vimeo */}
-            <a href="#" aria-label="Vimeo">
-              <svg className="w-5 h-5 fill-current text-pure-white hover:text-action-yellow transition-all hover:scale-110" viewBox="0 0 24 24">
-                <path d="M22.396 7.158c-.093 2.026-1.507 4.8-4.245 8.322-2.837 3.659-5.234 5.489-7.195 5.489-1.214 0-2.241-1.12-3.08-3.359L5.034 7.69C4.381 5.308 3.633 4.116 2.793 4.116c-.187 0-.84.392-1.961 1.177L0 4.254c1.157-1.018 2.298-2.036 3.428-3.055C4.98.056 6.069-.074 6.697.073c1.476.346 2.382 2.32 2.718 4.919.373 2.877.625 4.643.757 5.297.439 2.233.916 3.35 1.429 3.35.393 0 1.009-.616 1.841-1.85 1.635-2.429 1.69-4.102 1.644-5.021-.075-1.505-.935-2.257-2.587-2.257-.757 0-1.532.178-2.327.533 1.55-5.064 4.512-7.596 8.883-7.596 3.223 0 4.708 2.149 4.461 6.452z"/>
-              </svg>
-            </a>
+        <div className="relative p-8 border-t border-white/10 bg-[#032912] flex flex-col items-center gap-4 shrink-0 z-10">
+          <span className="font-cursive text-action-yellow text-lg tracking-wide opacity-90 select-none">
+            Restoring hope, building families.
+          </span>
+          <div className="flex gap-4 justify-center items-center">
+            {[
+              {
+                label: 'Facebook',
+                href: '#',
+                path: 'M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z'
+              },
+              {
+                label: 'Twitter',
+                href: '#',
+                path: 'M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z'
+              },
+              {
+                label: 'Instagram',
+                href: '#',
+                path: 'M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204 .013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z'
+              },
+              {
+                label: 'YouTube',
+                href: '#',
+                path: 'M23.498 6.163a3.003 3.003 0 00-2.11-2.11C19.517 3.545 12 3.545 12 3.545s-7.517 0-9.388.507a3.003 3.003 0 00-2.11 2.11C0 8.033 0 12 0 12s0 3.967.502 5.837a3.003 3.003 0 002.11 2.11c1.871.507 9.388.507 9.388.507s7.517 0 9.388-.507a3.003 3.003 0 002.11-2.11C24 15.967 24 12 24 12s0-3.967-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z'
+              }
+            ].map((social) => (
+              <a
+                key={social.label}
+                href={social.href}
+                aria-label={social.label}
+                className="w-10 h-10 rounded-full flex items-center justify-center bg-white/[0.03] border border-white/[0.06] text-white/70 hover:text-action-yellow hover:bg-white/[0.08] hover:border-action-yellow/30 hover:scale-110 active:scale-95 transition-all duration-300 shadow-md"
+              >
+                <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                  <path d={social.path} />
+                </svg>
+              </a>
+            ))}
           </div>
-          <span className="text-xxs text-pure-white/70 font-semibold tracking-wider">
+          <span className="text-[10px] text-white/40 font-headline font-semibold tracking-wider">
             © 2026 Katonda Talemwa Ministries
           </span>
         </div>

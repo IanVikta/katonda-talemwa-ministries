@@ -20,7 +20,7 @@ function matchesAge(age: number, filter: AgeFilter) {
 
 export default function SponsorPage() {
   const [searchParams, setSearchParams] = useSearchParams()
-  const activeTab = (searchParams.get('tab') as 'baby' | 'child' | 'mother' | 'neighbourhood-mother') || 'child'
+  const activeTab = (searchParams.get('tab') as 'baby' | 'child' | 'mother') || 'child'
 
   const [gender, setGender] = useState<GenderFilter>('all')
   const [ageRange, setAgeRange] = useState<AgeFilter>('all')
@@ -47,7 +47,6 @@ export default function SponsorPage() {
     { id: 'baby', label: 'Baby Rescue', icon: 'child_care' },
     { id: 'child', label: 'School Children', icon: 'school' },
     { id: 'mother', label: 'Village Mothers', icon: 'diversity_1' },
-    { id: 'neighbourhood-mother', label: 'Community Mothers', icon: 'groups' }
   ]
 
   const filtered = useMemo(() => {

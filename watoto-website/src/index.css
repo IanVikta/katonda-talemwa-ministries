@@ -122,23 +122,6 @@
   font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 24;
 }
 
-.gradient-line {
-  height: 6px;
-  background: linear-gradient(
-    to right,
-    #005ca7 0%,
-    #005ca7 20%,
-    #008c15 20%,
-    #008c15 40%,
-    #ffd943 40%,
-    #ffd943 60%,
-    #035da8 60%,
-    #035da8 80%,
-    #ba1a1a 80%,
-    #ba1a1a 100%
-  );
-}
-
 .bento-item {
   border: 1px solid #becab6;
   transition: all 0.3s ease;
@@ -167,6 +150,7 @@
     opacity: 0;
     transform: translateY(8px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -175,4 +159,44 @@
 
 .animate-fadeIn {
   animation: fadeIn 0.3s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-nav-item {
+  opacity: 0;
+  animation: fadeInUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.bg-grid-dots {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.04) 1.5px, transparent 1.5px);
+  background-size: 20px 20px;
+}
+
+/* Custom scrollbar for mobile navigation drawer */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
 }

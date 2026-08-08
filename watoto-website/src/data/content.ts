@@ -6,7 +6,7 @@ export interface ChildProfile {
   location: string
   image: string
   description: string
-  type: 'baby' | 'child' | 'mother' | 'neighbourhood-mother'
+  type: 'baby' | 'child' | 'mother'
 }
 
 export const children: ChildProfile[] = [
@@ -109,26 +109,6 @@ export const children: ChildProfile[] = [
     image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDokPv7xL4QxzKaXFGE9JHtcX8mDUpqXr0wRYOec9evJdlzrT_dCiPQuJgTZqlL8pmUpk3NogeqfXtDKpgUNVRyWxfuJMk3Xj7uBb61Y7yp373WHqyvIGC68iqpT06r7nYFafNlMQxOafiS3RAJAxLv9cSmeOpfMd8XLGmutOsP6sJrYDaYu4BKGhqr0zchZ-IrwSP61z__ZJiaLHLfwq7cOmHg3yWxWSvOjI_VPUdb-qBWzNM6qoXpxMkmPMd0ZeuS1lDnEpziIjs',
     description: 'Phiona is a dedicated Katonda Talemwa Mother who has cared for over 15 children. She provides them with spiritual guidance and love.',
     type: 'mother',
-  },
-  {
-    id: 'mama_mary',
-    name: 'Mama Mary',
-    age: 45,
-    gender: 'woman',
-    location: 'Kampala, Uganda',
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBIhxRIEgCK4R58S2_Yi2_g3H70zVyfYoVCJkvMonBkpymscyRKLR76ztqzxY-IYZfgN7GDuJEe-9x21_1JyjONBj7mobd2h8nJ-f07MCofzmkBLOAz8hL3DoK6wmee6L3r6HEgNpR26GivhE86k55lODdglHr_natLaSWjEZApuTOGZDqVYUmgbmPIITEySdw8GHdk3B66v3cPSLTIPQfc_0WGi1xAWY3vdd0N8a9JrN6S12dA9WNe0M7DJfmHdLh0IJhTandGHuI',
-    description: 'Mary is a Living Hope mother who runs a small tailoring business. Sponsoring her helps support her and her 4 children.',
-    type: 'neighbourhood-mother',
-  },
-  {
-    id: 'mama_florence',
-    name: 'Mama Florence',
-    age: 35,
-    gender: 'woman',
-    location: 'Gulu, Uganda',
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBrjWKipW5X_d20RI5e0e-2Jh-4lb6OW490qYT5YXlmpDoQTIq9KSUSypbnEqfpGLY8nMM-t8hmr49igdciTJjUsneCpxEbCFDKb3bIdC-cVvSiRbbcVlPSqrJx_zHDAVY_SzL8dDwngxYYNCMl3gvMT2PVUtSJJdln2fxpH1YKjyPKzfLOcss7DC3s4jYKYmoivAvv2CLaP8boi-BfexmjTLesKLLGjL2nazAD4I6KSY8uftjHjxNEQZIZuNy6vhcYYx-MINktwGg',
-    description: 'Florence is a resilient mother in Gulu who has overcome adversity. She makes and sells pottery to support her family.',
-    type: 'neighbourhood-mother',
   },
 ]
 

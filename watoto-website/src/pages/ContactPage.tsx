@@ -50,7 +50,6 @@ export default function ContactPage() {
             <h1 className="font-headline text-headline-xl mb-4 font-black uppercase leading-tight tracking-wide">
               Contact <span className="text-action-yellow">Us</span>
             </h1>
-            <div className="w-full max-w-xs mx-auto gradient-line mb-6" />
             <p className="max-w-2xl mx-auto text-body-lg opacity-90 font-light leading-relaxed">
               Have questions or want to partner with us? We'd love to hear from you. Reach out and join us in bringing hope and healing.
             </p>
@@ -124,13 +123,13 @@ export default function ContactPage() {
         </section>
 
         {/* Contact Form & Map Section */}
-        <section 
+        <section
           className="relative py-20 bg-cover bg-center bg-no-repeat bg-fixed"
           style={{ backgroundImage: `url('${IMAGES.villages}')` }}
         >
           {/* Dark Overlay for high card legibility */}
           <div className="absolute inset-0 bg-deep-black/50 z-0" />
-          
+
           <div className="relative z-10 max-w-(--spacing-container-max) mx-auto px-6 md:px-margin-desktop">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-stretch">
 

@@ -37,10 +37,136 @@ function CountUp({ end, suffix = '', duration = 1800 }: { end: number; suffix?: 
   return <span ref={ref}>{count.toLocaleString()}{suffix}</span>
 }
 
+interface GalleryItem {
+  id: string
+  title: string
+  category: 'all' | 'nursery' | 'medical' | 'play' | 'graduation'
+  image: string
+  caption: string
+  location: string
+}
+
+const galleryItems: GalleryItem[] = [
+  {
+    id: 'g1',
+    title: 'Morning Sensory Play',
+    category: 'play',
+    image: '/images/DSC_0578.jpg',
+    caption: 'Tummy-time and sensory stimulation exercises in the bright nursery ward.',
+    location: 'Emmanuel Baby\'s Home',
+  },
+  {
+    id: 'g2',
+    title: 'Nanny 1:4 Tender Care',
+    category: 'nursery',
+    image: '/images/baby 2.jpg',
+    caption: 'Dedicated nannies providing warm feeding, comfort, and emotional bonding around the clock.',
+    location: 'Infant Wing',
+  },
+  {
+    id: 'g3',
+    title: 'Clinical Health & Recovery',
+    category: 'medical',
+    image: '/images/DSC_8650.jpg',
+    caption: 'Pediatric nurse monitoring vital signs and weekly weight milestones with medical precision.',
+    location: 'Medical Clinic',
+  },
+  {
+    id: 'g4',
+    title: 'First Steps & Laughter',
+    category: 'play',
+    image: '/images/DSC_7399.jpg',
+    caption: 'Joyful exploration on soft indoor play mats under attentive nanny supervision.',
+    location: 'Toddler Activity Room',
+  },
+  {
+    id: 'g5',
+    title: 'Graduation to Forever Family',
+    category: 'graduation',
+    image: '/images/villages-family.jpg',
+    caption: 'Thriving babies graduating to their forever home in a Katonda Talemwa village family.',
+    location: 'KTM Village Home',
+  },
+  {
+    id: 'g6',
+    title: 'Custom Formula Nutrition',
+    category: 'nursery',
+    image: '/images/babies.jpg',
+    caption: 'Sterilized feeding bottles and custom fortified nutrition tailored for infant recovery.',
+    location: 'Nutrition Center',
+  },
+  {
+    id: 'g7',
+    title: 'Safe Rest & Peaceful Cribs',
+    category: 'nursery',
+    image: '/images/baby.jpg',
+    caption: 'Clean, warm, protected cribs giving traumatized infants quiet security.',
+    location: 'Emmanuel Nursery',
+  },
+  {
+    id: 'g8',
+    title: 'Immunizations & Checkups',
+    category: 'medical',
+    image: '/images/DSC_8368.jpg',
+    caption: 'Full immunization schedule and pediatric checkups given to every rescued baby.',
+    location: 'Clinical Triage',
+  },
+]
+
+const testimonials = [
+  {
+    id: 't1',
+    quote: 'Sponsoring baby Jayson and receiving his milestone updates has been one of the most spiritually rewarding journeys of our lives. You see the tangible fruit of love.',
+    author: 'Sarah & David Jenkins',
+    role: 'Monthly Baby Sponsors',
+    location: 'Dallas, Texas',
+    avatar: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDokPv7xL4QxzKaXFGE9JHtcX8mDUpqXr0wRYOec9evJdlzrT_dCiPQuJgTZqlL8pmUpk3NogeqfXtDKpgUNVRyWxfuJMk3Xj7uBb61Y7yp373WHqyvIGC68iqpT06r7nYFafNlMQxOafiS3RAJAxLv9cSmeOpfMd8XLGmutOsP6sJrYDaYu4BKGhqr0zchZ-IrwSP61z__ZJiaLHLfwq7cOmHg3yWxWSvOjI_VPUdb-qBWzNM6qoXpxMkmPMd0ZeuS1lDnEpziIjs',
+    rating: 5,
+    highlight: 'Sponsor Story',
+  },
+  {
+    id: 't2',
+    quote: 'When a fragile baby arrives in the middle of the night weighing under 2 kg, our whole team rallies. Seeing that same child laughing 6 months later is nothing short of a miracle.',
+    author: 'Nurse Grace Atuhaire',
+    role: 'Lead Pediatric Nurse',
+    location: 'Emmanuel Baby\'s Home',
+    avatar: 'https://lh3.googleusercontent.com/aida-public/AB6AXuB6y56oBsMWN9DQPev8ZmKzLaWamFuXAwYYwLoKyfk07pdytAjs0fVZmgddCllkNH2KAPh7QOU9_oCjLHpXItxzryFuwiyQIRx1CwGCvNeoYq16DMXOFDgEEogrnxUV18fg7z1aULbkGVw1CiuinfA8TVZmoNbYKPX1ovWExMuivq9rpFVcB2uuLsg70plzLz-8gEMm2YM9Lno-rJNlWPPB0aOdc8KNVoiiZ6mv7CiIHwe_onrToEaqx0cPmP7_03aPcXCJTNwL5LI',
+    rating: 5,
+    highlight: 'Staff Reflection',
+  },
+  {
+    id: 't3',
+    quote: 'Receiving these precious babies into our village home when they reach two years old is a gift. They come already healthy, loved, and ready to call me Mama.',
+    author: 'Mama Phiona',
+    role: 'KTM Village Mother',
+    location: 'Kyasenya Village',
+    avatar: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBIhxRIEgCK4R58S2_Yi2_g3H70zVyfYoVCJkvMonBkpymscyRKLR76ztqzxY-IYZfgN7GDuJEe-9x21_1JyjONBj7mobd2h8nJ-f07MCofzmkBLOAz8hL3DoK6wmee6L3r6HEgNpR26GivhE86k55lODdglHr_natLaSWjEZApuTOGZDqVYUmgbmPIITEySdw8GHdk3B66v3cPSLTIPQfc_0WGi1xAWY3vdd0N8a9JrN6S12dA9WNe0M7DJfmHdLh0IJhTandGHuI',
+    rating: 5,
+    highlight: 'Family Journey',
+  },
+  {
+    id: 't4',
+    quote: 'The level of hygiene, clinical precision, and individual nurturing at Emmanuel Baby\'s Home is world-class. Every single dollar given directly restores a child’s future.',
+    author: 'Dr. Michael Chen',
+    role: 'Pediatric Health Partner',
+    location: 'Kampala Medical Center',
+    avatar: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAAY37c-fstO13vILJbLMwYIR9LpymZ26ih1qt3v-kba_5B2PpugKIIsq0820ra9MqoIPV8FAUjqq4x1b00ntQw_6Nangq_Wjkq5JwlY4TU5y2Dg-UBjRV26_MasUTTnUsz9s27d2rm8XMPJGqMMlFHBt80r4YJt22BmcZfySd-kpHa4jDpRyVtUqq2aGRQ1fZIsuJj6UuAQieZt8mpmUqOapXyCR0sTpQ88Sopj_9Lpu5gVTfB17oy3Eufx0m_4ht_mmlus5bmk9M',
+    rating: 5,
+    highlight: 'Medical Partner',
+  },
+]
+
 export default function BabyWatotoPage() {
+  const [activeGalleryCategory, setActiveGalleryCategory] = useState<string>('all')
+  const [lightboxItem, setLightboxItem] = useState<GalleryItem | null>(null)
+
   useEffect(() => {
     AOS.init({ duration: 700, easing: 'ease-out-cubic', once: true, offset: 60 })
   }, [])
+
+  const filteredGallery = galleryItems.filter(
+    (item) => activeGalleryCategory === 'all' || item.category === activeGalleryCategory
+  )
 
   return (
     <div className="bg-surface text-on-surface selection:bg-action-yellow selection:text-deep-black overflow-x-hidden font-body page-enter">
@@ -54,7 +180,7 @@ export default function BabyWatotoPage() {
           <div className="bg-deep-black text-pure-white flex flex-col justify-center px-8 md:px-16 py-20 space-y-8">
             <div data-aos="fade-right">
               <span className="text-[10px] uppercase font-extrabold tracking-widest text-action-yellow block mb-4">
-                Baby Katonda Talemwa — Est. 2003
+                Emmanuel Baby's Home — Est. 2014 (12 Years of Care)
               </span>
               <h1 className="font-headline text-5xl sm:text-6xl font-black uppercase leading-none tracking-tight">
                 Rescued. <br />
@@ -63,7 +189,7 @@ export default function BabyWatotoPage() {
               </h1>
             </div>
             <p data-aos="fade-right" data-aos-delay="100" className="text-base font-light opacity-90 leading-relaxed max-w-md">
-              When a newborn is abandoned in a hospital ward, left in a field, or surrendered by a desperate mother — our emergency rescue team answers the call within hours, 24 hours a day.
+              Established in 2014, Emmanuel Baby's Home has spent 12 years answering the 24/7 call to rescue and has been built around raising God fearing children in a home community.
             </p>
             <div data-aos="fade-right" data-aos-delay="200" className="flex flex-wrap gap-4 pt-2">
               <Link
@@ -86,7 +212,7 @@ export default function BabyWatotoPage() {
             <img
               className="w-full h-full object-cover object-center absolute inset-0"
               src={IMAGES.babyHero}
-              alt="Baby Katonda Talemwa rescue"
+              alt="Emmanuel Baby's Home rescue"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-deep-black/60 to-transparent" />
             {/* Floating stat */}
@@ -106,7 +232,7 @@ export default function BabyWatotoPage() {
               { end: 24, suffix: '/7', label: 'Emergency Rescue' },
               { end: 3000, suffix: '+', label: 'Babies Rescued' },
               { end: 100, suffix: '%', label: 'Medical Support' },
-              { end: 20, suffix: '+', label: 'Years of Care' },
+              { end: 12, suffix: ' Yrs', label: 'Established 2014 (12 Yrs)' },
             ].map(({ end, suffix, label }) => (
               <div key={label} data-aos="fade-up">
                 <div className="font-headline text-4xl font-black text-action-yellow">
@@ -250,7 +376,7 @@ export default function BabyWatotoPage() {
                     Baby Jayson was discovered abandoned at the entrance of the Gulu Regional Referral Hospital at barely two weeks old. His body temperature was dangerously low and he showed signs of severe malnourishment.
                   </p>
                   <p className="text-sm text-on-surface-variant font-light leading-relaxed">
-                    Within four hours, our rescue team had him in the Baby Katonda Talemwa ward receiving IV nutrition and warmth therapy. Today, Jayson crawls with purpose, laughs with his nanny, and is a picture of health — a daily reminder of why this work matters.
+                    Within four hours, our rescue team had him in the Emmanuel Baby's Home ward receiving IV nutrition and warmth therapy. Today, Jayson crawls with purpose, laughs with his nanny, and is a picture of health — a daily reminder of why this work matters.
                   </p>
                 </div>
                 <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-6 border-t border-outline-variant/40">
@@ -265,6 +391,87 @@ export default function BabyWatotoPage() {
                   </Link>
                 </div>
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ── OUR CARE TEAM: Emmanuel Baby's Home Dedicated Staff ── */}
+        <section className="py-24 bg-surface border-b border-outline-variant/30">
+          <div className="max-w-(--spacing-container-max) mx-auto px-4 md:px-margin-desktop space-y-12">
+            <div data-aos="fade-up" className="text-center space-y-3 max-w-xl mx-auto">
+              <span className="text-[10px] uppercase font-extrabold tracking-widest text-vibrant-green block">
+                12 Years of Dedicated Service
+              </span>
+              <h2 className="font-headline text-4xl font-black uppercase text-deep-black leading-none">
+                Meet Our <span className="text-vibrant-green">Care Team</span>
+              </h2>
+              <div className="w-16 h-1 bg-action-yellow mx-auto" />
+              <p className="text-sm text-on-surface-variant font-light leading-relaxed">
+                Behind every rescued infant is a team of devoted clinical nurses, nannies, social workers, and administrators who provide round-the-clock love and medical restoration at Emmanuel Baby’s Home.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              {[
+                {
+                  name: 'Mama Agnes Nabuuma',
+                  role: 'Home Administrator & Care Director',
+                  experience: '12 Years at Emmanuel Baby\'s Home',
+                  bio: 'Leading Emmanuel Baby\'s Home since its founding in 2014. Agnes oversees all admissions, nanny staffing, and child protection.',
+                  image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDokPv7xL4QxzKaXFGE9JHtcX8mDUpqXr0wRYOec9evJdlzrT_dCiPQuJgTZqlL8pmUpk3NogeqfXtDKpgUNVRyWxfuJMk3Xj7uBb61Y7yp373WHqyvIGC68iqpT06r7nYFafNlMQxOafiS3RAJAxLv9cSmeOpfMd8XLGmutOsP6sJrYDaYu4BKGhqr0zchZ-IrwSP61z__ZJiaLHLfwq7cOmHg3yWxWSvOjI_VPUdb-qBWzNM6qoXpxMkmPMd0ZeuS1lDnEpziIjs',
+                  badge: 'Est. 2014 Staff',
+                },
+                {
+                  name: 'Nurse Grace Atuhaire',
+                  role: 'Lead Pediatric & Clinical Nurse',
+                  experience: '8 Years of Emergency Care',
+                  bio: 'Manages 24/7 clinical triage, medical stabilization, vaccines, emergency IV nutrition, and health monitoring for newborn rescues.',
+                  image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuB6y56oBsMWN9DQPev8ZmKzLaWamFuXAwYYwLoKyfk07pdytAjs0fVZmgddCllkNH2KAPh7QOU9_oCjLHpXItxzryFuwiyQIRx1CwGCvNeoYq16DMXOFDgEEogrnxUV18fg7z1aULbkGVw1CiuinfA8TVZmoNbYKPX1ovWExMuivq9rpFVcB2uuLsg70plzLz-8gEMm2YM9Lno-rJNlWPPB0aOdc8KNVoiiZ6mv7CiIHwe_onrToEaqx0cPmP7_03aPcXCJTNwL5LI',
+                  badge: '24/7 Clinical Care',
+                },
+                {
+                  name: 'Mama Harriet Kembabazi',
+                  role: 'Senior Nanny & Infant Specialist',
+                  experience: '10 Years of Nanny Care',
+                  bio: 'Coordinates 8-hour shift rotations and 1:4 nanny-to-baby ratios, ensuring every infant receives touch, voice, and round-the-clock comfort.',
+                  image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBIhxRIEgCK4R58S2_Yi2_g3H70zVyfYoVCJkvMonBkpymscyRKLR76ztqzxY-IYZfgN7GDuJEe-9x21_1JyjONBj7mobd2h8nJ-f07MCofzmkBLOAz8hL3DoK6wmee6L3r6HEgNpR26GivhE86k55lODdglHr_natLaSWjEZApuTOGZDqVYUmgbmPIITEySdw8GHdk3B66v3cPSLTIPQfc_0WGi1xAWY3vdd0N8a9JrN6S12dA9WNe0M7DJfmHdLh0IJhTandGHuI',
+                  badge: '1:4 Care Ratio',
+                },
+                {
+                  name: 'David Okello',
+                  role: 'Child Welfare & Social Worker',
+                  experience: '7 Years in Protection',
+                  bio: 'Partners with police, hospitals, and child welfare officers to manage emergency rescue alerts, legal documentation, and family tracing.',
+                  image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAAY37c-fstO13vILJbLMwYIR9LpymZ26ih1qt3v-kba_5B2PpugKIIsq0820ra9MqoIPV8FAUjqq4x1b00ntQw_6Nangq_Wjkq5JwlY4TU5y2Dg-UBjRV26_MasUTTnUsz9s27d2rm8XMPJGqMMlFHBt80r4YJt22BmcZfySd-kpHa4jDpRyVtUqq2aGRQ1fZIsuJj6UuAQieZt8mpmUqOapXyCR0sTpQ88Sopj_9Lpu5gVTfB17oy3Eufx0m_4ht_mmlus5bmk9M',
+                  badge: 'Child Protection',
+                },
+              ].map((member, i) => (
+                <div
+                  key={member.name}
+                  data-aos="fade-up"
+                  data-aos-delay={i * 100}
+                  className="bg-surface-container-low border border-outline-variant/50 flex flex-col overflow-hidden group hover:border-vibrant-green/50 transition-all duration-300"
+                >
+                  <div className="relative aspect-4/3 overflow-hidden bg-deep-black">
+                    <img
+                      src={member.image}
+                      alt={member.name}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90"
+                    />
+                    <div className="absolute top-3 right-3 bg-action-yellow text-deep-black text-[9px] font-extrabold uppercase tracking-widest px-2.5 py-1">
+                      {member.badge}
+                    </div>
+                  </div>
+                  <div className="p-6 flex flex-col justify-between flex-1 space-y-4">
+                    <div>
+                      <h3 className="font-headline text-base font-black uppercase text-deep-black">{member.name}</h3>
+                      <p className="text-xs font-bold text-vibrant-green mt-0.5">{member.role}</p>
+                      <span className="text-[10px] text-on-surface-variant/80 block mt-1 font-medium">{member.experience}</span>
+                    </div>
+                    <p className="text-xs text-on-surface-variant font-light leading-relaxed">{member.bio}</p>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </section>
@@ -342,6 +549,141 @@ export default function BabyWatotoPage() {
           </div>
         </section>
 
+        {/* ── INTERACTIVE PHOTO GALLERY ── */}
+        <section className="py-24 bg-surface border-b border-outline-variant/30">
+          <div className="max-w-(--spacing-container-max) mx-auto px-4 md:px-margin-desktop space-y-12">
+            <div data-aos="fade-up" className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+              <div className="space-y-3">
+                <span className="text-[10px] uppercase font-extrabold tracking-widest text-vibrant-green block border-l-4 border-vibrant-green pl-3">
+                  Life at Emmanuel Baby's Home
+                </span>
+                <h2 className="font-headline text-4xl font-black uppercase text-deep-black leading-none">
+                  Moments of <span className="text-vibrant-green">Hope &amp; Joy</span>
+                </h2>
+                <p className="text-sm text-on-surface-variant font-light leading-relaxed max-w-lg">
+                  A visual window into the daily rhythm of care, medical healing, milestones, and forever families.
+                </p>
+              </div>
+
+              {/* Category Filter Tabs */}
+              <div className="flex flex-wrap gap-2">
+                {[
+                  { id: 'all', label: 'All Photos' },
+                  { id: 'nursery', label: 'Nursery Care' },
+                  { id: 'medical', label: 'Medical Clinic' },
+                  { id: 'play', label: 'Play & Milestones' },
+                  { id: 'graduation', label: 'Village Families' },
+                ].map((tab) => (
+                  <button
+                    key={tab.id}
+                    onClick={() => setActiveGalleryCategory(tab.id)}
+                    className={`px-4 py-2 text-xs font-headline font-bold uppercase tracking-wider transition-all rounded-none cursor-pointer border ${
+                      activeGalleryCategory === tab.id
+                        ? 'bg-deep-black text-action-yellow border-deep-black shadow-sm'
+                        : 'bg-surface-container-low text-on-surface-variant border-outline-variant/60 hover:border-deep-black'
+                    }`}
+                  >
+                    {tab.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Gallery Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              {filteredGallery.map((item, idx) => (
+                <div
+                  key={item.id}
+                  data-aos="fade-up"
+                  data-aos-delay={(idx % 4) * 80}
+                  onClick={() => setLightboxItem(item)}
+                  className="group relative bg-deep-black aspect-4/3 sm:aspect-square overflow-hidden cursor-pointer border border-outline-variant/60 shadow-sm"
+                >
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    className="w-full h-full object-cover group-hover:scale-110 group-hover:opacity-85 transition-all duration-700 filter brightness-95"
+                  />
+                  
+                  {/* Category Pill */}
+                  <div className="absolute top-3 left-3 bg-deep-black/80 backdrop-blur-sm text-action-yellow text-[9px] font-extrabold uppercase tracking-widest px-2.5 py-1 z-10 border-l-2 border-action-yellow">
+                    {item.location}
+                  </div>
+
+                  {/* Hover Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-deep-black/90 via-deep-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5 text-pure-white space-y-2">
+                    <div className="flex items-center gap-1 text-action-yellow">
+                      <MaterialIcon name="zoom_in" className="text-xl" />
+                      <span className="text-[10px] uppercase font-bold tracking-wider">View Photo</span>
+                    </div>
+                    <h3 className="font-headline text-sm font-black uppercase leading-snug">{item.title}</h3>
+                    <p className="text-xs text-pure-white/80 font-light line-clamp-2 leading-relaxed">{item.caption}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── TESTIMONIALS SECTION ── */}
+        <section className="py-24 bg-surface-container-low border-b border-outline-variant/30">
+          <div className="max-w-(--spacing-container-max) mx-auto px-4 md:px-margin-desktop space-y-16">
+            <div data-aos="fade-up" className="text-center space-y-3 max-w-xl mx-auto">
+              <span className="text-[10px] uppercase font-extrabold tracking-widest text-vibrant-green block">
+                Voices of Transformation
+              </span>
+              <h2 className="font-headline text-4xl font-black uppercase text-deep-black leading-none">
+                Stories From <span className="text-vibrant-green">Our Family</span>
+              </h2>
+              <div className="w-16 h-1 bg-action-yellow mx-auto" />
+              <p className="text-sm text-on-surface-variant font-light leading-relaxed">
+                Reflections from sponsors, clinical nurses, village mothers, and partners witnessing miracles every day.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {testimonials.map((t, idx) => (
+                <div
+                  key={t.id}
+                  data-aos="fade-up"
+                  data-aos-delay={idx * 100}
+                  className="bg-surface border border-outline-variant/60 p-7 flex flex-col justify-between rounded-none shadow-sm hover:border-vibrant-green/60 hover:shadow-md transition-all duration-300 space-y-6"
+                >
+                  <div className="space-y-4">
+                    <div className="flex items-center justify-between">
+                      <div className="flex gap-1 text-action-yellow">
+                        {Array.from({ length: t.rating }).map((_, i) => (
+                          <MaterialIcon key={i} name="star" className="text-base" filled />
+                        ))}
+                      </div>
+                      <span className="text-[9px] uppercase font-bold tracking-widest bg-vibrant-green/10 text-vibrant-green px-2 py-0.5 border border-vibrant-green/20">
+                        {t.highlight}
+                      </span>
+                    </div>
+
+                    <blockquote className="font-body text-xs sm:text-sm text-on-surface-variant font-light leading-relaxed italic">
+                      &ldquo;{t.quote}&rdquo;
+                    </blockquote>
+                  </div>
+
+                  <div className="pt-4 border-t border-outline-variant/40 flex items-center gap-3.5">
+                    <img
+                      src={t.avatar}
+                      alt={t.author}
+                      className="w-11 h-11 object-cover rounded-none border border-outline-variant/60 shrink-0"
+                    />
+                    <div className="min-w-0">
+                      <h4 className="font-headline text-xs font-black uppercase text-deep-black truncate">{t.author}</h4>
+                      <p className="text-[10px] text-vibrant-green font-bold uppercase tracking-wider">{t.role}</p>
+                      <span className="text-[10px] text-on-surface-variant/70 block truncate">{t.location}</span>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* ── CLOSING QUOTE ── */}
         <section className="bg-deep-black py-20 text-center relative overflow-hidden">
           <div className="absolute top-0 right-0 opacity-5 translate-x-1/4 -translate-y-1/4">
@@ -350,14 +692,61 @@ export default function BabyWatotoPage() {
           <div className="relative z-10 max-w-3xl mx-auto px-4">
             <div data-aos="fade-up">
               <p className="font-serif italic text-2xl md:text-3xl text-pure-white leading-relaxed mb-6">
-                &ldquo;We cannot change the world for everyone, but for this one baby, their whole world is about to change.&rdquo;
+                &ldquo;Every child abandoned by this world is deeply treasured by God. When we embrace one vulnerable baby with Christ's unconditional love, we rewrite generations to come.&rdquo;
               </p>
               <p className="font-headline text-xs font-black uppercase tracking-widest text-action-yellow">
-                — Marilyn Skinner, Co-Founder, Watoto
+                — Pastor Emmy Nyanzi, Founder &amp; Lead Pastor, Katonda Talemwa Ministries
               </p>
             </div>
           </div>
         </section>
+
+        {/* Lightbox Modal */}
+        {lightboxItem && (
+          <div
+            className="fixed inset-0 z-50 bg-deep-black/90 backdrop-blur-md flex items-center justify-center p-4 sm:p-8"
+            onClick={() => setLightboxItem(null)}
+          >
+            <div
+              className="relative max-w-4xl w-full bg-deep-black border border-pure-white/20 overflow-hidden shadow-2xl"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Close Button */}
+              <button
+                onClick={() => setLightboxItem(null)}
+                className="absolute top-4 right-4 z-20 w-10 h-10 bg-deep-black/80 text-pure-white hover:text-action-yellow flex items-center justify-center border border-pure-white/20 cursor-pointer transition-colors"
+                aria-label="Close"
+              >
+                <MaterialIcon name="close" className="text-xl" />
+              </button>
+
+              <div className="relative aspect-16/10 bg-black">
+                <img
+                  src={lightboxItem.image}
+                  alt={lightboxItem.title}
+                  className="w-full h-full object-contain"
+                />
+              </div>
+
+              <div className="p-6 sm:p-8 bg-deep-black text-pure-white space-y-3 border-t border-pure-white/15">
+                <div className="flex items-center justify-between gap-4">
+                  <span className="text-xs uppercase font-extrabold tracking-widest text-action-yellow border-l-2 border-action-yellow pl-2.5">
+                    {lightboxItem.location}
+                  </span>
+                  <span className="text-[10px] uppercase font-bold tracking-widest text-vibrant-green bg-vibrant-green/10 px-2.5 py-1 border border-vibrant-green/20">
+                    Emmanuel Baby's Home
+                  </span>
+                </div>
+                <h3 className="font-headline text-xl sm:text-2xl font-black uppercase text-pure-white">
+                  {lightboxItem.title}
+                </h3>
+                <p className="text-sm font-light text-pure-white/80 leading-relaxed">
+                  {lightboxItem.caption}
+                </p>
+              </div>
+            </div>
+          </div>
+        )}
 
       </main>
 

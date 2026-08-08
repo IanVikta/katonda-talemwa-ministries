@@ -36,12 +36,12 @@ const jobs = [
   },
   {
     id: 'coordinator',
-    title: 'Neighbourhood Outreach Coordinator',
+    title: 'Community Outreach Coordinator',
     department: 'Community Development',
     location: 'Kampala Office, Uganda',
     type: 'Full-Time',
     experience: '4+ Years',
-    desc: 'Coordinate our weekly home visits, nutrition distributions, and medical checkups for neighborhood mothers and elderly community members.',
+    desc: 'Coordinate our weekly home visits, nutrition distributions, and medical checkups for vulnerable families and elderly community members.',
     requirements: [
       'Degree in Social Work, Social Administration, or Development Studies.',
       'Fluency in local Luganda and excellent team coordination experience.',

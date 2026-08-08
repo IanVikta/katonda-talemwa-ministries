@@ -14,12 +14,15 @@ export default function KeepGirlInSchoolPage() {
         {/* Minimalist Centered Title Section */}
         <section className="bg-deep-black text-pure-white py-16 text-center rounded-none relative overflow-hidden">
           <div className="max-w-3xl mx-auto px-4 space-y-4">
-            <span className="text-xs uppercase font-extrabold tracking-widest text-action-yellow">
+            <span className="text-xs uppercase font-extrabold tracking-widest text-action-yellow block">
               Menstrual Health & Education Access
             </span>
-            <h1 className="font-headline text-3xl sm:text-5xl font-black uppercase leading-tight tracking-tight">
-              Keep a <span className="text-action-yellow">Girl in School</span>
+            <h1 className="font-headline text-4xl sm:text-6xl font-black uppercase leading-tight tracking-tight text-pure-white">
+              The <span className="text-action-yellow">Esther Mission</span>
             </h1>
+            <p className="text-sm md:text-base font-headline font-extrabold uppercase tracking-widest text-vibrant-green">
+              Keep a Girl in School
+            </p>
             <p className="text-sm font-light opacity-80 leading-relaxed max-w-xl mx-auto">
               Removing the hygiene barriers that cause adolescent girls to miss school, drop out, or face early child marriage in rural Uganda.
             </p>

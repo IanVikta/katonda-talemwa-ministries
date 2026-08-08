@@ -23,9 +23,8 @@ export default function HomePage() {
             <br />
             Transforming Communities
           </h1>
-          <div className="w-full max-w-lg mx-auto gradient-line mb-6" />
           <p className="text-body-lg text-pure-white/90 max-w-2xl mx-auto">
-            Katonda Talemwa Ministries brings hope and healing to vulnerable women and children in Uganda and South Sudan. We aim at the pain in our communities and invite you to join us.
+            Katonda Talemwa Ministries brings hope and healing to vulnerable children in East Africa. We demonstrate the Father's love in action and invite you to join us.
           </p>
           <div className="flex flex-row gap-4 justify-center pt-4 max-w-md mx-auto w-full">
             <Link
@@ -50,14 +49,14 @@ export default function HomePage() {
       <section className="py-section-padding bg-surface">
         <div className="max-w-(--spacing-container-max) mx-auto px-4 md:px-margin-desktop grid md:grid-cols-2 gap-20 items-center">
           <div className="order-2 md:order-1">
-            <span className="text-primary font-bold text-label-bold uppercase tracking-wider mb-2 block">Katonda Talemwa Villages</span>
+            <span className="text-primary font-bold text-label-bold uppercase tracking-wider mb-2 block">Katonda Talemwa Ministries</span>
             <h2 className="font-headline text-headline-lg mb-6 leading-tight">
-              Giving the Lost
+              Rescuing Children,
               <br />
-              and Forgotten <span className="text-primary font-extrabold">A FAMILY</span>
+              Raising Leaders, <span className="text-trust-blue font-extrabold uppercase">Rebuilding Lives</span>
             </h2>
-            <p className="text-on-surface-variant mb-6 leading-relaxed">
-              A Katonda Talemwa village is a safe place where orphaned and vulnerable children can truly experience the love of a family.
+            <p className="text-on-surface-variant mb-8 leading-relaxed">
+              Katonda Talemwa Ministries is a safe place where orphaned and vulnerable children can truly experience the love of a family.
             </p>
             <p className="text-on-surface-variant mb-8 leading-relaxed">
               Our villages provide homes, families and holistic care to over 3,000 children who receive everything they need to grow up healthy and whole—food, clothing, medical care, education and most of all the love of a mother.
@@ -89,7 +88,7 @@ export default function HomePage() {
             />
           </ScrollReveal>
           <div>
-            <span className="text-primary font-bold text-label-bold uppercase tracking-wider mb-2 block">Baby Katonda Talemwa</span>
+            <span className="text-primary font-bold text-label-bold uppercase tracking-wider mb-2 block">Emmanuel Baby's Home</span>
             <h2 className="font-headline text-headline-lg mb-6 leading-tight">
               Rescuing Orphaned
               <br />
@@ -101,41 +100,12 @@ export default function HomePage() {
               We provide critical care for infants, giving them the nutrition, medical support, and loving environment they need to thrive in their first years of life.
             </p>
             <Link
-              to="/baby-katonda"
+              to="/emmanuel-baby-home"
               className="inline-block bg-primary text-pure-white px-8 py-3 font-headline text-button-text uppercase rounded hover:brightness-110 transition-all"
             >
               Learn More
             </Link>
           </div>
-        </div>
-      </section>
-
-      <section className="py-section-padding bg-surface overflow-hidden">
-        <div className="max-w-(--spacing-container-max) mx-auto px-4 md:px-margin-desktop grid md:grid-cols-2 gap-20 items-center">
-          <div className="order-2 md:order-1">
-            <span className="text-primary font-bold text-label-bold uppercase tracking-wider mb-2 block">Katonda Talemwa Neighbourhood</span>
-            <h2 className="font-headline text-headline-lg mb-6 leading-tight">
-              Returning Dignity to Africa&apos;s
-              <br />
-              Greatest Resource, <span className="text-error font-extrabold">HER WOMEN</span>
-            </h2>
-            <p className="text-on-surface-variant mb-6 leading-relaxed">
-              Katonda Talemwa Neighbourhood empowers vulnerable women—many of whom are HIV+ or former child soldiers—by providing them with vocational training, literacy classes, and discipleship.
-            </p>
-            <p className="text-on-surface-variant mb-8 leading-relaxed">
-              Through our program, these women regain their dignity, learn to provide for their families, and become leaders in their communities.
-            </p>
-            <button className="bg-primary text-pure-white px-8 py-3 font-headline text-button-text uppercase rounded hover:brightness-110 transition-all">
-              Learn More
-            </button>
-          </div>
-          <ScrollReveal animation="zoom-in" className="order-1 md:order-2 relative group">
-            <div className="absolute -right-4 -bottom-4 w-full h-full bg-error/10 -z-10 group-hover:-right-6 group-hover:-bottom-6 transition-all" />
-            <div
-              className="w-full aspect-square bg-cover bg-center border-b-8 border-error"
-              style={{ backgroundImage: `url('${IMAGES.neighbourhood}')` }}
-            />
-          </ScrollReveal>
         </div>
       </section>
 
@@ -149,14 +119,15 @@ export default function HomePage() {
             />
           </ScrollReveal>
           <div>
-            <span className="text-primary font-bold text-label-bold uppercase tracking-wider mb-2 block">Keep a Girl in School</span>
+            <span className="text-primary font-bold text-label-bold uppercase tracking-wider mb-1 block">The Esther Mission</span>
+            <span className="text-xs font-bold uppercase tracking-widest text-vibrant-green mb-4 block">Keep a Girl in School</span>
             <h2 className="font-headline text-headline-lg mb-6 leading-tight">
               Because Every
               <br />
               <span className="text-trust-blue font-extrabold uppercase">Girl Matters</span>
             </h2>
             <p className="text-on-surface-variant mb-8 leading-relaxed">
-              We&apos;re committed to keeping girls in school by providing sanitary towels and health education, ensuring they don&apos;t miss out on their future because of their period.
+              We&apos;re committed to keeping girls in school through The Esther Mission by providing sanitary towels and health education, ensuring they don&apos;t miss out on their future because of their period.
             </p>
             <button className="bg-primary text-pure-white px-8 py-3 font-headline text-button-text uppercase rounded hover:brightness-110 transition-all">
               Learn More

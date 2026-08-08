@@ -19,6 +19,16 @@ const roles = [
     color: 'bg-vibrant-green',
   },
   {
+    icon: 'child_care',
+    category: 'Infant Care',
+    title: 'Nanny & Infant Caregiver',
+    duration: '2–8 weeks',
+    location: "Emmanuel Baby's Home",
+    desc: "Support our dedicated nannies at Emmanuel Baby's Home in feeding, holding, bathing, playing, and nurturing rescued infants & toddlers.",
+    spots: 6,
+    color: 'bg-action-yellow',
+  },
+  {
     icon: 'school',
     category: 'Education',
     title: 'Teacher / Tutor',
@@ -29,6 +39,26 @@ const roles = [
     color: 'bg-deep-black',
   },
   {
+    icon: 'psychology',
+    category: 'Social Work',
+    title: 'Social Worker & Family Counselor',
+    duration: '1–3 months',
+    location: 'Gulu / Kampala',
+    desc: 'Assist our social work team with child welfare assessments, family reunification preparation, trauma counseling, and community follow-ups.',
+    spots: 5,
+    color: 'bg-vibrant-green',
+  },
+  {
+    icon: 'church',
+    category: 'Pastoral & Discipleship',
+    title: 'Pastor in Training / Ministry Intern',
+    duration: '2–6 weeks',
+    location: 'Katonda Talemwa Church',
+    desc: 'Work alongside local pastors in youth mentorship, cell group leadership, village devotions, community outreach, and discipleship programmes.',
+    spots: 4,
+    color: 'bg-action-yellow',
+  },
+  {
     icon: 'camera_alt',
     category: 'Media',
     title: 'Photographer / Videographer',
@@ -36,7 +66,7 @@ const roles = [
     location: 'Kampala / Gulu',
     desc: 'Capture stories of transformation. Your images and films directly support fundraising and donor communications worldwide.',
     spots: 2,
-    color: 'bg-action-yellow',
+    color: 'bg-deep-black',
   },
   {
     icon: 'architecture',
@@ -66,7 +96,7 @@ const roles = [
     location: 'Kampala',
     desc: 'Teach computer literacy, web basics, and digital skills to vocational students and staff. Help modernise our operations.',
     spots: 2,
-    color: 'bg-vibrant-green',
+    color: 'bg-action-yellow',
   },
 ]
 
