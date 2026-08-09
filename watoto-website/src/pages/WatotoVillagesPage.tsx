@@ -156,38 +156,50 @@ export default function WatotoVillagesPage() {
           </div>
         </section>
 
-        {/* ── THE VILLAGE MODEL: Two-column narrative ── */}
-        <section id="the-model" className="py-24 bg-surface border-b border-outline-variant/30">
+        {/* ── HOW IT ALL STARTED: Two-column narrative ── */}
+        <section id="our-story" className="py-24 bg-surface border-b border-outline-variant/30">
           <div className="max-w-(--spacing-container-max) mx-auto px-4 md:px-margin-desktop grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
-            <div data-aos="fade-right" className="space-y-8">
+            <div data-aos="fade-right" className="space-y-7">
               <div className="space-y-3">
-                <span className="text-[10px] uppercase font-extrabold tracking-widest text-vibrant-green block">The Family Model</span>
+                <span className="text-[10px] uppercase font-extrabold tracking-widest text-vibrant-green block">
+                  How It All Started
+                </span>
                 <h2 className="font-headline text-4xl sm:text-5xl font-black uppercase text-deep-black leading-none">
                   Not an <br />
-                  <span className="text-vibrant-green">Orphanage.</span> <br />
-                  A Home.
+                  <span className="text-vibrant-green">Institution.</span> <br />
+                  A Real Family Home.
                 </h2>
                 <div className="w-16 h-1 bg-action-yellow" />
               </div>
-              <p className="text-sm text-on-surface-variant font-light leading-relaxed">
-                Unlike large institutional orphanages, a Katonda Talemwa Village is built around real family units. Each home contains one dedicated mother who commits to raising exactly seven children as her own — cooking for them, helping with homework, worshipping together, and growing old together.
-              </p>
-              <p className="text-sm text-on-surface-variant font-light leading-relaxed">
-                These are not just houses. They are addresses where children can say &ldquo;I live there, and that is my mother.&rdquo; The village includes a nursery, primary school, secondary school, vocational center, healthcare clinic, and community church — everything needed for a child to thrive without ever leaving the safety of community.
-              </p>
-              <div className="flex gap-6">
+
+              <div className="space-y-4 text-sm text-on-surface-variant font-light leading-relaxed">
+                <p>
+                  In 1989, having walked through childhood hardship and rejection, Pastor Emmanuel Nnyanzi and his wife Sarah gave their lives to Jesus Christ. During house-to-house evangelism, they met four young children whose mother had passed away and whose father suffered from severe mental illness.
+                </p>
+                <p>
+                  Living in a single rented room with barely enough for themselves, Pastor Emmanuel turned to Sarah with faith: <span className="font-semibold text-deep-black italic">&ldquo;These children do not need wealth—they need parental love and a home.&rdquo;</span> With courage and compassion, they took them in.
+                </p>
+                <p>
+                  From four children in one room, the family expanded to 12, then to 47 children. When school fees became an impossible hurdle, Pastor Emmanuel and Sarah made a bold sacrifice: selling their only house to build classrooms and dormitories so every child could study and thrive.
+                </p>
+                <p>
+                  Today, over 25 years later, more than 2,000 children have passed through Katonda Talemwa Homes—raised with unconditional love, spiritual discipleship, and education into doctors, pastors, teachers, and future leaders.
+                </p>
+              </div>
+
+              <div className="grid grid-cols-3 gap-4 pt-2">
                 <div className="border-l-4 border-vibrant-green pl-4">
-                  <div className="font-headline text-2xl font-black text-vibrant-green">7</div>
-                  <p className="text-xs uppercase font-bold tracking-wider text-on-surface-variant">Children per family</p>
+                  <div className="font-headline text-2xl font-black text-vibrant-green">1989</div>
+                  <p className="text-xs uppercase font-bold tracking-wider text-on-surface-variant">Founded in Faith</p>
                 </div>
                 <div className="border-l-4 border-action-yellow pl-4">
-                  <div className="font-headline text-2xl font-black text-deep-black">1</div>
-                  <p className="text-xs uppercase font-bold tracking-wider text-on-surface-variant">Dedicated Mother</p>
+                  <div className="font-headline text-2xl font-black text-deep-black">2,000+</div>
+                  <p className="text-xs uppercase font-bold tracking-wider text-on-surface-variant">Children Raised</p>
                 </div>
                 <div className="border-l-4 border-outline-variant pl-4">
-                  <div className="font-headline text-2xl font-black text-deep-black">∞</div>
-                  <p className="text-xs uppercase font-bold tracking-wider text-on-surface-variant">Years of love</p>
+                  <div className="font-headline text-2xl font-black text-deep-black">25+ Yrs</div>
+                  <p className="text-xs uppercase font-bold tracking-wider text-on-surface-variant">Of Home Care</p>
                 </div>
               </div>
             </div>
@@ -197,7 +209,7 @@ export default function WatotoVillagesPage() {
               <img
                 className="w-full aspect-video object-cover brightness-90 group-hover:brightness-100 transition-all duration-500"
                 src={IMAGES.villages}
-                alt="Katonda Talemwa Village"
+                alt="Katonda Talemwa Family Homes"
               />
               <div className="absolute inset-0 bg-deep-black/20 group-hover:bg-deep-black/30 transition-colors" />
               <div className="absolute inset-0 flex items-center justify-center">
@@ -207,7 +219,7 @@ export default function WatotoVillagesPage() {
               </div>
               <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-deep-black/80 to-transparent flex items-center justify-between">
                 <span className="text-pure-white text-xs font-bold flex items-center gap-2">
-                  <span className="w-2 h-2 bg-action-yellow" /> Watch: Life in the Village
+                  <span className="w-2 h-2 bg-action-yellow" /> Watch: Our Story of Hope &amp; Faith
                 </span>
                 <span className="text-pure-white text-xs font-mono bg-deep-black/60 px-2 py-0.5">2:45</span>
               </div>
