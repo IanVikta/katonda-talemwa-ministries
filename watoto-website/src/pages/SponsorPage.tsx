@@ -46,7 +46,7 @@ export default function SponsorPage() {
   const tabs = [
     { id: 'baby', label: 'Baby Rescue', icon: 'child_care' },
     { id: 'child', label: 'School Children', icon: 'school' },
-    { id: 'mother', label: 'Village Mothers', icon: 'diversity_1' },
+    { id: 'mother', label: 'Home Mother', icon: 'diversity_1' },
   ]
 
   const filtered = useMemo(() => {
@@ -207,8 +207,8 @@ export default function SponsorPage() {
                   <img className="w-full aspect-square object-cover rounded-none" src={IMAGES.sponsorImpact} alt="Smiling child with school book" />
                 </div>
                 <div className="absolute -bottom-6 -left-6 bg-vibrant-green text-pure-white p-6 hidden lg:block rounded-none shadow-xl max-w-[200px] border-t-4 border-action-yellow">
-                  <p className="font-headline text-3xl text-pure-white leading-none font-black mb-1">3,000+</p>
-                  <p className="text-xs font-bold text-action-yellow uppercase tracking-wider">Children Rescued</p>
+                  <p className="font-headline text-3xl text-pure-white leading-none font-black mb-1">2,000+</p>
+                  <p className="text-xs font-bold text-action-yellow uppercase tracking-wider">Children Impacted</p>
                 </div>
               </div>
 
@@ -233,18 +233,17 @@ export default function SponsorPage() {
             </div>
 
             {/* Category Tabs */}
-            <div data-aos="fade-up" data-aos-delay="100" className="grid grid-cols-2 lg:grid-cols-4 gap-3 max-w-3xl mx-auto">
+            <div data-aos="fade-up" data-aos-delay="100" className="grid grid-cols-1 sm:grid-cols-3 gap-3 max-w-2xl mx-auto">
               {tabs.map((tab) => {
                 const isActive = activeTab === tab.id
                 return (
                   <button
                     key={tab.id}
                     onClick={() => handleTabChange(tab.id)}
-                    className={`flex items-center justify-center gap-2 px-4 py-3.5 border text-xs font-headline font-black uppercase tracking-wider transition-all cursor-pointer rounded-none ${
-                      isActive
-                        ? 'bg-vibrant-green text-pure-white border-vibrant-green shadow-sm'
-                        : 'bg-surface border-outline-variant/60 text-on-surface hover:border-vibrant-green hover:text-vibrant-green'
-                    }`}
+                    className={`flex items-center justify-center gap-2 px-4 py-3.5 border text-xs font-headline font-black uppercase tracking-wider transition-all cursor-pointer rounded-none ${isActive
+                      ? 'bg-vibrant-green text-pure-white border-vibrant-green shadow-sm'
+                      : 'bg-surface border-outline-variant/60 text-on-surface hover:border-vibrant-green hover:text-vibrant-green'
+                      }`}
                   >
                     <MaterialIcon name={tab.icon || 'school'} className={`text-sm ${isActive ? 'text-action-yellow' : 'text-vibrant-green'}`} />
                     <span className="truncate">{tab.label}</span>
@@ -346,7 +345,7 @@ export default function SponsorPage() {
                         }}
                         className="w-full py-3.5 bg-vibrant-green hover:brightness-110 text-pure-white font-headline text-xs font-black uppercase tracking-widest active:scale-[0.98] transition-all flex items-center justify-center gap-2 cursor-pointer rounded-none border border-vibrant-green"
                       >
-                        Sponsor {child.name}
+                        {child.type === 'mother' ? `Support ${child.name}` : `Sponsor ${child.name}`}
                       </button>
                     </div>
                   </div>
@@ -443,9 +442,13 @@ export default function SponsorPage() {
                   <MaterialIcon name="check_circle" className="text-5xl" filled />
                 </div>
                 <div className="space-y-2">
-                  <h3 className="font-headline text-2xl font-black uppercase text-deep-black">Sponsorship Confirmed!</h3>
+                  <h3 className="font-headline text-2xl font-black uppercase text-deep-black">
+                    {sponsoringChild.type === 'mother' ? 'Support Confirmed!' : 'Sponsorship Confirmed!'}
+                  </h3>
                   <p className="text-sm text-on-surface-variant max-w-md mx-auto leading-relaxed">
-                    Thank you! You are now sponsoring <span className="font-bold text-vibrant-green">{sponsoringChild.name}</span>. A confirmation email has been sent to <span className="font-semibold text-deep-black">{sponsorForm.email}</span>.
+                    Thank you! You are now {sponsoringChild.type === 'mother' ? 'supporting' : 'sponsoring'}{' '}
+                    <span className="font-bold text-vibrant-green">{sponsoringChild.name}</span>. A confirmation email has been sent to{' '}
+                    <span className="font-semibold text-deep-black">{sponsorForm.email}</span>.
                   </p>
                 </div>
                 <div className="p-4 bg-surface-container-low border border-outline-variant/30 text-left max-w-md w-full rounded-none">
@@ -484,8 +487,12 @@ export default function SponsorPage() {
                 {/* Checkout side */}
                 <div className="md:w-7/12 p-8 md:p-10 space-y-6 flex flex-col justify-between">
                   <div className="space-y-1">
-                    <h4 className="font-headline text-lg font-black uppercase text-deep-black">Sponsorship Details</h4>
-                    <p className="text-xs text-on-surface-variant">Complete this form to start your recurring sponsorship.</p>
+                    <h4 className="font-headline text-lg font-black uppercase text-deep-black">
+                      {sponsoringChild.type === 'mother' ? 'Support Details' : 'Sponsorship Details'}
+                    </h4>
+                    <p className="text-xs text-on-surface-variant">
+                      Complete this form to start your recurring {sponsoringChild.type === 'mother' ? 'support' : 'sponsorship'}.
+                    </p>
                   </div>
 
                   <form
@@ -525,11 +532,10 @@ export default function SponsorPage() {
                           <button
                             key={pm.id} type="button"
                             onClick={() => setSponsorForm({ ...sponsorForm, method: pm.id })}
-                            className={`py-2 px-1 border flex flex-col items-center justify-center gap-1.5 transition-all cursor-pointer rounded-none ${
-                              sponsorForm.method === pm.id
-                                ? 'bg-vibrant-green/10 border-vibrant-green text-vibrant-green'
-                                : 'bg-surface border-outline-variant/40 hover:bg-surface-container-low text-on-surface-variant'
-                            }`}
+                            className={`py-2 px-1 border flex flex-col items-center justify-center gap-1.5 transition-all cursor-pointer rounded-none ${sponsorForm.method === pm.id
+                              ? 'bg-vibrant-green/10 border-vibrant-green text-vibrant-green'
+                              : 'bg-surface border-outline-variant/40 hover:bg-surface-container-low text-on-surface-variant'
+                              }`}
                           >
                             <MaterialIcon name={pm.icon} className="text-sm" />
                             <span className="text-[10px] font-bold uppercase tracking-wider text-center">{pm.label}</span>
@@ -564,7 +570,7 @@ export default function SponsorPage() {
                           Processing...
                         </>
                       ) : (
-                        <>Sponsor $38/mo <MaterialIcon name="arrow_forward" className="text-xs" /></>
+                        <>{sponsoringChild.type === 'mother' ? 'Support' : 'Sponsor'} $38/mo <MaterialIcon name="arrow_forward" className="text-xs" /></>
                       )}
                     </button>
                   </form>

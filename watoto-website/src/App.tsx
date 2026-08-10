@@ -13,6 +13,7 @@ import VolunteerPage from './pages/VolunteerPage'
 import ExchangeProgramPage from './pages/ExchangeProgramPage'
 import PrayWithUsPage from './pages/PrayWithUsPage'
 import CareersPage from './pages/CareersPage'
+import GalleryPage from './pages/GalleryPage'
 import CookieConsent from './components/CookieConsent'
 
 export default function App() {
@@ -26,6 +27,7 @@ export default function App() {
         <Route path="/baby-katonda" element={<Navigate to="/emmanuel-baby-home" replace />} />
         <Route path="/keep-a-girl" element={<KeepGirlInSchoolPage />} />
         <Route path="/katonda-church" element={<ChurchPage />} />
+        <Route path="/gallery" element={<GalleryPage />} />
         <Route path="/sponsor" element={<SponsorPage />} />
         <Route path="/who-we-are" element={<WhoWeArePage />} />
         <Route path="/contact" element={<ContactPage />} />

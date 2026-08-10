@@ -34,7 +34,7 @@ export default function WatotoVillagesPage() {
 
           <div className="relative z-10 max-w-(--spacing-container-max) mx-auto px-4 md:px-margin-desktop my-auto w-full py-12 lg:py-16">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
-              
+
               {/* Left Column: Bold Headline & Badges */}
               <div data-aos="fade-right" className="lg:col-span-7 space-y-6">
                 <div className="inline-flex items-center gap-2.5 border-l-4 border-action-yellow bg-deep-black/80 backdrop-blur-sm px-4 py-2 text-pure-white">
@@ -44,7 +44,7 @@ export default function WatotoVillagesPage() {
                 </div>
 
                 <h1 className="font-headline text-5xl sm:text-6xl xl:text-7xl font-black uppercase leading-[0.95] tracking-tight text-pure-white">
-                  A Village. <br />
+                  A Home. <br />
                   A Family. <br />
                   <span className="text-action-yellow">A Future.</span>
                 </h1>
@@ -58,7 +58,7 @@ export default function WatotoVillagesPage() {
                   <div className="border border-pure-white/20 bg-deep-black/70 backdrop-blur-sm p-4 flex flex-col justify-between gap-3 rounded-none">
                     <MaterialIcon name="cottage" className="text-action-yellow text-2xl" />
                     <span className="text-[11px] font-headline font-black uppercase tracking-wider text-pure-white">
-                      8 Children Per Family
+                      A Christ centered home
                     </span>
                   </div>
                   <div className="border border-pure-white/20 bg-deep-black/70 backdrop-blur-sm p-4 flex flex-col justify-between gap-3 rounded-none">
@@ -79,7 +79,7 @@ export default function WatotoVillagesPage() {
               {/* Right Column: Sharp Mission Box */}
               <div data-aos="fade-left" data-aos-delay="150" className="lg:col-span-5">
                 <div className="bg-deep-black/85 backdrop-blur-md border border-pure-white/20 border-t-4 border-t-action-yellow p-8 sm:p-10 space-y-6 shadow-2xl rounded-none relative">
-                  
+
                   <div className="space-y-2">
                     <span className="text-[10px] font-headline font-extrabold uppercase tracking-widest text-vibrant-green block border-l-3 border-vibrant-green pl-2.5">
                       The Heart of Our Villages
@@ -90,7 +90,7 @@ export default function WatotoVillagesPage() {
                   </div>
 
                   <p className="text-sm font-light text-pure-white/85 leading-relaxed">
-                    Where orphaned and vulnerable children across Uganda and South Sudan find not just shelter, but a real mother, real brothers &amp; sisters, and the unconditional love of a true family.
+                    Where orphaned and vulnerable children across Uganda  find not just shelter, but a real mother, real brothers &amp; sisters, and the unconditional love of a true family.
                   </p>
 
                   <div className="pt-2 flex flex-col sm:flex-row gap-3">
@@ -98,7 +98,7 @@ export default function WatotoVillagesPage() {
                       to="/sponsor?tab=mother"
                       className="flex-1 bg-vibrant-green hover:brightness-110 active:scale-95 text-pure-white font-headline text-xs font-black uppercase tracking-widest py-4 px-5 text-center flex items-center justify-center gap-2 transition-all rounded-none shadow-md"
                     >
-                      <span>Sponsor a Mother</span>
+                      <span>Support Today</span>
                       <MaterialIcon name="favorite" className="text-action-yellow text-sm" />
                     </Link>
                     <Link
@@ -117,7 +117,7 @@ export default function WatotoVillagesPage() {
                       <div className="text-[10px] uppercase font-bold tracking-wider text-pure-white/70">Direct Impact</div>
                     </div>
                     <div className="border-l-2 border-vibrant-green pl-3">
-                      <div className="font-headline text-xl font-black text-vibrant-green">3,000+</div>
+                      <div className="font-headline text-xl font-black text-vibrant-green">2,000+</div>
                       <div className="text-[10px] uppercase font-bold tracking-wider text-pure-white/70">Children Raised</div>
                     </div>
                   </div>
@@ -141,12 +141,10 @@ export default function WatotoVillagesPage() {
 
         {/* ── KEY NUMBERS STRIP ── */}
         <section className="bg-vibrant-green border-b-4 border-action-yellow">
-          <div className="max-w-(--spacing-container-max) mx-auto px-4 md:px-margin-desktop grid grid-cols-2 md:grid-cols-4 divide-x divide-pure-white/20">
+          <div className="max-w-3xl mx-auto px-4 md:px-margin-desktop grid grid-cols-2 divide-x divide-pure-white/20">
             {[
-              { stat: '10', suffix: '+', label: 'Village Communities' },
-              { stat: '3,000', suffix: '+', label: 'Children in Care' },
-              { stat: '400', suffix: '+', label: 'Village Mothers' },
-              { stat: '30', suffix: '+', label: 'Years of Ministry' },
+              { stat: '2,000', suffix: '+', label: 'Children in Care' },
+              { stat: '25', suffix: '+', label: 'Years of Ministry' },
             ].map(({ stat, suffix, label }, i) => (
               <div key={label} data-aos="fade-up" data-aos-delay={i * 80} className="py-10 px-6 text-pure-white text-center">
                 <div className="font-headline text-3xl sm:text-4xl font-black text-action-yellow">{stat}{suffix}</div>
@@ -245,7 +243,7 @@ export default function WatotoVillagesPage() {
                 { icon: 'medical_services', title: 'Healthcare', desc: 'On-site clinics provide immunisations, daily wellness monitoring, dental care, optical screening, and emergency medical response.' },
                 { icon: 'church', title: 'Spiritual Discipleship', desc: 'Faith is foundational. Weekly worship, home devotions, Bible study, and pastoral mentoring build children with character that lasts.' },
                 { icon: 'sports_soccer', title: 'Sports & Fitness', desc: 'Every child participates in structured sports — football, netball, athletics — building teamwork, discipline, and physical wellbeing.' },
-                { icon: 'music_note', title: 'Worship Academy', desc: 'Instrument lessons in keyboard, guitar, drums, and vocals. Our children perform across Uganda and internationally.' },
+                { icon: 'music_note', title: 'Worship Academy', desc: 'Instrument lessons in keyboard, guitar, drums, and vocals. Our children perform across Uganda and we look forward to them performing internationally.' },
                 { icon: 'eco', title: 'Sustainability Projects', desc: 'Village gardens, poultry farms, and renewable energy systems teach life skills while reducing environmental footprint.' },
               ].map((pillar, i) => (
                 <div
@@ -310,7 +308,7 @@ export default function WatotoVillagesPage() {
                   location: 'Kampala Village, Uganda',
                   quote: 'When my husband died I thought my life was over. Katonda Talemwa gave me 7 children and a purpose.',
                   fallbackDesc: 'Phiona became a village mother in 2010. She has raised over 15 children and continues to mentor new mothers joining the programme.',
-                  cta: 'Sponsor a Mother',
+                  cta: 'Support a home',
                   link: '/sponsor?tab=mother',
                   bgAccent: 'bg-secondary',
                 },
@@ -404,7 +402,7 @@ export default function WatotoVillagesPage() {
                 to="/sponsor?tab=mother"
                 className="text-center border border-pure-white/30 text-pure-white font-headline text-xs font-black uppercase tracking-widest px-8 py-4 hover:border-pure-white hover:bg-pure-white/10 transition-all rounded-none"
               >
-                Sponsor a Village Mother
+                Support a Home
               </Link>
             </div>
           </div>

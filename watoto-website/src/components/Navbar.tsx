@@ -25,6 +25,7 @@ const menuConfig: MenuItem[] = [
       { label: "Emmanuel Baby's Home", to: '/emmanuel-baby-home', icon: 'child_friendly', desc: 'Newborn rescue & shelter' },
       { label: 'The Esther Mission', to: '/keep-a-girl', icon: 'female', desc: 'Keep a girl in school' },
       { label: 'Katonda Talemwa Church', to: '/katonda-church', icon: 'church', desc: 'Community & spiritual life' },
+      { label: 'Photo Gallery', to: '/gallery', icon: 'photo_library', desc: 'Moments of hope & transformation' },
     ]
   },
   {
@@ -32,7 +33,6 @@ const menuConfig: MenuItem[] = [
     submenu: [
       { label: 'Sponsor a Child', to: '/sponsor?tab=child', icon: 'child_care', desc: 'Education & healthcare support' },
       { label: 'Sponsor a Baby', to: '/emmanuel-baby-home', icon: 'baby_changing_station', desc: 'Emergency nutrition & care' },
-      { label: 'Sponsor a Katonda Talemwa Mother', to: '/katonda-villages', icon: 'diversity_1', desc: 'Village family support' },
     ]
   },
   {

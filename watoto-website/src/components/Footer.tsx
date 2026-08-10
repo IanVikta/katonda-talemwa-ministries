@@ -64,6 +64,7 @@ export function UnifiedFooter() {
                 { label: "Emmanuel Baby's Home", to: '/emmanuel-baby-home' },
                 { label: 'The Esther Mission', to: '/keep-a-girl' },
                 { label: 'Katonda Talemwa Church', to: '/katonda-church' },
+                { label: 'Photo Gallery', to: '/gallery' },
               ].map((link) => (
                 <li key={link.label}>
                   <Link
