@@ -84,8 +84,8 @@ const galleryItems: GalleryItem[] = [
     title: 'Graduation to Forever Family',
     category: 'graduation',
     image: '/images/villages-family.jpg',
-    caption: 'Thriving babies graduating to their forever home in a Katonda Talemwa village family.',
-    location: 'KTM Village Home',
+    caption: 'Thriving babies graduating to their forever home in a Katonda Talemwa home.',
+    location: 'KTM Home',
   },
   {
     id: 'g6',
@@ -218,7 +218,7 @@ export default function BabyWatotoPage() {
             {/* Floating stat */}
             <div className="absolute bottom-8 left-8 bg-vibrant-green text-pure-white p-6 border-t-4 border-action-yellow max-w-[180px] rounded-none">
               <div className="font-headline text-3xl font-black text-action-yellow">
-                <CountUp end={3000} suffix="+" />
+                <CountUp end={300} suffix="+" />
               </div>
               <p className="text-xs font-bold uppercase tracking-wider mt-1 opacity-90">Babies Rescued</p>
             </div>
@@ -230,7 +230,7 @@ export default function BabyWatotoPage() {
           <div className="max-w-(--spacing-container-max) mx-auto px-4 md:px-margin-desktop grid grid-cols-2 md:grid-cols-4 gap-8 text-center text-pure-white">
             {[
               { end: 24, suffix: '/7', label: 'Emergency Rescue' },
-              { end: 3000, suffix: '+', label: 'Babies Rescued' },
+              { end: 300, suffix: '+', label: 'Babies Rescued' },
               { end: 100, suffix: '%', label: 'Medical Support' },
               { end: 12, suffix: ' Yrs', label: 'Established 2014 (12 Yrs)' },
             ].map(({ end, suffix, label }) => (
@@ -515,7 +515,7 @@ export default function BabyWatotoPage() {
                     '1:4 nanny-to-baby dedicated care ratio',
                     'Full clinical monitoring and immunisations',
                     'Custom nutrition formula and solid foods',
-                    'Transition into a forever village family',
+                    'Transition into a forever home family',
                     'Personal progress letters sent to your inbox',
                   ].map((item) => (
                     <div key={item} className="py-3.5 px-5 flex items-center gap-3 text-sm text-deep-black font-semibold">
@@ -577,11 +577,10 @@ export default function BabyWatotoPage() {
                   <button
                     key={tab.id}
                     onClick={() => setActiveGalleryCategory(tab.id)}
-                    className={`px-4 py-2 text-xs font-headline font-bold uppercase tracking-wider transition-all rounded-none cursor-pointer border ${
-                      activeGalleryCategory === tab.id
-                        ? 'bg-deep-black text-action-yellow border-deep-black shadow-sm'
-                        : 'bg-surface-container-low text-on-surface-variant border-outline-variant/60 hover:border-deep-black'
-                    }`}
+                    className={`px-4 py-2 text-xs font-headline font-bold uppercase tracking-wider transition-all rounded-none cursor-pointer border ${activeGalleryCategory === tab.id
+                      ? 'bg-deep-black text-action-yellow border-deep-black shadow-sm'
+                      : 'bg-surface-container-low text-on-surface-variant border-outline-variant/60 hover:border-deep-black'
+                      }`}
                   >
                     {tab.label}
                   </button>
@@ -604,7 +603,7 @@ export default function BabyWatotoPage() {
                     alt={item.title}
                     className="w-full h-full object-cover group-hover:scale-110 group-hover:opacity-85 transition-all duration-700 filter brightness-95"
                   />
-                  
+
                   {/* Category Pill */}
                   <div className="absolute top-3 left-3 bg-deep-black/80 backdrop-blur-sm text-action-yellow text-[9px] font-extrabold uppercase tracking-widest px-2.5 py-1 z-10 border-l-2 border-action-yellow">
                     {item.location}
@@ -637,7 +636,7 @@ export default function BabyWatotoPage() {
               </h2>
               <div className="w-16 h-1 bg-action-yellow mx-auto" />
               <p className="text-sm text-on-surface-variant font-light leading-relaxed">
-                Reflections from sponsors, clinical nurses, village mothers, and partners witnessing miracles every day.
+                Reflections from sponsors, clinical nurses, home mothers, and partners witnessing miracles every day.
               </p>
             </div>
 

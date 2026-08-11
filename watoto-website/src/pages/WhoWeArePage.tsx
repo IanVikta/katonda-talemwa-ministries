@@ -39,7 +39,7 @@ export default function WhoWeArePage() {
         <section className="py-20 bg-surface border-b border-outline-variant/30">
           <div className="max-w-(--spacing-container-max) mx-auto px-4 md:px-margin-desktop">
             <div className="grid lg:grid-cols-12 gap-12 items-center">
-              
+
               {/* Left Column: Organization Intro */}
               <div className="lg:col-span-7 space-y-6">
                 <span className="text-vibrant-green font-bold text-xs uppercase tracking-wider block">Our Story</span>
@@ -97,7 +97,7 @@ export default function WhoWeArePage() {
         <section className="py-20 bg-surface-container-low">
           <div className="max-w-(--spacing-container-max) mx-auto px-4 md:px-margin-desktop">
             <div className="grid lg:grid-cols-12 gap-12 items-center">
-              
+
               {/* Left Column: Image Placeholder */}
               <div className="lg:col-span-5 relative order-2 lg:order-1">
                 <div className="absolute -left-4 -bottom-4 w-full h-full bg-secondary/10 -z-10 rounded-lg" />
@@ -151,7 +151,7 @@ export default function WhoWeArePage() {
         {/* Project Highlights Section */}
         <section className="py-20 bg-surface border-b border-outline-variant/30">
           <div className="max-w-(--spacing-container-max) mx-auto px-4 md:px-margin-desktop space-y-12">
-            
+
             <div className="text-center space-y-4 max-w-2xl mx-auto">
               <span className="text-vibrant-green font-bold text-xs uppercase tracking-wider block">Impact Pillars</span>
               <h2 className="font-headline text-headline-lg text-deep-black leading-none">
@@ -170,7 +170,7 @@ export default function WhoWeArePage() {
                   <div className="space-y-2">
                     <h3 className="font-headline text-lg font-bold text-deep-black uppercase">Child Sponsorship</h3>
                     <p className="text-xs text-on-surface-variant font-light leading-relaxed">
-                      We support over 2,000 children in our child care program. These children are provided with nutritious food, clothing, health care, shelter, and quality education. Under this project, we have impacted up to 50,015 children since we established our very first school.
+                      We support over 800 children in our child care program. These children are provided with nutritious food, clothing, health care, shelter, and quality education. Under this project, we have impacted up to 50,015 children since we established our very first school.
                     </p>
                   </div>
                 </div>
@@ -198,9 +198,9 @@ export default function WhoWeArePage() {
                 </div>
                 <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
                   <div className="space-y-2">
-                    <h3 className="font-headline text-lg font-bold text-deep-black uppercase">Child Care: Omwana House</h3>
+                    <h3 className="font-headline text-lg font-bold text-deep-black uppercase">Child Care: EMMANUEL BABIES HOME</h3>
                     <p className="text-xs text-on-surface-variant font-light leading-relaxed">
-                      Established in 2016, Omwana House Child Care Home takes in orphaned and abandoned babies from infancy to 8 years old to give them a healthy start. The home depends on donor support to care for babies who have lost mothers, or been abandoned in hospitals with no known relatives.
+                      Established in 2016, Emmanuel Babies Home takes in orphaned and abandoned babies from infancy to 8 years old to give them a healthy start. The home depends on donor support to care for babies who have lost mothers, or been abandoned in hospitals with no known relatives.
                     </p>
                   </div>
                 </div>
@@ -213,7 +213,7 @@ export default function WhoWeArePage() {
         {/* Contribution Goals & Calling */}
         <section className="py-20 bg-surface-container-low">
           <div className="max-w-(--spacing-container-max) mx-auto px-4 md:px-margin-desktop grid lg:grid-cols-12 gap-12 items-center">
-            
+
             {/* Left: Contribution List */}
             <div className="lg:col-span-7 space-y-6">
               <span className="text-secondary font-bold text-xs uppercase tracking-wider block">Financial Transparency</span>
@@ -223,7 +223,7 @@ export default function WhoWeArePage() {
               <p className="text-on-surface-variant font-light text-base leading-relaxed">
                 Every resource helps us pay medical nannies, clinic nannies, purchase supplies, and provide nutrition. Here is how your donation directly impacts KTM's services:
               </p>
-              
+
               <div className="grid sm:grid-cols-2 gap-4 pt-2">
                 {[
                   { cost: '$25', desc: 'Diagnose malaria and typhoid' },
@@ -249,10 +249,9 @@ export default function WhoWeArePage() {
               <div className="p-4 bg-vibrant-green/5 border border-vibrant-green/10 rounded-lg space-y-2">
                 <p className="font-headline text-xs font-black uppercase tracking-wider text-vibrant-green">Special Capital Campaigns & Equipment:</p>
                 <ul className="text-xs text-on-surface-variant space-y-1.5 list-disc pl-5 font-medium">
-                  <li><strong>$8,000:</strong> Finishing teacher's housing in Mbarara</li>
+                  <li><strong>$8,000:</strong> Finishing teacher's housing in Kyasenya</li>
                   <li><strong>$20,000:</strong> Implementing solar power for a school</li>
                   <li><strong>$45,000:</strong> Miracle Bus transport to safely move staff & kids across East Africa</li>
-                  <li><strong>$50,000:</strong> Installing a modern science laboratory</li>
                 </ul>
               </div>
             </div>

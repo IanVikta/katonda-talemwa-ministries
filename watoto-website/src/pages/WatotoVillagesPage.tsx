@@ -182,7 +182,7 @@ export default function WatotoVillagesPage() {
                   From four children in one room, the family expanded to 12, then to 47 children. When school fees became an impossible hurdle, Pastor Emmanuel and Sarah made a bold sacrifice: selling their only house to build classrooms and dormitories so every child could study and thrive.
                 </p>
                 <p>
-                  Today, over 25 years later, more than 2,000 children have passed through Katonda Talemwa Homes—raised with unconditional love, spiritual discipleship, and education into doctors, pastors, teachers, and future leaders.
+                  Today, over 25 years later, more than 2,000 children have passed through the Ministry they started and later called Katonda Talemwa Ministries,raised with unconditional love, spiritual discipleship, and education into doctors, pastors, teachers, and future leaders.
                 </p>
               </div>
 
@@ -229,7 +229,7 @@ export default function WatotoVillagesPage() {
         <section className="py-24 bg-surface-container-low border-b border-outline-variant/30">
           <div className="max-w-(--spacing-container-max) mx-auto px-4 md:px-margin-desktop space-y-14">
             <div data-aos="fade-up" className="text-center space-y-3 max-w-xl mx-auto">
-              <span className="text-[10px] uppercase font-extrabold tracking-widest text-vibrant-green block">What the Village Provides</span>
+              <span className="text-[10px] uppercase font-extrabold tracking-widest text-vibrant-green block">What the home Provides</span>
               <h2 className="font-headline text-4xl font-black uppercase text-deep-black leading-none">
                 Six Pillars of <br />
                 <span className="text-vibrant-green">Holistic Care</span>
@@ -389,7 +389,7 @@ export default function WatotoVillagesPage() {
               their story.
             </h2>
             <p className="text-sm font-light opacity-90 leading-relaxed">
-              By sponsoring a child or mother in a Katonda Talemwa Village, you&apos;re not just sending money — you&apos;re providing a family, an education, and a future filled with hope and dignity.
+              By sponsoring a child or mother in a Katonda Talemwa home, you&apos;re not just sending money — you&apos;re providing a family, an education, and a future filled with hope and dignity.
             </p>
             <div className="flex flex-col gap-3">
               <Link
