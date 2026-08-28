@@ -27,7 +27,7 @@ const jobs = [
     location: 'Mbarara Campus, Uganda',
     type: 'Full-Time',
     experience: '2+ Years',
-    desc: 'Lead our early development class for rescued toddlers. Design sensory activities, monitor speech and motor skills, and foster a joyful learning environment.',
+    desc: 'Lead our early development class for infants & toddlers. Design sensory activities, monitor speech and motor skills, and foster a joyful learning environment.',
     requirements: [
       'Diploma/Degree in Early Childhood Development or Education.',
       'Patient, energetic character with high emotional intelligence.',

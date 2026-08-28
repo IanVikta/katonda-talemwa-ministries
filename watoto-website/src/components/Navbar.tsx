@@ -22,7 +22,7 @@ const menuConfig: MenuItem[] = [
     label: 'What We Do',
     submenu: [
       { label: 'Katonda Talemwa Ministries', to: '/katonda-villages', icon: 'holiday_village', desc: 'Family-style home care' },
-      { label: "Emmanuel Baby's Home", to: '/emmanuel-baby-home', icon: 'child_friendly', desc: 'Newborn rescue & shelter' },
+      { label: "Emmanuel Baby's Home", to: '/emmanuel-baby-home', icon: 'child_friendly', desc: 'Newborn care & shelter' },
       { label: 'The Esther Mission', to: '/keep-a-girl', icon: 'female', desc: 'Keep a girl in school' },
       { label: 'Katonda Talemwa Church', to: '/katonda-church', icon: 'church', desc: 'Community & spiritual life' },
       { label: 'Photo Gallery', to: '/gallery', icon: 'photo_library', desc: 'Moments of hope & transformation' },

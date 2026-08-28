@@ -71,7 +71,7 @@ export default function DonatePage() {
               Your Gift <span className="text-primary font-black">Changes Stories</span>
             </h2>
             <p className="text-body-md text-on-surface-variant max-w-3xl mx-auto leading-relaxed">
-              Katonda Talemwa Ministries relies on the generosity of supporters around the globe to carry out its operations in Uganda and South Sudan. Whether you support our child villages, baby rescue home, education & healthcare, or spiritual missions, your seed makes a measurable difference. 100% of your donations go directly to funding our local programs.
+              Katonda Talemwa Ministries relies on the generosity of supporters around the globe to carry out its operations in Uganda and South Sudan. Whether you support our child villages, baby home, education & healthcare, or spiritual missions, your seed makes a measurable difference. 100% of your donations go directly to funding our local programs.
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-6">
               <div className="p-4 bg-surface border border-outline-variant/40 rounded-xl space-y-2 hover:shadow-md transition-shadow">

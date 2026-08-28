@@ -44,7 +44,7 @@ export default function SponsorPage() {
   const [officeDropdownOpen, setOfficeDropdownOpen] = useState(false)
 
   const tabs = [
-    { id: 'baby', label: 'Baby Rescue', icon: 'child_care' },
+    { id: 'baby', label: 'Baby Care', icon: 'child_care' },
     { id: 'child', label: 'School Children', icon: 'school' },
     { id: 'mother', label: 'Home Mother', icon: 'diversity_1' },
   ]

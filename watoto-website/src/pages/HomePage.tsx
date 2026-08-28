@@ -51,15 +51,15 @@ export default function HomePage() {
           <div className="order-2 md:order-1">
             <span className="text-primary font-bold text-label-bold uppercase tracking-wider mb-2 block">Katonda Talemwa Ministries</span>
             <h2 className="font-headline text-headline-lg mb-6 leading-tight">
-              Rescuing Children,
+              Nurturing Children,
               <br />
               Raising Leaders, <span className="text-trust-blue font-extrabold uppercase">Rebuilding Lives</span>
             </h2>
-            <p className="text-on-surface-variant mb-8 leading-relaxed">
-              Katonda Talemwa Ministries is a safe place where orphaned and vulnerable children can truly experience the love of a family.
+            <p className="text-on-surface-variant mb-6 leading-relaxed">
+              Katonda Talemwa Ministries provides a sanctuary of love and hope where orphaned and vulnerable children can truly experience the comfort of a family.
             </p>
             <p className="text-on-surface-variant mb-8 leading-relaxed">
-              Our villages provide homes, families and holistic care to over 3,000 children who receive everything they need to grow up healthy and whole—food, clothing, medical care, education and most of all the love of a mother.
+              We provide family homes and holistic care to over 3,000 children who receive everything they need to grow up healthy and whole—nutrition, clothing, healthcare, quality education, and most of all the love of a mother.
             </p>
             <Link
               to="/katonda-villages"
@@ -174,7 +174,7 @@ export default function HomePage() {
               The Katonda Talemwa Children&apos;s Choir has traveled international stages since 1994, sharing the love of Jesus through high-energy African song and dance, and powerful testimonies.
             </p>
             <p className="text-on-surface-variant mb-8 leading-relaxed">
-              Each child in the choir has been rescued from vulnerability and represents the hope and future of a rebuilt Africa.
+              Each child in the choir has risen above hardship and represents the hope and future of a rebuilt Africa.
             </p>
             <a
               href="#"

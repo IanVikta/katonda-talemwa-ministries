@@ -108,7 +108,7 @@ const galleryItems: GalleryItem[] = [
     title: 'Immunizations & Checkups',
     category: 'medical',
     image: '/images/DSC_8368.jpg',
-    caption: 'Full immunization schedule and pediatric checkups given to every rescued baby.',
+    caption: 'Full immunization schedule and pediatric checkups given to every baby in our care.',
     location: 'Clinical Triage',
   },
 ]
@@ -183,13 +183,13 @@ export default function BabyWatotoPage() {
                 Emmanuel Baby's Home — Est. 2014 (12 Years of Care)
               </span>
               <h1 className="font-headline text-5xl sm:text-6xl font-black uppercase leading-none tracking-tight">
-                Rescued. <br />
+                Welcomed. <br />
                 <span className="text-action-yellow">Loved.</span> <br />
                 Restored.
               </h1>
             </div>
             <p data-aos="fade-right" data-aos-delay="100" className="text-base font-light opacity-90 leading-relaxed max-w-md">
-              Established in 2014, Emmanuel Baby's Home has spent 12 years answering the 24/7 call to rescue and has been built around raising God fearing children in a home community.
+              Established in 2014, Emmanuel Baby's Home has spent 12 years answering the 24/7 call to care and nurture vulnerable infants, raising them in a loving, God-fearing home community.
             </p>
             <div data-aos="fade-right" data-aos-delay="200" className="flex flex-wrap gap-4 pt-2">
               <Link
@@ -199,10 +199,10 @@ export default function BabyWatotoPage() {
                 Sponsor a Baby <MaterialIcon name="favorite" className="text-action-yellow text-sm" />
               </Link>
               <a
-                href="#rescue-process"
+                href="#care-process"
                 className="border border-pure-white/50 text-pure-white font-headline text-xs font-black uppercase tracking-widest px-8 py-4 hover:border-pure-white hover:bg-pure-white/10 transition-all rounded-none"
               >
-                How We Rescue
+                How We Care
               </a>
             </div>
           </div>
@@ -212,7 +212,7 @@ export default function BabyWatotoPage() {
             <img
               className="w-full h-full object-cover object-center absolute inset-0"
               src={IMAGES.babyHero}
-              alt="Emmanuel Baby's Home rescue"
+              alt="Emmanuel Baby's Home care"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-deep-black/60 to-transparent" />
             {/* Floating stat */}
@@ -220,7 +220,7 @@ export default function BabyWatotoPage() {
               <div className="font-headline text-3xl font-black text-action-yellow">
                 <CountUp end={300} suffix="+" />
               </div>
-              <p className="text-xs font-bold uppercase tracking-wider mt-1 opacity-90">Babies Rescued</p>
+              <p className="text-xs font-bold uppercase tracking-wider mt-1 opacity-90">Babies Welcomed</p>
             </div>
           </div>
         </section>
@@ -229,8 +229,8 @@ export default function BabyWatotoPage() {
         <section className="bg-vibrant-green py-10">
           <div className="max-w-(--spacing-container-max) mx-auto px-4 md:px-margin-desktop grid grid-cols-2 md:grid-cols-4 gap-8 text-center text-pure-white">
             {[
-              { end: 24, suffix: '/7', label: 'Emergency Rescue' },
-              { end: 300, suffix: '+', label: 'Babies Rescued' },
+              { end: 24, suffix: '/7', label: 'Emergency Care' },
+              { end: 300, suffix: '+', label: 'Babies Welcomed' },
               { end: 100, suffix: '%', label: 'Medical Support' },
               { end: 12, suffix: ' Yrs', label: 'Established 2014 (12 Yrs)' },
             ].map(({ end, suffix, label }) => (
@@ -244,11 +244,11 @@ export default function BabyWatotoPage() {
           </div>
         </section>
 
-        {/* ── RESCUE PROCESS: Horizontal Steps ── */}
-        <section id="rescue-process" className="py-24 bg-surface border-b border-outline-variant/30">
+        {/* ── CARE PROCESS: Horizontal Steps ── */}
+        <section id="care-process" className="py-24 bg-surface border-b border-outline-variant/30">
           <div className="max-w-(--spacing-container-max) mx-auto px-4 md:px-margin-desktop space-y-16">
             <div data-aos="fade-up" className="space-y-3">
-              <span className="text-[10px] uppercase font-extrabold tracking-widest text-vibrant-green block">The Rescue Journey</span>
+              <span className="text-[10px] uppercase font-extrabold tracking-widest text-vibrant-green block">The Care Journey</span>
               <h2 className="font-headline text-4xl sm:text-5xl font-black uppercase text-deep-black leading-none">
                 From Crisis <br />
                 <span className="text-vibrant-green">to Belonging</span>
@@ -259,7 +259,7 @@ export default function BabyWatotoPage() {
             {/* Step cards — horizontal editorial strip */}
             <div className="grid grid-cols-1 md:grid-cols-4 gap-0 border border-outline-variant/60">
               {[
-                { num: '01', icon: 'emergency', title: 'Discovery & Alert', desc: 'Neighbours, hospitals, and local police alert our 24/7 rescue hotline the moment a baby is found in distress.' },
+                { num: '01', icon: 'emergency', title: 'Discovery & Alert', desc: 'Neighbours, hospitals, and local police alert our 24/7 emergency hotline the moment a baby is found in distress.' },
                 { num: '02', icon: 'local_hospital', title: 'Stabilisation', desc: 'Our clinical nurses assess and stabilise the baby immediately. Malnourished infants receive emergency IV nutrition and warmth.' },
                 { num: '03', icon: 'child_care', title: '1:4 Nanny Care', desc: 'Each baby is assigned a dedicated nanny who tracks feeding schedules, milestones, and emotional development around the clock.' },
                 { num: '04', icon: 'home', title: 'Forever Family', desc: 'Once healthy and stable, babies graduate into a permanent Katonda Talemwa village home with a mother and siblings.' },
@@ -338,7 +338,7 @@ export default function BabyWatotoPage() {
           </div>
         </section>
 
-        {/* ── BABY JAYSON RESCUE STORY: Full-width editorial ── */}
+        {/* ── BABY JAYSON TRANSFORMATION STORY: Full-width editorial ── */}
         <section className="py-24 bg-surface border-b border-outline-variant/30">
           <div className="max-w-(--spacing-container-max) mx-auto px-4 md:px-margin-desktop">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-0 border border-outline-variant/60 overflow-hidden">
@@ -353,7 +353,7 @@ export default function BabyWatotoPage() {
                 <div className="absolute inset-0 bg-gradient-to-t from-deep-black/70 to-transparent" />
                 <div className="absolute bottom-6 left-6 text-pure-white space-y-1">
                   <span className="text-[10px] font-extrabold uppercase tracking-widest text-action-yellow bg-vibrant-green/90 px-3 py-1 block w-fit">
-                    Rescue Story
+                    Transformation Story
                   </span>
                   <h3 className="font-headline text-xl font-black uppercase">Baby Jayson</h3>
                   <p className="text-xs opacity-80 flex items-center gap-1">
@@ -376,7 +376,7 @@ export default function BabyWatotoPage() {
                     Baby Jayson was discovered abandoned at the entrance of the Gulu Regional Referral Hospital at barely two weeks old. His body temperature was dangerously low and he showed signs of severe malnourishment.
                   </p>
                   <p className="text-sm text-on-surface-variant font-light leading-relaxed">
-                    Within four hours, our rescue team had him in the Emmanuel Baby's Home ward receiving IV nutrition and warmth therapy. Today, Jayson crawls with purpose, laughs with his nanny, and is a picture of health — a daily reminder of why this work matters.
+                    Within four hours, our care team had him in the Emmanuel Baby's Home ward receiving IV nutrition and warmth therapy. Today, Jayson crawls with purpose, laughs with his nanny, and is a picture of health — a daily reminder of why this work matters.
                   </p>
                 </div>
                 <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-6 border-t border-outline-variant/40">
@@ -407,7 +407,7 @@ export default function BabyWatotoPage() {
               </h2>
               <div className="w-16 h-1 bg-action-yellow mx-auto" />
               <p className="text-sm text-on-surface-variant font-light leading-relaxed">
-                Behind every rescued infant is a team of devoted clinical nurses, nannies, social workers, and administrators who provide round-the-clock love and medical restoration at Emmanuel Baby’s Home.
+                Behind every infant in our care is a team of devoted clinical nurses, nannies, social workers, and administrators who provide round-the-clock love and medical restoration at Emmanuel Baby’s Home.
               </p>
             </div>
 
@@ -425,7 +425,7 @@ export default function BabyWatotoPage() {
                   name: 'Nurse Grace Atuhaire',
                   role: 'Lead Pediatric & Clinical Nurse',
                   experience: '8 Years of Emergency Care',
-                  bio: 'Manages 24/7 clinical triage, medical stabilization, vaccines, emergency IV nutrition, and health monitoring for newborn rescues.',
+                  bio: 'Manages 24/7 clinical triage, medical stabilization, vaccines, emergency IV nutrition, and health monitoring for newborns.',
                   image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuB6y56oBsMWN9DQPev8ZmKzLaWamFuXAwYYwLoKyfk07pdytAjs0fVZmgddCllkNH2KAPh7QOU9_oCjLHpXItxzryFuwiyQIRx1CwGCvNeoYq16DMXOFDgEEogrnxUV18fg7z1aULbkGVw1CiuinfA8TVZmoNbYKPX1ovWExMuivq9rpFVcB2uuLsg70plzLz-8gEMm2YM9Lno-rJNlWPPB0aOdc8KNVoiiZ6mv7CiIHwe_onrToEaqx0cPmP7_03aPcXCJTNwL5LI',
                   badge: '24/7 Clinical Care',
                 },
@@ -441,7 +441,7 @@ export default function BabyWatotoPage() {
                   name: 'David Okello',
                   role: 'Child Welfare & Social Worker',
                   experience: '7 Years in Protection',
-                  bio: 'Partners with police, hospitals, and child welfare officers to manage emergency rescue alerts, legal documentation, and family tracing.',
+                  bio: 'Partners with police, hospitals, and child welfare officers to manage emergency care alerts, legal documentation, and family tracing.',
                   image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAAY37c-fstO13vILJbLMwYIR9LpymZ26ih1qt3v-kba_5B2PpugKIIsq0820ra9MqoIPV8FAUjqq4x1b00ntQw_6Nangq_Wjkq5JwlY4TU5y2Dg-UBjRV26_MasUTTnUsz9s27d2rm8XMPJGqMMlFHBt80r4YJt22BmcZfySd-kpHa4jDpRyVtUqq2aGRQ1fZIsuJj6UuAQieZt8mpmUqOapXyCR0sTpQ88Sopj_9Lpu5gVTfB17oy3Eufx0m_4ht_mmlus5bmk9M',
                   badge: 'Child Protection',
                 },

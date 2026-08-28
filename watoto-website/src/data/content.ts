@@ -47,7 +47,7 @@ export const children: ChildProfile[] = [
     gender: 'boy',
     location: 'Kampala, Uganda',
     image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCDd33Y_2UeGM5bJO_SGlNe1W5lswN-_S3NYLbRC4C3Xrwk-2vV756c371iFoOeb84W0hE-2pDt2D3Boz-3n7bBu_Hxg7UMPNSFd-TPmBQVA-yzJE50TGmjU6IOi7vdF6I1r5e4e5HKnmDHwCWMIdIyFgG2W34kqC6y40YMBB-hyd6vDszwNaJbFuPFJotnHny2m0WgtmDQCzJbnQDoT28TqZ0TxrqbLAIJIHnpCCduU5Vkm6KkrmsBnm2iL8N3KY8WRmoAsydE0QQ',
-    description: 'Rescued as an infant, Samuel is thriving in our baby home. He needs a sponsor to support his early development.',
+    description: 'Welcomed as an infant, Samuel is thriving in our baby home. He needs a sponsor to support his early development.',
     type: 'baby',
   },
   {
@@ -77,7 +77,7 @@ export const children: ChildProfile[] = [
     gender: 'boy',
     location: 'Kampala, Uganda',
     image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCNtSKp7y50-r-2jODV-Cg-iFhexYdQcfsnXUg9gUdIb3vNhgB1QqQ2e5a0r26_FoytE0V0X3jhojtcNbGDE0XgCszyTgPhdBjyAf1lCHv2CQb5pf5ENc12-hqXafsKJtjVoii7Dodf5OIkEeMz5hNnVJC5nZor1FPKqRNtXmargt6wW9EfjOm6_b_iZVBhtaKWksov7Q5ZWYJvfx_cOpIH5tt-73TP9qB4vqFR7tDDTEwvXDDJmGmk5RX7SZtKsKq_kMPqFt6-D_Q',
-    description: 'Jayson was rescued from a difficult situation when he was only 2 weeks old. He is growing stronger every day under nanny care.',
+    description: 'Jayson was welcomed into our care when he was only 2 weeks old. He is growing stronger every day under nanny care.',
     type: 'baby',
   },
   {

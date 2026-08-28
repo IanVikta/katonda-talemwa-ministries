@@ -24,7 +24,7 @@ const roles = [
     title: 'Nanny & Infant Caregiver',
     duration: '2–8 weeks',
     location: "Emmanuel Baby's Home",
-    desc: "Support our dedicated nannies at Emmanuel Baby's Home in feeding, holding, bathing, playing, and nurturing rescued infants & toddlers.",
+    desc: "Support our dedicated nannies at Emmanuel Baby's Home in feeding, holding, bathing, playing, and nurturing vulnerable infants & toddlers.",
     spots: 6,
     color: 'bg-action-yellow',
   },
