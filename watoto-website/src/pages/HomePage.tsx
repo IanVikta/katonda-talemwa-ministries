@@ -61,7 +61,7 @@ export default function HomePage() {
               Katonda Talemwa Ministries exists to express the Father’s love in action—providing a sanctuary of hope where orphaned and vulnerable children experience the unconditional love, comfort, and security of a real family.
             </p>
             <p className="text-on-surface-variant text-base font-light leading-relaxed">
-              In living out the Father’s heart, our villages offer holistic care to over 3,000 children who receive everything they need to grow up healthy and whole—nutrition, clothing, healthcare, and quality education.
+              In living out the Father’s heart, we offer holistic care to over 3,000 children who receive everything they need to grow up healthy and whole—nutrition, clothing, healthcare, and quality education.
             </p>
             <div className="pt-2">
               <Link
