@@ -48,25 +48,29 @@ export default function HomePage() {
 
       <section className="py-section-padding bg-surface">
         <div className="max-w-(--spacing-container-max) mx-auto px-4 md:px-margin-desktop grid md:grid-cols-2 gap-20 items-center">
-          <div className="order-2 md:order-1">
-            <span className="text-primary font-bold text-label-bold uppercase tracking-wider mb-2 block">Katonda Talemwa Ministries</span>
-            <h2 className="font-headline text-headline-lg mb-6 leading-tight">
-              The Father’s Love in Action:
-              <br />
-              Raising Leaders, <span className="text-trust-blue font-extrabold uppercase">Rebuilding Lives</span>
-            </h2>
-            <p className="text-on-surface-variant mb-6 leading-relaxed">
+          <div className="order-2 md:order-1 space-y-6">
+            <div>
+              <span className="text-vibrant-green font-bold text-xs uppercase tracking-widest block mb-2">Katonda Talemwa Ministries</span>
+              <h2 className="font-headline text-4xl sm:text-5xl lg:text-6xl font-black uppercase text-deep-black leading-tight tracking-tight">
+                The Father’s Love <br />
+                <span className="text-vibrant-green">in Action</span>
+              </h2>
+              <div className="w-16 h-1 bg-action-yellow mt-4" />
+            </div>
+            <p className="text-on-surface-variant text-base font-light leading-relaxed">
               Katonda Talemwa Ministries exists to express the Father’s love in action—providing a sanctuary of hope where orphaned and vulnerable children experience the unconditional love, comfort, and security of a real family.
             </p>
-            <p className="text-on-surface-variant mb-8 leading-relaxed">
-              In living out the Father’s heart, our villages offer holistic care to over 3,000 children who receive everything they need to grow up healthy and whole—nutrition, clothing, healthcare, quality education, and most of all the love of a mother.
+            <p className="text-on-surface-variant text-base font-light leading-relaxed">
+              In living out the Father’s heart, our villages offer holistic care to over 3,000 children who receive everything they need to grow up healthy and whole—nutrition, clothing, healthcare, and quality education.
             </p>
-            <Link
-              to="/katonda-villages"
-              className="inline-block bg-primary text-pure-white px-8 py-3 font-headline text-button-text uppercase rounded hover:brightness-110 transition-all"
-            >
-              Learn More
-            </Link>
+            <div className="pt-2">
+              <Link
+                to="/katonda-villages"
+                className="inline-block bg-vibrant-green text-pure-white px-8 py-4 font-headline text-xs font-black uppercase tracking-widest hover:brightness-110 active:scale-95 transition-all rounded-none"
+              >
+                Learn More
+              </Link>
+            </div>
           </div>
           <ScrollReveal animation="fade-left" className="order-1 md:order-2 relative group">
             <div className="absolute -right-4 -bottom-4 w-full h-full bg-primary/10 -z-10 group-hover:-right-6 group-hover:-bottom-6 transition-all" />
