@@ -51,15 +51,15 @@ export default function HomePage() {
           <div className="order-2 md:order-1">
             <span className="text-primary font-bold text-label-bold uppercase tracking-wider mb-2 block">Katonda Talemwa Ministries</span>
             <h2 className="font-headline text-headline-lg mb-6 leading-tight">
-              Nurturing Children,
+              The Father’s Love in Action:
               <br />
               Raising Leaders, <span className="text-trust-blue font-extrabold uppercase">Rebuilding Lives</span>
             </h2>
             <p className="text-on-surface-variant mb-6 leading-relaxed">
-              Katonda Talemwa Ministries provides a sanctuary of love and hope where orphaned and vulnerable children can truly experience the comfort of a family.
+              Katonda Talemwa Ministries exists to express the Father’s love in action—providing a sanctuary of hope where orphaned and vulnerable children experience the unconditional love, comfort, and security of a real family.
             </p>
             <p className="text-on-surface-variant mb-8 leading-relaxed">
-              We provide family homes and holistic care to over 3,000 children who receive everything they need to grow up healthy and whole—nutrition, clothing, healthcare, quality education, and most of all the love of a mother.
+              In living out the Father’s heart, our villages offer holistic care to over 3,000 children who receive everything they need to grow up healthy and whole—nutrition, clothing, healthcare, quality education, and most of all the love of a mother.
             </p>
             <Link
               to="/katonda-villages"
