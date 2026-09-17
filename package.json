@@ -1,0 +1,11 @@
+{
+  "name": "katonda-talemwa",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "npm --prefix watoto-website run dev",
+    "build": "npm --prefix watoto-website run build",
+    "preview": "npm --prefix watoto-website run preview",
+    "deploy": "npm --prefix watoto-website run deploy"
+  }
+}
