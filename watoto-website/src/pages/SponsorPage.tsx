@@ -78,7 +78,7 @@ export default function SponsorPage() {
   }, [])
 
   const impactItems = [
-    { icon: 'family_restroom', title: 'A Loving Family', desc: 'Every baby and child lives in a real home with a Katonda Talemwa mother and siblings.' },
+    { icon: 'family_restroom', title: 'A Loving Family', desc: 'Every baby and child lives in a real home and experiences parental love and care, with a safe and loving environment.' },
     { icon: 'school', title: 'Quality Education', desc: 'Access to primary, secondary, vocational training, or university education.' },
     { icon: 'health_and_safety', title: 'Healthcare & Nutrition', desc: 'Full medical care and highly nutritional meals provided every day.' },
   ]
