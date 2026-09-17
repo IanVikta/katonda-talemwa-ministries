@@ -74,10 +74,13 @@ export default function HomePage() {
           </div>
           <ScrollReveal animation="fade-left" className="order-1 md:order-2 relative group">
             <div className="absolute -right-4 -bottom-4 w-full h-full bg-primary/10 -z-10 group-hover:-right-6 group-hover:-bottom-6 transition-all" />
-            <div
-              className="w-full aspect-square bg-cover bg-center border-b-8 border-primary"
-              style={{ backgroundImage: `url('${IMAGES.villages}')` }}
-            />
+            <div className="w-full aspect-square overflow-hidden border-b-8 border-primary">
+              <img
+                src={IMAGES.fathersLove}
+                alt="The Father's Love in Action"
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+            </div>
           </ScrollReveal>
         </div>
       </section>
@@ -151,15 +154,13 @@ export default function HomePage() {
           <span className="text-action-yellow font-bold text-label-bold uppercase tracking-widest mb-4 block">Our Heartbeat</span>
           <h2 className="font-headline text-headline-lg md:text-headline-xl mb-8 uppercase font-black">Katonda Talemwa Church</h2>
           <p className="text-body-lg max-w-3xl mx-auto mb-10 text-pure-white/90 leading-relaxed">
-            At the heart of everything we do is Katonda Talemwa Church. We are a vibrant, English-speaking cell-based community church in the city of Kampala, celebrating Christ and caring for community.
+            We are called to serve God and plant churches in hard to reach or rural areas.
           </p>
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
             <a href="#" className="border-2 border-pure-white text-pure-white px-10 py-4 font-headline text-button-text uppercase tracking-widest hover:bg-pure-white hover:text-deep-black transition-all rounded font-bold">
-              Visit Our Site
+              Visit us
             </a>
-            <a href="#" className="bg-primary text-pure-white px-10 py-4 font-headline text-button-text uppercase tracking-widest hover:brightness-110 transition-all rounded font-bold">
-              Watch Live
-            </a>
+
           </div>
         </div>
       </section>
@@ -215,7 +216,7 @@ export default function HomePage() {
                 </div>
                 <h3 className="font-headline text-headline-md text-deep-black mb-4 font-bold uppercase">Sponsor</h3>
                 <p className="text-on-surface-variant mb-8 leading-relaxed">
-                  Sponsor a child, a baby, or a mother today and provide housing, healthcare, education, and the love of a family.
+                  Sponsor a child, a baby, or needy family today and provide housing, healthcare, education, and the love of a family.
                 </p>
               </div>
               <Link
@@ -234,7 +235,7 @@ export default function HomePage() {
                 </div>
                 <h3 className="font-headline text-headline-md text-deep-black mb-4 font-bold uppercase">Donate</h3>
                 <p className="text-on-surface-variant mb-8 leading-relaxed">
-                  Make a one-time donation to our sustainability fund or specific initiatives like Keep a Girl in School.
+                  Make a one-time donation to our sustainability fund or specific initiatives like Keep a Girl in School or construction of dormitories.
                 </p>
               </div>
               <Link

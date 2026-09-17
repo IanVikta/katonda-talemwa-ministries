@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import Navbar from '../components/Navbar'
 import { FooterHome } from '../components/Footer'
 import MaterialIcon from '../components/ui/MaterialIcon'
+import { IMAGES } from '../data/content'
 
 export default function WhoWeArePage() {
   return (
@@ -25,7 +26,7 @@ export default function WhoWeArePage() {
               Towards a <span className="text-action-yellow">Sustainable Future</span>
             </h1>
             <p className="max-w-2xl mx-auto text-body-lg font-light opacity-90 leading-relaxed">
-              Rescuing children, empowering women, and building long-term, self-sustaining solutions for vulnerable communities.
+              Putting the Father&apos;s Love in Action through impacting lives socially, providing resources, spiritual discipleship, and physical care.
             </p>
             <div className="flex justify-center gap-6 pt-2 font-headline text-xs font-bold uppercase tracking-widest text-pure-white/80">
               <span className="flex items-center gap-1.5"><MaterialIcon name="done" className="text-action-yellow" /> Proclaim</span>
@@ -47,10 +48,10 @@ export default function WhoWeArePage() {
                   A Pillar of Hope Since <span className="text-vibrant-green font-black">1994</span>
                 </h2>
                 <p className="text-on-surface-variant font-light text-base leading-relaxed">
-                  Katonda Talemwa Ministries (KTM) is an indigenous Christian non-profit organization passionate about creating long-term solutions for disadvantaged children, youth, and young women. Originally launched in 1994 as a pillar of hope to destitute children, KTM is registered as a non-profit organization (Registration Number INDP109892631NB).
+                  Katonda Talemwa Ministries (KTM) is an indigenous Christian non-profit organization passionate about creating long-term solutions for disadvantaged children, youth, and young women. Originally launched in 1994 as a pillar of hope to destitute children, KTM is registered as a non-profit organization.
                 </p>
                 <p className="text-on-surface-variant font-light text-base leading-relaxed">
-                  Our binary focus is to provide equitable and quality education, health, and relief services, empowering individuals to break cycles of poverty and achieve their full potential.
+                  Guided by our mission to put the Father&apos;s Love in Action, we are dedicated to impacting lives socially, providing essential resources, spiritual discipleship, and holistic physical care—empowering vulnerable individuals and families to break cycles of poverty and achieve their full God-given potential.
                 </p>
               </div>
 
@@ -98,14 +99,24 @@ export default function WhoWeArePage() {
           <div className="max-w-(--spacing-container-max) mx-auto px-4 md:px-margin-desktop">
             <div className="grid lg:grid-cols-12 gap-12 items-center">
 
-              {/* Left Column: Image Placeholder */}
-              <div className="lg:col-span-5 relative order-2 lg:order-1">
+              {/* Left Column: Student Life & Education Image */}
+              <div className="lg:col-span-5 relative order-2 lg:order-1 group">
                 <div className="absolute -left-4 -bottom-4 w-full h-full bg-secondary/10 -z-10 rounded-lg" />
-                <div className="w-full aspect-[4/3] bg-surface rounded-lg border-b-8 border-secondary flex items-center justify-center overflow-hidden shadow-lg">
-                  <div className="text-center p-6 space-y-2">
-                    <MaterialIcon name="school" className="text-secondary text-5xl" />
-                    <p className="font-headline text-xs font-black uppercase tracking-widest text-deep-black">Student Life & Education</p>
-                    <p className="text-xxs text-on-surface-variant max-w-[240px] font-semibold">Transforming classrooms and schools for local children</p>
+                <div className="w-full aspect-[4/3] bg-surface rounded-lg border-b-8 border-secondary overflow-hidden shadow-lg relative">
+                  <img
+                    src={IMAGES.studentLife}
+                    alt="Student Life & Education"
+                    className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-deep-black/85 via-deep-black/25 to-transparent" />
+                  <div className="absolute bottom-4 left-4 right-4 text-pure-white space-y-1">
+                    <div className="flex items-center gap-1.5 text-action-yellow font-headline text-xs font-black uppercase tracking-widest">
+                      <MaterialIcon name="school" className="text-base" />
+                      <span>Student Life & Education</span>
+                    </div>
+                    <p className="text-xxs text-pure-white/90 font-medium leading-tight">
+                      Transforming classrooms and schools for local children
+                    </p>
                   </div>
                 </div>
               </div>
@@ -161,10 +172,14 @@ export default function WhoWeArePage() {
             </div>
 
             <div className="grid md:grid-cols-3 gap-8">
-              {/* Highlight 1 */}
-              <div className="bg-surface border border-outline-variant/30 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow flex flex-col">
-                <div className="aspect-video bg-surface-container flex items-center justify-center">
-                  <MaterialIcon name="child_care" className="text-vibrant-green text-4xl" />
+              {/* Highlight 1: Child Sponsorship */}
+              <div className="group bg-surface border border-outline-variant/30 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow flex flex-col">
+                <div className="aspect-video bg-surface-container overflow-hidden relative">
+                  <img
+                    src={IMAGES.childSponsorship}
+                    alt="Child Sponsorship"
+                    className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                  />
                 </div>
                 <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
                   <div className="space-y-2">
@@ -176,10 +191,14 @@ export default function WhoWeArePage() {
                 </div>
               </div>
 
-              {/* Highlight 2 */}
-              <div className="bg-surface border border-outline-variant/30 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow flex flex-col">
-                <div className="aspect-video bg-surface-container flex items-center justify-center">
-                  <MaterialIcon name="local_hospital" className="text-vibrant-green text-4xl" />
+              {/* Highlight 2: Kate Clinic */}
+              <div className="group bg-surface border border-outline-variant/30 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow flex flex-col">
+                <div className="aspect-video bg-surface-container overflow-hidden relative">
+                  <img
+                    src={IMAGES.kateClinic}
+                    alt="Child Health: Kate Clinic"
+                    className="w-full h-full object-cover object-[center_35%] group-hover:scale-105 transition-transform duration-500"
+                  />
                 </div>
                 <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
                   <div className="space-y-2">
@@ -191,10 +210,14 @@ export default function WhoWeArePage() {
                 </div>
               </div>
 
-              {/* Highlight 3 */}
-              <div className="bg-surface border border-outline-variant/30 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow flex flex-col">
-                <div className="aspect-video bg-surface-container flex items-center justify-center">
-                  <MaterialIcon name="home" className="text-vibrant-green text-4xl" />
+              {/* Highlight 3: Child Care: Emmanuel Babies Home */}
+              <div className="group bg-surface border border-outline-variant/30 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow flex flex-col">
+                <div className="aspect-video bg-surface-container overflow-hidden relative">
+                  <img
+                    src={IMAGES.emmanuelBabiesCare}
+                    alt="Child Care: Emmanuel Babies Home"
+                    className="w-full h-full object-cover object-[center_25%] group-hover:scale-105 transition-transform duration-500"
+                  />
                 </div>
                 <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
                   <div className="space-y-2">
@@ -271,10 +294,10 @@ export default function WhoWeArePage() {
               </p>
               <div className="h-px bg-pure-white/20 w-full my-4" />
               <div className="space-y-2 text-xxs font-semibold tracking-wider">
-                <p>P.O. Box 1690 Mbarara, Uganda (East Africa)</p>
-                <p>Nkokojeru, Kamukuzi Kakiika</p>
-                <p>Email: pcm.uganda@gmail.com | emmynyanzi2018@gmail.com</p>
-                <p>Tel: +256 776 883 749 | +256 708 344 930</p>
+                <p>Kyasenya, Lwengo</p>
+                <p>P. O. Box 222344 Masaka, Uganda</p>
+                <p>Email: katondatalemwaministries@gmail.com</p>
+                <p>Tel: +256 705 118 356</p>
               </div>
               <div className="pt-2">
                 <Link

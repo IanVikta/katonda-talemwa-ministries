@@ -71,11 +71,8 @@ export default function ContactPage() {
                   Call our office in Uganda for support, inquiries, or details about our programs.
                 </p>
                 <div className="space-y-1 pt-2">
-                  <a href="tel:+256776883749" className="block text-base font-bold text-secondary hover:text-primary transition-colors">
-                    +256 776 883 749
-                  </a>
-                  <a href="tel:+256708344930" className="block text-base font-bold text-secondary hover:text-primary transition-colors">
-                    +256 708 344 930
+                  <a href="tel:+256705118356" className="block text-base font-bold text-secondary hover:text-primary transition-colors">
+                    +256 705 118 356
                   </a>
                 </div>
               </div>
@@ -90,11 +87,8 @@ export default function ContactPage() {
                   Drop us an email and our team will get back to you as soon as possible.
                 </p>
                 <div className="space-y-1 pt-2">
-                  <a href="mailto:pcm.uganda@gmail.com" className="block text-base font-bold text-secondary hover:text-primary transition-colors break-all">
-                    pcm.uganda@gmail.com
-                  </a>
-                  <a href="mailto:emmynyanzi2018@gmail.com" className="block text-base font-bold text-secondary hover:text-primary transition-colors break-all">
-                    emmynyanzi2018@gmail.com
+                  <a href="mailto:katondatalemwaministries@gmail.com" className="block text-base font-bold text-secondary hover:text-primary transition-colors break-all">
+                    katondatalemwaministries@gmail.com
                   </a>
                 </div>
               </div>
@@ -106,14 +100,14 @@ export default function ContactPage() {
                 </div>
                 <h3 className="font-headline text-lg font-black uppercase text-deep-black">Visit Us</h3>
                 <p className="text-sm text-on-surface-variant leading-relaxed">
-                  Our main offices are located in Mbarara. Feel free to reach out before visiting.
+                  Our main offices are located in Kyasenya, Lwengo. Feel free to reach out before visiting.
                 </p>
                 <div className="pt-2">
                   <p className="text-sm font-semibold text-deep-black">
-                    Nkokojeru, Kamukuzi Kakiika
+                    Kyasenya, Lwengo
                   </p>
                   <p className="text-sm font-semibold text-deep-black">
-                    P. O. Box 1690 Mbarara, Uganda
+                    P. O. Box 222344 Masaka, Uganda
                   </p>
                 </div>
               </div>
@@ -267,7 +261,7 @@ export default function ContactPage() {
                     Our Location
                   </h2>
                   <p className="text-sm text-on-surface-variant">
-                    Find us on the map or get driving directions to our office in Mbarara, Uganda.
+                    Find us on the map or get driving directions to our office in Kyasenya, Lwengo, Uganda.
                   </p>
                 </div>
 

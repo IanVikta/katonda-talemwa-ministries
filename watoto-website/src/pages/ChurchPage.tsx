@@ -236,14 +236,14 @@ export default function ChurchPage() {
               </Link>
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-              {/* Uganda Network Box */}
-              <div className="bg-surface border border-outline-variant/60 p-8 space-y-6">
+            <div className="w-full">
+              {/* Church Network Box */}
+              <div className="bg-surface border border-outline-variant/60 p-8 md:p-10 space-y-6">
                 <div className="flex items-center justify-between border-b border-outline-variant/40 pb-4">
                   <div className="flex items-center gap-3">
                     <MaterialIcon name="place" className="text-vibrant-green text-2xl" />
                     <div>
-                      <h4 className="font-headline text-lg font-black uppercase text-deep-black">Uganda Network</h4>
+                      <h4 className="font-headline text-lg font-black uppercase text-deep-black">Church Network</h4>
                       <p className="text-xs text-on-surface-variant">89 Active Churches</p>
                     </div>
                   </div>
@@ -252,39 +252,12 @@ export default function ChurchPage() {
                   </span>
                 </div>
                 <p className="text-xs sm:text-sm text-on-surface-variant font-light leading-relaxed">
-                  Headquartered at our main campus in Southwestern Uganda, the Ugandan network spans rural districts such as Kyotera, Kalisizo, Rakai, Isingiro, Gulu, and Kampala. These churches host our family homes, schools, community health clinics, and children’s ministries.
+                  Headquartered at our main campus in Southwestern Uganda, the network spans rural districts and communities across our ministry zones. These churches host our family homes, schools, community health clinics, and children’s ministries.
                 </p>
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-2">
-                  {['Kyotera District', 'Mbarara City', 'Kalisizo Subcounty', 'Rakai Region', 'Gulu Northern Hub', 'Kampala Missions'].map((dist) => (
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 pt-2">
+                  {['Mbarara zone', 'Greater Masaka zone', 'Ibanda zone', 'Ntungamo zone', 'Kiruhura zone', 'Rwanda zone', 'Kampala zone'].map((dist) => (
                     <div key={dist} className="bg-surface-container-low p-2.5 text-[11px] font-bold text-deep-black border border-outline-variant/40 flex items-center gap-1.5">
                       <span className="w-1.5 h-1.5 bg-vibrant-green shrink-0" />
-                      <span className="truncate">{dist}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Rwanda Mission Box */}
-              <div className="bg-surface border border-outline-variant/60 p-8 space-y-6">
-                <div className="flex items-center justify-between border-b border-outline-variant/40 pb-4">
-                  <div className="flex items-center gap-3">
-                    <MaterialIcon name="public" className="text-action-yellow text-2xl" />
-                    <div>
-                      <h4 className="font-headline text-lg font-black uppercase text-deep-black">Rwanda Mission</h4>
-                      <p className="text-xs text-on-surface-variant">2 Cross-Border Outposts</p>
-                    </div>
-                  </div>
-                  <span className="bg-action-yellow/20 text-deep-black text-xs font-bold px-3 py-1 uppercase tracking-wider">
-                    Cross-Border Mission
-                  </span>
-                </div>
-                <p className="text-xs sm:text-sm text-on-surface-variant font-light leading-relaxed">
-                  Our cross-border church plants in Rwanda focus on discipleship, trauma healing, prayer ministry, and reaching cross-border communities with the unifying message of Jesus Christ. These outposts serve as strategic regional hubs for East African ministry expansion.
-                </p>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
-                  {['Cross-Border Fellowship', 'Evangelism & Discipleship Hub'].map((dist) => (
-                    <div key={dist} className="bg-surface-container-low p-2.5 text-[11px] font-bold text-deep-black border border-outline-variant/40 flex items-center gap-1.5">
-                      <span className="w-1.5 h-1.5 bg-action-yellow shrink-0" />
                       <span className="truncate">{dist}</span>
                     </div>
                   ))}
@@ -324,7 +297,7 @@ export default function ChurchPage() {
                     alt={item.title}
                     className="w-full h-full object-cover group-hover:scale-110 group-hover:opacity-85 transition-all duration-700 filter brightness-95"
                   />
-                  
+
                   {/* Category Pill */}
                   <div className="absolute top-3 left-3 bg-deep-black/80 backdrop-blur-sm text-action-yellow text-[9px] font-extrabold uppercase tracking-widest px-2.5 py-1 z-10 border-l-2 border-action-yellow">
                     {item.location}
@@ -348,13 +321,13 @@ export default function ChurchPage() {
         {/* Written Message from Pastor Emmy */}
         <section className="py-24 bg-surface-container">
           <div className="max-w-(--spacing-container-max) mx-auto px-4 md:px-margin-desktop grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-stretch">
-            
+
             {/* Left Column: Framed Image */}
             <ScrollReveal animation="zoom-in" className="lg:col-span-5 border border-outline-variant/60 p-2 bg-surface flex flex-col justify-between h-full rounded-none shadow-sm">
               <img
-                className="w-full aspect-[4/3] lg:aspect-square object-cover rounded-none"
-                src={IMAGES.spiritualGrowth}
-                alt="Pastor Emmy Nyanzi preaching"
+                className="w-full aspect-[4/3] lg:aspect-square object-cover object-top rounded-none"
+                src={IMAGES.pastorLeadership}
+                alt="Pastor Emmanuel (Emmy) Nnyanzi & Sarah Nnyanzi"
               />
               <div className="p-4 bg-surface-container-low mt-2 border border-outline-variant/30 text-center">
                 <span className="text-[10px] uppercase tracking-widest text-vibrant-green font-bold block mb-1">Our Apostolic Leadership</span>

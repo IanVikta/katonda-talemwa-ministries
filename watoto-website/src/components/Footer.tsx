@@ -118,13 +118,13 @@ export function UnifiedFooter() {
               </li>
               <li className="flex gap-3 items-center">
                 <MaterialIcon name="email" className="text-vibrant-green text-base shrink-0" />
-                <a href="mailto:pcm.uganda@gmail.com" className="hover:text-vibrant-green transition-colors text-pure-white/70">
+                <a href="mailto:katondatalemwaministries@gmail.com" className="hover:text-vibrant-green transition-colors text-pure-white/70">
                   katondatalemwaministries@gmail.com
                 </a>
               </li>
               <li className="flex gap-3 items-center">
                 <MaterialIcon name="phone" className="text-vibrant-green text-base shrink-0" />
-                <a href="tel:+256776883749" className="hover:text-vibrant-green transition-colors text-pure-white/70">
+                <a href="tel:+256705118356" className="hover:text-vibrant-green transition-colors text-pure-white/70">
                   +256 705 118 356
                 </a>
               </li>

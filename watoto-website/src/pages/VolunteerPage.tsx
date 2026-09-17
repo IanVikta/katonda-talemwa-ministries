@@ -12,68 +12,68 @@ const roles = [
     icon: 'medical_services',
     category: 'Healthcare',
     title: 'Medical Volunteer',
-    duration: '2–4 weeks',
-    location: 'Gulu / Kampala',
+    duration: '1–6 weeks',
+    location: 'Lwengo / Masaka',
     desc: 'Join our clinic team to conduct health screenings, assist nurses, provide dental care, and support mother & child wellness programmes.',
-    spots: 4,
+    spots: 12,
     color: 'bg-vibrant-green',
   },
   {
     icon: 'child_care',
     category: 'Infant Care',
     title: 'Nanny & Infant Caregiver',
-    duration: '2–8 weeks',
+    duration: '1–6 weeks',
     location: "Emmanuel Baby's Home",
     desc: "Support our dedicated nannies at Emmanuel Baby's Home in feeding, holding, bathing, playing, and nurturing vulnerable infants & toddlers.",
-    spots: 6,
+    spots: 12,
     color: 'bg-action-yellow',
   },
   {
     icon: 'school',
     category: 'Education',
     title: 'Teacher / Tutor',
-    duration: '1–3 months',
+    duration: '1–6 weeks',
     location: 'All Villages',
     desc: 'Support primary and secondary teachers in literacy, maths, and English. Help after-school programmes and remedial clubs.',
-    spots: 8,
+    spots: 12,
     color: 'bg-deep-black',
   },
   {
     icon: 'psychology',
     category: 'Social Work',
     title: 'Social Worker & Family Counselor',
-    duration: '1–3 months',
-    location: 'Gulu / Kampala',
+    duration: '1–6 weeks',
+    location: 'Lwengo / Masaka',
     desc: 'Assist our social work team with child welfare assessments, family reunification preparation, trauma counseling, and community follow-ups.',
-    spots: 5,
+    spots: 12,
     color: 'bg-vibrant-green',
   },
   {
     icon: 'church',
     category: 'Pastoral & Discipleship',
     title: 'Pastor in Training / Ministry Intern',
-    duration: '2–6 weeks',
-    location: 'Katonda Talemwa Church',
+    duration: '1–6 weeks',
+    location: 'Lwengo / Masaka',
     desc: 'Work alongside local pastors in youth mentorship, cell group leadership, village devotions, community outreach, and discipleship programmes.',
-    spots: 4,
+    spots: 12,
     color: 'bg-action-yellow',
   },
   {
     icon: 'camera_alt',
     category: 'Media',
     title: 'Photographer / Videographer',
-    duration: '1–2 weeks',
-    location: 'Kampala / Gulu',
+    duration: '1–6 weeks',
+    location: 'Lwengo / Masaka',
     desc: 'Capture stories of transformation. Your images and films directly support fundraising and donor communications worldwide.',
-    spots: 2,
+    spots: 12,
     color: 'bg-deep-black',
   },
   {
     icon: 'architecture',
     category: 'Construction',
     title: 'Build Team Member',
-    duration: '2 weeks',
-    location: 'Mbarara / Gulu',
+    duration: '1–6 weeks',
+    location: 'Lwengo / Masaka',
     desc: 'Help construct new family homes, classrooms, and sanitation facilities alongside our local build teams.',
     spots: 12,
     color: 'bg-vibrant-green',
@@ -82,20 +82,20 @@ const roles = [
     icon: 'music_note',
     category: 'Arts',
     title: 'Music / Arts Mentor',
-    duration: '2–6 weeks',
-    location: 'All Villages',
+    duration: '1–6 weeks',
+    location: 'Lwengo / Masaka',
     desc: 'Train children in instruments, choir, drama, and visual arts through our Worship Academy and arts enrichment programmes.',
-    spots: 3,
+    spots: 12,
     color: 'bg-deep-black',
   },
   {
     icon: 'code',
     category: 'Technology',
-    title: 'ICT Skills Trainer',
-    duration: '1–2 months',
-    location: 'Kampala',
+    title: 'Skills Trainer',
+    duration: '1–6 weeks',
+    location: 'Lwengo / Masaka',
     desc: 'Teach computer literacy, web basics, and digital skills to vocational students and staff. Help modernise our operations.',
-    spots: 2,
+    spots: 12,
     color: 'bg-action-yellow',
   },
 ]
@@ -134,7 +134,7 @@ export default function VolunteerPage() {
               </h1>
             </div>
             <p data-aos="fade-right" data-aos-delay="100" className="text-base font-light opacity-90 leading-relaxed max-w-md">
-              Whether you have two weeks or three months, your skills — medical, educational, creative, or practical — can make a lasting impact in the lives of children and families across Uganda and South Sudan.
+              Whether you have two weeks or three months, your skills — medical, educational, creative, or practical — can make a lasting impact in the lives of children and families across Uganda.
             </p>
             <div data-aos="fade-right" data-aos-delay="200" className="flex flex-wrap gap-4">
               <a href="#roles" className="bg-vibrant-green text-pure-white font-headline text-xs font-black uppercase tracking-widest px-8 py-4 hover:brightness-110 transition-all rounded-none">
@@ -269,16 +269,6 @@ export default function VolunteerPage() {
                 </div>
                 <div className="border border-pure-white/10 overflow-hidden">
                   <img className="w-full aspect-video object-cover opacity-80" src={IMAGES.spiritualGrowth} alt="Volunteers in action" />
-                </div>
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="border border-pure-white/10 p-5 text-center">
-                    <div className="font-headline text-2xl font-black text-action-yellow">50+</div>
-                    <p className="text-[10px] uppercase font-bold tracking-wider text-pure-white/60 mt-1">Countries Represented</p>
-                  </div>
-                  <div className="border border-pure-white/10 p-5 text-center">
-                    <div className="font-headline text-2xl font-black text-vibrant-green">95%</div>
-                    <p className="text-[10px] uppercase font-bold tracking-wider text-pure-white/60 mt-1">Would Return</p>
-                  </div>
                 </div>
               </div>
 

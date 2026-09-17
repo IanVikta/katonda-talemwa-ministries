@@ -18,6 +18,7 @@ interface MenuItem {
 
 const menuConfig: MenuItem[] = [
   { label: 'Home', to: '/' },
+  { label: 'Who We Are', to: '/who-we-are' },
   {
     label: 'What We Do',
     submenu: [
@@ -26,13 +27,6 @@ const menuConfig: MenuItem[] = [
       { label: 'The Esther Mission', to: '/keep-a-girl', icon: 'female', desc: 'Keep a girl in school' },
       { label: 'Katonda Talemwa Church', to: '/katonda-church', icon: 'church', desc: 'Community & spiritual life' },
       { label: 'Photo Gallery', to: '/gallery', icon: 'photo_library', desc: 'Moments of hope & transformation' },
-    ]
-  },
-  {
-    label: 'Sponsor',
-    submenu: [
-      { label: 'Sponsor a Child', to: '/sponsor?tab=child', icon: 'child_care', desc: 'Education & healthcare support' },
-      { label: 'Sponsor a Baby', to: '/emmanuel-baby-home', icon: 'baby_changing_station', desc: 'Emergency nutrition & care' },
     ]
   },
   {
@@ -45,7 +39,6 @@ const menuConfig: MenuItem[] = [
       { label: 'Careers', to: '/careers', icon: 'work', desc: 'Join our team & make impact' },
     ]
   },
-  { label: 'Who We Are', to: '/who-we-are' },
   { label: 'Contact Us', to: '/contact' },
 ]
 

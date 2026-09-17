@@ -50,7 +50,7 @@ export default function WatotoVillagesPage() {
                 </h1>
 
                 <p className="text-sm sm:text-base text-pure-white/90 font-light leading-relaxed max-w-lg">
-                  Restoring the rhythm of family for orphaned and vulnerable children across Uganda and South Sudan through loving, Christ-centered village homes.
+                  Restoring the rhythm of family for orphaned and vulnerable children across Uganda through loving, Christ-centered village homes.
                 </p>
 
                 {/* Key feature cards (sharp rectangular chips) */}
@@ -95,7 +95,7 @@ export default function WatotoVillagesPage() {
 
                   <div className="pt-2 flex flex-col sm:flex-row gap-3">
                     <Link
-                      to="/sponsor?tab=mother"
+                      to="/sponsor"
                       className="flex-1 bg-vibrant-green hover:brightness-110 active:scale-95 text-pure-white font-headline text-xs font-black uppercase tracking-widest py-4 px-5 text-center flex items-center justify-center gap-2 transition-all rounded-none shadow-md"
                     >
                       <span>Support Today</span>
@@ -308,8 +308,8 @@ export default function WatotoVillagesPage() {
                   location: 'Kampala Village, Uganda',
                   quote: 'When my husband died I thought my life was over. Katonda Talemwa gave me 7 children and a purpose.',
                   fallbackDesc: 'Phiona became a village mother in 2010. She has raised over 15 children and continues to mentor new mothers joining the programme.',
-                  cta: 'Support a home',
-                  link: '/sponsor?tab=mother',
+                  cta: 'Support Today',
+                  link: '/sponsor',
                   bgAccent: 'bg-secondary',
                 },
               ].map((story, i) => {
@@ -399,10 +399,10 @@ export default function WatotoVillagesPage() {
                 Sponsor a Child
               </Link>
               <Link
-                to="/sponsor?tab=mother"
+                to="/sponsor"
                 className="text-center border border-pure-white/30 text-pure-white font-headline text-xs font-black uppercase tracking-widest px-8 py-4 hover:border-pure-white hover:bg-pure-white/10 transition-all rounded-none"
               >
-                Support a Home
+                Support a Child
               </Link>
             </div>
           </div>
