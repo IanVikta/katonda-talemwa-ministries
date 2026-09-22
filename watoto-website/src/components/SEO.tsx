@@ -8,9 +8,9 @@ interface SEOProps {
   ogImage?: string
 }
 
-const DEFAULT_TITLE = 'Katonda Talemwa Ministries | Transforming Lives, Restoring Hope in Uganda'
+const DEFAULT_TITLE = "Katonda Talemwa Ministries | The Father's Love In Action"
 const DEFAULT_DESCRIPTION =
-  'Katonda Talemwa Ministries is a Christian charity in Kyasenya, Lwengo, Uganda, dedicated to rescuing vulnerable orphans, providing education, medical care, child sponsorship, and community transformation.'
+  "Putting the Father's Love in Action: Katonda Talemwa Ministries is dedicated to rescuing vulnerable orphans, empowering families through education, medical care, child sponsorship, and community transformation in Uganda."
 const BASE_URL = 'https://katondatalemwaministries.org'
 
 function setMetaTag(selector: string, attr: string, value: string) {

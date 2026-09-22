@@ -125,10 +125,10 @@ export default function SponsorPage() {
   return (
     <div className="bg-surface text-on-surface selection:bg-action-yellow selection:text-deep-black overflow-x-hidden font-body page-enter">
       <SEO
-        title="Sponsor a Child in Uganda | $38/Month Changes a Life"
-        description="Sponsor an orphaned or vulnerable child in Uganda today. Your monthly support provides nutritious food, medical healthcare, quality schooling, and loving Christian mentorship."
+        title="Sponsor a Child in Uganda | Putting The Father's Love In Action"
+        description="Put the Father's Love in Action: Sponsor an orphaned or vulnerable child in Uganda today. Your monthly support provides nutritious food, medical healthcare, quality schooling, and loving Christian family care."
         canonicalPath="/sponsor"
-        keywords="sponsor a child Uganda, child sponsorship Africa, support Uganda orphan, sponsor a baby Emmanuel Baby Home"
+        keywords="the father's love in action, sponsor a child Uganda, child sponsorship Africa, support Uganda orphan, sponsor a baby Emmanuel Baby Home"
       />
       <Navbar />
 
@@ -146,14 +146,14 @@ export default function SponsorPage() {
           <div className="relative z-10 max-w-(--spacing-container-max) mx-auto px-4 md:px-margin-desktop">
             <div className="max-w-2xl space-y-6">
               <span data-aos="fade-right" className="text-[10px] uppercase font-extrabold tracking-widest text-action-yellow block">
-                Change a story forever
+                The Father&apos;s Love in Action
               </span>
               <h1 data-aos="fade-right" data-aos-delay="100" className="font-headline text-4xl sm:text-6xl font-black uppercase leading-none tracking-tight">
                 Sponsor. <br />
                 <span className="text-action-yellow">Change a life.</span>
               </h1>
               <p data-aos="fade-right" data-aos-delay="200" className="text-base font-light opacity-90 leading-relaxed max-w-lg">
-                Your sponsorship provides food, shelter, healthcare, education, and most of all — the love of a family.
+                Your sponsorship puts the Father&apos;s love in action, providing nutritious food, shelter, healthcare, education, and most of all — the unconditional love of a true family.
               </p>
               <div data-aos="fade-right" data-aos-delay="300" className="flex flex-wrap gap-4 pt-2">
                 <a

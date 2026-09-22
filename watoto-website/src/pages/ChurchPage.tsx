@@ -73,10 +73,10 @@ export default function ChurchPage() {
   return (
     <div className="bg-surface text-on-surface selection:bg-action-yellow selection:text-deep-black overflow-x-hidden font-body page-enter">
       <SEO
-        title="Katonda Community Church | Worship & Community Transformation"
-        description="The spiritual heart of our community in Kyasenya, Uganda. Worship services, discipleship, community outreach, and biblical empowerment across rural Uganda."
+        title="Katonda Community Church | Putting The Father's Love In Action"
+        description="Putting the Father's Love in Action: Katonda Talemwa Church Network with 91+ churches across Uganda and Rwanda, sharing Christ's love, discipleship, and community transformation."
         canonicalPath="/katonda-church"
-        keywords="church Uganda, Christian church Lwengo, Katonda church network, worship Uganda, gospel outreach Africa"
+        keywords="the father's love in action, church Uganda, Christian church Lwengo, Katonda church network, worship Uganda, gospel outreach Africa"
       />
       <Navbar />
 
@@ -87,12 +87,15 @@ export default function ChurchPage() {
             <img className="w-full h-full object-cover" src={IMAGES.church} alt="Katonda Talemwa Church congregation" />
           </div>
           <div className="relative z-10 max-w-4xl mx-auto px-4 space-y-6">
+            <span className="text-[10px] uppercase font-extrabold tracking-widest text-action-yellow block">
+              The Father&apos;s Love in Action — KTM Church Network
+            </span>
             <h1 className="font-headline text-3xl sm:text-5xl lg:text-6xl font-black uppercase leading-none tracking-tight">
               Katonda Talemwa <br />
               <span className="text-action-yellow">Church Network</span>
             </h1>
             <p className="text-base font-light opacity-90 leading-relaxed max-w-2xl mx-auto">
-              A dynamic network of 91+ churches mostly in rural and underserved areas of south western Uganda and East Africa—dedicated to preaching the uncompromised Gospel, discipling believers, and transforming communities across spiritual, developmental, and personal growth sectors.
+              Putting the Father&apos;s love in action across 91+ churches in rural and underserved areas of Uganda and East Africa—preaching the uncompromised Gospel, discipling believers, and bringing holistic transformation.
             </p>
             <div className="flex flex-wrap justify-center gap-4 pt-4">
               <a

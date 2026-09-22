@@ -104,7 +104,7 @@ export function UnifiedFooter() {
             </Link>
 
             <p className="text-xs leading-relaxed text-pure-white/50 font-light">
-              Katonda Talemwa Ministries (KTM) is an indigenous Christian non-profit organization passionate about creating long-term, sustainable solutions for disadvantaged children, youth, and young women in East Africa.
+              Putting the Father&apos;s Love in Action: Katonda Talemwa Ministries (KTM) is dedicated to creating long-term, Christ-centered solutions for orphaned children, vulnerable youth, and families across Uganda.
             </p>
           </div>
 

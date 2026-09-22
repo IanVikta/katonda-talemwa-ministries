@@ -196,10 +196,10 @@ export default function ExchangeProgramPage() {
   return (
     <div className="bg-surface text-on-surface selection:bg-action-yellow selection:text-deep-black overflow-x-hidden font-body page-enter">
       <SEO
-        title="Mission & Cultural Exchange Trips to Uganda"
-        description="Join a life-changing mission trip or cultural exchange in Uganda. Serve alongside local teams, meet sponsored children, and experience Ugandan culture."
+        title="Mission & Cultural Exchange Trips | Putting The Father's Love In Action"
+        description="Putting the Father's Love in Action: Join a life-changing mission trip or cultural exchange in Uganda. Serve alongside local teams, meet sponsored children, and experience God's love."
         canonicalPath="/exchange-program"
-        keywords="mission trips Uganda, cultural exchange Africa, short term mission Uganda, church mission trips"
+        keywords="the father's love in action, mission trips Uganda, cultural exchange Africa, short term mission Uganda, church mission trips"
       />
       <Navbar />
 
@@ -210,7 +210,7 @@ export default function ExchangeProgramPage() {
           <div className="bg-deep-black text-pure-white flex flex-col justify-center px-8 md:px-16 py-20 space-y-8">
             <div data-aos="fade-right">
               <span className="text-[10px] uppercase font-extrabold tracking-widest text-action-yellow block mb-4">
-                Global Connections — Mission Trips & Exchange
+                The Father&apos;s Love in Action — Mission Trips &amp; Exchange
               </span>
               <h1 className="font-headline text-4xl sm:text-5xl lg:text-6xl font-black uppercase leading-none tracking-tight">
                 Exchange <br />
@@ -219,7 +219,7 @@ export default function ExchangeProgramPage() {
               </h1>
             </div>
             <p data-aos="fade-right" data-aos-delay="100" className="text-base font-light opacity-90 leading-relaxed max-w-lg">
-              Bridge cultures, share your faith and skills, serve vulnerable children, and experience life-changing transformation. Whether you are bringing a church team, school group, or professional medical delegation, our exchange program offers safe, organized, and deeply impactful mission expeditions.
+              Put the Father&apos;s love in action through cross-cultural immersion. Whether bringing a church team, school group, or medical delegation, our exchange program offers safe, organized, and deeply impactful mission expeditions in Uganda.
             </p>
             <div data-aos="fade-right" data-aos-delay="200" className="flex flex-wrap gap-4 pt-2">
               <a

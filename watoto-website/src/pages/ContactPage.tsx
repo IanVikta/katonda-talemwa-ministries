@@ -79,10 +79,10 @@ export default function ContactPage() {
   return (
     <div className="bg-surface text-on-surface selection:bg-action-yellow selection:text-deep-black overflow-x-hidden page-enter">
       <SEO
-        title="Contact Us | Reach Katonda Talemwa Ministries in Uganda"
-        description="Get in touch with Katonda Talemwa Ministries in Kyasenya, Lwengo, Uganda. Contact our administration for inquiries, child sponsorships, visiting, or donations."
+        title="Contact Us | Putting The Father's Love In Action"
+        description="Putting the Father's Love in Action: Get in touch with Katonda Talemwa Ministries in Kyasenya, Lwengo, Uganda. Reach our leadership for inquiries, child sponsorships, visiting, or donations."
         canonicalPath="/contact"
-        keywords="contact Katonda Talemwa, Uganda charity contact, Lwengo ministry address, contact orphanage Uganda"
+        keywords="the father's love in action, contact Katonda Talemwa, Uganda charity contact, Lwengo ministry address, contact orphanage Uganda"
       />
       <Navbar />
 
@@ -97,13 +97,13 @@ export default function ContactPage() {
           </div>
           <div className="relative z-10 max-w-(--spacing-container-max) mx-auto px-6 md:px-margin-desktop text-center space-y-6">
             <span className="text-action-yellow font-bold text-label-bold uppercase tracking-widest block animate-pulse">
-              Get in Touch
+              The Father&apos;s Love in Action
             </span>
             <h1 className="font-headline text-headline-xl mb-4 font-black uppercase leading-tight tracking-wide">
               Contact <span className="text-action-yellow">Us</span>
             </h1>
             <p className="max-w-2xl mx-auto text-body-lg opacity-90 font-light leading-relaxed">
-              Have questions or want to partner with us? We'd love to hear from you. Reach out and join us in bringing hope and healing.
+              Have questions or want to partner with us in putting the Father&apos;s love in action? We&apos;d love to hear from you. Reach out and join us in bringing hope and healing across Uganda.
             </p>
           </div>
         </section>

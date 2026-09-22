@@ -127,10 +127,10 @@ export default function GalleryPage() {
   return (
     <div className="bg-[#0b0f17] text-pure-white selection:bg-action-yellow selection:text-deep-black overflow-x-hidden font-body page-enter min-h-screen flex flex-col">
       <SEO
-        title="Photo & Video Gallery | Moments of Joy & Hope in Uganda"
-        description="Browse photos and videos of Katonda Talemwa Ministries in Uganda. See our children, village family homes, schools, clinic, and community impact in action."
+        title="Photo Gallery | The Father's Love in Action"
+        description="Putting the Father's Love in Action: Moments of joy, worship, rescue, and community life at Katonda Talemwa Ministries in Uganda."
         canonicalPath="/gallery"
-        keywords="Katonda Talemwa photos, Uganda orphanage pictures, charity gallery Africa, Emmanuel Baby Home photos"
+        keywords="the father's love in action, Katonda Talemwa photos, Uganda orphanage pictures, charity gallery Africa, Emmanuel Baby Home photos"
       />
       <Navbar />
 
@@ -142,7 +142,7 @@ export default function GalleryPage() {
               data-aos="fade-down"
               className="text-[10px] uppercase font-extrabold tracking-widest text-action-yellow block"
             >
-              Moments &amp; Memories
+              The Father&apos;s Love in Action — Moments &amp; Memories
             </span>
             <h1
               data-aos="fade-up"

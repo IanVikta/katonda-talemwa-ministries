@@ -10,10 +10,10 @@ export default function KeepGirlInSchoolPage() {
   return (
     <div className="bg-surface text-on-surface selection:bg-action-yellow selection:text-deep-black overflow-x-hidden font-body page-enter">
       <SEO
-        title="Keep a Girl in School | The Esther Mission Uganda"
-        description="Empowering adolescent girls in rural Uganda with sanitary hygiene kits, mentorship, health education, and school tuition support to break the cycle of poverty."
+        title="Keep a Girl in School | Putting The Father's Love In Action"
+        description="Putting the Father's Love in Action: Empowering adolescent girls in rural Uganda with sanitary hygiene kits, mentorship, health education, and school tuition support to break the cycle of poverty."
         canonicalPath="/keep-a-girl"
-        keywords="keep a girl in school, menstrual hygiene Uganda, girl child education Africa, empower girls Uganda, Esther Mission"
+        keywords="the father's love in action, keep a girl in school, menstrual hygiene Uganda, girl child education Africa, empower girls Uganda, Esther Mission"
       />
       <Navbar />
 
@@ -22,7 +22,7 @@ export default function KeepGirlInSchoolPage() {
         <section className="bg-deep-black text-pure-white py-16 text-center rounded-none relative overflow-hidden">
           <div className="max-w-3xl mx-auto px-4 space-y-4">
             <span className="text-xs uppercase font-extrabold tracking-widest text-action-yellow block">
-              Menstrual Health & Education Access
+              The Father&apos;s Love in Action — The Esther Mission
             </span>
             <h1 className="font-headline text-4xl sm:text-6xl font-black uppercase leading-tight tracking-tight text-pure-white">
               The <span className="text-action-yellow">Esther Mission</span>
@@ -31,7 +31,7 @@ export default function KeepGirlInSchoolPage() {
               Keep a Girl in School
             </p>
             <p className="text-sm font-light opacity-80 leading-relaxed max-w-xl mx-auto">
-              Removing the hygiene barriers that cause adolescent girls to miss school, drop out, or face early child marriage in rural Uganda.
+              Putting the Father&apos;s love in action by removing the hygiene and educational barriers that cause adolescent girls to miss school or face early child marriage in rural Uganda.
             </p>
           </div>
         </section>

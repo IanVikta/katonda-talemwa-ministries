@@ -172,10 +172,10 @@ export default function BabyWatotoPage() {
   return (
     <div className="bg-surface text-on-surface selection:bg-action-yellow selection:text-deep-black overflow-x-hidden font-body page-enter">
       <SEO
-        title="Emmanuel Baby Home | Rescuing Abandoned & Premature Infants"
-        description="Our crisis nursery rescues abandoned, orphaned, and malnourished babies in Uganda, providing 24/7 medical treatment, infant formula, and affectionate maternal care."
+        title="Emmanuel Baby Home | Putting The Father's Love In Action"
+        description="Putting the Father's Love in Action: Rescuing abandoned, orphaned, and malnourished infants in Uganda with 24/7 medical treatment, nutrition, and compassionate maternal care."
         canonicalPath="/emmanuel-baby-home"
-        keywords="baby home Uganda, rescue abandoned babies, crisis nursery Africa, sponsor a baby Uganda, Emmanuel Baby Home"
+        keywords="the father's love in action, baby home Uganda, rescue abandoned babies, crisis nursery Africa, sponsor a baby Uganda, Emmanuel Baby Home"
       />
       <Navbar />
 
@@ -187,7 +187,7 @@ export default function BabyWatotoPage() {
           <div className="bg-deep-black text-pure-white flex flex-col justify-center px-8 md:px-16 py-20 space-y-8">
             <div data-aos="fade-right">
               <span className="text-[10px] uppercase font-extrabold tracking-widest text-action-yellow block mb-4">
-                Emmanuel Baby's Home — Est. 2014 (12 Years of Care)
+                The Father&apos;s Love in Action — Emmanuel Baby&apos;s Home
               </span>
               <h1 className="font-headline text-5xl sm:text-6xl font-black uppercase leading-none tracking-tight">
                 Welcomed. <br />
@@ -196,7 +196,7 @@ export default function BabyWatotoPage() {
               </h1>
             </div>
             <p data-aos="fade-right" data-aos-delay="100" className="text-base font-light opacity-90 leading-relaxed max-w-md">
-              Established in 2014, Emmanuel Baby's Home has spent 12 years answering the 24/7 call to care and nurture vulnerable infants, raising them in a loving, God-fearing home community.
+              Putting the Father&apos;s love in action every hour. Since 2014, Emmanuel Baby&apos;s Home has answered the 24/7 call to rescue and nurture vulnerable infants, raising them in a loving, God-fearing home community.
             </p>
             <div data-aos="fade-right" data-aos-delay="200" className="flex flex-wrap gap-4 pt-2">
               <Link

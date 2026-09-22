@@ -9,10 +9,10 @@ export default function WhoWeArePage() {
   return (
     <div className="bg-surface text-on-surface selection:bg-action-yellow selection:text-deep-black overflow-x-hidden font-body page-enter">
       <SEO
-        title="Who We Are | Our Mission, Vision & Story"
-        description="Learn about the heart and history of Katonda Talemwa Ministries in Kyasenya, Lwengo, Uganda. Discover our leadership, Christian values, and dedication to transforming vulnerable communities."
+        title="Who We Are | Putting The Father's Love In Action"
+        description="Putting the Father's Love in Action: Learn about the heart and history of Katonda Talemwa Ministries in Kyasenya, Lwengo, Uganda. Rescuing vulnerable children and empowering communities."
         canonicalPath="/who-we-are"
-        keywords="about Katonda Talemwa Ministries, Christian NGO Uganda, Uganda charity mission, Katonda Talemwa story"
+        keywords="about Katonda Talemwa Ministries, the father's love in action, Christian NGO Uganda, Uganda charity mission, Katonda Talemwa story"
       />
       <Navbar />
 
@@ -27,13 +27,13 @@ export default function WhoWeArePage() {
           </div>
           <div className="relative z-10 max-w-(--spacing-container-max) mx-auto px-4 md:px-margin-desktop text-center space-y-6">
             <span className="font-bold text-xs uppercase tracking-widest text-action-yellow bg-vibrant-green/20 px-4 py-1.5 rounded-full inline-block">
-              Katonda Talemwa Ministries
+              The Father&apos;s Love in Action
             </span>
             <h1 className="font-headline text-headline-xl mb-4 font-black uppercase leading-none md:text-6xl text-4xl">
-              Towards a <span className="text-action-yellow">Sustainable Future</span>
+              Putting The Father&apos;s Love <span className="text-action-yellow">In Action</span>
             </h1>
             <p className="max-w-2xl mx-auto text-body-lg font-light opacity-90 leading-relaxed">
-              Putting the Father&apos;s Love in Action through impacting lives socially, providing resources, spiritual discipleship, and physical care.
+              Katonda Talemwa Ministries is dedicated to raising the next generation of African leaders, rescuing vulnerable children, and demonstrating the Father&apos;s unconditional love across Uganda.
             </p>
             <div className="flex justify-center gap-6 pt-2 font-headline text-xs font-bold uppercase tracking-widest text-pure-white/80">
               <span className="flex items-center gap-1.5"><MaterialIcon name="done" className="text-action-yellow" /> Proclaim</span>

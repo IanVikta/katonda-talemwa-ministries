@@ -173,10 +173,10 @@ export default function VolunteerPage() {
   return (
     <div className="bg-surface text-on-surface selection:bg-action-yellow selection:text-deep-black overflow-x-hidden font-body page-enter">
       <SEO
-        title="Volunteer in Uganda | Short & Long-Term Mission Opportunities"
-        description="Serve with Katonda Talemwa Ministries in Uganda. Meaningful volunteer opportunities in teaching, healthcare, childcare, community development, and vocational training."
+        title="Volunteer in Uganda | Putting The Father's Love In Action"
+        description="Putting the Father's Love in Action: Serve with Katonda Talemwa Ministries in Uganda. Meaningful volunteer opportunities in teaching, healthcare, childcare, community development, and vocational training."
         canonicalPath="/volunteer"
-        keywords="volunteer Uganda, missionary trips Africa, volunteer with orphans Uganda, teach in Uganda, Christian volunteers Africa"
+        keywords="the father's love in action, volunteer Uganda, missionary trips Africa, volunteer with orphans Uganda, teach in Uganda, Christian volunteers Africa"
       />
       <Navbar />
 
@@ -187,7 +187,7 @@ export default function VolunteerPage() {
           {/* Left: dark text panel */}
           <div className="bg-deep-black text-pure-white flex flex-col justify-center px-10 md:px-16 py-20 space-y-7">
             <div data-aos="fade-right">
-              <span className="text-[10px] uppercase font-extrabold tracking-widest text-action-yellow block mb-4">Get Involved — Volunteer</span>
+              <span className="text-[10px] uppercase font-extrabold tracking-widest text-action-yellow block mb-4">The Father&apos;s Love in Action — Volunteer</span>
               <h1 className="font-headline text-5xl sm:text-6xl font-black uppercase leading-none tracking-tight">
                 Come. <br />
                 Serve. <br />
@@ -195,7 +195,7 @@ export default function VolunteerPage() {
               </h1>
             </div>
             <p data-aos="fade-right" data-aos-delay="100" className="text-base font-light opacity-90 leading-relaxed max-w-md">
-              Whether you have two weeks or three months, your skills — medical, educational, creative, or practical — can make a lasting impact in the lives of children and families across Uganda.
+              Put the Father&apos;s love in action on the ground in Uganda. Whether you have two weeks or three months, your skills — medical, educational, creative, or practical — can bring lasting hope to vulnerable children and families.
             </p>
             <div data-aos="fade-right" data-aos-delay="200" className="flex flex-wrap gap-4">
               <a href="#roles" className="bg-vibrant-green text-pure-white font-headline text-xs font-black uppercase tracking-widest px-8 py-4 hover:brightness-110 transition-all rounded-none">

@@ -16,10 +16,10 @@ export default function WatotoVillagesPage() {
   return (
     <div className="bg-surface text-on-surface selection:bg-action-yellow selection:text-deep-black overflow-x-hidden font-body page-enter">
       <SEO
-        title="Katonda Children’s Villages | Family-Style Orphan Care in Uganda"
-        description="Explore our family-style children’s village model in Kyasenya, Lwengo. Each home is led by a loving foster mother providing orphaned children with a permanent, nurturing family."
+        title="Katonda Children’s Villages | Putting The Father's Love In Action"
+        description="Putting the Father's Love in Action: Explore our family-style children’s village model in Kyasenya, Lwengo. Loving mothers providing orphaned children with a permanent, nurturing family."
         canonicalPath="/katonda-villages"
-        keywords="children village Uganda, orphan care village, family style orphan care, foster care Africa"
+        keywords="the father's love in action, children village Uganda, orphan care village, family style orphan care, foster care Africa"
       />
       <Navbar />
 
@@ -89,15 +89,15 @@ export default function WatotoVillagesPage() {
 
                   <div className="space-y-2">
                     <span className="text-[10px] font-headline font-extrabold uppercase tracking-widest text-vibrant-green block border-l-3 border-vibrant-green pl-2.5">
-                      The Heart of Our Villages
+                      The Father&apos;s Love in Action
                     </span>
                     <h2 className="font-headline text-2xl sm:text-3xl font-black uppercase tracking-tight text-pure-white">
-                      Where Belonging <span className="text-action-yellow">Begins</span>
+                      Where The Father&apos;s Love <span className="text-action-yellow">Brings Belonging</span>
                     </h2>
                   </div>
 
                   <p className="text-sm font-light text-pure-white/85 leading-relaxed">
-                    Where orphaned and vulnerable children across Uganda  find not just shelter, but a real mother, real brothers &amp; sisters, and the unconditional love of a true family.
+                    Putting the Father&apos;s love in action so orphaned and vulnerable children across Uganda find not just shelter, but a real mother, real brothers &amp; sisters, and the healing, unconditional love of a true family.
                   </p>
 
                   <div className="pt-2 flex flex-col sm:flex-row gap-3">

@@ -10,9 +10,10 @@ export default function HomePage() {
   return (
     <div className="bg-surface text-on-surface selection:bg-action-yellow selection:text-deep-black">
       <SEO
-        title="Transforming Lives & Restoring Hope in Uganda"
-        description="Katonda Talemwa Ministries rescues orphaned and vulnerable children in Kyasenya, Lwengo, Uganda, providing loving family homes, quality education, medical care, and spiritual discipleship."
+        title="Putting The Father's Love In Action"
+        description="Putting the Father's Love in Action: Katonda Talemwa Ministries is dedicated to rescuing vulnerable orphans, empowering families through education, medical care, child sponsorship, and community transformation in Uganda."
         canonicalPath="/"
+        keywords="Katonda Talemwa Ministries, the father's love in action, child sponsorship Uganda, sponsor a child in Africa, orphan care Uganda, Christian charity Uganda"
       />
       <Navbar />
 
@@ -182,10 +183,10 @@ export default function HomePage() {
               Worship <span className="text-primary font-extrabold">EXPERIENCE</span>
             </h2>
             <p className="text-on-surface-variant mb-6 leading-relaxed">
-              The Katonda Talemwa Children&apos;s Choir has traveled international stages since 1994, sharing the love of Jesus through high-energy African song and dance, and powerful testimonies.
+              Putting the Father&apos;s love in action through joyful worship, inspiring testimonies, and sharing the transforming message of Jesus Christ across communities in Uganda.
             </p>
             <p className="text-on-surface-variant mb-8 leading-relaxed">
-              Each child in the choir has risen above hardship and represents the hope and future of a rebuilt Africa.
+              Each child in our ministry has risen above vulnerability and represents the hope, resilience, and bright future of a restored community.
             </p>
             <a
               href="#"

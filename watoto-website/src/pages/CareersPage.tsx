@@ -151,10 +151,10 @@ export default function CareersPage() {
   return (
     <div className="bg-surface text-on-surface selection:bg-action-yellow selection:text-deep-black overflow-x-hidden font-body page-enter">
       <SEO
-        title="Careers & Job Opportunities in Uganda"
-        description="Join our passionate team at Katonda Talemwa Ministries in Uganda. View open positions in pediatric healthcare, social work, teaching, administration, and child development."
+        title="Careers & Mission Opportunities | Putting The Father's Love In Action"
+        description="Putting the Father's Love in Action: Join our passionate team at Katonda Talemwa Ministries in Uganda. View career opportunities in pediatric healthcare, teaching, and child development."
         canonicalPath="/careers"
-        keywords="jobs in Uganda, NGO jobs Uganda, nursing jobs Lwengo, charity jobs Africa, careers Katonda Talemwa"
+        keywords="the father's love in action, jobs in Uganda, NGO jobs Uganda, nursing jobs Lwengo, charity jobs Africa, careers Katonda Talemwa"
       />
       <Navbar />
 
@@ -165,14 +165,14 @@ export default function CareersPage() {
           <div className="max-w-(--spacing-container-max) mx-auto px-4 md:px-margin-desktop grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
             <div data-aos="fade-right" className="lg:col-span-7 space-y-6">
               <span className="text-[10px] uppercase font-extrabold tracking-widest text-action-yellow block">
-                Work with Purpose
+                The Father&apos;s Love in Action — Careers
               </span>
               <h1 className="font-headline text-5xl sm:text-7xl font-black uppercase leading-none tracking-tight">
                 Join our <br />
                 <span className="text-vibrant-green">Mission</span>
               </h1>
               <p className="text-base font-light opacity-90 leading-relaxed max-w-lg">
-                Do work that makes a real, tangible difference. At Katonda Talemwa Ministries, we are looking for passionate, skilled professionals who want to dedicate their talents to raising the next generation of African leaders.
+                Put the Father&apos;s love in action through your career. At Katonda Talemwa Ministries, we are looking for passionate, skilled professionals who want to dedicate their talents to raising the next generation of African leaders.
               </p>
               <div className="flex flex-wrap gap-4 pt-2">
                 <a

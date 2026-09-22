@@ -86,10 +86,10 @@ export default function DonatePage() {
   return (
     <div className="bg-surface text-on-surface selection:bg-action-yellow selection:text-deep-black overflow-x-hidden page-enter">
       <SEO
-        title="Donate & Support Our Ministry in Uganda"
-        description="Support Katonda Talemwa Ministries with a one-time or monthly donation. Help fund orphan rescue, school education, clean water, medical clinic care, and emergency relief."
+        title="Donate | Putting The Father's Love In Action"
+        description="Putting the Father's Love in Action: Support Katonda Talemwa Ministries with a one-time or monthly donation. Help fund orphan rescue, school education, clean water, medical clinic care, and emergency relief in Uganda."
         canonicalPath="/donate"
-        keywords="donate to Uganda charity, give to African orphans, Christian ministry donations, Katonda Talemwa donation"
+        keywords="the father's love in action, donate to Uganda charity, give to African orphans, Christian ministry donations, Katonda Talemwa donation"
       />
       <Navbar />
 
@@ -104,13 +104,13 @@ export default function DonatePage() {
           </div>
           <div className="relative z-10 max-w-(--spacing-container-max) mx-auto px-6 md:px-margin-desktop text-center space-y-6">
             <span className="text-action-yellow font-bold text-label-bold uppercase tracking-widest block animate-pulse">
-              Support Our Mission
+              The Father&apos;s Love in Action
             </span>
             <h1 className="font-headline text-headline-xl mb-4 font-black uppercase leading-tight tracking-wide">
               Donate <span className="text-action-yellow">Today</span>
             </h1>
             <p className="max-w-2xl mx-auto text-body-lg opacity-90 font-light leading-relaxed">
-              Every donation helps us provide shelter, education, healthcare, and a loving home to vulnerable children and mothers. 
+              Every gift puts the Father&apos;s love into action, providing shelter, education, healthcare, and a loving family home to vulnerable children and mothers across Uganda. 
             </p>
           </div>
         </section>

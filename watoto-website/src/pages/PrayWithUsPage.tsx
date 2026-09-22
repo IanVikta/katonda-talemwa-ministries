@@ -92,10 +92,10 @@ export default function PrayWithUsPage() {
   return (
     <div className="bg-surface text-on-surface selection:bg-action-yellow selection:text-deep-black overflow-x-hidden font-body page-enter">
       <SEO
-        title="Pray With Us | Prayer Requests & Global Intercession"
-        description="Join our global prayer team interceding for orphaned children, widows, community leaders, and ministry staff in Uganda. Submit your personal prayer requests."
+        title="Pray With Us | Putting The Father's Love In Action"
+        description="Putting the Father's Love in Action: Join our global prayer team interceding for orphaned children, vulnerable families, and ministry staff across Uganda."
         canonicalPath="/pray-with-us"
-        keywords="prayer requests, pray for Uganda orphans, Christian intercession, Katonda Talemwa prayer team"
+        keywords="the father's love in action, prayer requests, pray for Uganda orphans, Christian intercession, Katonda Talemwa prayer team"
       />
       <Navbar />
 
@@ -108,13 +108,13 @@ export default function PrayWithUsPage() {
           <div className="relative z-10 max-w-3xl mx-auto px-4 text-center space-y-8">
             <div data-aos="fade-down">
               <MaterialIcon name="church" className="text-action-yellow text-5xl mx-auto block mb-6" />
-              <span className="text-[10px] uppercase font-extrabold tracking-widest text-action-yellow block mb-4">Get Involved — Prayer</span>
+              <span className="text-[10px] uppercase font-extrabold tracking-widest text-action-yellow block mb-4">The Father&apos;s Love in Action — Prayer</span>
               <h1 className="font-headline text-5xl sm:text-7xl font-black uppercase leading-none tracking-tight">
                 Pray <span className="text-vibrant-green">With</span> Us
               </h1>
             </div>
             <p data-aos="fade-up" data-aos-delay="100" className="text-base font-light opacity-90 leading-relaxed max-w-xl mx-auto">
-              Prayer is the foundation of everything we do at Katonda Talemwa Ministries. Join thousands of intercessors around the world lifting these children before the throne of God daily.
+              Prayer is the spiritual foundation of putting the Father&apos;s love in action. Join thousands of intercessors around the world lifting these vulnerable children before the throne of God daily.
             </p>
             {/* Scripture */}
             <div data-aos="fade-up" data-aos-delay="200" className="border border-pure-white/10 bg-pure-white/5 p-8 max-w-xl mx-auto">
