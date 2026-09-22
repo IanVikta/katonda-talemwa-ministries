@@ -5,6 +5,7 @@ import { FooterProgram } from '../components/Footer'
 import ScrollReveal from '../components/ScrollReveal'
 import MaterialIcon from '../components/ui/MaterialIcon'
 import { IMAGES } from '../data/content'
+import SEO from '../components/SEO'
 
 interface ChurchGalleryItem {
   id: string
@@ -71,6 +72,12 @@ export default function ChurchPage() {
 
   return (
     <div className="bg-surface text-on-surface selection:bg-action-yellow selection:text-deep-black overflow-x-hidden font-body page-enter">
+      <SEO
+        title="Katonda Community Church | Worship & Community Transformation"
+        description="The spiritual heart of our community in Kyasenya, Uganda. Worship services, discipleship, community outreach, and biblical empowerment across rural Uganda."
+        canonicalPath="/katonda-church"
+        keywords="church Uganda, Christian church Lwengo, Katonda church network, worship Uganda, gospel outreach Africa"
+      />
       <Navbar />
 
       <main className="pt-20">

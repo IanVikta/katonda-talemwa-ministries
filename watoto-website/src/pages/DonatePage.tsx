@@ -3,6 +3,9 @@ import Navbar from '../components/Navbar'
 import { FooterHome } from '../components/Footer'
 import MaterialIcon from '../components/ui/MaterialIcon'
 import { IMAGES } from '../data/content'
+import api from '../services/api'
+import { isValidEmail, isValidName, sanitizeName, handleNameKeyDown } from '../utils/validation'
+import SEO from '../components/SEO'
 
 export default function DonatePage() {
   const [frequency, setFrequency] = useState<'one-time' | 'monthly'>('one-time')
@@ -11,23 +14,67 @@ export default function DonatePage() {
   const [designation, setDesignation] = useState('Where Most Needed (General Fund)')
   const [donorName, setDonorName] = useState('')
   const [donorEmail, setDonorEmail] = useState('')
+  const [donateErrors, setDonateErrors] = useState<Record<string, string>>({})
   const [loading, setLoading] = useState(false)
   const [success, setSuccess] = useState(false)
   const [copied, setCopied] = useState(false)
 
   const finalAmount = amount === 'custom' ? (customAmount || '0') : amount
 
-  const handlePayPalSubmit = (e: React.FormEvent) => {
+  const validate = () => {
+    const errs: Record<string, string> = {}
+    if (amount === 'custom') {
+      if (!customAmount || !customAmount.trim()) {
+        errs.amount = 'Please enter a donation amount.'
+      } else {
+        const num = parseFloat(customAmount)
+        if (isNaN(num) || num <= 0) {
+          errs.amount = 'Please enter a valid donation amount greater than 0.'
+        }
+      }
+    } else {
+      const num = parseFloat(amount)
+      if (isNaN(num) || num <= 0) {
+        errs.amount = 'Please choose a valid donation amount.'
+      }
+    }
+
+    if (donorName && donorName.trim()) {
+      if (!isValidName(donorName)) {
+        errs.donorName = 'Name can only contain letters (no numbers).'
+      }
+    }
+
+    if (donorEmail && donorEmail.trim()) {
+      if (!isValidEmail(donorEmail)) {
+        errs.donorEmail = 'Please enter a valid email address or leave blank.'
+      }
+    }
+
+    setDonateErrors(errs)
+    return Object.keys(errs).length === 0
+  }
+
+  const handlePayPalSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    if (!validate()) return
+
     setLoading(true)
+
+    // Record donation pledge in MySQL database
+    await api.submitDonation({
+      donorName,
+      donorEmail,
+      amount: finalAmount,
+      frequency,
+      designation
+    })
 
     const paypalUrl = `https://www.paypal.com/donate/?business=katondatalemwaministries%40gmail.com&currency_code=USD&amount=${finalAmount}&item_name=${encodeURIComponent(`KTM Donation - ${designation} (${frequency === 'monthly' ? 'Monthly' : 'One-Time'})`)}`
 
-    setTimeout(() => {
-      setLoading(false)
-      setSuccess(true)
-      window.open(paypalUrl, '_blank', 'noopener,noreferrer')
-    }, 600)
+    setLoading(false)
+    setSuccess(true)
+    window.open(paypalUrl, '_blank', 'noopener,noreferrer')
   }
 
   const handleCopyEmail = () => {
@@ -38,6 +85,12 @@ export default function DonatePage() {
 
   return (
     <div className="bg-surface text-on-surface selection:bg-action-yellow selection:text-deep-black overflow-x-hidden page-enter">
+      <SEO
+        title="Donate & Support Our Ministry in Uganda"
+        description="Support Katonda Talemwa Ministries with a one-time or monthly donation. Help fund orphan rescue, school education, clean water, medical clinic care, and emergency relief."
+        canonicalPath="/donate"
+        keywords="donate to Uganda charity, give to African orphans, Christian ministry donations, Katonda Talemwa donation"
+      />
       <Navbar />
 
       <main className="pt-20">
@@ -168,7 +221,7 @@ export default function DonatePage() {
                   </div>
                 </div>
               ) : (
-                <form onSubmit={handlePayPalSubmit} className="p-6 sm:p-8 lg:p-10">
+                <form onSubmit={handlePayPalSubmit} noValidate className="p-6 sm:p-8 lg:p-10">
                   <div className="grid lg:grid-cols-12 gap-8 lg:gap-10 items-start">
                     
                     {/* Left Column: Donation Configuration (lg:col-span-7) */}
@@ -262,14 +315,29 @@ export default function DonatePage() {
                               <span className="absolute left-4 top-1/2 -translate-y-1/2 text-base font-black text-deep-black">$</span>
                               <input
                                 type="number"
-                                required
-                                min="5"
+                                min="1"
                                 placeholder="Enter custom amount in USD"
                                 value={customAmount}
-                                onChange={(e) => setCustomAmount(e.target.value)}
-                                className="w-full bg-surface border-2 border-vibrant-green focus:ring-2 focus:ring-vibrant-green/20 rounded-xl pl-9 pr-4 py-3 text-base text-deep-black font-bold outline-none transition-all"
+                                onChange={(e) => {
+                                  setCustomAmount(e.target.value)
+                                  if (donateErrors.amount) {
+                                    setDonateErrors(prev => {
+                                      const next = { ...prev }
+                                      delete next.amount
+                                      return next
+                                    })
+                                  }
+                                }}
+                                className={`w-full bg-surface border-2 rounded-xl pl-9 pr-4 py-3 text-base text-deep-black font-bold outline-none transition-all ${
+                                  donateErrors.amount
+                                    ? 'border-red-500 focus:ring-2 focus:ring-red-500/20'
+                                    : 'border-vibrant-green focus:ring-2 focus:ring-vibrant-green/20'
+                                }`}
                               />
                             </div>
+                            {donateErrors.amount && (
+                              <p className="text-red-500 text-xs mt-1 font-medium">{donateErrors.amount}</p>
+                            )}
                           </div>
                         )}
                       </div>
@@ -308,20 +376,57 @@ export default function DonatePage() {
                           </span>
                         </div>
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                          <input
-                            type="text"
-                            placeholder="Full Name"
-                            value={donorName}
-                            onChange={(e) => setDonorName(e.target.value)}
-                            className="w-full bg-surface border border-outline-variant/60 focus:border-vibrant-green focus:ring-2 focus:ring-vibrant-green/20 rounded-xl px-4 py-3 text-xs sm:text-sm text-deep-black outline-none transition-all"
-                          />
-                          <input
-                            type="email"
-                            placeholder="Email Address"
-                            value={donorEmail}
-                            onChange={(e) => setDonorEmail(e.target.value)}
-                            className="w-full bg-surface border border-outline-variant/60 focus:border-vibrant-green focus:ring-2 focus:ring-vibrant-green/20 rounded-xl px-4 py-3 text-xs sm:text-sm text-deep-black outline-none transition-all"
-                          />
+                          <div>
+                            <input
+                              type="text"
+                              placeholder="Full Name"
+                              value={donorName}
+                              onChange={(e) => {
+                                setDonorName(sanitizeName(e.target.value))
+                                if (donateErrors.donorName) {
+                                  setDonateErrors(prev => {
+                                    const next = { ...prev }
+                                    delete next.donorName
+                                    return next
+                                  })
+                                }
+                              }}
+                              onKeyDown={handleNameKeyDown}
+                              className={`w-full bg-surface border rounded-xl px-4 py-3 text-xs sm:text-sm text-deep-black outline-none transition-all ${
+                                donateErrors.donorName
+                                  ? 'border-red-500 focus:ring-2 focus:ring-red-500/20'
+                                  : 'border-outline-variant/60 focus:border-vibrant-green focus:ring-2 focus:ring-vibrant-green/20'
+                              }`}
+                            />
+                            {donateErrors.donorName && (
+                              <p className="text-red-500 text-xs mt-1 font-medium">{donateErrors.donorName}</p>
+                            )}
+                          </div>
+                          <div>
+                            <input
+                              type="email"
+                              placeholder="Email Address"
+                              value={donorEmail}
+                              onChange={(e) => {
+                                setDonorEmail(e.target.value)
+                                if (donateErrors.donorEmail) {
+                                  setDonateErrors(prev => {
+                                    const next = { ...prev }
+                                    delete next.donorEmail
+                                    return next
+                                  })
+                                }
+                              }}
+                              className={`w-full bg-surface border rounded-xl px-4 py-3 text-xs sm:text-sm text-deep-black outline-none transition-all ${
+                                donateErrors.donorEmail
+                                  ? 'border-red-500 focus:ring-2 focus:ring-red-500/20'
+                                  : 'border-outline-variant/60 focus:border-vibrant-green focus:ring-2 focus:ring-vibrant-green/20'
+                              }`}
+                            />
+                            {donateErrors.donorEmail && (
+                              <p className="text-red-500 text-xs mt-1 font-medium">{donateErrors.donorEmail}</p>
+                            )}
+                          </div>
                         </div>
                       </div>
 

@@ -3,10 +3,17 @@ import Navbar from '../components/Navbar'
 import { FooterHome } from '../components/Footer'
 import MaterialIcon from '../components/ui/MaterialIcon'
 import { IMAGES } from '../data/content'
+import SEO from '../components/SEO'
 
 export default function WhoWeArePage() {
   return (
     <div className="bg-surface text-on-surface selection:bg-action-yellow selection:text-deep-black overflow-x-hidden font-body page-enter">
+      <SEO
+        title="Who We Are | Our Mission, Vision & Story"
+        description="Learn about the heart and history of Katonda Talemwa Ministries in Kyasenya, Lwengo, Uganda. Discover our leadership, Christian values, and dedication to transforming vulnerable communities."
+        canonicalPath="/who-we-are"
+        keywords="about Katonda Talemwa Ministries, Christian NGO Uganda, Uganda charity mission, Katonda Talemwa story"
+      />
       <Navbar />
 
       <main className="pt-20">

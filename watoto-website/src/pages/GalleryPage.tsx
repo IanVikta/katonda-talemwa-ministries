@@ -4,6 +4,7 @@ import 'aos/dist/aos.css'
 import Navbar from '../components/Navbar'
 import { UnifiedFooter } from '../components/Footer'
 import MaterialIcon from '../components/ui/MaterialIcon'
+import SEO from '../components/SEO'
 
 const photos: string[] = [
   '/images/villages-family.jpg',
@@ -125,6 +126,12 @@ export default function GalleryPage() {
 
   return (
     <div className="bg-[#0b0f17] text-pure-white selection:bg-action-yellow selection:text-deep-black overflow-x-hidden font-body page-enter min-h-screen flex flex-col">
+      <SEO
+        title="Photo & Video Gallery | Moments of Joy & Hope in Uganda"
+        description="Browse photos and videos of Katonda Talemwa Ministries in Uganda. See our children, village family homes, schools, clinic, and community impact in action."
+        canonicalPath="/gallery"
+        keywords="Katonda Talemwa photos, Uganda orphanage pictures, charity gallery Africa, Emmanuel Baby Home photos"
+      />
       <Navbar />
 
       <main className="pt-20 grow">

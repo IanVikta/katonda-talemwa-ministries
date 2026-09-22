@@ -64,23 +64,80 @@ const jobs = [
   }
 ]
 
+import api from '../services/api'
+import { isValidEmail, isValidName, isValidUrl, isNonEmpty, sanitizeName, handleNameKeyDown } from '../utils/validation'
+import SEO from '../components/SEO'
+
 export default function CareersPage() {
   const [openJobId, setOpenJobId] = useState<string | null>(null)
   const [submitted, setSubmitted] = useState(false)
   const [loading, setLoading] = useState(false)
+  const [errorMessage, setErrorMessage] = useState<string | null>(null)
+  const [errors, setErrors] = useState<Record<string, string>>({})
   const [formData, setFormData] = useState({ name: '', email: '', job: '', cvUrl: '', coverLetter: '' })
 
   useEffect(() => {
     AOS.init({ duration: 700, easing: 'ease-out-cubic', once: true, offset: 60 })
   }, [])
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const updateField = (field: string, val: string) => {
+    const cleanVal = field === 'name' ? sanitizeName(val) : val
+    setFormData(prev => ({ ...prev, [field]: cleanVal }))
+    if (errors[field]) {
+      setErrors(prev => {
+        const next = { ...prev }
+        delete next[field]
+        return next
+      })
+    }
+  }
+
+  const validate = () => {
+    const errs: Record<string, string> = {}
+    if (!isNonEmpty(formData.name)) {
+      errs.name = 'Please enter your full name.'
+    } else if (!isValidName(formData.name)) {
+      errs.name = 'Name can only contain letters (no numbers).'
+    }
+    if (!isNonEmpty(formData.email)) {
+      errs.email = 'Please enter your email address.'
+    } else if (!isValidEmail(formData.email)) {
+      errs.email = 'Please enter a valid email address.'
+    }
+    if (!isNonEmpty(formData.job)) {
+      errs.job = 'Please select a position.'
+    }
+    if (!isNonEmpty(formData.cvUrl)) {
+      errs.cvUrl = 'Please provide a link to your CV or Resume.'
+    } else if (!isValidUrl(formData.cvUrl)) {
+      errs.cvUrl = 'Please provide a valid URL starting with http:// or https://'
+    }
+    setErrors(errs)
+    return Object.keys(errs).length === 0
+  }
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    if (!validate()) return
+
     setLoading(true)
-    setTimeout(() => {
-      setLoading(false)
+    setErrorMessage(null)
+
+    const res = await api.submitCareer({
+      name: formData.name,
+      email: formData.email,
+      jobTitle: formData.job,
+      cvUrl: formData.cvUrl,
+      coverLetter: formData.coverLetter
+    })
+
+    setLoading(false)
+    if (res.success) {
       setSubmitted(true)
-    }, 1500)
+      setErrors({})
+    } else {
+      setErrorMessage(res.error || 'Failed to submit application. Please try again.')
+    }
   }
 
   const toggleJob = (id: string) => {
@@ -93,6 +150,12 @@ export default function CareersPage() {
 
   return (
     <div className="bg-surface text-on-surface selection:bg-action-yellow selection:text-deep-black overflow-x-hidden font-body page-enter">
+      <SEO
+        title="Careers & Job Opportunities in Uganda"
+        description="Join our passionate team at Katonda Talemwa Ministries in Uganda. View open positions in pediatric healthcare, social work, teaching, administration, and child development."
+        canonicalPath="/careers"
+        keywords="jobs in Uganda, NGO jobs Uganda, nursing jobs Lwengo, charity jobs Africa, careers Katonda Talemwa"
+      />
       <Navbar />
 
       <main className="pt-20">
@@ -302,56 +365,86 @@ export default function CareersPage() {
                 </p>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-4">
+              <form onSubmit={handleSubmit} noValidate className="space-y-4">
+                {errorMessage && (
+                  <div className="p-3.5 bg-red-500/10 border border-red-500/30 text-red-600 text-xs">
+                    {errorMessage}
+                  </div>
+                )}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div className="space-y-1">
                     <label className="text-[10px] font-bold uppercase tracking-wider text-on-surface-variant block">Full Name *</label>
                     <input
-                      required
                       type="text"
                       placeholder="John Doe"
                       value={formData.name}
-                      onChange={e => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full border border-outline-variant/60 px-4 py-2.5 bg-surface text-sm focus:border-vibrant-green outline-none rounded-none"
+                      onChange={e => updateField('name', e.target.value)}
+                      onKeyDown={handleNameKeyDown}
+                      className={`w-full border px-4 py-2.5 bg-surface text-sm outline-none rounded-none ${
+                        errors.name
+                          ? 'border-red-500 focus:border-red-500'
+                          : 'border-outline-variant/60 focus:border-vibrant-green'
+                      }`}
                     />
+                    {errors.name && (
+                      <p className="text-red-500 text-xs mt-1 font-medium">{errors.name}</p>
+                    )}
                   </div>
                   <div className="space-y-1">
                     <label className="text-[10px] font-bold uppercase tracking-wider text-on-surface-variant block">Email Address *</label>
                     <input
-                      required
                       type="email"
                       placeholder="john@email.com"
                       value={formData.email}
-                      onChange={e => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full border border-outline-variant/60 px-4 py-2.5 bg-surface text-sm focus:border-vibrant-green outline-none rounded-none"
+                      onChange={e => updateField('email', e.target.value)}
+                      className={`w-full border px-4 py-2.5 bg-surface text-sm outline-none rounded-none ${
+                        errors.email
+                          ? 'border-red-500 focus:border-red-500'
+                          : 'border-outline-variant/60 focus:border-vibrant-green'
+                      }`}
                     />
+                    {errors.email && (
+                      <p className="text-red-500 text-xs mt-1 font-medium">{errors.email}</p>
+                    )}
                   </div>
                 </div>
 
                 <div className="space-y-1">
                   <label className="text-[10px] font-bold uppercase tracking-wider text-on-surface-variant block">Position Applied For *</label>
                   <select
-                    required
                     value={formData.job}
-                    onChange={e => setFormData({ ...formData, job: e.target.value })}
-                    className="w-full border border-outline-variant/60 px-4 py-2.5 bg-surface text-sm focus:border-vibrant-green outline-none rounded-none"
+                    onChange={e => updateField('job', e.target.value)}
+                    className={`w-full border px-4 py-2.5 bg-surface text-sm outline-none rounded-none ${
+                      errors.job
+                        ? 'border-red-500 focus:border-red-500'
+                        : 'border-outline-variant/60 focus:border-vibrant-green'
+                    }`}
                   >
                     <option value="">Select a position…</option>
                     {jobs.map(j => <option key={j.id} value={j.title}>{j.title}</option>)}
                     <option value="General Application">General Application / Talent Pool</option>
                   </select>
+                  {errors.job && (
+                    <p className="text-red-500 text-xs mt-1 font-medium">{errors.job}</p>
+                  )}
                 </div>
 
                 <div className="space-y-1">
                   <label className="text-[10px] font-bold uppercase tracking-wider text-on-surface-variant block">CV/Resume Link (Google Drive / Dropbox) *</label>
                   <input
-                    required
                     type="url"
                     placeholder="https://drive.google.com/…"
                     value={formData.cvUrl}
-                    onChange={e => setFormData({ ...formData, cvUrl: e.target.value })}
-                    className="w-full border border-outline-variant/60 px-4 py-2.5 bg-surface text-sm focus:border-vibrant-green outline-none rounded-none"
+                    onChange={e => updateField('cvUrl', e.target.value)}
+                    className={`w-full border px-4 py-2.5 bg-surface text-sm outline-none rounded-none ${
+                      errors.cvUrl
+                        ? 'border-red-500 focus:border-red-500'
+                        : 'border-outline-variant/60 focus:border-vibrant-green'
+                    }`}
                   />
+                  {errors.cvUrl && (
+                    <p className="text-red-500 text-xs mt-1 font-medium">{errors.cvUrl}</p>
+                  )}
                 </div>
 
                 <div className="space-y-1">
@@ -360,7 +453,7 @@ export default function CareersPage() {
                     rows={5}
                     placeholder="Introduce yourself and tell us why you are a good fit for this role…"
                     value={formData.coverLetter}
-                    onChange={e => setFormData({ ...formData, coverLetter: e.target.value })}
+                    onChange={e => updateField('coverLetter', e.target.value)}
                     className="w-full border border-outline-variant/60 px-4 py-2.5 bg-surface text-sm focus:border-vibrant-green outline-none rounded-none resize-none"
                   />
                 </div>

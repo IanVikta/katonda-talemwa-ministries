@@ -22,24 +22,81 @@ const testimonials = [
   { name: 'Sister Agnes', country: 'Uganda', text: 'When people across the world pray with us, we feel it. The children know they are not forgotten — by man or by God.', avatar: 'A' },
 ]
 
+import api from '../services/api'
+import { isValidEmail, isValidName, isNonEmpty, sanitizeName, handleNameKeyDown } from '../utils/validation'
+import SEO from '../components/SEO'
+
 export default function PrayWithUsPage() {
   const [formData, setFormData] = useState({ name: '', email: '', request: '' })
+  const [errors, setErrors] = useState<Record<string, string>>({})
   const [submitted, setSubmitted] = useState(false)
   const [loading, setLoading] = useState(false)
+  const [errorMessage, setErrorMessage] = useState<string | null>(null)
   const [activeDay, setActiveDay] = useState(0)
 
   useEffect(() => {
     AOS.init({ duration: 700, easing: 'ease-out-cubic', once: true, offset: 60 })
   }, [])
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const updateField = (field: string, val: string) => {
+    const cleanVal = field === 'name' ? sanitizeName(val) : val
+    setFormData(prev => ({ ...prev, [field]: cleanVal }))
+    if (errors[field]) {
+      setErrors(prev => {
+        const next = { ...prev }
+        delete next[field]
+        return next
+      })
+    }
+  }
+
+  const validate = () => {
+    const errs: Record<string, string> = {}
+    if (!isNonEmpty(formData.name)) {
+      errs.name = 'Please enter your name.'
+    } else if (!isValidName(formData.name)) {
+      errs.name = 'Name can only contain letters (no numbers).'
+    }
+    if (!isNonEmpty(formData.email)) {
+      errs.email = 'Please enter your email address.'
+    } else if (!isValidEmail(formData.email)) {
+      errs.email = 'Please enter a valid email address.'
+    }
+    if (!isNonEmpty(formData.request)) {
+      errs.request = 'Please enter your prayer request.'
+    } else if (formData.request.trim().length < 5) {
+      errs.request = 'Prayer request should be at least 5 characters.'
+    }
+    setErrors(errs)
+    return Object.keys(errs).length === 0
+  }
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    if (!validate()) return
+
     setLoading(true)
-    setTimeout(() => { setLoading(false); setSubmitted(true) }, 1200)
+    setErrorMessage(null)
+
+    const res = await api.submitPrayer(formData)
+    setLoading(false)
+
+    if (res.success) {
+      setSubmitted(true)
+      setErrors({})
+    } else {
+      setErrorMessage(res.error || 'Failed to submit prayer request. Please try again.')
+    }
   }
 
   return (
     <div className="bg-surface text-on-surface selection:bg-action-yellow selection:text-deep-black overflow-x-hidden font-body page-enter">
+      <SEO
+        title="Pray With Us | Prayer Requests & Global Intercession"
+        description="Join our global prayer team interceding for orphaned children, widows, community leaders, and ministry staff in Uganda. Submit your personal prayer requests."
+        canonicalPath="/pray-with-us"
+        keywords="prayer requests, pray for Uganda orphans, Christian intercession, Katonda Talemwa prayer team"
+      />
       <Navbar />
 
       <main className="pt-20">
@@ -230,24 +287,45 @@ export default function PrayWithUsPage() {
                 </p>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-4">
+              <form onSubmit={handleSubmit} noValidate className="space-y-4">
+                {errorMessage && (
+                  <div className="p-3.5 bg-red-500/20 border border-red-500/50 text-red-200 text-xs">
+                    {errorMessage}
+                  </div>
+                )}
                 <div className="space-y-1">
                   <label className="text-[10px] font-bold uppercase tracking-wider text-pure-white/60 block">Your Name *</label>
-                  <input required type="text" placeholder="Your name" value={formData.name}
-                    onChange={e => setFormData({ ...formData, name: e.target.value })}
-                    className="w-full bg-pure-white/5 border border-pure-white/15 text-pure-white px-4 py-3 text-sm focus:border-vibrant-green outline-none rounded-none placeholder:text-pure-white/30" />
+                  <input type="text" placeholder="Your name" value={formData.name}
+                    onChange={e => updateField('name', e.target.value)}
+                    onKeyDown={handleNameKeyDown}
+                    className={`w-full bg-pure-white/5 border text-pure-white px-4 py-3 text-sm focus:border-vibrant-green outline-none rounded-none placeholder:text-pure-white/30 ${
+                      errors.name ? 'border-red-500' : 'border-pure-white/15'
+                    }`} />
+                  {errors.name && (
+                    <p className="text-red-400 text-xs font-medium mt-1">{errors.name}</p>
+                  )}
                 </div>
                 <div className="space-y-1">
                   <label className="text-[10px] font-bold uppercase tracking-wider text-pure-white/60 block">Email Address *</label>
-                  <input required type="email" placeholder="for follow-up" value={formData.email}
-                    onChange={e => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full bg-pure-white/5 border border-pure-white/15 text-pure-white px-4 py-3 text-sm focus:border-vibrant-green outline-none rounded-none placeholder:text-pure-white/30" />
+                  <input type="email" placeholder="for follow-up" value={formData.email}
+                    onChange={e => updateField('email', e.target.value)}
+                    className={`w-full bg-pure-white/5 border text-pure-white px-4 py-3 text-sm focus:border-vibrant-green outline-none rounded-none placeholder:text-pure-white/30 ${
+                      errors.email ? 'border-red-500' : 'border-pure-white/15'
+                    }`} />
+                  {errors.email && (
+                    <p className="text-red-400 text-xs font-medium mt-1">{errors.email}</p>
+                  )}
                 </div>
                 <div className="space-y-1">
                   <label className="text-[10px] font-bold uppercase tracking-wider text-pure-white/60 block">Your Prayer Request *</label>
-                  <textarea required rows={6} placeholder="Share what is on your heart…" value={formData.request}
-                    onChange={e => setFormData({ ...formData, request: e.target.value })}
-                    className="w-full bg-pure-white/5 border border-pure-white/15 text-pure-white px-4 py-3 text-sm focus:border-vibrant-green outline-none rounded-none resize-none placeholder:text-pure-white/30" />
+                  <textarea rows={6} placeholder="Share what is on your heart…" value={formData.request}
+                    onChange={e => updateField('request', e.target.value)}
+                    className={`w-full bg-pure-white/5 border text-pure-white px-4 py-3 text-sm focus:border-vibrant-green outline-none rounded-none resize-none placeholder:text-pure-white/30 ${
+                      errors.request ? 'border-red-500' : 'border-pure-white/15'
+                    }`} />
+                  {errors.request && (
+                    <p className="text-red-400 text-xs font-medium mt-1">{errors.request}</p>
+                  )}
                 </div>
                 <button type="submit" disabled={loading}
                   className="w-full bg-action-yellow hover:brightness-110 text-deep-black font-headline text-xs font-black uppercase tracking-widest py-4 flex items-center justify-center gap-2 disabled:opacity-70 transition-all active:scale-[0.99] rounded-none">

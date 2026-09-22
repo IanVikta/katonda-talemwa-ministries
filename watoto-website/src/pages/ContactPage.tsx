@@ -3,6 +3,9 @@ import Navbar from '../components/Navbar'
 import { FooterHome } from '../components/Footer'
 import MaterialIcon from '../components/ui/MaterialIcon'
 import { IMAGES } from '../data/content'
+import api from '../services/api'
+import { isValidEmail, isValidName, isNonEmpty, sanitizeName, handleNameKeyDown } from '../utils/validation'
+import SEO from '../components/SEO'
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -11,27 +14,76 @@ export default function ContactPage() {
     subject: '',
     message: ''
   })
+  const [errors, setErrors] = useState<Record<string, string>>({})
   const [formSubmitted, setFormSubmitted] = useState(false)
   const [loading, setLoading] = useState(false)
+  const [errorMessage, setErrorMessage] = useState<string | null>(null)
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
-    setFormData(prev => ({ ...prev, [name]: value }))
+    // Sanitize name field to immediately prevent typing numbers
+    const cleanValue = name === 'name' ? sanitizeName(value) : value
+    setFormData(prev => ({ ...prev, [name]: cleanValue }))
+    if (errors[name]) {
+      setErrors(prev => {
+        const next = { ...prev }
+        delete next[name]
+        return next
+      })
+    }
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const validate = () => {
+    const newErrors: Record<string, string> = {}
+    if (!isNonEmpty(formData.name)) {
+      newErrors.name = 'Please enter your full name.'
+    } else if (!isValidName(formData.name)) {
+      newErrors.name = 'Name can only contain letters (no numbers).'
+    }
+    if (!isNonEmpty(formData.email)) {
+      newErrors.email = 'Please enter your email address.'
+    } else if (!isValidEmail(formData.email)) {
+      newErrors.email = 'Please enter a valid email address (e.g. name@example.com).'
+    }
+    if (!isNonEmpty(formData.subject)) {
+      newErrors.subject = 'Please enter a subject.'
+    }
+    if (!isNonEmpty(formData.message)) {
+      newErrors.message = 'Please enter your message.'
+    } else if (formData.message.trim().length < 10) {
+      newErrors.message = 'Please enter at least 10 characters.'
+    }
+    setErrors(newErrors)
+    return Object.keys(newErrors).length === 0
+  }
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    if (!validate()) return
+
     setLoading(true)
-    // Simulate API request
-    setTimeout(() => {
-      setLoading(false)
+    setErrorMessage(null)
+
+    const res = await api.submitContact(formData)
+    setLoading(false)
+
+    if (res.success) {
       setFormSubmitted(true)
       setFormData({ name: '', email: '', subject: '', message: '' })
-    }, 1500)
+      setErrors({})
+    } else {
+      setErrorMessage(res.error || 'Failed to send message. Please try again.')
+    }
   }
 
   return (
     <div className="bg-surface text-on-surface selection:bg-action-yellow selection:text-deep-black overflow-x-hidden page-enter">
+      <SEO
+        title="Contact Us | Reach Katonda Talemwa Ministries in Uganda"
+        description="Get in touch with Katonda Talemwa Ministries in Kyasenya, Lwengo, Uganda. Contact our administration for inquiries, child sponsorships, visiting, or donations."
+        canonicalPath="/contact"
+        keywords="contact Katonda Talemwa, Uganda charity contact, Lwengo ministry address, contact orphanage Uganda"
+      />
       <Navbar />
 
       <main className="pt-20">
@@ -155,7 +207,12 @@ export default function ContactPage() {
                     </button>
                   </div>
                 ) : (
-                  <form onSubmit={handleSubmit} className="space-y-5">
+                  <form onSubmit={handleSubmit} noValidate className="space-y-5">
+                    {errorMessage && (
+                      <div className="p-3.5 bg-red-500/10 border border-red-500/30 text-red-600 text-xs">
+                        {errorMessage}
+                      </div>
+                    )}
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       {/* Name */}
@@ -167,12 +224,19 @@ export default function ContactPage() {
                           type="text"
                           id="contact-name"
                           name="name"
-                          required
                           value={formData.name}
                           onChange={handleChange}
+                          onKeyDown={handleNameKeyDown}
                           placeholder="John Doe"
-                          className="w-full bg-surface border border-outline-variant/60 focus:border-primary focus:ring-2 focus:ring-primary/10 rounded-lg px-4 py-3 text-sm text-deep-black outline-none transition-all placeholder-on-surface-variant/40"
+                          className={`w-full bg-surface border rounded-lg px-4 py-3 text-sm text-deep-black outline-none transition-all placeholder-on-surface-variant/40 ${
+                            errors.name
+                              ? 'border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-500/10'
+                              : 'border-outline-variant/60 focus:border-primary focus:ring-2 focus:ring-primary/10'
+                          }`}
                         />
+                        {errors.name && (
+                          <p className="text-red-500 text-xs mt-1 font-medium">{errors.name}</p>
+                        )}
                       </div>
 
                       {/* Email */}
@@ -184,12 +248,18 @@ export default function ContactPage() {
                           type="email"
                           id="contact-email"
                           name="email"
-                          required
                           value={formData.email}
                           onChange={handleChange}
                           placeholder="john@example.com"
-                          className="w-full bg-surface border border-outline-variant/60 focus:border-primary focus:ring-2 focus:ring-primary/10 rounded-lg px-4 py-3 text-sm text-deep-black outline-none transition-all placeholder-on-surface-variant/40"
+                          className={`w-full bg-surface border rounded-lg px-4 py-3 text-sm text-deep-black outline-none transition-all placeholder-on-surface-variant/40 ${
+                            errors.email
+                              ? 'border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-500/10'
+                              : 'border-outline-variant/60 focus:border-primary focus:ring-2 focus:ring-primary/10'
+                          }`}
                         />
+                        {errors.email && (
+                          <p className="text-red-500 text-xs mt-1 font-medium">{errors.email}</p>
+                        )}
                       </div>
                     </div>
 
@@ -202,12 +272,18 @@ export default function ContactPage() {
                         type="text"
                         id="contact-subject"
                         name="subject"
-                        required
                         value={formData.subject}
                         onChange={handleChange}
                         placeholder="How can we help you?"
-                        className="w-full bg-surface border border-outline-variant/60 focus:border-primary focus:ring-2 focus:ring-primary/10 rounded-lg px-4 py-3 text-sm text-deep-black outline-none transition-all placeholder-on-surface-variant/40"
+                        className={`w-full bg-surface border rounded-lg px-4 py-3 text-sm text-deep-black outline-none transition-all placeholder-on-surface-variant/40 ${
+                          errors.subject
+                            ? 'border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-500/10'
+                            : 'border-outline-variant/60 focus:border-primary focus:ring-2 focus:ring-primary/10'
+                        }`}
                       />
+                      {errors.subject && (
+                        <p className="text-red-500 text-xs mt-1 font-medium">{errors.subject}</p>
+                      )}
                     </div>
 
                     {/* Message */}
@@ -218,13 +294,19 @@ export default function ContactPage() {
                       <textarea
                         id="contact-message"
                         name="message"
-                        required
                         rows={5}
                         value={formData.message}
                         onChange={handleChange}
                         placeholder="Write your message details here..."
-                        className="w-full bg-surface border border-outline-variant/60 focus:border-primary focus:ring-2 focus:ring-primary/10 rounded-lg px-4 py-3 text-sm text-deep-black outline-none transition-all placeholder-on-surface-variant/40 resize-none"
+                        className={`w-full bg-surface border rounded-lg px-4 py-3 text-sm text-deep-black outline-none transition-all placeholder-on-surface-variant/40 resize-none ${
+                          errors.message
+                            ? 'border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-500/10'
+                            : 'border-outline-variant/60 focus:border-primary focus:ring-2 focus:ring-primary/10'
+                        }`}
                       />
+                      {errors.message && (
+                        <p className="text-red-500 text-xs mt-1 font-medium">{errors.message}</p>
+                      )}
                     </div>
 
                     {/* Submit Button */}
@@ -268,13 +350,13 @@ export default function ContactPage() {
                 <div className="relative rounded-xl overflow-hidden shadow-md h-[280px] bg-surface-container-high group shrink-0">
                   <iframe
                     title="Katonda Talemwa Ministries Location Map"
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.594304090553!2d30.654502199999992!3d-0.6071596!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x19d91bbfbb456d95%3A0xa248bff70a14428d!2sParental%20Care%20Ministries%20Uganda!5e0!3m2!1sen!2sug!4v1784325144251!5m2!1sen!2sug"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.694116321451!2d31.397166875518707!3d-0.45209533528446!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x19d83300302f6053%3A0xd59bc3755cb8d7af!2sKatonda%20Talemwa%20Ministries!5e0!3m2!1sen!2sug!4v1790073533235!5m2!1sen!2sug"
                     width="100%"
                     height="100%"
                     style={{ border: 0 }}
                     allowFullScreen
                     loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
+                    referrerPolicy="strict-origin-when-cross-origin"
                     className="w-full h-full"
                   />
                 </div>

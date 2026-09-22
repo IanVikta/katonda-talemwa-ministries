@@ -6,6 +6,7 @@ import Navbar from '../components/Navbar'
 import { FooterProgram } from '../components/Footer'
 import MaterialIcon from '../components/ui/MaterialIcon'
 import { children, IMAGES } from '../data/content'
+import SEO from '../components/SEO'
 
 export default function WatotoVillagesPage() {
   useEffect(() => {
@@ -14,6 +15,12 @@ export default function WatotoVillagesPage() {
 
   return (
     <div className="bg-surface text-on-surface selection:bg-action-yellow selection:text-deep-black overflow-x-hidden font-body page-enter">
+      <SEO
+        title="Katonda Children’s Villages | Family-Style Orphan Care in Uganda"
+        description="Explore our family-style children’s village model in Kyasenya, Lwengo. Each home is led by a loving foster mother providing orphaned children with a permanent, nurturing family."
+        canonicalPath="/katonda-villages"
+        keywords="children village Uganda, orphan care village, family style orphan care, foster care Africa"
+      />
       <Navbar />
 
       <main>

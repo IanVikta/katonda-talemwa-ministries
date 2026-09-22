@@ -100,23 +100,84 @@ const roles = [
   },
 ]
 
+import api from '../services/api'
+import { isValidEmail, isValidName, isNonEmpty, sanitizeName, handleNameKeyDown } from '../utils/validation'
+import SEO from '../components/SEO'
+
 export default function VolunteerPage() {
   const [formData, setFormData] = useState({ name: '', email: '', country: '', role: '', duration: '', message: '' })
+  const [errors, setErrors] = useState<Record<string, string>>({})
   const [submitted, setSubmitted] = useState(false)
   const [loading, setLoading] = useState(false)
+  const [errorMessage, setErrorMessage] = useState<string | null>(null)
 
   useEffect(() => {
     AOS.init({ duration: 700, easing: 'ease-out-cubic', once: true, offset: 60 })
   }, [])
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const updateField = (field: string, value: string) => {
+    const cleanValue = field === 'name' ? sanitizeName(value) : value
+    setFormData(prev => ({ ...prev, [field]: cleanValue }))
+    if (errors[field]) {
+      setErrors(prev => {
+        const next = { ...prev }
+        delete next[field]
+        return next
+      })
+    }
+  }
+
+  const validate = () => {
+    const newErrors: Record<string, string> = {}
+    if (!isNonEmpty(formData.name)) {
+      newErrors.name = 'Please enter your full name.'
+    } else if (!isValidName(formData.name)) {
+      newErrors.name = 'Name can only contain letters (no numbers).'
+    }
+    if (!isNonEmpty(formData.email)) {
+      newErrors.email = 'Please enter your email address.'
+    } else if (!isValidEmail(formData.email)) {
+      newErrors.email = 'Please enter a valid email address.'
+    }
+    if (!isNonEmpty(formData.country)) {
+      newErrors.country = 'Please enter your country of residence.'
+    }
+    if (!isNonEmpty(formData.role)) {
+      newErrors.role = 'Please select a preferred role.'
+    }
+    if (!isNonEmpty(formData.duration)) {
+      newErrors.duration = 'Please select your available duration.'
+    }
+    setErrors(newErrors)
+    return Object.keys(newErrors).length === 0
+  }
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    if (!validate()) return
+
     setLoading(true)
-    setTimeout(() => { setLoading(false); setSubmitted(true) }, 1500)
+    setErrorMessage(null)
+
+    const res = await api.submitVolunteer(formData)
+    setLoading(false)
+
+    if (res.success) {
+      setSubmitted(true)
+      setErrors({})
+    } else {
+      setErrorMessage(res.error || 'Failed to submit application. Please try again.')
+    }
   }
 
   return (
     <div className="bg-surface text-on-surface selection:bg-action-yellow selection:text-deep-black overflow-x-hidden font-body page-enter">
+      <SEO
+        title="Volunteer in Uganda | Short & Long-Term Mission Opportunities"
+        description="Serve with Katonda Talemwa Ministries in Uganda. Meaningful volunteer opportunities in teaching, healthcare, childcare, community development, and vocational training."
+        canonicalPath="/volunteer"
+        keywords="volunteer Uganda, missionary trips Africa, volunteer with orphans Uganda, teach in Uganda, Christian volunteers Africa"
+      />
       <Navbar />
 
       <main className="pt-20">
@@ -283,47 +344,78 @@ export default function VolunteerPage() {
                     </p>
                   </div>
                 ) : (
-                  <form onSubmit={handleSubmit} className="space-y-4">
+                  <form onSubmit={handleSubmit} noValidate className="space-y-4">
+                    {errorMessage && (
+                      <div className="p-3.5 bg-red-500/20 border border-red-500/50 text-red-200 text-xs">
+                        {errorMessage}
+                      </div>
+                    )}
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div className="space-y-1">
                         <label className="text-[10px] font-bold uppercase tracking-wider text-pure-white/60 block">Full Name *</label>
-                        <input required type="text" placeholder="John Doe" value={formData.name}
-                          onChange={e => setFormData({ ...formData, name: e.target.value })}
-                          className="w-full bg-pure-white/5 border border-pure-white/15 text-pure-white px-4 py-3 text-sm focus:border-vibrant-green outline-none rounded-none placeholder:text-pure-white/30" />
+                        <input type="text" placeholder="John Doe" value={formData.name}
+                          onChange={e => updateField('name', e.target.value)}
+                          onKeyDown={handleNameKeyDown}
+                          className={`w-full bg-pure-white/5 border text-pure-white px-4 py-3 text-sm focus:border-vibrant-green outline-none rounded-none placeholder:text-pure-white/30 ${
+                            errors.name ? 'border-red-500' : 'border-pure-white/15'
+                          }`} />
+                        {errors.name && (
+                          <p className="text-red-400 text-xs font-medium">{errors.name}</p>
+                        )}
                       </div>
                       <div className="space-y-1">
                         <label className="text-[10px] font-bold uppercase tracking-wider text-pure-white/60 block">Email Address *</label>
-                        <input required type="email" placeholder="john@email.com" value={formData.email}
-                          onChange={e => setFormData({ ...formData, email: e.target.value })}
-                          className="w-full bg-pure-white/5 border border-pure-white/15 text-pure-white px-4 py-3 text-sm focus:border-vibrant-green outline-none rounded-none placeholder:text-pure-white/30" />
+                        <input type="email" placeholder="john@email.com" value={formData.email}
+                          onChange={e => updateField('email', e.target.value)}
+                          className={`w-full bg-pure-white/5 border text-pure-white px-4 py-3 text-sm focus:border-vibrant-green outline-none rounded-none placeholder:text-pure-white/30 ${
+                            errors.email ? 'border-red-500' : 'border-pure-white/15'
+                          }`} />
+                        {errors.email && (
+                          <p className="text-red-400 text-xs font-medium">{errors.email}</p>
+                        )}
                       </div>
                     </div>
                     <div className="space-y-1">
                       <label className="text-[10px] font-bold uppercase tracking-wider text-pure-white/60 block">Country of Residence *</label>
-                      <input required type="text" placeholder="United States" value={formData.country}
-                        onChange={e => setFormData({ ...formData, country: e.target.value })}
-                        className="w-full bg-pure-white/5 border border-pure-white/15 text-pure-white px-4 py-3 text-sm focus:border-vibrant-green outline-none rounded-none placeholder:text-pure-white/30" />
+                      <input type="text" placeholder="United States" value={formData.country}
+                        onChange={e => updateField('country', e.target.value)}
+                        className={`w-full bg-pure-white/5 border text-pure-white px-4 py-3 text-sm focus:border-vibrant-green outline-none rounded-none placeholder:text-pure-white/30 ${
+                          errors.country ? 'border-red-500' : 'border-pure-white/15'
+                        }`} />
+                      {errors.country && (
+                        <p className="text-red-400 text-xs font-medium">{errors.country}</p>
+                      )}
                     </div>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div className="space-y-1">
                         <label className="text-[10px] font-bold uppercase tracking-wider text-pure-white/60 block">Preferred Role *</label>
-                        <select required value={formData.role} onChange={e => setFormData({ ...formData, role: e.target.value })}
-                          className="w-full bg-pure-white/5 border border-pure-white/15 text-pure-white px-4 py-3 text-sm focus:border-vibrant-green outline-none rounded-none">
+                        <select value={formData.role} onChange={e => updateField('role', e.target.value)}
+                          className={`w-full bg-pure-white/5 border text-pure-white px-4 py-3 text-sm focus:border-vibrant-green outline-none rounded-none ${
+                            errors.role ? 'border-red-500' : 'border-pure-white/15'
+                          }`}>
                           <option value="" className="text-deep-black">Select a role…</option>
                           {roles.map(r => <option key={r.title} value={r.title} className="text-deep-black">{r.title}</option>)}
                           <option value="open" className="text-deep-black">Open to any role</option>
                         </select>
+                        {errors.role && (
+                          <p className="text-red-400 text-xs font-medium">{errors.role}</p>
+                        )}
                       </div>
                       <div className="space-y-1">
                         <label className="text-[10px] font-bold uppercase tracking-wider text-pure-white/60 block">Available Duration *</label>
-                        <select required value={formData.duration} onChange={e => setFormData({ ...formData, duration: e.target.value })}
-                          className="w-full bg-pure-white/5 border border-pure-white/15 text-pure-white px-4 py-3 text-sm focus:border-vibrant-green outline-none rounded-none">
+                        <select value={formData.duration} onChange={e => updateField('duration', e.target.value)}
+                          className={`w-full bg-pure-white/5 border text-pure-white px-4 py-3 text-sm focus:border-vibrant-green outline-none rounded-none ${
+                            errors.duration ? 'border-red-500' : 'border-pure-white/15'
+                          }`}>
                           <option value="" className="text-deep-black">Select…</option>
                           <option value="1-2 weeks" className="text-deep-black">1–2 Weeks</option>
                           <option value="1 month" className="text-deep-black">1 Month</option>
                           <option value="2-3 months" className="text-deep-black">2–3 Months</option>
                           <option value="3+ months" className="text-deep-black">3+ Months</option>
                         </select>
+                        {errors.duration && (
+                          <p className="text-red-400 text-xs font-medium">{errors.duration}</p>
+                        )}
                       </div>
                     </div>
                     <div className="space-y-1">

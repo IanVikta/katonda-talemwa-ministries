@@ -116,6 +116,10 @@ const itineraryHighlights = [
   { step: '05', day: 'Days 13–14', title: 'Commissioning & Journey Home', desc: 'Reflective debriefing, commissioning service at Katonda Talemwa Church, and farewell dinner before departure.' },
 ]
 
+import api from '../services/api'
+import { isValidEmail, isValidName, isValidPhone, isNonEmpty, sanitizeName, handleNameKeyDown } from '../utils/validation'
+import SEO from '../components/SEO'
+
 export default function ExchangeProgramPage() {
   const [formData, setFormData] = useState({
     name: '',
@@ -126,24 +130,77 @@ export default function ExchangeProgramPage() {
     preferredDate: '',
     message: '',
   })
+  const [errors, setErrors] = useState<Record<string, string>>({})
   const [submitted, setSubmitted] = useState(false)
   const [loading, setLoading] = useState(false)
+  const [errorMessage, setErrorMessage] = useState<string | null>(null)
 
   useEffect(() => {
     AOS.init({ duration: 700, easing: 'ease-out-cubic', once: true, offset: 60 })
   }, [])
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const updateField = (field: string, val: string) => {
+    const cleanVal = field === 'name' ? sanitizeName(val) : val
+    setFormData(prev => ({ ...prev, [field]: cleanVal }))
+    if (errors[field]) {
+      setErrors(prev => {
+        const next = { ...prev }
+        delete next[field]
+        return next
+      })
+    }
+  }
+
+  const validate = () => {
+    const errs: Record<string, string> = {}
+    if (!isNonEmpty(formData.name)) {
+      errs.name = 'Please enter your name or group leader name.'
+    } else if (!isValidName(formData.name)) {
+      errs.name = 'Name can only contain letters (no numbers).'
+    }
+    if (!isNonEmpty(formData.email)) {
+      errs.email = 'Please enter your email address.'
+    } else if (!isValidEmail(formData.email)) {
+      errs.email = 'Please enter a valid email address.'
+    }
+    if (!isNonEmpty(formData.phone)) {
+      errs.phone = 'Please enter your phone or WhatsApp number.'
+    } else if (!isValidPhone(formData.phone)) {
+      errs.phone = 'Please enter a valid phone number (at least 7 digits).'
+    }
+    if (!isNonEmpty(formData.groupType)) {
+      errs.groupType = 'Please select a group or organization type.'
+    }
+    setErrors(errs)
+    return Object.keys(errs).length === 0
+  }
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    if (!validate()) return
+
     setLoading(true)
-    setTimeout(() => {
-      setLoading(false)
+    setErrorMessage(null)
+
+    const res = await api.submitExchange(formData)
+    setLoading(false)
+
+    if (res.success) {
       setSubmitted(true)
-    }, 1400)
+      setErrors({})
+    } else {
+      setErrorMessage(res.error || 'Failed to submit inquiry. Please try again.')
+    }
   }
 
   return (
     <div className="bg-surface text-on-surface selection:bg-action-yellow selection:text-deep-black overflow-x-hidden font-body page-enter">
+      <SEO
+        title="Mission & Cultural Exchange Trips to Uganda"
+        description="Join a life-changing mission trip or cultural exchange in Uganda. Serve alongside local teams, meet sponsored children, and experience Ugandan culture."
+        canonicalPath="/exchange-program"
+        keywords="mission trips Uganda, cultural exchange Africa, short term mission Uganda, church mission trips"
+      />
       <Navbar />
 
       <main className="pt-20">
@@ -407,29 +464,43 @@ export default function ExchangeProgramPage() {
                     </p>
                   </div>
                 ) : (
-                  <form onSubmit={handleSubmit} className="space-y-4">
+                  <form onSubmit={handleSubmit} noValidate className="space-y-4">
+                    {errorMessage && (
+                      <div className="p-3.5 bg-red-500/20 border border-red-500/50 text-red-200 text-xs">
+                        {errorMessage}
+                      </div>
+                    )}
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div className="space-y-1">
                         <label className="text-[10px] font-bold uppercase tracking-wider text-pure-white/60 block">Full Name / Group Leader *</label>
                         <input
-                          required
                           type="text"
                           placeholder="Pastor Sarah Jenkins"
                           value={formData.name}
-                          onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                          className="w-full bg-pure-white/5 border border-pure-white/15 text-pure-white px-4 py-3 text-sm focus:border-vibrant-green outline-none rounded-none placeholder:text-pure-white/30"
+                          onChange={(e) => updateField('name', e.target.value)}
+                          onKeyDown={handleNameKeyDown}
+                          className={`w-full bg-pure-white/5 border text-pure-white px-4 py-3 text-sm focus:border-vibrant-green outline-none rounded-none placeholder:text-pure-white/30 ${
+                            errors.name ? 'border-red-500' : 'border-pure-white/15'
+                          }`}
                         />
+                        {errors.name && (
+                          <p className="text-red-400 text-xs font-medium mt-1">{errors.name}</p>
+                        )}
                       </div>
                       <div className="space-y-1">
                         <label className="text-[10px] font-bold uppercase tracking-wider text-pure-white/60 block">Email Address *</label>
                         <input
-                          required
                           type="email"
                           placeholder="sarah@church.org"
                           value={formData.email}
-                          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                          className="w-full bg-pure-white/5 border border-pure-white/15 text-pure-white px-4 py-3 text-sm focus:border-vibrant-green outline-none rounded-none placeholder:text-pure-white/30"
+                          onChange={(e) => updateField('email', e.target.value)}
+                          className={`w-full bg-pure-white/5 border text-pure-white px-4 py-3 text-sm focus:border-vibrant-green outline-none rounded-none placeholder:text-pure-white/30 ${
+                            errors.email ? 'border-red-500' : 'border-pure-white/15'
+                          }`}
                         />
+                        {errors.email && (
+                          <p className="text-red-400 text-xs font-medium mt-1">{errors.email}</p>
+                        )}
                       </div>
                     </div>
 
@@ -437,21 +508,26 @@ export default function ExchangeProgramPage() {
                       <div className="space-y-1">
                         <label className="text-[10px] font-bold uppercase tracking-wider text-pure-white/60 block">Phone / WhatsApp *</label>
                         <input
-                          required
                           type="tel"
                           placeholder="+1 (555) 019-2834"
                           value={formData.phone}
-                          onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                          className="w-full bg-pure-white/5 border border-pure-white/15 text-pure-white px-4 py-3 text-sm focus:border-vibrant-green outline-none rounded-none placeholder:text-pure-white/30"
+                          onChange={(e) => updateField('phone', e.target.value)}
+                          className={`w-full bg-pure-white/5 border text-pure-white px-4 py-3 text-sm focus:border-vibrant-green outline-none rounded-none placeholder:text-pure-white/30 ${
+                            errors.phone ? 'border-red-500' : 'border-pure-white/15'
+                          }`}
                         />
+                        {errors.phone && (
+                          <p className="text-red-400 text-xs font-medium mt-1">{errors.phone}</p>
+                        )}
                       </div>
                       <div className="space-y-1">
                         <label className="text-[10px] font-bold uppercase tracking-wider text-pure-white/60 block">Group / Organization Type *</label>
                         <select
-                          required
                           value={formData.groupType}
-                          onChange={(e) => setFormData({ ...formData, groupType: e.target.value })}
-                          className="w-full bg-pure-white/5 border border-pure-white/15 text-pure-white px-4 py-3 text-sm focus:border-vibrant-green outline-none rounded-none"
+                          onChange={(e) => updateField('groupType', e.target.value)}
+                          className={`w-full bg-pure-white/5 border text-pure-white px-4 py-3 text-sm focus:border-vibrant-green outline-none rounded-none ${
+                            errors.groupType ? 'border-red-500' : 'border-pure-white/15'
+                          }`}
                         >
                           <option value="church" className="text-deep-black">Church / Faith Group</option>
                           <option value="school" className="text-deep-black">University / High School</option>
@@ -459,6 +535,9 @@ export default function ExchangeProgramPage() {
                           <option value="arts" className="text-deep-black">Choir & Arts Group</option>
                           <option value="individual" className="text-deep-black">Individual Missionary</option>
                         </select>
+                        {errors.groupType && (
+                          <p className="text-red-400 text-xs font-medium mt-1">{errors.groupType}</p>
+                        )}
                       </div>
                     </div>
 

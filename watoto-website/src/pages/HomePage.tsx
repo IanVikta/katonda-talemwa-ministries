@@ -4,10 +4,16 @@ import { FooterHome } from '../components/Footer'
 import MaterialIcon from '../components/ui/MaterialIcon'
 import ScrollReveal from '../components/ScrollReveal'
 import { IMAGES } from '../data/content'
+import SEO from '../components/SEO'
 
 export default function HomePage() {
   return (
     <div className="bg-surface text-on-surface selection:bg-action-yellow selection:text-deep-black">
+      <SEO
+        title="Transforming Lives & Restoring Hope in Uganda"
+        description="Katonda Talemwa Ministries rescues orphaned and vulnerable children in Kyasenya, Lwengo, Uganda, providing loving family homes, quality education, medical care, and spiritual discipleship."
+        canonicalPath="/"
+      />
       <Navbar />
 
       <header className="relative bg-deep-black min-h-[80vh] flex flex-col items-center justify-center text-center px-margin-mobile pt-24 lg:pt-32 overflow-hidden">

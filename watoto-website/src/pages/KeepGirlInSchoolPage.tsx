@@ -4,10 +4,17 @@ import { FooterProgram } from '../components/Footer'
 import ScrollReveal from '../components/ScrollReveal'
 import MaterialIcon from '../components/ui/MaterialIcon'
 import { IMAGES } from '../data/content'
+import SEO from '../components/SEO'
 
 export default function KeepGirlInSchoolPage() {
   return (
     <div className="bg-surface text-on-surface selection:bg-action-yellow selection:text-deep-black overflow-x-hidden font-body page-enter">
+      <SEO
+        title="Keep a Girl in School | The Esther Mission Uganda"
+        description="Empowering adolescent girls in rural Uganda with sanitary hygiene kits, mentorship, health education, and school tuition support to break the cycle of poverty."
+        canonicalPath="/keep-a-girl"
+        keywords="keep a girl in school, menstrual hygiene Uganda, girl child education Africa, empower girls Uganda, Esther Mission"
+      />
       <Navbar />
 
       <main className="pt-20">

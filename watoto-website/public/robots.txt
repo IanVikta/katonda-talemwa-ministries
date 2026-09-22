@@ -1,0 +1,8 @@
+# Robots.txt for Katonda Talemwa Ministries
+# Allow search engine crawlers to discover all pages
+
+User-agent: *
+Allow: /
+
+# Direct search engine bots to the XML sitemap
+Sitemap: https://katondatalemwaministries.org/sitemap.xml

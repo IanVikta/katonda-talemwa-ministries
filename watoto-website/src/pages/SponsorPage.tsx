@@ -6,6 +6,9 @@ import Navbar from '../components/Navbar'
 import { FooterSponsor } from '../components/Footer'
 import MaterialIcon from '../components/ui/MaterialIcon'
 import { children, IMAGES, type ChildProfile } from '../data/content'
+import api from '../services/api'
+import { isValidEmail, isValidName, sanitizeName, handleNameKeyDown } from '../utils/validation'
+import SEO from '../components/SEO'
 
 type GenderFilter = 'all' | 'boy' | 'girl'
 type AgeFilter = 'all' | '0-5' | '6-12' | '13+'
@@ -31,6 +34,7 @@ export default function SponsorPage() {
   const [sponsorSuccess, setSponsorSuccess] = useState(false)
   const [sponsorLoading, setSponsorLoading] = useState(false)
   const [sponsorForm, setSponsorForm] = useState({ name: '', email: '', method: 'paypal' })
+  const [sponsorErrors, setSponsorErrors] = useState<Record<string, string>>({})
 
   const openModal = (child: ChildProfile, tab: 'form' | 'story' = 'form') => {
     setSponsoringChild(child)
@@ -38,6 +42,35 @@ export default function SponsorPage() {
     setSponsorSuccess(false)
     setSponsorLoading(false)
     setSponsorForm({ name: '', email: '', method: 'paypal' })
+    setSponsorErrors({})
+  }
+
+  const updateSponsorField = (field: 'name' | 'email', val: string) => {
+    const cleanVal = field === 'name' ? sanitizeName(val) : val
+    setSponsorForm(prev => ({ ...prev, [field]: cleanVal }))
+    if (sponsorErrors[field]) {
+      setSponsorErrors(prev => {
+        const next = { ...prev }
+        delete next[field]
+        return next
+      })
+    }
+  }
+
+  const validateSponsor = () => {
+    const errs: Record<string, string> = {}
+    if (!sponsorForm.name || !sponsorForm.name.trim()) {
+      errs.name = 'Please enter your full name.'
+    } else if (!isValidName(sponsorForm.name)) {
+      errs.name = 'Name can only contain letters (no numbers).'
+    }
+    if (!sponsorForm.email || !sponsorForm.email.trim()) {
+      errs.email = 'Please enter your email address.'
+    } else if (!isValidEmail(sponsorForm.email)) {
+      errs.email = 'Please enter a valid email address.'
+    }
+    setSponsorErrors(errs)
+    return Object.keys(errs).length === 0
   }
 
 
@@ -91,6 +124,12 @@ export default function SponsorPage() {
 
   return (
     <div className="bg-surface text-on-surface selection:bg-action-yellow selection:text-deep-black overflow-x-hidden font-body page-enter">
+      <SEO
+        title="Sponsor a Child in Uganda | $38/Month Changes a Life"
+        description="Sponsor an orphaned or vulnerable child in Uganda today. Your monthly support provides nutritious food, medical healthcare, quality schooling, and loving Christian mentorship."
+        canonicalPath="/sponsor"
+        keywords="sponsor a child Uganda, child sponsorship Africa, support Uganda orphan, sponsor a baby Emmanuel Baby Home"
+      />
       <Navbar />
 
       <main className="pt-20">
@@ -615,35 +654,61 @@ export default function SponsorPage() {
                       </button>
 
                       <form
-                        onSubmit={(e) => {
+                        onSubmit={async (e) => {
                           e.preventDefault()
+                          if (!validateSponsor()) return
+
                           setSponsorLoading(true)
+                          
+                          // Record sponsorship in MySQL database
+                          await api.submitSponsorship({
+                            childId: String(sponsoringChild.id),
+                            childName: sponsoringChild.name,
+                            sponsorName: sponsorForm.name,
+                            sponsorEmail: sponsorForm.email,
+                            amount: 38
+                          })
+
                           const paypalUrl = `https://www.paypal.com/donate/?business=katondatalemwaministries%40gmail.com&currency_code=USD&amount=38&item_name=${encodeURIComponent(`Monthly Child Sponsorship for ${sponsoringChild.name}`)}`
-                          setTimeout(() => {
-                            setSponsorLoading(false)
-                            setSponsorSuccess(true)
-                            window.open(paypalUrl, '_blank', 'noopener,noreferrer')
-                          }, 800)
+                          setSponsorLoading(false)
+                          setSponsorSuccess(true)
+                          window.open(paypalUrl, '_blank', 'noopener,noreferrer')
                         }}
+                        noValidate
                         className="space-y-4"
                       >
                         <div className="space-y-1">
-                          <label className="text-[10px] font-bold text-on-surface-variant uppercase tracking-wider block">Full Name</label>
+                          <label className="text-[10px] font-bold text-on-surface-variant uppercase tracking-wider block">Full Name *</label>
                           <input
-                            type="text" required placeholder="John Doe"
+                            type="text" placeholder="John Doe"
                             value={sponsorForm.name}
-                            onChange={(e) => setSponsorForm({ ...sponsorForm, name: e.target.value })}
-                            className="w-full border border-outline-variant/60 px-4 py-2.5 bg-surface text-sm focus:border-vibrant-green focus:ring-1 focus:ring-vibrant-green outline-none rounded-none"
+                            onChange={(e) => updateSponsorField('name', e.target.value)}
+                            onKeyDown={handleNameKeyDown}
+                            className={`w-full border px-4 py-2.5 bg-surface text-sm focus:ring-1 outline-none rounded-none ${
+                              sponsorErrors.name
+                                ? 'border-red-500 focus:border-red-500 focus:ring-red-500'
+                                : 'border-outline-variant/60 focus:border-vibrant-green focus:ring-vibrant-green'
+                            }`}
                           />
+                          {sponsorErrors.name && (
+                            <p className="text-red-500 text-xs mt-1 font-medium">{sponsorErrors.name}</p>
+                          )}
                         </div>
                         <div className="space-y-1">
-                          <label className="text-[10px] font-bold text-on-surface-variant uppercase tracking-wider block">Email Address</label>
+                          <label className="text-[10px] font-bold text-on-surface-variant uppercase tracking-wider block">Email Address *</label>
                           <input
-                            type="email" required placeholder="john@example.com"
+                            type="email" placeholder="john@example.com"
                             value={sponsorForm.email}
-                            onChange={(e) => setSponsorForm({ ...sponsorForm, email: e.target.value })}
-                            className="w-full border border-outline-variant/60 px-4 py-2.5 bg-surface text-sm focus:border-vibrant-green focus:ring-1 focus:ring-vibrant-green outline-none rounded-none"
+                            onChange={(e) => updateSponsorField('email', e.target.value)}
+                            className={`w-full border px-4 py-2.5 bg-surface text-sm focus:ring-1 outline-none rounded-none ${
+                              sponsorErrors.email
+                                ? 'border-red-500 focus:border-red-500 focus:ring-red-500'
+                                : 'border-outline-variant/60 focus:border-vibrant-green focus:ring-vibrant-green'
+                            }`}
                           />
+                          {sponsorErrors.email && (
+                            <p className="text-red-500 text-xs mt-1 font-medium">{sponsorErrors.email}</p>
+                          )}
                         </div>
                         <div className="space-y-2">
                           <label className="text-[10px] font-bold text-on-surface-variant uppercase tracking-wider block">Payment Method</label>

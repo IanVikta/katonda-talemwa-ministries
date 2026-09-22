@@ -1,8 +1,49 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import MaterialIcon from './ui/MaterialIcon'
 import logo from '../assets/logo.png'
+import api from '../services/api'
 
 export function UnifiedFooter() {
+  const [email, setEmail] = useState('')
+  const [loading, setLoading] = useState(false)
+  const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle')
+  const [message, setMessage] = useState('')
+
+  const handleSubscribe = async (e: React.FormEvent) => {
+    e.preventDefault()
+    if (!email || !email.trim()) {
+      setStatus('error')
+      setMessage('Please enter your email address.')
+      setTimeout(() => setStatus('idle'), 4000)
+      return
+    }
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    if (!emailRegex.test(email.trim())) {
+      setStatus('error')
+      setMessage('Please enter a valid email address.')
+      setTimeout(() => setStatus('idle'), 4000)
+      return
+    }
+
+    setLoading(true)
+    setStatus('idle')
+
+    const res = await api.subscribeNewsletter(email)
+    setLoading(false)
+
+    if (res.success) {
+      setStatus('success')
+      setMessage('Subscribed!')
+      setEmail('')
+      setTimeout(() => setStatus('idle'), 4000)
+    } else {
+      setStatus('error')
+      setMessage(res.error || 'Failed to subscribe')
+      setTimeout(() => setStatus('idle'), 4000)
+    }
+  }
+
   return (
     <footer className="bg-[#080B11] text-pure-white/60 pt-16 pb-10 font-body relative">
 
@@ -14,22 +55,36 @@ export function UnifiedFooter() {
             Subscribe to our newsletter
           </span>
           <form
-            onSubmit={(e) => e.preventDefault()}
-            className="flex items-center bg-pure-white/5 rounded-full p-1 border border-pure-white/10 focus-within:border-vibrant-green/50 focus-within:ring-2 focus-within:ring-vibrant-green/10 transition-all duration-300 w-full max-w-sm"
+            onSubmit={handleSubscribe}
+            noValidate
+            className={`flex items-center bg-pure-white/5 rounded-full p-1 border transition-all duration-300 w-full max-w-sm ${
+              status === 'error'
+                ? 'border-red-500/80 ring-2 ring-red-500/20'
+                : 'border-pure-white/10 focus-within:border-vibrant-green/50 focus-within:ring-2 focus-within:ring-vibrant-green/10'
+            }`}
           >
             <input
               type="email"
-              placeholder="Your email address"
-              required
-              className="bg-transparent px-4 py-2 text-xs outline-none w-full text-pure-white placeholder-pure-white/30"
+              value={email}
+              onChange={(e) => {
+                setEmail(e.target.value)
+                if (status === 'error') setStatus('idle')
+              }}
+              placeholder={status === 'success' ? message : 'Your email address'}
+              disabled={loading || status === 'success'}
+              className="bg-transparent px-4 py-2 text-xs outline-none w-full text-pure-white placeholder-pure-white/30 disabled:opacity-50"
             />
             <button
               type="submit"
-              className="bg-vibrant-green hover:bg-vibrant-green/90 text-pure-white font-headline text-xxs font-bold uppercase tracking-widest px-5 py-2.5 rounded-full active:scale-95 transition-all cursor-pointer shrink-0 shadow-md"
+              disabled={loading || status === 'success'}
+              className="bg-vibrant-green hover:bg-vibrant-green/90 text-pure-white font-headline text-xxs font-bold uppercase tracking-widest px-5 py-2.5 rounded-full active:scale-95 transition-all cursor-pointer shrink-0 shadow-md disabled:opacity-50"
             >
-              Join
+              {loading ? '...' : status === 'success' ? 'Joined!' : 'Join'}
             </button>
           </form>
+          {status === 'error' && (
+            <span className="text-xs text-red-400 font-medium">{message}</span>
+          )}
         </div>
 
         {/* Footer Grid */}

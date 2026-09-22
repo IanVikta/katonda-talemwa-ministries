@@ -6,6 +6,7 @@ import Navbar from '../components/Navbar'
 import { FooterProgram } from '../components/Footer'
 import MaterialIcon from '../components/ui/MaterialIcon'
 import { children, IMAGES } from '../data/content'
+import SEO from '../components/SEO'
 
 // ── Animated counter ─────────────────────────────────────────
 function CountUp({ end, suffix = '', duration = 1800 }: { end: number; suffix?: string; duration?: number }) {
@@ -170,6 +171,12 @@ export default function BabyWatotoPage() {
 
   return (
     <div className="bg-surface text-on-surface selection:bg-action-yellow selection:text-deep-black overflow-x-hidden font-body page-enter">
+      <SEO
+        title="Emmanuel Baby Home | Rescuing Abandoned & Premature Infants"
+        description="Our crisis nursery rescues abandoned, orphaned, and malnourished babies in Uganda, providing 24/7 medical treatment, infant formula, and affectionate maternal care."
+        canonicalPath="/emmanuel-baby-home"
+        keywords="baby home Uganda, rescue abandoned babies, crisis nursery Africa, sponsor a baby Uganda, Emmanuel Baby Home"
+      />
       <Navbar />
 
       <main>

@@ -6,6 +6,8 @@
     "dev": "npm --prefix watoto-website run dev",
     "build": "npm --prefix watoto-website run build",
     "preview": "npm --prefix watoto-website run preview",
-    "deploy": "npm --prefix watoto-website run deploy"
+    "deploy": "npm --prefix watoto-website run deploy",
+    "server": "npm --prefix server run dev",
+    "server:start": "npm --prefix server run start"
   }
 }
