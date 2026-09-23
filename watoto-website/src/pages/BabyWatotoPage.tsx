@@ -255,9 +255,9 @@ export default function BabyWatotoPage() {
         <section id="care-process" className="py-24 bg-surface border-b border-outline-variant/30">
           <div className="max-w-(--spacing-container-max) mx-auto px-4 md:px-margin-desktop space-y-16">
             <div data-aos="fade-up" className="space-y-3">
-              <span className="text-[10px] uppercase font-extrabold tracking-widest text-vibrant-green block">The Care Journey</span>
+              <span className="text-[10px] uppercase font-extrabold tracking-widest text-vibrant-green block">The Care Pathway</span>
               <h2 className="font-headline text-4xl sm:text-5xl font-black uppercase text-deep-black leading-none">
-                From Crisis <br />
+                From Vulnerability <br />
                 <span className="text-vibrant-green">to Belonging</span>
               </h2>
               <div className="w-16 h-1 bg-action-yellow" />
