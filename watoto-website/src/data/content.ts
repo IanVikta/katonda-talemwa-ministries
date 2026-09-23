@@ -26,7 +26,7 @@ export const children: ChildProfile[] = [
     favoriteVerse: '"I can do all things through Christ who strengthens me." — Philippians 4:13',
     story: `Joseph’s life is a testament to God's preserving grace. Abandoned as a newborn, he survived two days in a pit latrine before local authorities rescued him following his cries. Though severe infection threatened his survival, God sustained him. Welcomed into Katonda Talemwa Ministries (KTM) and named after Joseph in the Bible—a reflection of how God turns hardship into good—he received immediate medical care, love, and spiritual nurturing. Today, Joseph is a vibrant, healthy, and bright boy with a compassionate heart, aspiring to become a doctor so he can offer healing and hope to others.`,
     description: `Abandoned as a newborn, Joseph miraculously survived two days before rescue. Today, he is a vibrant boy with a compassionate heart who dreams of becoming a doctor.`,
-    image: '/images/DSC_8377.jpg',
+    image: '/images/joseph.jpg',
     type: 'child',
   },
   {
@@ -40,7 +40,7 @@ export const children: ChildProfile[] = [
     dreamCareer: 'Lawyer',
     story: `Found abandoned as an infant outside a hospital perimeter, Joel’s early life began in vulnerability. When efforts by local authorities to trace his family yielded no results, he was placed under the guardianship of Katonda Talemwa Ministries. At KTM, Joel has found a home, family, and the support needed to grow both academically and spiritually. Now thriving in school, Joel aspires to become a lawyer, driven by a desire to champion justice and defend the vulnerable.`,
     description: `Found abandoned outside a hospital as an infant, Joel has found family and love at KTM. Now thriving in Primary 3, he dreams of championing justice as a lawyer.`,
-    image: '/images/DSC_7467.jpg',
+    image: '/images/joel.jpg',
     type: 'child',
   },
   {
@@ -55,7 +55,7 @@ export const children: ChildProfile[] = [
     favoriteVerse: '"I am the good shepherd. The good shepherd gives His life for the sheep." — John 10:11',
     story: `Following the loss of his mother when he was just three years old, Arnold experienced severe neglect at home after his father remarried. Lacking basic care, food, and stability, his situation eventually prompted local leaders and authorities to step in. The district children’s office entrusted Arnold to Katonda Talemwa Ministries, where he found a safe haven, nutritious meals, and Christian mentorship. Now preparing to complete his primary education, Arnold holds firm to the Good Shepherd’s guidance and dreams of becoming a doctor to heal those in need.`,
     description: `Rescued from severe neglect after losing his mother, Arnold found refuge at KTM. Now preparing to complete Primary 7, he aspires to become a doctor.`,
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBeljgmUWq0IAsU6-RGoc8Xx2NYCLvVyhNDikdYB64rqSz23mjE6P3hSycKSA7m5j3oEo3KQVijlpOHeDrZpOy3nDvpgmntQh9OMo1kjMijVjmL-bi_8A4XvqeFTcglNVxmocQeviTup-GF2YQxjiAyWCfqvwOKNeZKCUrgITsM4atGs8UFGInqQMh3VHn6ARiLnLeRnE75H5zm_51vDTDt6Hk5Nn2NyH_V6ppN2kpkTp5riHmS37zs_65RkWD3x5mPKSecuuELtBY',
+    image: '/images/arnold.JPG',
     type: 'child',
   },
   {
@@ -69,7 +69,7 @@ export const children: ChildProfile[] = [
     dreamCareer: 'Teacher',
     story: `Susan and her twin brother, Joshua, faced hardship after being left in the care of their elderly, impoverished grandfather and step-grandmother. Unable to provide basic necessities, the household sank into extreme poverty, leaving the twins malnourished and without adequate clothing or shelter. Alerted by local council leaders, authorities transferred the twins to Katonda Talemwa Ministries. Restored through proper nutrition, medical care, and Christian guidance, Susan is growing into a joyful young girl who dreams of becoming a teacher to educate and inspire the next generation.`,
     description: `Rescued alongside her twin brother Joshua from extreme poverty, Susan is now thriving in Primary 5 and dreams of becoming a teacher.`,
-    image: '/images/DSC_5881.jpg',
+    image: '/images/suzan.jpg',
     type: 'child',
   },
   {
@@ -84,7 +84,7 @@ export const children: ChildProfile[] = [
     favoriteVerse: '"For the Son of Man has come to seek and to save that which was lost." — Luke 19:10',
     story: `Sharing a journey with his twin sister, Susan, Joshua endured severe deprivation during his early childhood while living with elderly relatives who were unable to support them. Through community intervention and the rescue work of Katonda Talemwa Ministries, Joshua was given a fresh start filled with hope, education, and spiritual grounding. Anchored by the truth of Luke 19:10, Joshua works hard in school and dreams of becoming a pilot, aiming high for the future God has prepared for him.`,
     description: `Twin brother to Susan, Joshua was rescued from severe deprivation. Anchored by Luke 19:10, he works hard in Primary 6 and dreams of becoming a pilot.`,
-    image: '/images/DSC_6451.jpg',
+    image: '/images/kato.jpg',
     type: 'child',
   },
   {
@@ -98,7 +98,7 @@ export const children: ChildProfile[] = [
     favoriteVerse: '"For God so loved the world that He gave His only begotten Son, that whoever believes in Him should not perish but have everlasting life." — John 3:16',
     story: `Born to a young teenage mother after her father tragically passed away in a road accident, Sherinah’s early years were marked by loss and insecurity. Left in the care of an elderly grandfather who lacked the resources to support her, Sherinah’s health rapidly declined due to severe malnutrition. A local pastor recognized her situation and alerted authorities, leading to her placement at Katonda Talemwa Ministries. Today, Sherinah is healthy, spiritually grounded, and making steady educational progress under KTM's care.`,
     description: `Rescued from severe malnutrition after early tragedy, Sherinah is now healthy, spiritually grounded, and making steady educational progress in Primary 6.`,
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDC-fHIVY-dPlP8s2E1gL1e3fSxgEogz7Uu3UArx2hWLHckxauTmXhvHbvP5hogYkiKO6Dg3RDaPMfE7NYAP5YFXhyat0eN0Lv2AXgcPB_tw67aajz9Sh3jyqCh-MSODU9pcB7XSzIGGrO-FUZpYWBise2tl7o_i8L9lyWujuCmwerVrWP214heeC7sa5z9HZPNgT86vcZGRayAIYBIYQqapbKkKgRnMY9R3_FL8ZZKe8aOtx0VaC7fRFTEYJ_0tCmf-Z4Fu31gI6E',
+    image: '/images/sherinah.JPG',
     type: 'child',
   },
   {
@@ -234,8 +234,8 @@ export const IMAGES = {
   rescue: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBT0wuQmp36cLMbKTkfDpkfke8QDEFoQUV5S0vI0RLFPM4-1aq1sbuVyfDbCTCZLZWTZswY-dEXrmpAwoxcZrhrA6GLQ74f_DmKyb-tubb08v6tcYBbbWoN_jlRegBxukeLlcaMncZl9eLdFRyk_t7LWEuJOnq45Ej1IC5H1KUcdbuSE_eTfBKW5IxBojsHvjSjsbSNkHVrtphMDuBZnacNh86MqBIe4UgdSBGWCSsmTZgpoiCYAoEDzB0Av6_tdxPcgJp61rSFPvc',
   nutrition: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCZvwFFqSO1c50qbknsFLLlr3erye1u3BWaLwmTOAoC017Ws2cuIqY3_3oQzcd5IGaVVRf6PYpmLkLMXtWz6-kav4aiHxIZp8oFZJveNWzhQolMDEyVX5C8I1i7a2beSB9FlfLGmiY5wyJ7HnRS5AyI7xSeVgvhxUjET6xteNA0XVvgNu3wAcrK_Ad8VRaNhFCCyZvWn8nvyeBxEfgvH0Lt-VQMdOl0cRkkCgRogS1LbCwvikrVT8_Omjl7SQWPR2Qb_fnWLXQyx-c',
   sponsorshipBaby: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCzh8qsn2JCfLVB9eQ5WMlHGLyiEoq5p0gJwF8fpiEDLIDsNwhbjfM97qwzqzVO9eyALefC2Z65PbMhjQCwrQaXFpc65ej4RBNhDEMY1qJhXdwO4jrLvZEMak6sk0lvoBkUatG4j9ABVmRAyx6AWeJWyWCGY9QiRPwXlz7blg4jITOqo319ldOz2WD_kjTX6ZxHXpftB5zzcR55ubcuMym-ea-G2BgnJDtpxqI77BoMK94Dri8WDaXE32x6_cTKgJHVWs0FisI2Z1E',
-  sponsorHero: '/images/5.jpeg',
-  sponsorImpact: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCHXElVwkjxSZheCl7AhH7HwOBQAJxDKuOmDWhDSqA7crECCe3SnR1xkthGS64hSlWgt02fzlcQYZKUd0_l4mEOfPAciImbMAeHF7sxfq9KmbQ1B0s2XHUI3htftmg4eIy2KaYw4QAwsgvaF8BjOVJTcaiQIIiTswDelN-AZrNoS8FLzKSOvvVeqiusQRhXZwmE5bka0W5arrjSyaMYbHSn8MJ1zl79i07Y_8lVq7Of-kqF3G8LKBScQrgEaaWq5R4_1bSP6jBbLy4',
+  sponsorHero: '/images/change a life.jpg',
+  sponsorImpact: '/images/sponsorship.JPG',
   fathersLove: "/images/father's love in action.jpeg",
   pastorLeadership: '/images/ps.jpeg',
   studentLife: '/images/15.jpeg',

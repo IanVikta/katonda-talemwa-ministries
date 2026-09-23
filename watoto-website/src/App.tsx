@@ -14,6 +14,7 @@ import ExchangeProgramPage from './pages/ExchangeProgramPage'
 import PrayWithUsPage from './pages/PrayWithUsPage'
 import CareersPage from './pages/CareersPage'
 import GalleryPage from './pages/GalleryPage'
+import NotFoundPage from './pages/NotFoundPage'
 import CookieConsent from './components/CookieConsent'
 
 export default function App() {
@@ -36,6 +37,7 @@ export default function App() {
         <Route path="/exchange-program" element={<ExchangeProgramPage />} />
         <Route path="/pray-with-us" element={<PrayWithUsPage />} />
         <Route path="/careers" element={<CareersPage />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
       <CookieConsent />
     </BrowserRouter>

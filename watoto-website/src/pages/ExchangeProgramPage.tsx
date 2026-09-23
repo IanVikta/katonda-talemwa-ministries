@@ -196,10 +196,10 @@ export default function ExchangeProgramPage() {
   return (
     <div className="bg-surface text-on-surface selection:bg-action-yellow selection:text-deep-black overflow-x-hidden font-body page-enter">
       <SEO
-        title="Mission & Cultural Exchange Trips | Putting The Father's Love In Action"
-        description="Putting the Father's Love in Action: Join a life-changing mission trip or cultural exchange in Uganda. Serve alongside local teams, meet sponsored children, and experience God's love."
+        title="Exchange Program & Mission Trips | Katonda Talemwa Ministries"
+        description="Join a life-changing mission trip or cultural exchange program in Uganda with Katonda Talemwa Ministries. Connect with local communities and serve alongside our team."
         canonicalPath="/exchange-program"
-        keywords="the father's love in action, mission trips Uganda, cultural exchange Africa, short term mission Uganda, church mission trips"
+        keywords="Katonda Talemwa exchange program, mission trips Uganda, cultural exchange Uganda, short term missions Africa, church mission teams Uganda"
       />
       <Navbar />
 
@@ -242,7 +242,7 @@ export default function ExchangeProgramPage() {
             <img
               className="absolute inset-0 w-full h-full object-cover"
               src={IMAGES.spiritualGrowth}
-              alt="Mission trip volunteers in Uganda"
+              alt="Mission trip volunteers in Uganda with Katonda Talemwa Ministries"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-deep-black/70 via-transparent to-transparent" />
             <div className="absolute bottom-8 left-8 right-8 bg-surface/90 backdrop-blur-md p-6 border-l-4 border-action-yellow flex items-center justify-between shadow-xl">

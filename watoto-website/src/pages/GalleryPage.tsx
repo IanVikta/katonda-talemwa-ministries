@@ -127,10 +127,10 @@ export default function GalleryPage() {
   return (
     <div className="bg-[#0b0f17] text-pure-white selection:bg-action-yellow selection:text-deep-black overflow-x-hidden font-body page-enter min-h-screen flex flex-col">
       <SEO
-        title="Photo Gallery | The Father's Love in Action"
-        description="Putting the Father's Love in Action: Moments of joy, worship, rescue, and community life at Katonda Talemwa Ministries in Uganda."
+        title="Photo & Video Gallery | Katonda Talemwa Ministries"
+        description="Explore moments of joy, worship, baby rescue, education, and family village life at Katonda Talemwa Ministries in Kyasenya, Lwengo, Uganda."
         canonicalPath="/gallery"
-        keywords="the father's love in action, Katonda Talemwa photos, Uganda orphanage pictures, charity gallery Africa, Emmanuel Baby Home photos"
+        keywords="Katonda Talemwa gallery, Katonda Talemwa photos, Uganda orphanage pictures, Emmanuel Baby Home photos, Christian charity gallery Uganda"
       />
       <Navbar />
 
@@ -167,7 +167,7 @@ export default function GalleryPage() {
               >
                 <img
                   src={imgSrc}
-                  alt={`Gallery photo ${index + 1}`}
+                  alt={`Katonda Talemwa Ministries photo ${index + 1}`}
                   loading="lazy"
                   className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-110"
                 />
@@ -235,7 +235,7 @@ export default function GalleryPage() {
           >
             <img
               src={photos[selectedIndex]}
-              alt={`Full view ${selectedIndex + 1}`}
+              alt={`Katonda Talemwa Ministries full view photo ${selectedIndex + 1}`}
               className="max-w-full max-h-[88vh] object-contain shadow-2xl border border-pure-white/10"
             />
           </div>

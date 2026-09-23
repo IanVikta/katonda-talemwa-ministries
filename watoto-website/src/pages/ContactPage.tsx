@@ -79,10 +79,10 @@ export default function ContactPage() {
   return (
     <div className="bg-surface text-on-surface selection:bg-action-yellow selection:text-deep-black overflow-x-hidden page-enter">
       <SEO
-        title="Contact Us | Putting The Father's Love In Action"
-        description="Putting the Father's Love in Action: Get in touch with Katonda Talemwa Ministries in Kyasenya, Lwengo, Uganda. Reach our leadership for inquiries, child sponsorships, visiting, or donations."
+        title="Contact Us | Katonda Talemwa Ministries Uganda"
+        description="Get in touch with Katonda Talemwa Ministries in Kyasenya, Lwengo, Uganda. Reach our team for inquiries, child sponsorships, visiting, mission trips, or donations."
         canonicalPath="/contact"
-        keywords="the father's love in action, contact Katonda Talemwa, Uganda charity contact, Lwengo ministry address, contact orphanage Uganda"
+        keywords="contact Katonda Talemwa, Katonda Talemwa Ministries Uganda, Katonda Talemwa address, Lwengo Uganda ministry, contact orphanage Uganda"
       />
       <Navbar />
 

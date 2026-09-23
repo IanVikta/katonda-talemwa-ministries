@@ -86,10 +86,10 @@ export default function DonatePage() {
   return (
     <div className="bg-surface text-on-surface selection:bg-action-yellow selection:text-deep-black overflow-x-hidden page-enter">
       <SEO
-        title="Donate | Putting The Father's Love In Action"
-        description="Putting the Father's Love in Action: Support Katonda Talemwa Ministries with a one-time or monthly donation. Help fund orphan rescue, school education, clean water, medical clinic care, and emergency relief in Uganda."
+        title="Donate & Partner | Katonda Talemwa Ministries Uganda"
+        description="Support Katonda Talemwa Ministries with a one-time or recurring gift. Fund orphan rescue, schooling, healthcare, and community transformation in Uganda."
         canonicalPath="/donate"
-        keywords="the father's love in action, donate to Uganda charity, give to African orphans, Christian ministry donations, Katonda Talemwa donation"
+        keywords="donate Katonda Talemwa, give to Uganda charity, Christian donations Uganda, support African orphans, Katonda Talemwa partner"
       />
       <Navbar />
 

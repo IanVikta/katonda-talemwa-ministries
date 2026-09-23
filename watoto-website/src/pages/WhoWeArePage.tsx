@@ -9,10 +9,10 @@ export default function WhoWeArePage() {
   return (
     <div className="bg-surface text-on-surface selection:bg-action-yellow selection:text-deep-black overflow-x-hidden font-body page-enter">
       <SEO
-        title="Who We Are | Putting The Father's Love In Action"
-        description="Putting the Father's Love in Action: Learn about the heart and history of Katonda Talemwa Ministries in Kyasenya, Lwengo, Uganda. Rescuing vulnerable children and empowering communities."
+        title="Who We Are | About Katonda Talemwa Ministries"
+        description="Learn about the heart, history, and Christian leadership of Katonda Talemwa Ministries in Kyasenya, Lwengo, Uganda, founded in faith by Pastor Emmanuel and Sarah Nnyanzi."
         canonicalPath="/who-we-are"
-        keywords="about Katonda Talemwa Ministries, the father's love in action, Christian NGO Uganda, Uganda charity mission, Katonda Talemwa story"
+        keywords="about Katonda Talemwa Ministries, Katonda Talemwa history, Katonda Talemwa story, Christian ministry Uganda, Pastor Emmanuel Nnyanzi, Kyasenya Lwengo charity"
       />
       <Navbar />
 
@@ -112,7 +112,7 @@ export default function WhoWeArePage() {
                 <div className="w-full aspect-[4/3] bg-surface rounded-lg border-b-8 border-secondary overflow-hidden shadow-lg relative">
                   <img
                     src={IMAGES.studentLife}
-                    alt="Student Life & Education"
+                    alt="Student Life & Education at Katonda Talemwa Ministries"
                     className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-deep-black/85 via-deep-black/25 to-transparent" />
@@ -184,7 +184,7 @@ export default function WhoWeArePage() {
                 <div className="aspect-video bg-surface-container overflow-hidden relative">
                   <img
                     src={IMAGES.childSponsorship}
-                    alt="Child Sponsorship"
+                    alt="Child Sponsorship at Katonda Talemwa Ministries"
                     className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
                   />
                 </div>
@@ -203,7 +203,7 @@ export default function WhoWeArePage() {
                 <div className="aspect-video bg-surface-container overflow-hidden relative">
                   <img
                     src={IMAGES.kateClinic}
-                    alt="Child Health: Kate Clinic"
+                    alt="Kate Clinic child and maternal health center - Katonda Talemwa"
                     className="w-full h-full object-cover object-[center_35%] group-hover:scale-105 transition-transform duration-500"
                   />
                 </div>
@@ -222,7 +222,7 @@ export default function WhoWeArePage() {
                 <div className="aspect-video bg-surface-container overflow-hidden relative">
                   <img
                     src={IMAGES.emmanuelBabiesCare}
-                    alt="Child Care: Emmanuel Babies Home"
+                    alt="Emmanuel Babies Home infant nursery - Katonda Talemwa Ministries"
                     className="w-full h-full object-cover object-[center_25%] group-hover:scale-105 transition-transform duration-500"
                   />
                 </div>

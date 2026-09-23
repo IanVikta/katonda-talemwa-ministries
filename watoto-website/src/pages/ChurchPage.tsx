@@ -73,10 +73,10 @@ export default function ChurchPage() {
   return (
     <div className="bg-surface text-on-surface selection:bg-action-yellow selection:text-deep-black overflow-x-hidden font-body page-enter">
       <SEO
-        title="Katonda Community Church | Putting The Father's Love In Action"
-        description="Putting the Father's Love in Action: Katonda Talemwa Church Network with 91+ churches across Uganda and Rwanda, sharing Christ's love, discipleship, and community transformation."
+        title="Katonda Community Church | Faith & Worship in Uganda"
+        description="The Katonda Talemwa Church Network spans 91+ community churches across Uganda and Rwanda, proclaiming the Gospel of Jesus Christ and discipling believers."
         canonicalPath="/katonda-church"
-        keywords="the father's love in action, church Uganda, Christian church Lwengo, Katonda church network, worship Uganda, gospel outreach Africa"
+        keywords="Katonda Talemwa church, Katonda church Uganda, Katonda Talemwa Ministries church, Christian church Uganda, worship Lwengo, Pentecostal church Uganda"
       />
       <Navbar />
 
@@ -304,7 +304,7 @@ export default function ChurchPage() {
                 >
                   <img
                     src={item.image}
-                    alt={item.title}
+                    alt={`${item.title} - Katonda Talemwa Church community`}
                     className="w-full h-full object-cover group-hover:scale-110 group-hover:opacity-85 transition-all duration-700 filter brightness-95"
                   />
 
@@ -337,7 +337,7 @@ export default function ChurchPage() {
               <img
                 className="w-full aspect-[4/3] lg:aspect-square object-cover object-top rounded-none"
                 src={IMAGES.pastorLeadership}
-                alt="Pastor Emmanuel (Emmy) Nnyanzi & Sarah Nnyanzi"
+                alt="Pastor Emmanuel (Emmy) Nnyanzi & Sarah Nnyanzi - Katonda Talemwa Ministries leadership"
               />
               <div className="p-4 bg-surface-container-low mt-2 border border-outline-variant/30 text-center">
                 <span className="text-[10px] uppercase tracking-widest text-vibrant-green font-bold block mb-1">Our Apostolic Leadership</span>
@@ -402,7 +402,7 @@ export default function ChurchPage() {
               <div className="relative aspect-16/10 bg-black">
                 <img
                   src={lightboxItem.image}
-                  alt={lightboxItem.title}
+                  alt={`${lightboxItem.title} - Katonda Talemwa Church photo`}
                   className="w-full h-full object-contain"
                 />
               </div>

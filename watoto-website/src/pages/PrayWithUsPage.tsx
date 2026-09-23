@@ -92,10 +92,10 @@ export default function PrayWithUsPage() {
   return (
     <div className="bg-surface text-on-surface selection:bg-action-yellow selection:text-deep-black overflow-x-hidden font-body page-enter">
       <SEO
-        title="Pray With Us | Putting The Father's Love In Action"
-        description="Putting the Father's Love in Action: Join our global prayer team interceding for orphaned children, vulnerable families, and ministry staff across Uganda."
+        title="Pray With Us | Prayer & Intercession | Katonda Talemwa"
+        description="Join our global prayer team interceding for orphaned children, vulnerable families, and community leaders across Uganda with Katonda Talemwa Ministries."
         canonicalPath="/pray-with-us"
-        keywords="the father's love in action, prayer requests, pray for Uganda orphans, Christian intercession, Katonda Talemwa prayer team"
+        keywords="Katonda Talemwa prayer, pray for Uganda orphans, Christian intercession, Katonda Talemwa prayer team, submit prayer request Uganda"
       />
       <Navbar />
 

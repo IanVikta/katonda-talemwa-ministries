@@ -10,10 +10,10 @@ export default function KeepGirlInSchoolPage() {
   return (
     <div className="bg-surface text-on-surface selection:bg-action-yellow selection:text-deep-black overflow-x-hidden font-body page-enter">
       <SEO
-        title="Keep a Girl in School | Putting The Father's Love In Action"
-        description="Putting the Father's Love in Action: Empowering adolescent girls in rural Uganda with sanitary hygiene kits, mentorship, health education, and school tuition support to break the cycle of poverty."
+        title="Keep a Girl in School | Girls' Education in Uganda"
+        description="Empowering adolescent girls in rural Uganda with sanitary dignity kits, Christian mentorship, health education, and school tuition support to break the cycle of poverty."
         canonicalPath="/keep-a-girl"
-        keywords="the father's love in action, keep a girl in school, menstrual hygiene Uganda, girl child education Africa, empower girls Uganda, Esther Mission"
+        keywords="Keep a Girl in School, Katonda Talemwa girls, menstrual hygiene Uganda, girl child education Africa, empower girls Uganda, girls sponsorship Uganda"
       />
       <Navbar />
 
@@ -40,13 +40,13 @@ export default function KeepGirlInSchoolPage() {
         <section className="border-y border-outline-variant/60 bg-surface-container-high">
           <div className="grid grid-cols-3 gap-0.5">
             <div className="aspect-[4/3] overflow-hidden">
-              <img className="w-full h-full object-cover filter brightness-90 hover:brightness-100 transition-all" src={IMAGES.girlSchool} alt="Girls in school" />
+              <img className="w-full h-full object-cover filter brightness-90 hover:brightness-100 transition-all" src={IMAGES.girlSchool} alt="Ugandan girls learning in classroom at Katonda Talemwa" />
             </div>
             <div className="aspect-[4/3] overflow-hidden">
-              <img className="w-full h-full object-cover filter brightness-90 hover:brightness-100 transition-all" src={IMAGES.villagesHero} alt="Villages community" />
+              <img className="w-full h-full object-cover filter brightness-90 hover:brightness-100 transition-all" src={IMAGES.villagesHero} alt="Katonda Talemwa village community in Uganda" />
             </div>
             <div className="aspect-[4/3] overflow-hidden">
-              <img className="w-full h-full object-cover filter brightness-90 hover:brightness-100 transition-all" src={IMAGES.spiritualGrowth} alt="Choir singing" />
+              <img className="w-full h-full object-cover filter brightness-90 hover:brightness-100 transition-all" src={IMAGES.spiritualGrowth} alt="Katonda Talemwa children choir singing" />
             </div>
           </div>
         </section>
@@ -139,7 +139,7 @@ export default function KeepGirlInSchoolPage() {
               <img
                 className="w-full aspect-square object-cover rounded-none"
                 src="/images/aisha.jpg"
-                alt="Aisha at school desk"
+                alt="Aisha, student supported by Katonda Talemwa Keep a Girl in School initiative"
               />
               <div className="p-4 bg-surface-container-low mt-2 border border-outline-variant/30 text-center">
                 <span className="text-[10px] uppercase tracking-widest text-vibrant-green font-bold block mb-1">Aisha&apos;s Profile</span>

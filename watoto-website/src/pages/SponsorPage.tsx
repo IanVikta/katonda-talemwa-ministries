@@ -125,10 +125,10 @@ export default function SponsorPage() {
   return (
     <div className="bg-surface text-on-surface selection:bg-action-yellow selection:text-deep-black overflow-x-hidden font-body page-enter">
       <SEO
-        title="Sponsor a Child in Uganda | Putting The Father's Love In Action"
-        description="Put the Father's Love in Action: Sponsor an orphaned or vulnerable child in Uganda today. Your monthly support provides nutritious food, medical healthcare, quality schooling, and loving Christian family care."
+        title="Sponsor a Child in Uganda | Katonda Talemwa Ministries"
+        description="Sponsor an orphaned or vulnerable child in Uganda through Katonda Talemwa Ministries. Your monthly partnership provides schooling, healthcare, nutrition, and a loving home."
         canonicalPath="/sponsor"
-        keywords="the father's love in action, sponsor a child Uganda, child sponsorship Africa, support Uganda orphan, sponsor a baby Emmanuel Baby Home"
+        keywords="sponsor a child Uganda, child sponsorship Katonda Talemwa, sponsor Ugandan child, orphan sponsorship Africa, support a child Uganda"
       />
       <Navbar />
 
@@ -208,7 +208,7 @@ export default function SponsorPage() {
               {/* Right: Photo */}
               <div data-aos="fade-left" data-aos-delay="150" className="relative">
                 <div className="border border-outline-variant/60 p-3 bg-surface shadow-lg rounded-none">
-                  <img className="w-full aspect-square object-cover rounded-none" src={IMAGES.sponsorImpact} alt="Smiling child with school book" />
+                  <img className="w-full aspect-square object-cover rounded-none" src={IMAGES.sponsorImpact} alt="Katonda Talemwa sponsored students in school uniform" />
                 </div>
                 <div className="absolute -bottom-6 -left-6 bg-vibrant-green text-pure-white p-6 hidden lg:block rounded-none shadow-xl max-w-[200px] border-t-4 border-action-yellow">
                   <p className="font-headline text-3xl text-pure-white leading-none font-black mb-1">2,000+</p>
@@ -311,7 +311,7 @@ export default function SponsorPage() {
                       <img
                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                         src={child.image}
-                        alt={child.name}
+                        alt={`${child.name} - Sponsor a child with Katonda Talemwa Ministries`}
                       />
                       {/* Top Badges */}
                       <div className="absolute top-3 left-3 right-3 flex items-start justify-between gap-2 pointer-events-none z-10">
@@ -500,7 +500,7 @@ export default function SponsorPage() {
               <>
                 {/* Child photo & profile highlights side */}
                 <div className="md:w-5/12 relative min-h-[220px] md:min-h-full bg-surface-container flex flex-col justify-end">
-                  <img className="w-full h-full object-cover absolute inset-0" src={sponsoringChild.image} alt={sponsoringChild.name} />
+                  <img className="w-full h-full object-cover absolute inset-0" src={sponsoringChild.image} alt={`${sponsoringChild.name} - Katonda Talemwa Ministries child sponsorship`} />
                   <div className="absolute inset-0 bg-gradient-to-t from-deep-black/95 via-deep-black/40 to-transparent" />
                   <div className="relative z-10 p-6 text-pure-white space-y-3">
                     <span className="text-[10px] font-extrabold uppercase tracking-widest text-action-yellow bg-vibrant-green/90 px-3 py-1 inline-block border-l-2 border-action-yellow">

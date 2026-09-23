@@ -172,10 +172,10 @@ export default function BabyWatotoPage() {
   return (
     <div className="bg-surface text-on-surface selection:bg-action-yellow selection:text-deep-black overflow-x-hidden font-body page-enter">
       <SEO
-        title="Emmanuel Baby Home | Putting The Father's Love In Action"
-        description="Putting the Father's Love in Action: Rescuing abandoned, orphaned, and malnourished infants in Uganda with 24/7 medical treatment, nutrition, and compassionate maternal care."
+        title="Emmanuel Baby Home | Infant Care & Rescue in Uganda"
+        description="Rescuing abandoned, orphaned, and critically vulnerable infants in Uganda with 24/7 medical treatment, nutrition, and loving maternal care at Katonda Talemwa Ministries."
         canonicalPath="/emmanuel-baby-home"
-        keywords="the father's love in action, baby home Uganda, rescue abandoned babies, crisis nursery Africa, sponsor a baby Uganda, Emmanuel Baby Home"
+        keywords="Emmanuel Baby Home, Katonda Talemwa baby home, rescue abandoned babies Uganda, infant rescue Africa, baby crisis center Uganda, sponsor a baby"
       />
       <Navbar />
 
@@ -219,7 +219,7 @@ export default function BabyWatotoPage() {
             <img
               className="w-full h-full object-cover object-center absolute inset-0"
               src={IMAGES.babyHero}
-              alt="Emmanuel Baby's Home care"
+              alt="Emmanuel Baby's Home infant care at Katonda Talemwa Ministries Uganda"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-deep-black/60 to-transparent" />
             {/* Floating stat */}
@@ -355,7 +355,7 @@ export default function BabyWatotoPage() {
                 <img
                   className="w-full h-full object-cover absolute inset-0"
                   src={children.find(c => c.id === 'jayson')?.image || IMAGES.rescue}
-                  alt="Baby Jayson"
+                  alt="Baby Jayson rescued and cared for at Emmanuel Baby's Home Katonda Talemwa Ministries"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-deep-black/70 to-transparent" />
                 <div className="absolute bottom-6 left-6 text-pure-white space-y-1">
@@ -462,7 +462,7 @@ export default function BabyWatotoPage() {
                   <div className="relative aspect-4/3 overflow-hidden bg-deep-black">
                     <img
                       src={member.image}
-                      alt={member.name}
+                      alt={`${member.name}, ${member.role} at Emmanuel Baby's Home`}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90"
                     />
                     <div className="absolute top-3 right-3 bg-action-yellow text-deep-black text-[9px] font-extrabold uppercase tracking-widest px-2.5 py-1">
@@ -493,7 +493,7 @@ export default function BabyWatotoPage() {
                 <img
                   className="w-full aspect-square object-cover rounded-none"
                   src={IMAGES.sponsorshipBaby}
-                  alt="Asha growing strong"
+                  alt="Asha growing strong after rescue at Emmanuel Baby's Home Katonda Talemwa Ministries"
                 />
                 <div className="p-4 bg-surface-container-low mt-2 border border-outline-variant/30 text-center">
                   <span className="text-[10px] uppercase tracking-widest text-vibrant-green font-bold block mb-1">Impact Story</span>
@@ -607,7 +607,7 @@ export default function BabyWatotoPage() {
                 >
                   <img
                     src={item.image}
-                    alt={item.title}
+                    alt={`${item.title} - Emmanuel Baby's Home Katonda Talemwa Ministries`}
                     className="w-full h-full object-cover group-hover:scale-110 group-hover:opacity-85 transition-all duration-700 filter brightness-95"
                   />
 
@@ -729,7 +729,7 @@ export default function BabyWatotoPage() {
               <div className="relative aspect-16/10 bg-black">
                 <img
                   src={lightboxItem.image}
-                  alt={lightboxItem.title}
+                  alt={`${lightboxItem.title} - Emmanuel Baby's Home Katonda Talemwa Ministries`}
                   className="w-full h-full object-contain"
                 />
               </div>

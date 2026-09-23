@@ -16,10 +16,10 @@ export default function WatotoVillagesPage() {
   return (
     <div className="bg-surface text-on-surface selection:bg-action-yellow selection:text-deep-black overflow-x-hidden font-body page-enter">
       <SEO
-        title="Katonda Children’s Villages | Putting The Father's Love In Action"
-        description="Discover how Katonda Talemwa Ministries creates permanent, faith-filled families in Kyasenya, Lwengo. Nurturing mothers, holistic education, and life-changing love for vulnerable children."
+        title="Katonda Children’s Villages | Family Orphan Care"
+        description="Discover how Katonda Talemwa Ministries creates permanent, faith-filled families in Kyasenya, Lwengo. Nurturing mothers, holistic education, and lifelong care."
         canonicalPath="/katonda-villages"
-        keywords="the father's love in action, children village Uganda, orphan care village, family style orphan care, foster care Africa"
+        keywords="Katonda Children's Villages, Katonda Talemwa villages, orphan care village Uganda, family style orphan care, foster care Africa, Kyasenya Lwengo"
       />
       <Navbar />
 
@@ -32,7 +32,7 @@ export default function WatotoVillagesPage() {
             <img
               className="w-full h-full object-cover object-top filter brightness-[0.72] contrast-[1.08]"
               src={IMAGES.villagesHero}
-              alt="Katonda Talemwa Ministries children"
+              alt="Katonda Talemwa Ministries children in community village Uganda"
             />
             {/* Dark gradient overlays */}
             <div className="absolute inset-0 bg-gradient-to-t from-deep-black via-deep-black/60 to-deep-black/35" />
@@ -214,7 +214,7 @@ export default function WatotoVillagesPage() {
               <img
                 className="w-full aspect-video object-cover brightness-90 group-hover:brightness-100 transition-all duration-500"
                 src={IMAGES.villages}
-                alt="Katonda Talemwa Family Homes"
+                alt="Katonda Talemwa Ministries family homes in Kyasenya village Uganda"
               />
               <div className="absolute inset-0 bg-deep-black/20 group-hover:bg-deep-black/30 transition-colors" />
               <div className="absolute inset-0 flex items-center justify-center">
@@ -356,7 +356,7 @@ export default function WatotoVillagesPage() {
                       <img
                         className="w-full h-full object-cover absolute inset-0 group-hover:scale-105 transition-transform duration-500"
                         src={profile?.image || story.fallbackImage}
-                        alt={story.name}
+                        alt={`${story.name} - Katonda Talemwa Ministries transformation story`}
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-deep-black/60 to-transparent" />
                       <span className={`absolute top-4 left-4 text-pure-white text-[10px] font-black uppercase tracking-widest px-3 py-1 ${story.bgAccent}`}>
@@ -398,7 +398,7 @@ export default function WatotoVillagesPage() {
           <div data-aos="fade-right" className="bg-surface-container-low p-12 md:p-16 flex flex-col justify-center space-y-6 border-r border-outline-variant/30">
             <span className="text-[10px] uppercase font-extrabold tracking-widest text-vibrant-green block">Meet Samuel — Age 8</span>
             <div className="border border-outline-variant/60 overflow-hidden rounded-none">
-              <img className="w-full aspect-video object-cover" src={IMAGES.samuelCard} alt="Samuel" />
+              <img className="w-full aspect-video object-cover" src={IMAGES.samuelCard} alt="Samuel, a sponsored child at Katonda Talemwa Ministries" />
             </div>
             <p className="text-sm text-on-surface-variant font-light leading-relaxed">
               Energetic and full of joy, Samuel is in Primary 3 and longs to become a medical doctor so he can heal others. An avid football enthusiast, he never ends a day without gathering with his village mother to give thanks in prayer.

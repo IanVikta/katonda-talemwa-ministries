@@ -173,10 +173,10 @@ export default function VolunteerPage() {
   return (
     <div className="bg-surface text-on-surface selection:bg-action-yellow selection:text-deep-black overflow-x-hidden font-body page-enter">
       <SEO
-        title="Volunteer in Uganda | Putting The Father's Love In Action"
-        description="Putting the Father's Love in Action: Serve with Katonda Talemwa Ministries in Uganda. Meaningful volunteer opportunities in teaching, healthcare, childcare, community development, and vocational training."
+        title="Volunteer in Uganda | Katonda Talemwa Ministries"
+        description="Serve with Katonda Talemwa Ministries in Kyasenya, Lwengo, Uganda. Meaningful volunteer opportunities in teaching, healthcare, childcare, and community outreach."
         canonicalPath="/volunteer"
-        keywords="the father's love in action, volunteer Uganda, missionary trips Africa, volunteer with orphans Uganda, teach in Uganda, Christian volunteers Africa"
+        keywords="volunteer Katonda Talemwa, volunteer in Uganda, mission trips Uganda, Christian volunteers Africa, serve in Uganda, volunteer with children Africa"
       />
       <Navbar />
 
@@ -209,7 +209,7 @@ export default function VolunteerPage() {
 
           {/* Right: hero image with floating stat */}
           <div className="relative min-h-[50vh] lg:min-h-0">
-            <img className="absolute inset-0 w-full h-full object-cover" src={IMAGES.villagesHero} alt="Volunteer in village" />
+            <img className="absolute inset-0 w-full h-full object-cover" src={IMAGES.villagesHero} alt="Volunteer serving in Katonda Talemwa village in Uganda" />
             <div className="absolute inset-0 bg-gradient-to-b from-transparent to-deep-black/50" />
             <div className="absolute bottom-8 right-8 bg-action-yellow text-deep-black p-6 max-w-[200px] border-l-4 border-deep-black">
               <div className="font-headline text-3xl font-black">500+</div>
@@ -329,7 +329,7 @@ export default function VolunteerPage() {
                   </p>
                 </div>
                 <div className="border border-pure-white/10 overflow-hidden">
-                  <img className="w-full aspect-video object-cover opacity-80" src={IMAGES.spiritualGrowth} alt="Volunteers in action" />
+                  <img className="w-full aspect-video object-cover opacity-80" src={IMAGES.spiritualGrowth} alt="Katonda Talemwa volunteers and community in action" />
                 </div>
               </div>
 

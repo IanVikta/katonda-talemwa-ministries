@@ -10,10 +10,10 @@ export default function HomePage() {
   return (
     <div className="bg-surface text-on-surface selection:bg-action-yellow selection:text-deep-black">
       <SEO
-        title="Putting The Father's Love In Action"
-        description="Putting the Father's Love in Action: Katonda Talemwa Ministries is dedicated to rescuing vulnerable orphans, empowering families through education, medical care, child sponsorship, and community transformation in Uganda."
+        title="Katonda Talemwa Ministries | Uganda"
+        description="Katonda Talemwa Ministries is a Christian ministry in Kyasenya, Lwengo, Uganda, demonstrating the Father's love in action through orphan care, family villages, baby rescue, education, and community churches."
         canonicalPath="/"
-        keywords="Katonda Talemwa Ministries, the father's love in action, child sponsorship Uganda, sponsor a child in Africa, orphan care Uganda, Christian charity Uganda"
+        keywords="Katonda Talemwa, Katonda Talemwa Ministries, Katonda Talemwa Ministries Uganda, Katonda Talemwa Uganda, Katonda Talemwa church, Katonda Talemwa ministry, child sponsorship Uganda, sponsor a child Africa, orphan care Uganda, Christian charity Uganda, Kyasenya Lwengo"
       />
       <Navbar />
 
@@ -26,6 +26,9 @@ export default function HomePage() {
         </div>
         <div className="relative z-10 max-w-4xl mx-auto space-y-8 px-4">
           <h1 className="font-headline text-headline-xl text-pure-white uppercase">
+            <span className="block text-action-yellow text-xs sm:text-sm font-black tracking-widest uppercase mb-2">
+              Katonda Talemwa Ministries
+            </span>
             Empowered by Christ,
             <br />
             Transforming Communities
@@ -84,7 +87,7 @@ export default function HomePage() {
             <div className="w-full aspect-square overflow-hidden border-b-8 border-primary">
               <img
                 src={IMAGES.fathersLove}
-                alt="The Father's Love in Action"
+                alt="The Father's Love in Action - Katonda Talemwa Ministries caring for orphans and children in Uganda"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               />
             </div>

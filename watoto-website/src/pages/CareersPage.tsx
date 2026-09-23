@@ -151,10 +151,10 @@ export default function CareersPage() {
   return (
     <div className="bg-surface text-on-surface selection:bg-action-yellow selection:text-deep-black overflow-x-hidden font-body page-enter">
       <SEO
-        title="Careers & Mission Opportunities | Putting The Father's Love In Action"
-        description="Putting the Father's Love in Action: Join our passionate team at Katonda Talemwa Ministries in Uganda. View career opportunities in pediatric healthcare, teaching, and child development."
+        title="Careers & Opportunities | Katonda Talemwa Ministries"
+        description="Explore career and ministry opportunities at Katonda Talemwa Ministries in Uganda. Join our team in healthcare, teaching, social work, and child development."
         canonicalPath="/careers"
-        keywords="the father's love in action, jobs in Uganda, NGO jobs Uganda, nursing jobs Lwengo, charity jobs Africa, careers Katonda Talemwa"
+        keywords="Katonda Talemwa careers, NGO jobs Uganda, charity jobs Uganda, nursing jobs Lwengo, teaching jobs Uganda, ministry jobs Africa"
       />
       <Navbar />
 
