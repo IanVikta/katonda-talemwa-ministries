@@ -669,7 +669,7 @@ export default function SponsorPage() {
                             amount: 38
                           })
 
-                          const paypalUrl = `https://www.paypal.com/donate/?business=katondatalemwaministries%40gmail.com&currency_code=USD&amount=38&item_name=${encodeURIComponent(`Monthly Child Sponsorship for ${sponsoringChild.name}`)}`
+                          const paypalUrl = `https://www.paypal.com/donate/?business=emmynyanzi2018%40gmail.com&currency_code=USD&amount=38&item_name=${encodeURIComponent(`Monthly Child Sponsorship for ${sponsoringChild.name}`)}`
                           setSponsorLoading(false)
                           setSponsorSuccess(true)
                           window.open(paypalUrl, '_blank', 'noopener,noreferrer')

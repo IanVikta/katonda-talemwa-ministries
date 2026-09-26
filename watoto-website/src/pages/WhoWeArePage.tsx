@@ -84,7 +84,7 @@ export default function WhoWeArePage() {
                 </div>
                 <h3 className="font-headline text-xl font-bold uppercase tracking-wide text-deep-black">Our Vision</h3>
                 <p className="text-on-surface-variant font-light text-sm leading-relaxed">
-                  A generation of equal opportunities and new beginnings, where every child has the freedom and support to design a bright future.
+                  To nurture a transformed generation, empowering vulnerable children, strengthening poor communities through healthcare and development, and planting Christ-centered churches to bring lasting gospel transformation.
                 </p>
               </div>
               <div className="bg-surface-container-low p-8 border border-outline-variant/20 rounded-xl space-y-4 hover:shadow-lg transition-shadow">
@@ -135,7 +135,7 @@ export default function WhoWeArePage() {
                   What Makes Us Different?
                 </h2>
                 <p className="text-on-surface-variant font-light text-base leading-relaxed">
-                  We are relentlessly committed to taking full responsibility for disadvantaged children and delivering a great future for them. We do this by providing excellence in every project and maximizing the value of every single resource trusted to us.
+                  We believe that every life has God-given value and purpose. Through Christ-centered compassion, we care for vulnerable children, strengthen communities, establish churches, and empower people toward a life of dignity, hope, and lasting transformation.
                 </p>
                 <div className="space-y-4">
                   <p className="font-headline text-xs font-black text-deep-black uppercase tracking-wider">
@@ -146,10 +146,11 @@ export default function WhoWeArePage() {
                       { num: '1', text: 'Rescuing Children from abuse' },
                       { num: '2', text: 'Rehabilitation of abused children' },
                       { num: '3', text: 'Nurturing Children with Love' },
-                      { num: '4', text: 'Advocacy for Children’s Rights' },
-                      { num: '5', text: 'Skilling and Education' },
-                      { num: '6', text: 'Health Services Provision' },
-                      { num: '7', text: 'Advocacy, Rehabilitation & Support for young women' },
+                      { num: '4', text: 'Skilling and Education' },
+                      { num: '5', text: 'Health Services Provision' },
+                      { num: '6', text: 'Spiritual discipleship and Church planting' },
+                      { num: '7', text: 'Rehabilitation & Support for vulnerable women' },
+                      { num: '8', text: '(...to mention but a few)' },
                     ].map((item) => (
                       <div key={item.num} className="flex gap-3 items-start">
                         <span className="w-6 h-6 rounded-full bg-vibrant-green/10 text-vibrant-green text-xs font-black flex items-center justify-center shrink-0 mt-0.5">
@@ -192,7 +193,7 @@ export default function WhoWeArePage() {
                   <div className="space-y-2">
                     <h3 className="font-headline text-lg font-bold text-deep-black uppercase">Child Sponsorship</h3>
                     <p className="text-xs text-on-surface-variant font-light leading-relaxed">
-                      We support over 800 children in our child care program. These children are provided with nutritious food, clothing, health care, shelter, and quality education. Under this project, we have impacted up to 50,015 children since we established our very first school.
+                      We support over 800 children in our child care program. These children are provided with nutritious food, clothing, health care, shelter, and quality education. Under this project, we have impacted up to 6500+ children since we established our very first school.
                     </p>
                   </div>
                 </div>
@@ -213,6 +214,12 @@ export default function WhoWeArePage() {
                     <p className="text-xs text-on-surface-variant font-light leading-relaxed">
                       Before Kate Clinic, expectant mothers had to walk 7 kilometers to reach the nearest health facility. Mortality rates from malaria and maternity complications were high. We opened Kate Clinic as a charitable clinic to charge minimal costs, providing lab work, antenatal care, and general medicine.
                     </p>
+                    <Link
+                      to="/kate-clinic"
+                      className="text-xs font-bold text-vibrant-green hover:underline uppercase tracking-wider inline-flex items-center gap-1 pt-2"
+                    >
+                      Visit Kate Clinic Page &rarr;
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -240,34 +247,298 @@ export default function WhoWeArePage() {
           </div>
         </section>
 
+        {/* ── LEADERSHIP & MINISTRY TEAM: 10 Members in 3-4-3 Hierarchy ── */}
+        <section className="py-24 bg-surface-container-low border-b border-outline-variant/30">
+          <div className="max-w-(--spacing-container-max) mx-auto px-4 md:px-margin-desktop space-y-16">
+
+            {/* Section Header */}
+            <div className="text-center space-y-4 max-w-2xl mx-auto">
+              <span className="text-vibrant-green font-bold text-xs uppercase tracking-widest block">
+                Leadership &amp; Team
+              </span>
+              <h2 className="font-headline text-3xl sm:text-4xl font-black uppercase text-deep-black leading-tight">
+                The Hearts &amp; Hands <span className="text-vibrant-green">Behind The Mission</span>
+              </h2>
+              <div className="w-20 h-1 bg-action-yellow mx-auto" />
+              <p className="text-sm text-on-surface-variant font-light leading-relaxed">
+                Dedicated servant leaders, administrators, clinicians, and coordinators united in demonstrating the Father&apos;s unconditional love across Uganda.
+              </p>
+            </div>
+
+            {/* Tier 1: Founding & Executive Directors (Row of 3) */}
+            <div className="space-y-6">
+              <div className="flex items-center gap-3">
+                <span className="text-xs font-black uppercase tracking-widest text-deep-black font-headline">
+                  Founding &amp; Executive Leadership
+                </span>
+                <div className="h-px bg-outline-variant/50 flex-1" />
+                <span className="text-[10px] uppercase font-bold tracking-wider text-deep-black bg-action-yellow px-2.5 py-0.5">
+                  Executive Tier
+                </span>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                {[
+                  {
+                    name: 'Pr. Emmy & Sarah Nnyanzi',
+                    role: 'Founding Directors',
+                    badge: 'Founding Directors',
+                    initials: 'ES',
+                    image: '/images/ps.jpeg',
+                    bio: 'Founded Katonda Talemwa Ministries in 1989. Pastor Emmy and Sarah provide visionary apostolic oversight, spiritual shepherding, and pastoral care across all KTM community initiatives and church fellowships in Uganda.',
+                  },
+                  {
+                    name: 'Solomon SSerwadda',
+                    role: 'Executive Director',
+                    badge: 'Executive Director',
+                    initials: 'SS',
+                    bio: 'Leads strategic execution, institutional governance, administrative development, and international partner relations to advance KTM\'s long-term mission and sustainable community impact.',
+                  },
+                  {
+                    name: 'Nsereko Faith',
+                    role: 'Operations Manager',
+                    badge: 'Operations Manager',
+                    initials: 'NF',
+                    bio: 'Directs day-to-day ministry operations, staff coordination, facility logistics, compliance, and campus-wide program implementation across all Katonda Talemwa centers.',
+                  },
+                ].map((member) => (
+                  <div
+                    key={member.name}
+                    className="bg-surface border-2 border-outline-variant/60 hover:border-vibrant-green rounded-none overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 flex flex-col group"
+                  >
+                    <div className="relative aspect-[4/3] bg-deep-black overflow-hidden">
+                      {member.image ? (
+                        <img
+                          src={member.image}
+                          alt={`${member.name} - ${member.role}`}
+                          className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500 filter brightness-95"
+                        />
+                      ) : (
+                        <div className="w-full h-full bg-gradient-to-br from-[#0c2214] via-[#05180c] to-deep-black flex flex-col items-center justify-center relative overflow-hidden">
+                          <div className="w-16 h-16 rounded-full bg-vibrant-green/15 border border-vibrant-green/30 flex items-center justify-center text-action-yellow font-headline font-black text-xl tracking-wider shadow-inner group-hover:scale-110 transition-transform duration-300">
+                            {member.initials}
+                          </div>
+                        </div>
+                      )}
+                      <div className="absolute inset-0 bg-gradient-to-t from-deep-black/80 via-transparent to-transparent" />
+                      <div className="absolute top-3 left-3 bg-action-yellow text-deep-black text-[9px] font-black uppercase tracking-widest px-2.5 py-1">
+                        {member.badge}
+                      </div>
+                    </div>
+                    <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
+                      <div className="space-y-1">
+                        <h3 className="font-headline text-lg font-black uppercase text-deep-black leading-snug">
+                          {member.name}
+                        </h3>
+                        <p className="text-xs font-bold text-vibrant-green uppercase tracking-wider">
+                          {member.role}
+                        </p>
+                      </div>
+                      <p className="text-xs text-on-surface-variant font-light leading-relaxed">
+                        {member.bio}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Tier 2: Administration & Department Heads (Row of 4) */}
+            <div className="space-y-6">
+              <div className="flex items-center gap-3">
+                <span className="text-xs font-black uppercase tracking-widest text-deep-black font-headline">
+                  Administration &amp; Department Heads
+                </span>
+                <div className="h-px bg-outline-variant/50 flex-1" />
+                <span className="text-[10px] uppercase font-bold tracking-wider text-pure-white bg-vibrant-green px-2.5 py-0.5">
+                  Directors Tier
+                </span>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                {[
+                  {
+                    name: 'Talemwa Fred',
+                    role: 'Home Admin / Sponsorship Coordinator',
+                    badge: 'Home Admin & Sponsorship',
+                    initials: 'TF',
+                    image: '/images/fred1.jpg',
+                    bio: 'Oversees residential child care at Emmanuel Baby\'s Home, sponsor communications, child welfare assessments, and holistic child development.',
+                  },
+                  {
+                    name: 'Nnyanzi Luke',
+                    role: 'Accountant',
+                    badge: 'Finance & Accounts',
+                    initials: 'NL',
+                    bio: 'Stewards financial planning, budget management, donor fund accountability, and institutional reporting with integrity and transparency.',
+                  },
+                  {
+                    name: 'Walakira Jude',
+                    role: 'Head of Kate Clinic',
+                    badge: 'Healthcare Lead',
+                    initials: 'WJ',
+                    image: '/images/clinic.jpg',
+                    bio: 'Directs clinical triage, emergency pediatric care, routine immunizations, and community healthcare outreach serving mothers and children at Kate Clinic.',
+                  },
+                  {
+                    name: 'Kimbugwe Emmanuel',
+                    role: 'KTM Churches Coordinator',
+                    badge: 'Church Ministries',
+                    initials: 'KE',
+                    image: '/images/church-1.jpg',
+                    bio: 'Coordinates community church fellowships, discipleship initiatives, pastoral care networks, and evangelistic outreaches across rural villages.',
+                  },
+                ].map((member) => (
+                  <div
+                    key={member.name}
+                    className="bg-surface border border-outline-variant/60 hover:border-vibrant-green/80 rounded-none overflow-hidden shadow-xs hover:shadow-md transition-all duration-300 flex flex-col group"
+                  >
+                    <div className="relative aspect-square bg-deep-black overflow-hidden">
+                      {member.image ? (
+                        <img
+                          src={member.image}
+                          alt={`${member.name} - ${member.role}`}
+                          className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500 filter brightness-95"
+                        />
+                      ) : (
+                        <div className="w-full h-full bg-gradient-to-br from-[#0c2214] via-[#05180c] to-deep-black flex flex-col items-center justify-center relative overflow-hidden">
+                          <div className="w-14 h-14 rounded-full bg-vibrant-green/15 border border-vibrant-green/30 flex items-center justify-center text-action-yellow font-headline font-black text-lg tracking-wider shadow-inner group-hover:scale-110 transition-transform duration-300">
+                            {member.initials}
+                          </div>
+                        </div>
+                      )}
+                      <div className="absolute inset-0 bg-gradient-to-t from-deep-black/70 via-transparent to-transparent" />
+                      <div className="absolute top-2.5 left-2.5 bg-deep-black/85 text-pure-white text-[8px] font-bold uppercase tracking-widest px-2 py-0.5 border-l-2 border-action-yellow">
+                        {member.badge}
+                      </div>
+                    </div>
+                    <div className="p-5 flex-1 flex flex-col justify-between space-y-3">
+                      <div className="space-y-1">
+                        <h4 className="font-headline text-sm font-black uppercase text-deep-black leading-snug">
+                          {member.name}
+                        </h4>
+                        <p className="text-[11px] font-bold text-vibrant-green uppercase tracking-wider">
+                          {member.role}
+                        </p>
+                      </div>
+                      <p className="text-xs text-on-surface-variant font-light leading-relaxed">
+                        {member.bio}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Tier 3: Program & Strategic Operations Leads (Row of 3) */}
+            <div className="space-y-6">
+              <div className="flex items-center gap-3">
+                <span className="text-xs font-black uppercase tracking-widest text-deep-black font-headline">
+                  Program &amp; Strategic Operations Leads
+                </span>
+                <div className="h-px bg-outline-variant/50 flex-1" />
+                <span className="text-[10px] uppercase font-bold tracking-wider text-vibrant-green bg-vibrant-green/10 px-2.5 py-0.5 border border-vibrant-green/20">
+                  Programs Tier
+                </span>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                {[
+                  {
+                    name: 'Milly Namukwaya',
+                    role: 'The Esther Mission Coordinator',
+                    badge: 'The Esther Mission',
+                    initials: 'MN',
+                    image: '/images/girl.jpg',
+                    bio: 'Leads The Esther Mission initiatives, coordinating menstrual hygiene kit distribution, health workshops, and school retention programs for young girls.',
+                  },
+                  {
+                    name: 'Kategere Ian Victor',
+                    role: 'Media & IT Support',
+                    badge: 'Media & Technology',
+                    initials: 'IV',
+                    bio: 'Drives digital infrastructure, media production, systems support, and online communications to amplify KTM\'s story and global engagement.',
+                  },
+                  {
+                    name: 'Grace Nnyanzi',
+                    role: 'Skilling Coordinator',
+                    badge: 'Vocational Skilling',
+                    initials: 'GN',
+                    bio: 'Oversees community skilling, practical craftsmanship workshops, and vocational empowerment initiatives for vulnerable youth and women.',
+                  },
+                ].map((member) => (
+                  <div
+                    key={member.name}
+                    className="bg-surface border border-outline-variant/60 hover:border-vibrant-green rounded-none overflow-hidden shadow-xs hover:shadow-md transition-all duration-300 flex flex-col group"
+                  >
+                    <div className="relative aspect-[4/3] bg-deep-black overflow-hidden">
+                      {member.image ? (
+                        <img
+                          src={member.image}
+                          alt={`${member.name} - ${member.role}`}
+                          className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500 filter brightness-95"
+                        />
+                      ) : (
+                        <div className="w-full h-full bg-gradient-to-br from-[#0c2214] via-[#05180c] to-deep-black flex flex-col items-center justify-center relative overflow-hidden">
+                          <div className="w-16 h-16 rounded-full bg-vibrant-green/15 border border-vibrant-green/30 flex items-center justify-center text-action-yellow font-headline font-black text-xl tracking-wider shadow-inner group-hover:scale-110 transition-transform duration-300">
+                            {member.initials}
+                          </div>
+                        </div>
+                      )}
+                      <div className="absolute inset-0 bg-gradient-to-t from-deep-black/70 via-transparent to-transparent" />
+                      <div className="absolute top-3 left-3 bg-vibrant-green text-pure-white text-[9px] font-extrabold uppercase tracking-widest px-2.5 py-1">
+                        {member.badge}
+                      </div>
+                    </div>
+                    <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
+                      <div className="space-y-1">
+                        <h4 className="font-headline text-base font-black uppercase text-deep-black leading-snug">
+                          {member.name}
+                        </h4>
+                        <p className="text-xs font-bold text-vibrant-green uppercase tracking-wider">
+                          {member.role}
+                        </p>
+                      </div>
+                      <p className="text-xs text-on-surface-variant font-light leading-relaxed">
+                        {member.bio}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+          </div>
+        </section>
+
         {/* Contribution Goals & Calling */}
         <section className="py-20 bg-surface-container-low">
           <div className="max-w-(--spacing-container-max) mx-auto px-4 md:px-margin-desktop grid lg:grid-cols-12 gap-12 items-center">
 
             {/* Left: Contribution List */}
             <div className="lg:col-span-7 space-y-6">
-              <span className="text-secondary font-bold text-xs uppercase tracking-wider block">Financial Transparency</span>
+              {/* <span className="text-secondary font-bold text-xs uppercase tracking-wider block">Financial Transparency</span> */}
               <h2 className="font-headline text-headline-lg text-deep-black leading-tight">
-                What Your Contribution Can Do
+                What Your Contribution  <br /> Can Do
               </h2>
               <p className="text-on-surface-variant font-light text-base leading-relaxed">
-                Every resource helps us pay medical nannies, clinic nannies, purchase supplies, and provide nutrition. Here is how your donation directly impacts KTM's services:
+                Here is how your donation directly impacts KTM's services:
               </p>
 
               <div className="grid sm:grid-cols-2 gap-4 pt-2">
                 {[
-                  { cost: '$25', desc: 'Diagnose malaria and typhoid' },
-                  { cost: '$50', desc: 'Fund a newborn delivery at our hospital' },
-                  { cost: '$250', desc: 'Equip our clinic with needed supplies' },
-                  { cost: '$400', desc: 'Immunize our kids' },
+                  { cost: '$600/mo', desc: 'Equip our clinic with needed supplies' },
                   { cost: '$2,000', desc: 'Pay clinic staff monthly salaries' },
                   { cost: '$15/mo', desc: 'School supplies for a child' },
-                  { cost: '$20/mo', desc: 'Feed our babies' },
+                  { cost: '$20/mo', desc: 'Feed a baby' },
                   { cost: '$60/mo', desc: 'Fully sponsor a baby' },
-                  { cost: '$30', desc: 'School supplies for a teacher' },
-                  { cost: '$15', desc: 'Purchase key student textbooks' },
-                  { cost: '$45', desc: 'School desk for three children' },
-                  { cost: '$15', desc: 'Uniform for an unsponsored child' },
+                  { cost: '$30/term', desc: 'School supplies for a teacher' },
+                  { cost: '$1200/mo', desc: 'Pay nannies and social workers salary' },
+                  { cost: '$38/mo', desc: 'Sponsor a child' },
+                  { cost: '$7200/mo', desc: 'Pay teacher salaries' },
+                  { cost: '$450/mo', desc: 'Pay farm workers' },
+                  { cost: '$1500/mo', desc: 'Feeding children at school' },
+                  { cost: '$2000/mo', desc: 'Sponsor Church missions' },
                 ].map((item, idx) => (
                   <div key={idx} className="flex items-center gap-3 p-3 bg-surface border border-outline-variant/10 rounded-lg">
                     <span className="text-vibrant-green font-black text-sm shrink-0">{item.cost}</span>
@@ -276,14 +547,14 @@ export default function WhoWeArePage() {
                 ))}
               </div>
 
-              <div className="p-4 bg-vibrant-green/5 border border-vibrant-green/10 rounded-lg space-y-2">
+              {/* <div className="p-4 bg-vibrant-green/5 border border-vibrant-green/10 rounded-lg space-y-2">
                 <p className="font-headline text-xs font-black uppercase tracking-wider text-vibrant-green">Special Capital Campaigns & Equipment:</p>
                 <ul className="text-xs text-on-surface-variant space-y-1.5 list-disc pl-5 font-medium">
                   <li><strong>$8,000:</strong> Finishing teacher's housing in Kyasenya</li>
                   <li><strong>$20,000:</strong> Implementing solar power for a school</li>
                   <li><strong>$45,000:</strong> Miracle Bus transport to safely move staff & kids across East Africa</li>
                 </ul>
-              </div>
+              </div> */}
             </div>
 
             {/* Right: Join Us Action Card */}

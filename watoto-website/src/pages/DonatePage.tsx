@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { useSearchParams } from 'react-router-dom'
 import Navbar from '../components/Navbar'
 import { FooterHome } from '../components/Footer'
 import MaterialIcon from '../components/ui/MaterialIcon'
@@ -8,16 +9,41 @@ import { isValidEmail, isValidName, sanitizeName, handleNameKeyDown } from '../u
 import SEO from '../components/SEO'
 
 export default function DonatePage() {
+  const [searchParams] = useSearchParams()
+  const paramAmount = searchParams.get('amount')
+  const paramDesignation = searchParams.get('designation')
+
   const [frequency, setFrequency] = useState<'one-time' | 'monthly'>('one-time')
-  const [amount, setAmount] = useState('50')
-  const [customAmount, setCustomAmount] = useState('')
-  const [designation, setDesignation] = useState('Where Most Needed (General Fund)')
+  const [amount, setAmount] = useState(() => {
+    if (!paramAmount) return '50'
+    return ['25', '50', '100', '250', '500'].includes(paramAmount) ? paramAmount : 'custom'
+  })
+  const [customAmount, setCustomAmount] = useState(() => {
+    if (!paramAmount) return ''
+    return ['25', '50', '100', '250', '500'].includes(paramAmount) ? '' : paramAmount
+  })
+  const [designation, setDesignation] = useState(() => paramDesignation || 'Where Most Needed (General Fund)')
   const [donorName, setDonorName] = useState('')
   const [donorEmail, setDonorEmail] = useState('')
   const [donateErrors, setDonateErrors] = useState<Record<string, string>>({})
   const [loading, setLoading] = useState(false)
   const [success, setSuccess] = useState(false)
   const [copied, setCopied] = useState(false)
+
+  useEffect(() => {
+    if (paramAmount) {
+      if (['25', '50', '100', '250', '500'].includes(paramAmount)) {
+        setAmount(paramAmount)
+        setCustomAmount('')
+      } else {
+        setAmount('custom')
+        setCustomAmount(paramAmount)
+      }
+    }
+    if (paramDesignation) {
+      setDesignation(paramDesignation)
+    }
+  }, [paramAmount, paramDesignation])
 
   const finalAmount = amount === 'custom' ? (customAmount || '0') : amount
 
@@ -70,7 +96,7 @@ export default function DonatePage() {
       designation
     })
 
-    const paypalUrl = `https://www.paypal.com/donate/?business=katondatalemwaministries%40gmail.com&currency_code=USD&amount=${finalAmount}&item_name=${encodeURIComponent(`KTM Donation - ${designation} (${frequency === 'monthly' ? 'Monthly' : 'One-Time'})`)}`
+    const paypalUrl = `https://www.paypal.com/donate/?business=emmynyanzi2018%40gmail.com&currency_code=USD&amount=${finalAmount}&item_name=${encodeURIComponent(`KTM Donation - ${designation} (${frequency === 'monthly' ? 'Monthly' : 'One-Time'})`)}`
 
     setLoading(false)
     setSuccess(true)
@@ -78,7 +104,7 @@ export default function DonatePage() {
   }
 
   const handleCopyEmail = () => {
-    navigator.clipboard.writeText('katondatalemwaministries@gmail.com')
+    navigator.clipboard.writeText('emmynyanzi2018@gmail.com')
     setCopied(true)
     setTimeout(() => setCopied(false), 2500)
   }
@@ -186,7 +212,7 @@ export default function DonatePage() {
                       <span>Official PayPal Recipient Account:</span>
                     </div>
                     <div className="flex items-center justify-between bg-surface px-4 py-2.5 rounded-xl border border-outline-variant/30 font-mono text-xs sm:text-sm">
-                      <span className="truncate pr-2 text-deep-black font-semibold">katondatalemwaministries@gmail.com</span>
+                      <span className="truncate pr-2 text-deep-black font-semibold">emmynyanzi2018@gmail.com</span>
                       <button
                         type="button"
                         onClick={handleCopyEmail}
@@ -203,7 +229,7 @@ export default function DonatePage() {
 
                   <div className="flex flex-col sm:flex-row gap-3 justify-center pt-2">
                     <a
-                      href={`https://www.paypal.com/donate/?business=katondatalemwaministries%40gmail.com&currency_code=USD&amount=${finalAmount}&item_name=${encodeURIComponent(`KTM Donation - ${designation}`)}`}
+                      href={`https://www.paypal.com/donate/?business=emmynyanzi2018%40gmail.com&currency_code=USD&amount=${finalAmount}&item_name=${encodeURIComponent(`KTM Donation - ${designation}`)}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="bg-[#FFC439] hover:bg-[#F2BA36] text-[#003087] font-headline text-sm font-black uppercase tracking-wider px-8 py-3.5 rounded-xl shadow-md hover:shadow-lg flex items-center justify-center gap-2 transition-all active:scale-[0.98]"
@@ -501,7 +527,7 @@ export default function DonatePage() {
                           </button>
                         </div>
                         <div className="font-mono text-xs sm:text-sm font-bold text-deep-black truncate">
-                          katondatalemwaministries@gmail.com
+                          emmynyanzi2018@gmail.com
                         </div>
                       </div>
 

@@ -269,7 +269,7 @@ export default function BabyWatotoPage() {
                 { num: '01', icon: 'emergency', title: 'Discovery & Alert', desc: 'Neighbours, hospitals, and local police alert our 24/7 emergency hotline the moment a baby is found in distress.' },
                 { num: '02', icon: 'local_hospital', title: 'Stabilisation', desc: 'Our clinical nurses assess and stabilise the baby immediately. Malnourished infants receive emergency IV nutrition and warmth.' },
                 { num: '03', icon: 'child_care', title: '1:4 Nanny Care', desc: 'Each baby is assigned a dedicated nanny who tracks feeding schedules, milestones, and emotional development around the clock.' },
-                { num: '04', icon: 'home', title: 'Forever Family', desc: 'Once healthy and stable, babies graduate into a permanent Katonda Talemwa village home with a mother and siblings.' },
+                { num: '04', icon: 'home', title: 'Forever Family', desc: 'Once healthy and stable, babies graduate into a permanent home at KTM.' },
               ].map((step, i) => (
                 <div
                   key={step.num}
@@ -354,17 +354,17 @@ export default function BabyWatotoPage() {
               <div data-aos="zoom-in" className="lg:col-span-5 relative min-h-[400px]">
                 <img
                   className="w-full h-full object-cover absolute inset-0"
-                  src={children.find(c => c.id === 'jayson')?.image || IMAGES.rescue}
-                  alt="Baby Jayson rescued and cared for at Emmanuel Baby's Home Katonda Talemwa Ministries"
+                  src={children.find(c => c.id === 'joseph')?.image || IMAGES.rescue}
+                  alt="Joseph rescued and cared for at Emmanuel Baby's Home Katonda Talemwa Ministries"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-deep-black/70 to-transparent" />
                 <div className="absolute bottom-6 left-6 text-pure-white space-y-1">
                   <span className="text-[10px] font-extrabold uppercase tracking-widest text-action-yellow bg-vibrant-green/90 px-3 py-1 block w-fit">
                     Transformation Story
                   </span>
-                  <h3 className="font-headline text-xl font-black uppercase">Baby Jayson</h3>
+                  <h3 className="font-headline text-xl font-black uppercase"> Joseph</h3>
                   <p className="text-xs opacity-80 flex items-center gap-1">
-                    <MaterialIcon name="place" className="text-xs" /> Gulu, Uganda
+                    <MaterialIcon name="place" className="text-xs" /> Kyasenya, Lwengo
                   </p>
                 </div>
               </div>
@@ -376,14 +376,14 @@ export default function BabyWatotoPage() {
                     A Life Reclaimed
                   </span>
                   <h2 className="font-headline text-3xl font-black uppercase text-deep-black leading-tight">
-                    &ldquo;He weighed just <br />
-                    1.4 kg when we found him.&rdquo;
+                    &ldquo;DRAWN FROM <br />
+                    THE PIT.&rdquo;
                   </h2>
                   <p className="text-sm text-on-surface-variant font-light leading-relaxed">
-                    Baby Jayson was discovered abandoned at the entrance of the Gulu Regional Referral Hospital at barely two weeks old. His body temperature was dangerously low and he showed signs of severe malnourishment.
+                    Abandoned as a newborn, Joseph miraculously survived two days before rescue. Today, he is a vibrant boy with a compassionate heart who dreams of becoming a doctor.
                   </p>
                   <p className="text-sm text-on-surface-variant font-light leading-relaxed">
-                    Within four hours, our care team had him in the Emmanuel Baby's Home ward receiving IV nutrition and warmth therapy. Today, Jayson crawls with purpose, laughs with his nanny, and is a picture of health — a daily reminder of why this work matters.
+                    Joseph’s life is a testament to God's preserving grace. Abandoned as a newborn, he was thrown into a pit latrine by his mother two days after his birth before local authorities rescued him following his cries. Though severe infection threatened his survival, God sustained him. Welcomed into Katonda Talemwa Ministries (KTM) and named after Joseph in the Bible—a reflection of how God turns hardship into good—he received immediate medical care, love, and spiritual nurturing. Today, Joseph is a vibrant, healthy, and bright boy with a compassionate heart, aspiring to become a doctor so he can offer healing and hope to others.
                   </p>
                 </div>
                 <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-6 border-t border-outline-variant/40">
@@ -394,7 +394,7 @@ export default function BabyWatotoPage() {
                     to="/sponsor?tab=baby"
                     className="w-full sm:w-auto bg-vibrant-green text-pure-white px-8 py-4 rounded-none font-headline text-xs font-black uppercase tracking-widest hover:brightness-110 active:scale-95 transition-all text-center"
                   >
-                    Sponsor Jayson
+                    Sponsor Joseph
                   </Link>
                 </div>
               </div>
@@ -421,37 +421,37 @@ export default function BabyWatotoPage() {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {[
                 {
-                  name: 'Mama Agnes Nabuuma',
-                  role: 'Home Administrator & Care Director',
+                  name: 'TALEMWA FRED',
+                  role: 'Home Administrator & Social worker',
                   experience: '12 Years at Emmanuel Baby\'s Home',
-                  bio: 'Leading Emmanuel Baby\'s Home since its founding in 2014. Agnes oversees all admissions, nanny staffing, and child protection.',
-                  image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDokPv7xL4QxzKaXFGE9JHtcX8mDUpqXr0wRYOec9evJdlzrT_dCiPQuJgTZqlL8pmUpk3NogeqfXtDKpgUNVRyWxfuJMk3Xj7uBb61Y7yp373WHqyvIGC68iqpT06r7nYFafNlMQxOafiS3RAJAxLv9cSmeOpfMd8XLGmutOsP6sJrYDaYu4BKGhqr0zchZ-IrwSP61z__ZJiaLHLfwq7cOmHg3yWxWSvOjI_VPUdb-qBWzNM6qoXpxMkmPMd0ZeuS1lDnEpziIjs',
+                  bio: 'Leading Emmanuel Baby\'s Home since its founding in 2014. Fred oversees all admissions, nanny staffing, and child protection.',
+                  image: '/images/fred1.jpg',
                   badge: 'Est. 2014 Staff',
                 },
-                {
-                  name: 'Nurse Grace Atuhaire',
-                  role: 'Lead Pediatric & Clinical Nurse',
-                  experience: '8 Years of Emergency Care',
-                  bio: 'Manages 24/7 clinical triage, medical stabilization, vaccines, emergency IV nutrition, and health monitoring for newborns.',
-                  image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuB6y56oBsMWN9DQPev8ZmKzLaWamFuXAwYYwLoKyfk07pdytAjs0fVZmgddCllkNH2KAPh7QOU9_oCjLHpXItxzryFuwiyQIRx1CwGCvNeoYq16DMXOFDgEEogrnxUV18fg7z1aULbkGVw1CiuinfA8TVZmoNbYKPX1ovWExMuivq9rpFVcB2uuLsg70plzLz-8gEMm2YM9Lno-rJNlWPPB0aOdc8KNVoiiZ6mv7CiIHwe_onrToEaqx0cPmP7_03aPcXCJTNwL5LI',
-                  badge: '24/7 Clinical Care',
-                },
-                {
-                  name: 'Mama Harriet Kembabazi',
-                  role: 'Senior Nanny & Infant Specialist',
-                  experience: '10 Years of Nanny Care',
-                  bio: 'Coordinates 8-hour shift rotations and 1:4 nanny-to-baby ratios, ensuring every infant receives touch, voice, and round-the-clock comfort.',
-                  image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBIhxRIEgCK4R58S2_Yi2_g3H70zVyfYoVCJkvMonBkpymscyRKLR76ztqzxY-IYZfgN7GDuJEe-9x21_1JyjONBj7mobd2h8nJ-f07MCofzmkBLOAz8hL3DoK6wmee6L3r6HEgNpR26GivhE86k55lODdglHr_natLaSWjEZApuTOGZDqVYUmgbmPIITEySdw8GHdk3B66v3cPSLTIPQfc_0WGi1xAWY3vdd0N8a9JrN6S12dA9WNe0M7DJfmHdLh0IJhTandGHuI',
-                  badge: '1:4 Care Ratio',
-                },
-                {
-                  name: 'David Okello',
-                  role: 'Child Welfare & Social Worker',
-                  experience: '7 Years in Protection',
-                  bio: 'Partners with police, hospitals, and child welfare officers to manage emergency care alerts, legal documentation, and family tracing.',
-                  image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAAY37c-fstO13vILJbLMwYIR9LpymZ26ih1qt3v-kba_5B2PpugKIIsq0820ra9MqoIPV8FAUjqq4x1b00ntQw_6Nangq_Wjkq5JwlY4TU5y2Dg-UBjRV26_MasUTTnUsz9s27d2rm8XMPJGqMMlFHBt80r4YJt22BmcZfySd-kpHa4jDpRyVtUqq2aGRQ1fZIsuJj6UuAQieZt8mpmUqOapXyCR0sTpQ88Sopj_9Lpu5gVTfB17oy3Eufx0m_4ht_mmlus5bmk9M',
-                  badge: 'Child Protection',
-                },
+                // {
+                //   name: 'Nurse Grace Atuhaire',
+                //   role: 'Lead Pediatric & Clinical Nurse',
+                //   experience: '8 Years of Emergency Care',
+                //   bio: 'Manages 24/7 clinical triage, medical stabilization, vaccines, emergency IV nutrition, and health monitoring for newborns.',
+                //   image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuB6y56oBsMWN9DQPev8ZmKzLaWamFuXAwYYwLoKyfk07pdytAjs0fVZmgddCllkNH2KAPh7QOU9_oCjLHpXItxzryFuwiyQIRx1CwGCvNeoYq16DMXOFDgEEogrnxUV18fg7z1aULbkGVw1CiuinfA8TVZmoNbYKPX1ovWExMuivq9rpFVcB2uuLsg70plzLz-8gEMm2YM9Lno-rJNlWPPB0aOdc8KNVoiiZ6mv7CiIHwe_onrToEaqx0cPmP7_03aPcXCJTNwL5LI',
+                //   badge: '24/7 Clinical Care',
+                // },
+                // {
+                //   name: 'Mama Harriet Kembabazi',
+                //   role: 'Senior Nanny & Infant Specialist',
+                //   experience: '10 Years of Nanny Care',
+                //   bio: 'Coordinates 8-hour shift rotations and 1:4 nanny-to-baby ratios, ensuring every infant receives touch, voice, and round-the-clock comfort.',
+                //   image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBIhxRIEgCK4R58S2_Yi2_g3H70zVyfYoVCJkvMonBkpymscyRKLR76ztqzxY-IYZfgN7GDuJEe-9x21_1JyjONBj7mobd2h8nJ-f07MCofzmkBLOAz8hL3DoK6wmee6L3r6HEgNpR26GivhE86k55lODdglHr_natLaSWjEZApuTOGZDqVYUmgbmPIITEySdw8GHdk3B66v3cPSLTIPQfc_0WGi1xAWY3vdd0N8a9JrN6S12dA9WNe0M7DJfmHdLh0IJhTandGHuI',
+                //   badge: '1:4 Care Ratio',
+                // },
+                // {
+                //   name: 'David Okello',
+                //   role: 'Child Welfare & Social Worker',
+                //   experience: '7 Years in Protection',
+                //   bio: 'Partners with police, hospitals, and child welfare officers to manage emergency care alerts, legal documentation, and family tracing.',
+                //   image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAAY37c-fstO13vILJbLMwYIR9LpymZ26ih1qt3v-kba_5B2PpugKIIsq0820ra9MqoIPV8FAUjqq4x1b00ntQw_6Nangq_Wjkq5JwlY4TU5y2Dg-UBjRV26_MasUTTnUsz9s27d2rm8XMPJGqMMlFHBt80r4YJt22BmcZfySd-kpHa4jDpRyVtUqq2aGRQ1fZIsuJj6UuAQieZt8mpmUqOapXyCR0sTpQ88Sopj_9Lpu5gVTfB17oy3Eufx0m_4ht_mmlus5bmk9M',
+                //   badge: 'Child Protection',
+                // },
               ].map((member, i) => (
                 <div
                   key={member.name}
@@ -497,7 +497,7 @@ export default function BabyWatotoPage() {
                 />
                 <div className="p-4 bg-surface-container-low mt-2 border border-outline-variant/30 text-center">
                   <span className="text-[10px] uppercase tracking-widest text-vibrant-green font-bold block mb-1">Impact Story</span>
-                  <p className="text-[11px] font-semibold text-deep-black">&ldquo;Asha was found at 3 days old. Today, she is top of her class.&rdquo;</p>
+                  <p className="text-[11px] font-semibold text-deep-black">&ldquo;Catherine is the youngest of five siblings. Her family faced severe hardship after her father spent eight years battling intestinal cancer before passing away in 2024. The prolonged medical treatment exhausted the family's assets, leaving her widowed mother unable to afford education and care for the young children. To ensure Catherine receives a safe upbringing and quality foundational education, Katonda Talemwa Ministries welcomed her into its home. She is a joyful child who dreams of becoming a teacher..&rdquo;</p>
                 </div>
               </div>
 

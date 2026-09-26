@@ -124,7 +124,7 @@ export default function WatotoVillagesPage() {
                       <div className="text-[10px] uppercase font-bold tracking-wider text-pure-white/70">Holistic Care</div>
                     </div>
                     <div className="border-l-2 border-vibrant-green pl-3">
-                      <div className="font-headline text-xl font-black text-vibrant-green">2,000+</div>
+                      <div className="font-headline text-xl font-black text-vibrant-green">6500+</div>
                       <div className="text-[10px] uppercase font-bold tracking-wider text-pure-white/70">Young Lives Nurtured</div>
                     </div>
                   </div>
@@ -150,7 +150,7 @@ export default function WatotoVillagesPage() {
         <section className="bg-vibrant-green border-b-4 border-action-yellow">
           <div className="max-w-3xl mx-auto px-4 md:px-margin-desktop grid grid-cols-2 divide-x divide-pure-white/20">
             {[
-              { stat: '2,000', suffix: '+', label: 'Children Welcomed & Empowered' },
+              { stat: '6500', suffix: '+', label: 'Children Welcomed & Empowered' },
               { stat: '25', suffix: '+', label: 'Years of Unwavering Service' },
             ].map(({ stat, suffix, label }, i) => (
               <div key={label} data-aos="fade-up" data-aos-delay={i * 80} className="py-10 px-6 text-pure-white text-center">
@@ -199,7 +199,7 @@ export default function WatotoVillagesPage() {
                   <p className="text-xs uppercase font-bold tracking-wider text-on-surface-variant">Sown in Faith</p>
                 </div>
                 <div className="border-l-4 border-action-yellow pl-4">
-                  <div className="font-headline text-2xl font-black text-deep-black">2,000+</div>
+                  <div className="font-headline text-2xl font-black text-deep-black">6500+</div>
                   <p className="text-xs uppercase font-bold tracking-wider text-on-surface-variant">Lives Rebuilt</p>
                 </div>
                 <div className="border-l-4 border-outline-variant pl-4">

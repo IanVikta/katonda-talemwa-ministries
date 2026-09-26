@@ -8,6 +8,7 @@ import WhoWeArePage from './pages/WhoWeArePage'
 import ContactPage from './pages/ContactPage'
 import DonatePage from './pages/DonatePage'
 import KeepGirlInSchoolPage from './pages/KeepGirlInSchoolPage'
+import KateClinicPage from './pages/KateClinicPage'
 import ChurchPage from './pages/ChurchPage'
 import VolunteerPage from './pages/VolunteerPage'
 import ExchangeProgramPage from './pages/ExchangeProgramPage'
@@ -26,6 +27,7 @@ export default function App() {
         <Route path="/katonda-villages" element={<WatotoVillagesPage />} />
         <Route path="/emmanuel-baby-home" element={<BabyWatotoPage />} />
         <Route path="/baby-katonda" element={<Navigate to="/emmanuel-baby-home" replace />} />
+        <Route path="/kate-clinic" element={<KateClinicPage />} />
         <Route path="/keep-a-girl" element={<KeepGirlInSchoolPage />} />
         <Route path="/katonda-church" element={<ChurchPage />} />
         <Route path="/gallery" element={<GalleryPage />} />

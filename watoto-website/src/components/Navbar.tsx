@@ -24,6 +24,7 @@ const menuConfig: MenuItem[] = [
     submenu: [
       { label: 'Katonda Talemwa Ministries', to: '/katonda-villages', icon: 'holiday_village', desc: 'Family-style home care' },
       { label: "Emmanuel Baby's Home", to: '/emmanuel-baby-home', icon: 'child_friendly', desc: 'Newborn care & shelter' },
+      { label: 'Kate Clinic', to: '/kate-clinic', icon: 'local_hospital', desc: 'Healthcare & maternal wellness' },
       { label: 'The Esther Mission', to: '/keep-a-girl', icon: 'female', desc: 'Keep a girl in school' },
       { label: 'Katonda Talemwa Church', to: '/katonda-church', icon: 'church', desc: 'Community & spiritual life' },
       { label: 'Photo Gallery', to: '/gallery', icon: 'photo_library', desc: 'Moments of hope & transformation' },
@@ -73,11 +74,10 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b ${
-        scrolled
-          ? 'bg-surface/95 backdrop-blur-md border-outline-variant/30 shadow-md h-20'
-          : 'bg-surface/90 backdrop-blur-sm border-outline-variant/15 h-24'
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b ${scrolled
+        ? 'bg-surface/95 backdrop-blur-md border-outline-variant/30 shadow-md h-20'
+        : 'bg-surface/90 backdrop-blur-sm border-outline-variant/15 h-24'
+        }`}
     >
       <nav className="flex justify-between items-center w-full px-4 md:px-margin-desktop max-w-(--spacing-container-max) mx-auto h-full">
         {/* Logo */}
@@ -88,9 +88,8 @@ export default function Navbar() {
           <img
             src={logo}
             alt="Katonda Talemwa Ministries"
-            className={`w-auto object-contain transition-all duration-300 border-none outline-none focus:outline-none focus:ring-0 select-none ${
-              scrolled ? 'h-12' : 'h-16'
-            }`}
+            className={`w-auto object-contain transition-all duration-300 border-none outline-none focus:outline-none focus:ring-0 select-none ${scrolled ? 'h-12' : 'h-16'
+              }`}
           />
         </Link>
 
@@ -102,9 +101,8 @@ export default function Navbar() {
               return (
                 <div key={item.label} className="relative group flex items-center h-full">
                   <button
-                    className={`flex items-center gap-1.5 py-2 transition-colors duration-300 cursor-pointer text-sm uppercase tracking-widest ${
-                      isSubmenuActive ? 'text-primary font-normal' : 'text-on-surface-variant hover:text-primary'
-                    }`}
+                    className={`flex items-center gap-1.5 py-2 transition-colors duration-300 cursor-pointer text-sm uppercase tracking-widest ${isSubmenuActive ? 'text-primary font-normal' : 'text-on-surface-variant hover:text-primary'
+                      }`}
                   >
                     <span>{item.label}</span>
                     <MaterialIcon name="expand_more" className="text-xs transition-transform duration-300 group-hover:rotate-180" />
@@ -116,9 +114,8 @@ export default function Navbar() {
                         <Link
                           key={sub.label}
                           to={sub.to}
-                          className={`block px-5 py-2.5 text-xs tracking-wider transition-colors hover:bg-primary/5 hover:text-primary ${
-                            isSubActive ? 'text-primary font-bold bg-primary/5' : 'text-on-surface-variant font-normal'
-                          }`}
+                          className={`block px-5 py-2.5 text-xs tracking-wider transition-colors hover:bg-primary/5 hover:text-primary ${isSubActive ? 'text-primary font-bold bg-primary/5' : 'text-on-surface-variant font-normal'
+                            }`}
                         >
                           {sub.label}
                         </Link>
@@ -133,15 +130,13 @@ export default function Navbar() {
                 <Link
                   key={item.label}
                   to={item.to || '#'}
-                  className={`relative flex items-center h-full transition-colors duration-300 group cursor-pointer text-sm uppercase tracking-widest ${
-                    isActive ? 'text-primary font-normal' : 'text-on-surface-variant hover:text-primary'
-                  }`}
+                  className={`relative flex items-center h-full transition-colors duration-300 group cursor-pointer text-sm uppercase tracking-widest ${isActive ? 'text-primary font-normal' : 'text-on-surface-variant hover:text-primary'
+                    }`}
                 >
                   {item.label}
                   <span
-                    className={`absolute bottom-0 left-0 h-0.5 bg-primary transition-all duration-300 ${
-                      isActive ? 'w-full' : 'w-0 group-hover:w-full'
-                    }`}
+                    className={`absolute bottom-0 left-0 h-0.5 bg-primary transition-all duration-300 ${isActive ? 'w-full' : 'w-0 group-hover:w-full'
+                      }`}
                   />
                 </Link>
               )
@@ -161,26 +156,22 @@ export default function Navbar() {
           {/* Animated Hamburger Menu (Visible on Mobile/Tablet) */}
           <button
             onClick={toggleDrawer}
-            className={`relative w-11 h-11 flex flex-col justify-center items-center group lg:hidden z-[60] cursor-pointer rounded-full transition-all duration-300 ${
-              drawerOpen ? 'bg-white/[0.04] border border-white/[0.08] hover:bg-white/[0.08]' : ''
-            }`}
+            className={`relative w-11 h-11 flex flex-col justify-center items-center group lg:hidden z-[60] cursor-pointer rounded-full transition-all duration-300 ${drawerOpen ? 'bg-white/[0.04] border border-white/[0.08] hover:bg-white/[0.08]' : ''
+              }`}
             aria-label="Toggle menu"
           >
             <div className="relative w-6 h-5">
               <span
-                className={`absolute left-0 right-0 h-0.5 transition-all duration-300 rounded-full ${
-                  drawerOpen ? 'top-2 bg-pure-white rotate-45' : 'top-0 bg-vibrant-green'
-                }`}
+                className={`absolute left-0 right-0 h-0.5 transition-all duration-300 rounded-full ${drawerOpen ? 'top-2 bg-pure-white rotate-45' : 'top-0 bg-vibrant-green'
+                  }`}
               />
               <span
-                className={`absolute left-0 right-0 h-0.5 transition-all duration-300 rounded-full ${
-                  drawerOpen ? 'top-2 bg-pure-white opacity-0' : 'top-2 bg-action-yellow'
-                }`}
+                className={`absolute left-0 right-0 h-0.5 transition-all duration-300 rounded-full ${drawerOpen ? 'top-2 bg-pure-white opacity-0' : 'top-2 bg-action-yellow'
+                  }`}
               />
               <span
-                className={`absolute left-0 right-0 h-0.5 transition-all duration-300 rounded-full ${
-                  drawerOpen ? 'top-2 bg-pure-white -rotate-45' : 'top-4 bg-vibrant-green'
-                }`}
+                className={`absolute left-0 right-0 h-0.5 transition-all duration-300 rounded-full ${drawerOpen ? 'top-2 bg-pure-white -rotate-45' : 'top-4 bg-vibrant-green'
+                  }`}
               />
             </div>
           </button>
@@ -197,9 +188,8 @@ export default function Navbar() {
 
       {/* Slide-out Navigation Drawer */}
       <div
-        className={`fixed top-0 right-0 h-screen w-full sm:w-[440px] bg-[#043417] z-55 shadow-[0_0_50px_rgba(0,0,0,0.5)] transition-transform duration-500 ease-out flex flex-col ${
-          drawerOpen ? 'translate-x-0' : 'translate-x-full'
-        }`}
+        className={`fixed top-0 right-0 h-screen w-full sm:w-[440px] bg-[#043417] z-55 shadow-[0_0_50px_rgba(0,0,0,0.5)] transition-transform duration-500 ease-out flex flex-col ${drawerOpen ? 'translate-x-0' : 'translate-x-full'
+          }`}
       >
         {/* Drawer Header */}
         <div className="relative flex justify-between items-center px-8 pt-8 pb-6 border-b border-white/10 shrink-0">
@@ -210,12 +200,12 @@ export default function Navbar() {
               className="h-12 w-auto object-contain select-none filter drop-shadow-[0_2px_8px_rgba(255,255,255,0.15)]"
             />
           </Link>
-          <div className="w-11 h-11" /> 
+          <div className="w-11 h-11" />
         </div>
 
         {/* Drawer Links Content */}
         <div className="relative flex-1 overflow-y-auto px-8 py-6 custom-scrollbar space-y-6">
-          
+
           {/* Call to Action Buttons */}
           <div className="grid grid-cols-2 gap-4 mb-2">
             <Link
@@ -252,9 +242,8 @@ export default function Navbar() {
                   <div
                     key={item.label}
                     style={itemStyle}
-                    className={`w-full border-b border-white/10 ${
-                      drawerOpen ? 'animate-nav-item' : 'opacity-0'
-                    }`}
+                    className={`w-full border-b border-white/10 ${drawerOpen ? 'animate-nav-item' : 'opacity-0'
+                      }`}
                   >
                     <button
                       onClick={() => toggleSubmenu(item.label)}
@@ -265,17 +254,15 @@ export default function Navbar() {
                       </span>
                       <MaterialIcon
                         name="expand_more"
-                        className={`text-white/60 transition-transform duration-300 ${
-                          isExpanded ? 'rotate-180 text-action-yellow' : 'group-hover/sec:text-white/80'
-                        }`}
+                        className={`text-white/60 transition-transform duration-300 ${isExpanded ? 'rotate-180 text-action-yellow' : 'group-hover/sec:text-white/80'
+                          }`}
                       />
                     </button>
 
                     {/* Expanded submenu links */}
                     <div
-                      className={`grid transition-all duration-300 ease-in-out ${
-                        isExpanded ? 'grid-rows-[1fr] opacity-100 mb-2' : 'grid-rows-[0fr] opacity-0 pointer-events-none'
-                      }`}
+                      className={`grid transition-all duration-300 ease-in-out ${isExpanded ? 'grid-rows-[1fr] opacity-100 mb-2' : 'grid-rows-[0fr] opacity-0 pointer-events-none'
+                        }`}
                     >
                       <div className="overflow-hidden">
                         <div className="flex flex-col gap-1 pb-4">
@@ -288,13 +275,11 @@ export default function Navbar() {
                                 onClick={toggleDrawer}
                                 className="flex items-center gap-3.5 py-3 hover:pl-2 transition-all duration-200 group/sublink text-left"
                               >
-                                <MaterialIcon name={sub.icon} className={`text-lg transition-colors ${
-                                  isSubLinkActive ? 'text-action-yellow' : 'text-white/60 group-hover/sublink:text-action-yellow'
-                                }`} />
+                                <MaterialIcon name={sub.icon} className={`text-lg transition-colors ${isSubLinkActive ? 'text-action-yellow' : 'text-white/60 group-hover/sublink:text-action-yellow'
+                                  }`} />
                                 <div className="flex flex-col">
-                                  <span className={`text-xs font-headline font-bold tracking-wider transition-colors duration-200 ${
-                                    isSubLinkActive ? 'text-action-yellow' : 'text-white group-hover/sublink:text-action-yellow'
-                                  }`}>
+                                  <span className={`text-xs font-headline font-bold tracking-wider transition-colors duration-200 ${isSubLinkActive ? 'text-action-yellow' : 'text-white group-hover/sublink:text-action-yellow'
+                                    }`}>
                                     {sub.label}
                                   </span>
                                   <span className="text-[10px] text-white/50 leading-none mt-1 font-body font-light">
@@ -315,16 +300,14 @@ export default function Navbar() {
                   <div
                     key={item.label}
                     style={itemStyle}
-                    className={`w-full border-b border-white/10 ${
-                      drawerOpen ? 'animate-nav-item' : 'opacity-0'
-                    }`}
+                    className={`w-full border-b border-white/10 ${drawerOpen ? 'animate-nav-item' : 'opacity-0'
+                      }`}
                   >
                     <Link
                       to={item.to || '#'}
                       onClick={toggleDrawer}
-                      className={`block py-4 text-sm font-headline font-bold uppercase tracking-wider transition-colors duration-200 hover:text-action-yellow text-left ${
-                        isLinkActive ? 'text-action-yellow' : 'text-white'
-                      }`}
+                      className={`block py-4 text-sm font-headline font-bold uppercase tracking-wider transition-colors duration-200 hover:text-action-yellow text-left ${isLinkActive ? 'text-action-yellow' : 'text-white'
+                        }`}
                     >
                       {item.label}
                     </Link>
@@ -344,22 +327,22 @@ export default function Navbar() {
             {[
               {
                 label: 'Facebook',
-                href: '#',
+                href: 'https://www.facebook.com/share/1BQ3oj4wte/',
                 path: 'M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z'
               },
               {
-                label: 'Twitter',
-                href: '#',
-                path: 'M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z'
+                label: 'Tiktok',
+                href: 'https://www.tiktok.com/@katondatalemwaministries?_r=1&_t=ZS-9A0INxdtPdd',
+                path: 'M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1.04-.1z'
               },
               {
                 label: 'Instagram',
-                href: '#',
+                href: 'https://www.instagram.com/katondatalemwaministries?utm_source=qr&stkn=M3A4cjVxZmo2c3dr',
                 path: 'M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204 .013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z'
               },
               {
                 label: 'YouTube',
-                href: '#',
+                href: 'https://youtube.com/@katondatalemwaministriesuganda?si=VJBx5YbnSEV8-gTH',
                 path: 'M23.498 6.163a3.003 3.003 0 00-2.11-2.11C19.517 3.545 12 3.545 12 3.545s-7.517 0-9.388.507a3.003 3.003 0 00-2.11 2.11C0 8.033 0 12 0 12s0 3.967.502 5.837a3.003 3.003 0 002.11 2.11c1.871.507 9.388.507 9.388.507s7.517 0 9.388-.507a3.003 3.003 0 002.11-2.11C24 15.967 24 12 24 12s0-3.967-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z'
               }
             ].map((social) => (

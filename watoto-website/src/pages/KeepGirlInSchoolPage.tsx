@@ -20,7 +20,7 @@ export default function KeepGirlInSchoolPage() {
       <main className="pt-20">
         {/* Minimalist Centered Title Section */}
         <section className="bg-deep-black text-pure-white py-16 text-center rounded-none relative overflow-hidden">
-          <div className="max-w-3xl mx-auto px-4 space-y-4">
+          <div className="max-w-(--spacing-container-max) mx-auto px-4 md:px-margin-desktop w-full space-y-6">
             <span className="text-xs uppercase font-extrabold tracking-widest text-action-yellow block">
               The Father&apos;s Love in Action — The Esther Mission
             </span>
@@ -28,11 +28,19 @@ export default function KeepGirlInSchoolPage() {
               The <span className="text-action-yellow">Esther Mission</span>
             </h1>
             <p className="text-sm md:text-base font-headline font-extrabold uppercase tracking-widest text-vibrant-green">
-              Keep a Girl in School
+              Dignity &amp; Continuity in Education for the Girl Child
             </p>
-            <p className="text-sm font-light opacity-80 leading-relaxed max-w-xl mx-auto">
-              Putting the Father&apos;s love in action by removing the hygiene and educational barriers that cause adolescent girls to miss school or face early child marriage in rural Uganda.
-            </p>
+            <div className="space-y-4 text-sm md:text-base font-light text-pure-white/85 leading-relaxed w-full">
+              <p>
+                The Esther Mission is a targeted humanitarian initiative under Katonda Talemwa Ministries dedicated to removing one of the most persistent, non-academic barriers to female education: menstrual poverty. In many vulnerable communities, thousands of young girls miss between 3 to 5 school days every month simply because they lack access to basic sanitary products, adequate facilities, and period hygiene management. Over time, these recurring absences lead to severe academic performance drop-offs, increased grade repetition, and ultimately high dropout rates, exposing young women to early marriages and continued economic hardship.
+              </p>
+              <p>
+                The Esther Mission restores dignity, self-worth, and educational equity to adolescent girls by providing essential monthly sanitary supplies, comprehensive menstrual hygiene education, and mentorship grounded in Christian values. By equipping these young women with the practical necessities to manage their period with confidence, the program ensures they remain consistently in the classroom, thrive academically, and realize their full potential.
+              </p>
+              <p>
+                Beyond product distribution, the Esther Mission works closely with local schools, churches, and community leaders to destigmatize menstruation, build supportive learning environments, and empower a generation of educated, resilient, and confident young women who will shape the future of their communities.
+              </p>
+            </div>
           </div>
         </section>
 
@@ -71,9 +79,9 @@ export default function KeepGirlInSchoolPage() {
               {/* Data Cards Grid */}
               <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-3 gap-6">
                 {[
-                  { number: '1 in 10', label: 'Girls Miss Class', desc: 'African girls miss school during menstruation due to lack of pads.', bg: 'bg-surface' },
-                  { number: '8,500+', label: 'Kits Distributed', desc: 'Complete annual reusable hygiene kits provided to students.', bg: 'bg-vibrant-green text-pure-white border-vibrant-green' },
-                  { number: '35+', label: 'School Partners', desc: 'Partner schools reporting improved attendance.', bg: 'bg-surface' }
+                  { number: '1 in 10', label: 'Girls Miss Class', desc: 'African girls miss school during menstruation due to lack of sanitary pads.', bg: 'bg-surface' },
+                  { number: '8,500+', label: 'Kits Distributed', desc: 'Complete hygiene kits provided to students.', bg: 'bg-vibrant-green text-pure-white border-vibrant-green' },
+                  { number: '8', label: 'School Partners', desc: 'Partner schools reporting improved attendance.', bg: 'bg-surface' }
                 ].map((stat, idx) => (
                   <div key={idx} className={`border border-outline-variant/60 p-6 rounded-none flex flex-col justify-between min-h-[220px] shadow-sm ${stat.bg}`}>
                     <div className="font-headline text-3xl sm:text-4xl font-black">{stat.number}</div>
@@ -91,7 +99,7 @@ export default function KeepGirlInSchoolPage() {
         {/* Inside the Kit: Table Checklist */}
         <section className="py-24 bg-surface border-b border-outline-variant/30">
           <div className="max-w-(--spacing-container-max) mx-auto px-4 md:px-margin-desktop grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-            
+
             {/* Left Column Description */}
             <div className="lg:col-span-4 space-y-6 lg:sticky lg:top-24">
               <span className="text-vibrant-green font-bold text-xs uppercase tracking-widest block border-l-4 border-vibrant-green pl-3">
@@ -99,7 +107,7 @@ export default function KeepGirlInSchoolPage() {
               </span>
               <h2 className="font-headline text-3xl font-black uppercase text-deep-black leading-tight">
                 What is inside <br />
-                <span className="text-vibrant-green">the $15 hygiene kit?</span>
+                <span className="text-vibrant-green">the $10 hygiene kit?</span>
               </h2>
               <p className="text-sm font-light text-on-surface-variant leading-relaxed">
                 Each kit is designed to last up to 12 months, removing the recurring cost barrier that families face. Materials are locally sourced and compiled by trained women.
@@ -109,11 +117,11 @@ export default function KeepGirlInSchoolPage() {
             {/* Right Column Table Checklist */}
             <div className="lg:col-span-8 border border-outline-variant/60 rounded-none bg-surface-container-low divide-y divide-outline-variant/40">
               {[
-                { title: '4 Reusable Sanitary Towels', desc: 'High-absorbency, washable cotton flannel sheets designed for comfort and durability.', value: '1-Year Life' },
+                { title: 'Sanitary Towels', desc: 'High-absorbency, good quality pads designed for comfort .', value: 'good quality' },
                 { title: '3 Pairs of Undergarments', desc: 'Comfortable, durable cotton undergarments to secure towels properly.', value: '100% Cotton' },
                 { title: 'Personal Hygiene Soap', desc: 'Locally crafted antibacterial soap to wash towels hygienically.', value: 'Antibacterial' },
                 { title: 'Waterproof Carrying Case', desc: 'Discreet, waterproof storage bags to carry soiled items safely to wash.', value: 'Discreet' },
-                { title: 'Health Educational Booklet', desc: 'A custom, translated guide containing menstrual health guidance and safety tips.', value: 'Translated' }
+                // { title: 'Health Educational Booklet', desc: 'A custom, translated guide containing menstrual health guidance and safety tips.', value: 'Translated' }
               ].map((item, idx) => (
                 <div key={idx} className="p-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 hover:bg-surface transition-colors">
                   <div className="space-y-1">
@@ -133,7 +141,7 @@ export default function KeepGirlInSchoolPage() {
         {/* Aisha's Success Journal */}
         <section className="py-24 bg-surface-container">
           <div className="max-w-(--spacing-container-max) mx-auto px-4 md:px-margin-desktop grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-stretch">
-            
+
             {/* Left Column: Framed Image */}
             <ScrollReveal animation="zoom-in" className="lg:col-span-5 border border-outline-variant/60 p-2 bg-surface flex flex-col justify-between h-full rounded-none shadow-sm">
               <img
@@ -198,9 +206,9 @@ export default function KeepGirlInSchoolPage() {
 
             <div className="grid grid-cols-1 sm:grid-cols-4 gap-6 max-w-4xl mx-auto">
               {[
-                { amount: '$15', title: '1 Girl Supported', desc: 'Provides one student with a complete 1-year hygiene kit.' },
+                { amount: '$10', title: '1 Girl Supported', desc: 'Provides one student with a complete 1-year hygiene kit.' },
                 { amount: '$30', title: '2 Girls Supported', desc: 'Provides two students with hygiene kits & health education.' },
-                { amount: '$75', title: '5 Girls Supported', desc: 'Equips 5 girl students with annual reusable pad kits.' },
+                { amount: '$75', title: '5 Girls Supported', desc: 'Equips 5 girl students with pad kits.' },
                 { amount: '$150', title: '10 Girls Supported', desc: 'Funds hygiene kits & counseling workshops for an entire classroom.' }
               ].map((tier, idx) => (
                 <ScrollReveal

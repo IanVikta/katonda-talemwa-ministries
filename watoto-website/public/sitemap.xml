@@ -57,6 +57,14 @@
     <priority>0.85</priority>
   </url>
 
+  <!-- Kate Clinic -->
+  <url>
+    <loc>https://katondatalemwaministries.org/kate-clinic</loc>
+    <lastmod>2026-09-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
   <!-- Keep a Girl in School Initiative -->
   <url>
     <loc>https://katondatalemwaministries.org/keep-a-girl</loc>

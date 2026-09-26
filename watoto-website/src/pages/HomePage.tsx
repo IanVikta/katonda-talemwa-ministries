@@ -71,7 +71,7 @@ export default function HomePage() {
               Katonda Talemwa Ministries exists to express the Father’s love in action—providing a sanctuary of hope where orphaned and vulnerable children experience the unconditional love, comfort, and security of a real family.
             </p>
             <p className="text-on-surface-variant text-base font-light leading-relaxed">
-              In living out the Father’s heart, we offer holistic care to over 3,000 children who receive everything they need to grow up healthy and whole—nutrition, clothing, healthcare, and quality education.
+              In living out the Father’s heart, we offer holistic care to over 800+ children who receive everything they need to grow up healthy and whole—nutrition, clothing, healthcare, and quality education.
             </p>
             <div className="pt-2">
               <Link
@@ -107,11 +107,11 @@ export default function HomePage() {
           <div>
             <span className="text-primary font-bold text-label-bold uppercase tracking-wider mb-2 block">Emmanuel Baby's Home</span>
             <h2 className="font-headline text-headline-lg mb-6 leading-tight">
-              Rescuing Orphaned
+              Rescuing Babies
               <br />
-              and Abandoned Babies,
+              Giving them Love,
               <br />
-              Giving Them A <span className="text-trust-blue font-extrabold uppercase">Bright Future</span>
+              Dignity and <span className="text-trust-blue font-extrabold uppercase">a Future</span>
             </h2>
             <p className="text-on-surface-variant mb-8 leading-relaxed">
               We provide critical care for infants, giving them the nutrition, medical support, and loving environment they need to thrive in their first years of life.
@@ -226,7 +226,7 @@ export default function HomePage() {
                 </div>
                 <h3 className="font-headline text-headline-md text-deep-black mb-4 font-bold uppercase">Sponsor</h3>
                 <p className="text-on-surface-variant mb-8 leading-relaxed">
-                  Sponsor a child, a baby, or needy family today and provide housing, healthcare, education, and the love of a family.
+                  Sponsor a baby, a child, church or a Pastor's family today and provide housing, healthcare, education, and the love of a family.
                 </p>
               </div>
               <Link
@@ -245,7 +245,7 @@ export default function HomePage() {
                 </div>
                 <h3 className="font-headline text-headline-md text-deep-black mb-4 font-bold uppercase">Donate</h3>
                 <p className="text-on-surface-variant mb-8 leading-relaxed">
-                  Make a one-time donation to our sustainability fund or specific initiatives like Keep a Girl in School or construction of dormitories.
+                  Make a donation to give Hope, change a life and advance the Kingdom.
                 </p>
               </div>
               <Link
