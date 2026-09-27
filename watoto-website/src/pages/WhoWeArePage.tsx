@@ -214,12 +214,6 @@ export default function WhoWeArePage() {
                     <p className="text-xs text-on-surface-variant font-light leading-relaxed">
                       Before Kate Clinic, expectant mothers had to walk 7 kilometers to reach the nearest health facility. Mortality rates from malaria and maternity complications were high. We opened Kate Clinic as a charitable clinic to charge minimal costs, providing lab work, antenatal care, and general medicine.
                     </p>
-                    <Link
-                      to="/kate-clinic"
-                      className="text-xs font-bold text-vibrant-green hover:underline uppercase tracking-wider inline-flex items-center gap-1 pt-2"
-                    >
-                      Visit Kate Clinic Page &rarr;
-                    </Link>
                   </div>
                 </div>
               </div>
@@ -366,10 +360,10 @@ export default function WhoWeArePage() {
                     bio: 'Oversees residential child care at Emmanuel Baby\'s Home, sponsor communications, child welfare assessments, and holistic child development.',
                   },
                   {
-                    name: 'Nnyanzi Luke',
+                    name: 'Nnyanzi Juliet',
                     role: 'Accountant',
                     badge: 'Finance & Accounts',
-                    initials: 'NL',
+                    initials: 'NJ',
                     bio: 'Stewards financial planning, budget management, donor fund accountability, and institutional reporting with integrity and transparency.',
                   },
                   {

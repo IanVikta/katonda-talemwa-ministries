@@ -96,7 +96,7 @@ export default function DonatePage() {
       designation
     })
 
-    const paypalUrl = `https://www.paypal.com/donate/?business=emmynyanzi2018%40gmail.com&currency_code=USD&amount=${finalAmount}&item_name=${encodeURIComponent(`KTM Donation - ${designation} (${frequency === 'monthly' ? 'Monthly' : 'One-Time'})`)}`
+    const paypalUrl = `https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=emmynyanzi2018%40gmail.com&currency_code=USD&amount=${finalAmount}&item_name=${encodeURIComponent(`KTM Donation - ${designation} (${frequency === 'monthly' ? 'Monthly' : 'One-Time'})`)}&no_shipping=1`
 
     setLoading(false)
     setSuccess(true)
@@ -136,7 +136,7 @@ export default function DonatePage() {
               Donate <span className="text-action-yellow">Today</span>
             </h1>
             <p className="max-w-2xl mx-auto text-body-lg opacity-90 font-light leading-relaxed">
-              Every gift puts the Father&apos;s love into action, providing shelter, education, healthcare, and a loving family home to vulnerable children and mothers across Uganda. 
+              Every gift puts the Father&apos;s love into action, providing shelter, education, healthcare, and a loving family home to vulnerable children and mothers across Uganda.
             </p>
           </div>
         </section>
@@ -151,7 +151,9 @@ export default function DonatePage() {
               Your Gift <span className="text-primary font-black">Changes Stories</span>
             </h2>
             <p className="text-body-md text-on-surface-variant max-w-3xl mx-auto leading-relaxed">
-              Katonda Talemwa Ministries relies on the generosity of supporters around the globe to carry out its operations across Uganda. Whether you support our child villages, baby home, education & healthcare, or spiritual missions, your seed makes a measurable difference. 100% of your donations go directly to funding our local programs.
+              Katonda Talemwa Ministries depends on the generosity of supporters around the world to care for vulnerable children, provide education and healthcare, support our Baby Home, and advance our church missions across Uganda.
+              Our vision is self-sustainability, empowering the communities we serve while meeting urgent needs today. Every seed you sow makes a meaningful difference.
+              100% of your donation goes directly toward our local programs and ministry work in Uganda. Together, we can restore hope, transform lives, and build a sustainable future
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-6">
               <div className="p-4 bg-surface border border-outline-variant/40 rounded-xl space-y-2 hover:shadow-md transition-shadow">
@@ -229,7 +231,7 @@ export default function DonatePage() {
 
                   <div className="flex flex-col sm:flex-row gap-3 justify-center pt-2">
                     <a
-                      href={`https://www.paypal.com/donate/?business=emmynyanzi2018%40gmail.com&currency_code=USD&amount=${finalAmount}&item_name=${encodeURIComponent(`KTM Donation - ${designation}`)}`}
+                      href={`https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=emmynyanzi2018%40gmail.com&currency_code=USD&amount=${finalAmount}&item_name=${encodeURIComponent(`KTM Donation - ${designation}`)}&no_shipping=1`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="bg-[#FFC439] hover:bg-[#F2BA36] text-[#003087] font-headline text-sm font-black uppercase tracking-wider px-8 py-3.5 rounded-xl shadow-md hover:shadow-lg flex items-center justify-center gap-2 transition-all active:scale-[0.98]"
@@ -249,10 +251,10 @@ export default function DonatePage() {
               ) : (
                 <form onSubmit={handlePayPalSubmit} noValidate className="p-6 sm:p-8 lg:p-10">
                   <div className="grid lg:grid-cols-12 gap-8 lg:gap-10 items-start">
-                    
+
                     {/* Left Column: Donation Configuration (lg:col-span-7) */}
                     <div className="lg:col-span-7 space-y-6">
-                      
+
                       {/* Frequency Switcher */}
                       <div className="space-y-2">
                         <div className="flex items-center justify-between">
@@ -270,22 +272,20 @@ export default function DonatePage() {
                           <button
                             type="button"
                             onClick={() => setFrequency('one-time')}
-                            className={`py-2.5 sm:py-3 px-4 rounded-xl text-xs sm:text-sm font-headline font-bold uppercase tracking-wider transition-all duration-200 cursor-pointer ${
-                              frequency === 'one-time'
+                            className={`py-2.5 sm:py-3 px-4 rounded-xl text-xs sm:text-sm font-headline font-bold uppercase tracking-wider transition-all duration-200 cursor-pointer ${frequency === 'one-time'
                                 ? 'bg-vibrant-green text-pure-white shadow-sm'
                                 : 'text-on-surface-variant hover:text-deep-black'
-                            }`}
+                              }`}
                           >
                             One-Time Gift
                           </button>
                           <button
                             type="button"
                             onClick={() => setFrequency('monthly')}
-                            className={`py-2.5 sm:py-3 px-4 rounded-xl text-xs sm:text-sm font-headline font-bold uppercase tracking-wider transition-all duration-200 cursor-pointer flex items-center justify-center gap-1.5 ${
-                              frequency === 'monthly'
+                            className={`py-2.5 sm:py-3 px-4 rounded-xl text-xs sm:text-sm font-headline font-bold uppercase tracking-wider transition-all duration-200 cursor-pointer flex items-center justify-center gap-1.5 ${frequency === 'monthly'
                                 ? 'bg-vibrant-green text-pure-white shadow-sm'
                                 : 'text-on-surface-variant hover:text-deep-black'
-                            }`}
+                              }`}
                           >
                             <MaterialIcon name="autorenew" className="text-sm text-action-yellow" />
                             Monthly Partner
@@ -318,11 +318,10 @@ export default function DonatePage() {
                                 type="button"
                                 key={val}
                                 onClick={() => setAmount(val)}
-                                className={`py-3 sm:py-3.5 px-2 rounded-xl flex flex-col items-center justify-center gap-1 cursor-pointer transition-all duration-200 ${
-                                  isSelected
+                                className={`py-3 sm:py-3.5 px-2 rounded-xl flex flex-col items-center justify-center gap-1 cursor-pointer transition-all duration-200 ${isSelected
                                     ? 'border-2 border-vibrant-green bg-vibrant-green/10 text-deep-black shadow-md ring-1 ring-vibrant-green/20 scale-[1.03]'
                                     : 'border border-outline-variant/60 bg-surface text-on-surface-variant hover:border-vibrant-green/50 hover:bg-surface-container-low'
-                                }`}
+                                  }`}
                               >
                                 <span className={`font-headline text-lg sm:text-xl font-black tracking-tight ${isSelected ? 'text-vibrant-green' : 'text-deep-black'}`}>
                                   {val === 'custom' ? 'Custom' : `$${val}`}
@@ -354,11 +353,10 @@ export default function DonatePage() {
                                     })
                                   }
                                 }}
-                                className={`w-full bg-surface border-2 rounded-xl pl-9 pr-4 py-3 text-base text-deep-black font-bold outline-none transition-all ${
-                                  donateErrors.amount
+                                className={`w-full bg-surface border-2 rounded-xl pl-9 pr-4 py-3 text-base text-deep-black font-bold outline-none transition-all ${donateErrors.amount
                                     ? 'border-red-500 focus:ring-2 focus:ring-red-500/20'
                                     : 'border-vibrant-green focus:ring-2 focus:ring-vibrant-green/20'
-                                }`}
+                                  }`}
                               />
                             </div>
                             {donateErrors.amount && (
@@ -418,11 +416,10 @@ export default function DonatePage() {
                                 }
                               }}
                               onKeyDown={handleNameKeyDown}
-                              className={`w-full bg-surface border rounded-xl px-4 py-3 text-xs sm:text-sm text-deep-black outline-none transition-all ${
-                                donateErrors.donorName
+                              className={`w-full bg-surface border rounded-xl px-4 py-3 text-xs sm:text-sm text-deep-black outline-none transition-all ${donateErrors.donorName
                                   ? 'border-red-500 focus:ring-2 focus:ring-red-500/20'
                                   : 'border-outline-variant/60 focus:border-vibrant-green focus:ring-2 focus:ring-vibrant-green/20'
-                              }`}
+                                }`}
                             />
                             {donateErrors.donorName && (
                               <p className="text-red-500 text-xs mt-1 font-medium">{donateErrors.donorName}</p>
@@ -443,11 +440,10 @@ export default function DonatePage() {
                                   })
                                 }
                               }}
-                              className={`w-full bg-surface border rounded-xl px-4 py-3 text-xs sm:text-sm text-deep-black outline-none transition-all ${
-                                donateErrors.donorEmail
+                              className={`w-full bg-surface border rounded-xl px-4 py-3 text-xs sm:text-sm text-deep-black outline-none transition-all ${donateErrors.donorEmail
                                   ? 'border-red-500 focus:ring-2 focus:ring-red-500/20'
                                   : 'border-outline-variant/60 focus:border-vibrant-green focus:ring-2 focus:ring-vibrant-green/20'
-                              }`}
+                                }`}
                             />
                             {donateErrors.donorEmail && (
                               <p className="text-red-500 text-xs mt-1 font-medium">{donateErrors.donorEmail}</p>
@@ -460,7 +456,7 @@ export default function DonatePage() {
 
                     {/* Right Column: Checkout Summary & PayPal Action (lg:col-span-5) */}
                     <div className="lg:col-span-5 flex flex-col justify-between space-y-5 bg-surface-container-low/80 border border-outline-variant/30 rounded-2xl p-6 lg:p-7">
-                      
+
                       {/* Summary Header */}
                       <div className="space-y-3.5">
                         <div className="flex items-center justify-between pb-2.5 border-b border-outline-variant/30">
