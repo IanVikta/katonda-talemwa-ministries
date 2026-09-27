@@ -9,9 +9,23 @@ import { children, IMAGES, type ChildProfile } from '../data/content'
 import api from '../services/api'
 import { isValidEmail, isValidName, sanitizeName, handleNameKeyDown } from '../utils/validation'
 import SEO from '../components/SEO'
+import CustomDropdown, { type DropdownOption } from '../components/ui/CustomDropdown'
 
 type GenderFilter = 'all' | 'boy' | 'girl'
 type AgeFilter = 'all' | '0-5' | '6-12' | '13+'
+
+const genderOptions: DropdownOption[] = [
+  { value: 'all', label: 'All Genders', icon: 'wc' },
+  { value: 'boy', label: 'Boys Only', icon: 'face' },
+  { value: 'girl', label: 'Girls Only', icon: 'face_3' },
+]
+
+const ageOptions: DropdownOption[] = [
+  { value: 'all', label: 'All Ages', icon: 'groups' },
+  { value: '0-5', label: '0 – 5 Years (Infants & Toddlers)', icon: 'child_care' },
+  { value: '6-12', label: '6 – 12 Years (Primary School)', icon: 'school' },
+  { value: '13+', label: '13+ Years (Youth & Secondary)', icon: 'auto_stories' },
+]
 
 function matchesAge(age: number, filter: AgeFilter) {
   if (filter === 'all') return true
@@ -257,36 +271,27 @@ export default function SponsorPage() {
             </div>
 
             {/* Filters */}
-            <div data-aos="fade-up" data-aos-delay="150" className="bg-surface border border-outline-variant/50 rounded-none p-6 flex flex-col md:flex-row md:items-end gap-6">
-              <div className="flex-1">
-                <h3 className="font-headline text-sm font-black text-deep-black uppercase tracking-wide">Filter Results</h3>
-                <p className="text-xs text-on-surface-variant mt-0.5">Narrow down by location, age, or gender.</p>
+            <div data-aos="fade-up" data-aos-delay="150" className="bg-surface border border-outline-variant/50 rounded-2xl p-4 sm:p-6 flex flex-col md:flex-row md:items-center justify-between gap-4 sm:gap-6 relative z-20 shadow-xs">
+              <div>
+                <h3 className="font-headline text-sm font-black text-deep-black uppercase tracking-wide">Filter Profiles</h3>
+                <p className="text-xs text-on-surface-variant mt-0.5">Narrow down children by gender or age group.</p>
               </div>
-              <div className="flex flex-wrap gap-4">
-                <div className="flex flex-col gap-1.5">
-                  <label className="font-bold text-[10px] uppercase text-on-surface-variant tracking-wider">Gender</label>
-                  <select
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 w-full md:w-auto">
+                <div className="w-full sm:w-52">
+                  <label className="font-bold text-[10px] uppercase text-on-surface-variant tracking-wider block mb-1.5">Gender</label>
+                  <CustomDropdown
+                    options={genderOptions}
                     value={gender}
-                    onChange={(e) => handleFilterChange(() => setGender(e.target.value as GenderFilter))}
-                    className="border border-outline-variant/60 px-3 py-2.5 bg-surface text-xs font-semibold focus:border-vibrant-green focus:ring-1 focus:ring-vibrant-green outline-none min-w-[130px] rounded-none"
-                  >
-                    <option value="all">All Genders</option>
-                    <option value="boy">Boys</option>
-                    <option value="girl">Girls</option>
-                  </select>
+                    onChange={(val) => handleFilterChange(() => setGender(val as GenderFilter))}
+                  />
                 </div>
-                <div className="flex flex-col gap-1.5">
-                  <label className="font-bold text-[10px] uppercase text-on-surface-variant tracking-wider">Age Range</label>
-                  <select
+                <div className="w-full sm:w-56">
+                  <label className="font-bold text-[10px] uppercase text-on-surface-variant tracking-wider block mb-1.5">Age Range</label>
+                  <CustomDropdown
+                    options={ageOptions}
                     value={ageRange}
-                    onChange={(e) => handleFilterChange(() => setAgeRange(e.target.value as AgeFilter))}
-                    className="border border-outline-variant/60 px-3 py-2.5 bg-surface text-xs font-semibold focus:border-vibrant-green focus:ring-1 focus:ring-vibrant-green outline-none min-w-[130px] rounded-none"
-                  >
-                    <option value="all">All Ages</option>
-                    <option value="0-5">0 – 5 years</option>
-                    <option value="6-12">6 – 12 years</option>
-                    <option value="13+">13+ years</option>
-                  </select>
+                    onChange={(val) => handleFilterChange(() => setAgeRange(val as AgeFilter))}
+                  />
                 </div>
               </div>
             </div>
@@ -627,9 +632,9 @@ export default function SponsorPage() {
                       </div>
                     </div>
                   ) : (
-                    <div className="p-6 md:p-8 space-y-5">
+                    <div className="p-4 sm:p-6 md:p-8 space-y-4 sm:space-y-5">
                       <div className="space-y-1">
-                        <h4 className="font-headline text-lg font-black uppercase text-deep-black">
+                        <h4 className="font-headline text-base sm:text-lg font-black uppercase text-deep-black">
                           Sponsorship Details
                         </h4>
                         <p className="text-xs text-on-surface-variant">
@@ -642,7 +647,7 @@ export default function SponsorPage() {
                       <button
                         type="button"
                         onClick={() => setModalTab('story')}
-                        className="w-full text-left p-3 bg-surface-container-low hover:bg-surface-container border border-outline-variant/40 transition-colors flex items-center justify-between group cursor-pointer"
+                        className="w-full text-left p-3 bg-surface-container-low hover:bg-surface-container border border-outline-variant/40 rounded-xl transition-colors flex items-center justify-between group cursor-pointer"
                       >
                         <div className="flex items-center gap-2">
                           <MaterialIcon name="menu_book" className="text-vibrant-green text-sm" />
@@ -675,7 +680,7 @@ export default function SponsorPage() {
                           window.open(paypalUrl, '_blank', 'noopener,noreferrer')
                         }}
                         noValidate
-                        className="space-y-4"
+                        className="space-y-3.5 sm:space-y-4"
                       >
                         <div className="space-y-1">
                           <label className="text-[10px] font-bold text-on-surface-variant uppercase tracking-wider block">Full Name *</label>
@@ -684,7 +689,7 @@ export default function SponsorPage() {
                             value={sponsorForm.name}
                             onChange={(e) => updateSponsorField('name', e.target.value)}
                             onKeyDown={handleNameKeyDown}
-                            className={`w-full border px-4 py-2.5 bg-surface text-sm focus:ring-1 outline-none rounded-none ${
+                            className={`w-full border px-3.5 sm:px-4 py-2.5 bg-surface text-xs sm:text-sm focus:ring-1 outline-none rounded-xl ${
                               sponsorErrors.name
                                 ? 'border-red-500 focus:border-red-500 focus:ring-red-500'
                                 : 'border-outline-variant/60 focus:border-vibrant-green focus:ring-vibrant-green'
@@ -700,7 +705,7 @@ export default function SponsorPage() {
                             type="email" placeholder="john@example.com"
                             value={sponsorForm.email}
                             onChange={(e) => updateSponsorField('email', e.target.value)}
-                            className={`w-full border px-4 py-2.5 bg-surface text-sm focus:ring-1 outline-none rounded-none ${
+                            className={`w-full border px-3.5 sm:px-4 py-2.5 bg-surface text-xs sm:text-sm focus:ring-1 outline-none rounded-xl ${
                               sponsorErrors.email
                                 ? 'border-red-500 focus:border-red-500 focus:ring-red-500'
                                 : 'border-outline-variant/60 focus:border-vibrant-green focus:ring-vibrant-green'
@@ -710,14 +715,14 @@ export default function SponsorPage() {
                             <p className="text-red-500 text-xs mt-1 font-medium">{sponsorErrors.email}</p>
                           )}
                         </div>
-                        <div className="space-y-2">
+                        <div className="space-y-1.5">
                           <label className="text-[10px] font-bold text-on-surface-variant uppercase tracking-wider block">Payment Method</label>
-                          <div className="p-3 bg-[#0070BA]/5 border border-[#0070BA]/30 flex items-center justify-between rounded-none">
+                          <div className="p-3 bg-[#0070BA]/5 border border-[#0070BA]/30 flex items-center justify-between rounded-xl">
                             <div className="flex items-center gap-2">
                               <span className="font-headline font-black italic text-[#003087] text-sm">Pay<span className="text-[#0070BA]">Pal</span></span>
                               <span className="text-xs font-bold text-deep-black">PayPal Checkout</span>
                             </div>
-                            <span className="text-[10px] font-bold text-vibrant-green uppercase bg-vibrant-green/10 px-2 py-0.5">Active</span>
+                            <span className="text-[10px] font-bold text-vibrant-green uppercase bg-vibrant-green/10 px-2 py-0.5 rounded-full">Active</span>
                           </div>
                           <p className="text-[11px] text-on-surface-variant leading-relaxed">
                             Your monthly commitment of <strong>$38/mo</strong> will be securely completed through PayPal using balance or any debit/credit card.
@@ -726,7 +731,7 @@ export default function SponsorPage() {
 
                         <button
                           type="submit" disabled={sponsorLoading}
-                          className="w-full bg-[#FFC439] hover:bg-[#F2BA36] text-[#003087] text-xs font-headline font-black uppercase tracking-widest py-4 active:scale-[0.98] transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-75 rounded-none shadow-sm"
+                          className="w-full bg-[#FFC439] hover:bg-[#F2BA36] text-[#003087] text-xs font-headline font-black uppercase tracking-widest py-3.5 sm:py-4 active:scale-[0.98] transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-75 rounded-xl shadow-md"
                         >
                           {sponsorLoading ? (
                             <>

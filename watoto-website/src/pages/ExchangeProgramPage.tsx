@@ -119,6 +119,22 @@ const itineraryHighlights = [
 import api from '../services/api'
 import { isValidEmail, isValidName, isValidPhone, isNonEmpty, sanitizeName, handleNameKeyDown } from '../utils/validation'
 import SEO from '../components/SEO'
+import CustomDropdown, { type DropdownOption } from '../components/ui/CustomDropdown'
+
+const groupTypeOptions: DropdownOption[] = [
+  { value: 'church', label: 'Church / Faith Group', subtitle: 'Congregational mission & fellowship teams', icon: 'church' },
+  { value: 'school', label: 'University / High School', subtitle: 'Student exchange, service & study trips', icon: 'school' },
+  { value: 'medical', label: 'Medical / Health Professionals', subtitle: 'Doctors, nurses, dentists & health brigades', icon: 'medical_services' },
+  { value: 'arts', label: 'Choir & Arts Group', subtitle: 'Music ministry & cultural exchange tours', icon: 'music_note' },
+  { value: 'individual', label: 'Individual Missionary', subtitle: 'Solo volunteer or researcher', icon: 'person' },
+]
+
+const teamSizeOptions: DropdownOption[] = [
+  { value: '1-4', label: '1–4 People', subtitle: 'Small group / family unit', icon: 'person' },
+  { value: '5-10', label: '5–10 People', subtitle: 'Standard mission team', icon: 'group' },
+  { value: '11-20', label: '11–20 People', subtitle: 'Large fellowship delegation', icon: 'groups' },
+  { value: '20+', label: '20+ People', subtitle: 'Church-wide / school expedition', icon: 'diversity_3' },
+]
 
 export default function ExchangeProgramPage() {
   const [formData, setFormData] = useState({
@@ -522,19 +538,14 @@ export default function ExchangeProgramPage() {
                       </div>
                       <div className="space-y-1">
                         <label className="text-[10px] font-bold uppercase tracking-wider text-pure-white/60 block">Group / Organization Type *</label>
-                        <select
+                        <CustomDropdown
+                          variant="dark"
+                          options={groupTypeOptions}
                           value={formData.groupType}
-                          onChange={(e) => updateField('groupType', e.target.value)}
-                          className={`w-full bg-pure-white/5 border text-pure-white px-4 py-3 text-sm focus:border-vibrant-green outline-none rounded-none ${
-                            errors.groupType ? 'border-red-500' : 'border-pure-white/15'
-                          }`}
-                        >
-                          <option value="church" className="text-deep-black">Church / Faith Group</option>
-                          <option value="school" className="text-deep-black">University / High School</option>
-                          <option value="medical" className="text-deep-black">Medical / Health Professionals</option>
-                          <option value="arts" className="text-deep-black">Choir & Arts Group</option>
-                          <option value="individual" className="text-deep-black">Individual Missionary</option>
-                        </select>
+                          placeholder="Select group type…"
+                          error={!!errors.groupType}
+                          onChange={(val) => updateField('groupType', val)}
+                        />
                         {errors.groupType && (
                           <p className="text-red-400 text-xs font-medium mt-1">{errors.groupType}</p>
                         )}
@@ -544,16 +555,13 @@ export default function ExchangeProgramPage() {
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div className="space-y-1">
                         <label className="text-[10px] font-bold uppercase tracking-wider text-pure-white/60 block">Expected Team Size</label>
-                        <select
+                        <CustomDropdown
+                          variant="dark"
+                          options={teamSizeOptions}
                           value={formData.teamSize}
-                          onChange={(e) => setFormData({ ...formData, teamSize: e.target.value })}
-                          className="w-full bg-pure-white/5 border border-pure-white/15 text-pure-white px-4 py-3 text-sm focus:border-vibrant-green outline-none rounded-none"
-                        >
-                          <option value="1-4" className="text-deep-black">1–4 People</option>
-                          <option value="5-10" className="text-deep-black">5–10 People</option>
-                          <option value="11-20" className="text-deep-black">11–20 People</option>
-                          <option value="20+" className="text-deep-black">20+ People</option>
-                        </select>
+                          placeholder="Select team size…"
+                          onChange={(val) => setFormData({ ...formData, teamSize: val })}
+                        />
                       </div>
                       <div className="space-y-1">
                         <label className="text-[10px] font-bold uppercase tracking-wider text-pure-white/60 block">Target Trip Month / Year</label>

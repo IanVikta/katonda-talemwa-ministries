@@ -103,6 +103,29 @@ const roles = [
 import api from '../services/api'
 import { isValidEmail, isValidName, isNonEmpty, sanitizeName, handleNameKeyDown } from '../utils/validation'
 import SEO from '../components/SEO'
+import CustomDropdown, { type DropdownOption } from '../components/ui/CustomDropdown'
+
+const roleOptions: DropdownOption[] = [
+  ...roles.map(r => ({
+    value: r.title,
+    label: r.title,
+    subtitle: `${r.category} • ${r.location}`,
+    icon: r.icon,
+  })),
+  {
+    value: 'open',
+    label: 'Open to Any Role',
+    subtitle: 'Place me wherever the need is greatest across KTM',
+    icon: 'volunteer_activism',
+  },
+]
+
+const durationOptions: DropdownOption[] = [
+  { value: '1-2 weeks', label: '1–2 Weeks', subtitle: 'Short-term mission trip / service', icon: 'calendar_today' },
+  { value: '1 month', label: '1 Month', subtitle: 'Immersive community engagement', icon: 'date_range' },
+  { value: '2-3 months', label: '2–3 Months', subtitle: 'Extended ministry internship', icon: 'event' },
+  { value: '3+ months', label: '3+ Months', subtitle: 'Long-term partnership & service', icon: 'schedule' },
+]
 
 export default function VolunteerPage() {
   const [formData, setFormData] = useState({ name: '', email: '', country: '', role: '', duration: '', message: '' })
@@ -389,30 +412,28 @@ export default function VolunteerPage() {
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div className="space-y-1">
                         <label className="text-[10px] font-bold uppercase tracking-wider text-pure-white/60 block">Preferred Role *</label>
-                        <select value={formData.role} onChange={e => updateField('role', e.target.value)}
-                          className={`w-full bg-pure-white/5 border text-pure-white px-4 py-3 text-sm focus:border-vibrant-green outline-none rounded-none ${
-                            errors.role ? 'border-red-500' : 'border-pure-white/15'
-                          }`}>
-                          <option value="" className="text-deep-black">Select a role…</option>
-                          {roles.map(r => <option key={r.title} value={r.title} className="text-deep-black">{r.title}</option>)}
-                          <option value="open" className="text-deep-black">Open to any role</option>
-                        </select>
+                        <CustomDropdown
+                          variant="dark"
+                          options={roleOptions}
+                          value={formData.role}
+                          placeholder="Select a role…"
+                          error={!!errors.role}
+                          onChange={(val) => updateField('role', val)}
+                        />
                         {errors.role && (
                           <p className="text-red-400 text-xs font-medium">{errors.role}</p>
                         )}
                       </div>
                       <div className="space-y-1">
                         <label className="text-[10px] font-bold uppercase tracking-wider text-pure-white/60 block">Available Duration *</label>
-                        <select value={formData.duration} onChange={e => updateField('duration', e.target.value)}
-                          className={`w-full bg-pure-white/5 border text-pure-white px-4 py-3 text-sm focus:border-vibrant-green outline-none rounded-none ${
-                            errors.duration ? 'border-red-500' : 'border-pure-white/15'
-                          }`}>
-                          <option value="" className="text-deep-black">Select…</option>
-                          <option value="1-2 weeks" className="text-deep-black">1–2 Weeks</option>
-                          <option value="1 month" className="text-deep-black">1 Month</option>
-                          <option value="2-3 months" className="text-deep-black">2–3 Months</option>
-                          <option value="3+ months" className="text-deep-black">3+ Months</option>
-                        </select>
+                        <CustomDropdown
+                          variant="dark"
+                          options={durationOptions}
+                          value={formData.duration}
+                          placeholder="Select duration…"
+                          error={!!errors.duration}
+                          onChange={(val) => updateField('duration', val)}
+                        />
                         {errors.duration && (
                           <p className="text-red-400 text-xs font-medium">{errors.duration}</p>
                         )}

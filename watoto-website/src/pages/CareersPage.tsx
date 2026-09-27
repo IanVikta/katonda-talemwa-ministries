@@ -67,6 +67,22 @@ const jobs = [
 import api from '../services/api'
 import { isValidEmail, isValidName, isValidUrl, isNonEmpty, sanitizeName, handleNameKeyDown } from '../utils/validation'
 import SEO from '../components/SEO'
+import CustomDropdown, { type DropdownOption } from '../components/ui/CustomDropdown'
+
+const jobOptions: DropdownOption[] = [
+  ...jobs.map(j => ({
+    value: j.title,
+    label: j.title,
+    subtitle: `${j.department} • ${j.location}`,
+    icon: 'work',
+  })),
+  {
+    value: 'General Application',
+    label: 'General Application / Talent Pool',
+    subtitle: 'Submit your profile for upcoming ministry opportunities',
+    icon: 'group_add',
+  },
+]
 
 export default function CareersPage() {
   const [openJobId, setOpenJobId] = useState<string | null>(null)
@@ -411,19 +427,13 @@ export default function CareersPage() {
 
                 <div className="space-y-1">
                   <label className="text-[10px] font-bold uppercase tracking-wider text-on-surface-variant block">Position Applied For *</label>
-                  <select
+                  <CustomDropdown
+                    options={jobOptions}
                     value={formData.job}
-                    onChange={e => updateField('job', e.target.value)}
-                    className={`w-full border px-4 py-2.5 bg-surface text-sm outline-none rounded-none ${
-                      errors.job
-                        ? 'border-red-500 focus:border-red-500'
-                        : 'border-outline-variant/60 focus:border-vibrant-green'
-                    }`}
-                  >
-                    <option value="">Select a position…</option>
-                    {jobs.map(j => <option key={j.id} value={j.title}>{j.title}</option>)}
-                    <option value="General Application">General Application / Talent Pool</option>
-                  </select>
+                    placeholder="Select a position…"
+                    error={!!errors.job}
+                    onChange={(val) => updateField('job', val)}
+                  />
                   {errors.job && (
                     <p className="text-red-500 text-xs mt-1 font-medium">{errors.job}</p>
                   )}
