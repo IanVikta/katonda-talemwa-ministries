@@ -278,7 +278,7 @@ export default function WhoWeArePage() {
                     role: 'Founding Directors',
                     badge: 'Founding Directors',
                     initials: 'ES',
-                    image: '/images/ps.jpeg',
+                    image: '/images/founders.jpg',
                     bio: 'Founded Katonda Talemwa Ministries in 1989. Pastor Emmy and Sarah provide visionary apostolic oversight, spiritual shepherding, and pastoral care across all KTM community initiatives and church fellowships in Uganda.',
                   },
                   {
@@ -371,7 +371,7 @@ export default function WhoWeArePage() {
                     role: 'Head of Kate Clinic',
                     badge: 'Healthcare Lead',
                     initials: 'WJ',
-                    image: '/images/clinic.jpg',
+                    // image: '/images/clinic.jpg',
                     bio: 'Directs clinical triage, emergency pediatric care, routine immunizations, and community healthcare outreach serving mothers and children at Kate Clinic.',
                   },
                   {
@@ -379,7 +379,7 @@ export default function WhoWeArePage() {
                     role: 'KTM Churches Coordinator',
                     badge: 'Church Ministries',
                     initials: 'KE',
-                    image: '/images/church-1.jpg',
+                    // image: '/images/church-1.jpg',
                     bio: 'Coordinates community church fellowships, discipleship initiatives, pastoral care networks, and evangelistic outreaches across rural villages.',
                   },
                 ].map((member) => (
@@ -443,7 +443,7 @@ export default function WhoWeArePage() {
                     role: 'The Esther Mission Coordinator',
                     badge: 'The Esther Mission',
                     initials: 'MN',
-                    image: '/images/girl.jpg',
+                    // image: '/images/girl.jpg',
                     bio: 'Leads The Esther Mission initiatives, coordinating menstrual hygiene kit distribution, health workshops, and school retention programs for young girls.',
                   },
                   {
