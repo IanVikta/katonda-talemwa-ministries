@@ -52,7 +52,7 @@ const clinicNeeds: ClinicNeed[] = [
   },
   {
     id: 'omwana-kids',
-    title: 'Treat Omwana House Kids',
+    title: 'Treat Emmanuel babies home Kids',
     cost: '$1,000',
     amount: '1000',
     icon: 'healing',
@@ -63,10 +63,10 @@ const clinicNeeds: ClinicNeed[] = [
   {
     id: 'water-grid',
     title: 'Connection to Water Grid',
-    cost: '$2,000',
-    amount: '2000',
+    cost: '$4,000',
+    amount: '4000',
     icon: 'water_drop',
-    headline: 'Help ensure we will have enough good, clean water for our patients.',
+    headline: 'Help us secure clean water for the clinic',
     description: 'Connects the clinic facility to the clean water grid, securing reliable running water for deliveries, basic hygiene, and sanitation.',
     badge: 'Essential Utility',
   },
@@ -84,8 +84,8 @@ const clinicNeeds: ClinicNeed[] = [
   {
     id: 'standby-generator',
     title: 'Buy a Diesel Standby Generator for the Clinic',
-    cost: '$8,900',
-    amount: '8900',
+    cost: '$15,000',
+    amount: '15000',
     icon: 'bolt',
     headline: 'Imagine operating a medical facility that uses electric machines but has no electricity.',
     description: 'We need a functioning clinic with the labor, delivery, and testing undeterred by frequent rural blackouts. Help our care level increase!',
@@ -237,7 +237,7 @@ export default function KateClinicPage() {
         {/* History & Leadership Feature (Sharp Side-by-Side Layout) */}
         <section className="py-20 bg-surface border-b border-outline-variant/30">
           <div className="max-w-(--spacing-container-max) mx-auto px-4 md:px-margin-desktop grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            
+
             {/* Left Column: Mission History */}
             <div className="lg:col-span-7 space-y-6">
               <span className="text-vibrant-green font-bold text-xs uppercase tracking-widest block border-l-4 border-vibrant-green pl-3">
@@ -379,7 +379,7 @@ export default function KateClinicPage() {
         {/* URGENT CLINIC NEEDS & DIRECT GIVING (Sharp Cards Matching Site Style) */}
         <section id="urgent-needs" className="py-20 bg-surface relative">
           <div className="max-w-(--spacing-container-max) mx-auto px-4 md:px-margin-desktop space-y-12">
-            
+
             {/* Section Header */}
             <div className="text-center max-w-2xl mx-auto space-y-3">
               <span className="text-vibrant-green font-bold text-xs uppercase tracking-widest px-3 py-1 bg-vibrant-green/10 rounded-none inline-block">
@@ -404,28 +404,25 @@ export default function KateClinicPage() {
                     key={need.id}
                     animation="fade-up"
                     delay={idx * 60}
-                    className={`rounded-none border transition-all duration-200 flex flex-col justify-between shadow-xs ${
-                      isFeatured
-                        ? 'lg:col-span-3 bg-deep-black text-pure-white border-vibrant-green p-6 sm:p-8'
-                        : 'bg-surface border-outline-variant/60 hover:border-vibrant-green p-6'
-                    }`}
+                    className={`rounded-none border transition-all duration-200 flex flex-col justify-between shadow-xs ${isFeatured
+                      ? 'lg:col-span-3 bg-deep-black text-pure-white border-vibrant-green p-6 sm:p-8'
+                      : 'bg-surface border-outline-variant/60 hover:border-vibrant-green p-6'
+                      }`}
                   >
                     <div className="space-y-3">
                       {/* Top Row: Badge & Cost */}
                       <div className="flex items-center justify-between gap-2">
                         <span
-                          className={`text-[10px] uppercase font-bold tracking-widest px-2.5 py-0.5 rounded-none ${
-                            isFeatured
-                              ? 'bg-action-yellow text-deep-black'
-                              : 'bg-vibrant-green/10 text-vibrant-green'
-                          }`}
+                          className={`text-[10px] uppercase font-bold tracking-widest px-2.5 py-0.5 rounded-none ${isFeatured
+                            ? 'bg-action-yellow text-deep-black'
+                            : 'bg-vibrant-green/10 text-vibrant-green'
+                            }`}
                         >
                           {need.badge}
                         </span>
                         <div
-                          className={`font-headline text-2xl font-black ${
-                            isFeatured ? 'text-action-yellow' : 'text-vibrant-green'
-                          }`}
+                          className={`font-headline text-2xl font-black ${isFeatured ? 'text-action-yellow' : 'text-vibrant-green'
+                            }`}
                         >
                           {need.cost}
                         </div>
@@ -434,18 +431,16 @@ export default function KateClinicPage() {
                       {/* Icon & Title */}
                       <div className="flex items-start gap-2.5">
                         <div
-                          className={`w-8 h-8 rounded-none flex items-center justify-center shrink-0 ${
-                            isFeatured
-                              ? 'bg-pure-white/10 text-action-yellow'
-                              : 'bg-vibrant-green/10 text-vibrant-green'
-                          }`}
+                          className={`w-8 h-8 rounded-none flex items-center justify-center shrink-0 ${isFeatured
+                            ? 'bg-pure-white/10 text-action-yellow'
+                            : 'bg-vibrant-green/10 text-vibrant-green'
+                            }`}
                         >
                           <MaterialIcon name={need.icon} className="text-lg" />
                         </div>
                         <h3
-                          className={`font-headline text-sm sm:text-base font-bold uppercase leading-snug ${
-                            isFeatured ? 'text-pure-white' : 'text-deep-black'
-                          }`}
+                          className={`font-headline text-sm sm:text-base font-bold uppercase leading-snug ${isFeatured ? 'text-pure-white' : 'text-deep-black'
+                            }`}
                         >
                           {need.title}
                         </h3>
@@ -453,31 +448,28 @@ export default function KateClinicPage() {
 
                       {/* Direct Quotes / Headline from flyer */}
                       <p
-                        className={`text-xs font-semibold leading-relaxed border-l-2 pl-3 py-1 ${
-                          isFeatured
-                            ? 'border-action-yellow text-pure-white/90'
-                            : 'border-vibrant-green text-deep-black'
-                        }`}
+                        className={`text-xs font-semibold leading-relaxed border-l-2 pl-3 py-1 ${isFeatured
+                          ? 'border-action-yellow text-pure-white/90'
+                          : 'border-vibrant-green text-deep-black'
+                          }`}
                       >
                         &ldquo;{need.headline}&rdquo;
                       </p>
 
                       {/* Description */}
                       <p
-                        className={`text-xs font-light leading-relaxed ${
-                          isFeatured ? 'text-pure-white/80' : 'text-on-surface-variant'
-                        }`}
+                        className={`text-xs font-light leading-relaxed ${isFeatured ? 'text-pure-white/80' : 'text-on-surface-variant'
+                          }`}
                       >
                         {need.description}
                       </p>
 
                       {need.detail && (
                         <div
-                          className={`p-2.5 text-[11px] font-medium rounded-none ${
-                            isFeatured
-                              ? 'bg-action-yellow/10 border border-action-yellow/20 text-action-yellow'
-                              : 'bg-surface-container-high border border-outline-variant/40 text-deep-black'
-                          }`}
+                          className={`p-2.5 text-[11px] font-medium rounded-none ${isFeatured
+                            ? 'bg-action-yellow/10 border border-action-yellow/20 text-action-yellow'
+                            : 'bg-surface-container-high border border-outline-variant/40 text-deep-black'
+                            }`}
                         >
                           <strong>Detail:</strong> {need.detail}
                         </div>
@@ -488,11 +480,10 @@ export default function KateClinicPage() {
                     <div className="pt-4 border-t border-outline-variant/20 mt-4">
                       <Link
                         to={`/donate?designation=Kate+Clinic+%26+Medical+Services&amount=${need.amount}`}
-                        className={`w-full block text-center py-3 px-4 font-headline text-xs font-black uppercase tracking-widest rounded-none transition-all duration-200 active:scale-95 ${
-                          isFeatured
-                            ? 'bg-action-yellow hover:brightness-110 text-deep-black'
-                            : 'bg-vibrant-green hover:brightness-110 text-pure-white'
-                        }`}
+                        className={`w-full block text-center py-3 px-4 font-headline text-xs font-black uppercase tracking-widest rounded-none transition-all duration-200 active:scale-95 ${isFeatured
+                          ? 'bg-action-yellow hover:brightness-110 text-deep-black'
+                          : 'bg-vibrant-green hover:brightness-110 text-pure-white'
+                          }`}
                       >
                         Fund This Need ({need.cost})
                       </Link>
@@ -532,7 +523,7 @@ export default function KateClinicPage() {
                 Integrated Care Network
               </span>
               <h2 className="font-headline text-3xl font-black uppercase text-deep-black leading-tight">
-                How Kate Clinic Serves Our Ministries
+                How Kate Clinic Serves The Ministry
               </h2>
               <div className="w-16 h-1 bg-vibrant-green mx-auto" />
               <p className="text-xs text-on-surface-variant font-light leading-relaxed">
@@ -559,7 +550,7 @@ export default function KateClinicPage() {
                   linkText: 'Explore Esther Mission →',
                 },
                 {
-                  title: 'Parental Care School & Omwana',
+                  title: 'Parental Care School & Emmanuel Babies Home',
                   subtitle: 'Pupil Wellness & Deworming',
                   image: IMAGES.studentLife,
                   desc: 'Provides periodic health screenings, malaria checks, and emergency care so children remain healthy and active in school.',
@@ -601,7 +592,7 @@ export default function KateClinicPage() {
           </div>
         </section>
 
-        {/* Medical Mission & Volunteer Exchange Banner (Sharp Design) */}
+        {/* Medical Mission & Volunteer Exchange Banner (Sharp Design)
         <section className="py-20 bg-deep-black text-pure-white text-center rounded-none relative overflow-hidden">
           <div className="max-w-(--spacing-container-max) mx-auto px-4 md:px-margin-desktop space-y-6 relative z-10">
             <span className="text-xs uppercase font-extrabold tracking-widest text-action-yellow block">
@@ -628,7 +619,7 @@ export default function KateClinicPage() {
               </Link>
             </div>
           </div>
-        </section>
+        </section> */}
       </main>
 
       <UnifiedFooter />

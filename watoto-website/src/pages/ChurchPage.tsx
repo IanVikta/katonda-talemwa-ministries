@@ -136,7 +136,7 @@ export default function ChurchPage() {
               <div data-aos="fade-up" data-aos-delay="300" className="pt-4 md:pt-0 md:pl-8">
                 <div className="font-headline text-4xl sm:text-5xl font-black text-action-yellow">25+</div>
                 <h4 className="font-headline text-sm font-black uppercase tracking-wider mt-2">Years of Mission</h4>
-                <p className="text-xs font-light text-pure-white/80 mt-1 max-w-[200px] mx-auto">Established in 1989 through faithful grassroots church planting</p>
+                <p className="text-xs font-light text-pure-white/80 mt-1 max-w-[200px] mx-auto">Established in 1996 through faithful grassroots church planting</p>
               </div>
             </div>
           </div>

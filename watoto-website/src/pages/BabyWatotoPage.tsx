@@ -114,48 +114,48 @@ const galleryItems: GalleryItem[] = [
   },
 ]
 
-const testimonials = [
-  {
-    id: 't1',
-    quote: 'Sponsoring baby Jayson and receiving his milestone updates has been one of the most spiritually rewarding journeys of our lives. You see the tangible fruit of love.',
-    author: 'Sarah & David Jenkins',
-    role: 'Monthly Baby Sponsors',
-    location: 'Dallas, Texas',
-    avatar: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDokPv7xL4QxzKaXFGE9JHtcX8mDUpqXr0wRYOec9evJdlzrT_dCiPQuJgTZqlL8pmUpk3NogeqfXtDKpgUNVRyWxfuJMk3Xj7uBb61Y7yp373WHqyvIGC68iqpT06r7nYFafNlMQxOafiS3RAJAxLv9cSmeOpfMd8XLGmutOsP6sJrYDaYu4BKGhqr0zchZ-IrwSP61z__ZJiaLHLfwq7cOmHg3yWxWSvOjI_VPUdb-qBWzNM6qoXpxMkmPMd0ZeuS1lDnEpziIjs',
-    rating: 5,
-    highlight: 'Sponsor Story',
-  },
-  {
-    id: 't2',
-    quote: 'When a fragile baby arrives in the middle of the night weighing under 2 kg, our whole team rallies. Seeing that same child laughing 6 months later is nothing short of a miracle.',
-    author: 'Nurse Grace Atuhaire',
-    role: 'Lead Pediatric Nurse',
-    location: 'Emmanuel Baby\'s Home',
-    avatar: 'https://lh3.googleusercontent.com/aida-public/AB6AXuB6y56oBsMWN9DQPev8ZmKzLaWamFuXAwYYwLoKyfk07pdytAjs0fVZmgddCllkNH2KAPh7QOU9_oCjLHpXItxzryFuwiyQIRx1CwGCvNeoYq16DMXOFDgEEogrnxUV18fg7z1aULbkGVw1CiuinfA8TVZmoNbYKPX1ovWExMuivq9rpFVcB2uuLsg70plzLz-8gEMm2YM9Lno-rJNlWPPB0aOdc8KNVoiiZ6mv7CiIHwe_onrToEaqx0cPmP7_03aPcXCJTNwL5LI',
-    rating: 5,
-    highlight: 'Staff Reflection',
-  },
-  {
-    id: 't3',
-    quote: 'Receiving these precious babies into our village home when they reach two years old is a gift. They come already healthy, loved, and ready to call me Mama.',
-    author: 'Mama Phiona',
-    role: 'KTM Village Mother',
-    location: 'Kyasenya Village',
-    avatar: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBIhxRIEgCK4R58S2_Yi2_g3H70zVyfYoVCJkvMonBkpymscyRKLR76ztqzxY-IYZfgN7GDuJEe-9x21_1JyjONBj7mobd2h8nJ-f07MCofzmkBLOAz8hL3DoK6wmee6L3r6HEgNpR26GivhE86k55lODdglHr_natLaSWjEZApuTOGZDqVYUmgbmPIITEySdw8GHdk3B66v3cPSLTIPQfc_0WGi1xAWY3vdd0N8a9JrN6S12dA9WNe0M7DJfmHdLh0IJhTandGHuI',
-    rating: 5,
-    highlight: 'Family Journey',
-  },
-  {
-    id: 't4',
-    quote: 'The level of hygiene, clinical precision, and individual nurturing at Emmanuel Baby\'s Home is world-class. Every single dollar given directly restores a child’s future.',
-    author: 'Dr. Michael Chen',
-    role: 'Pediatric Health Partner',
-    location: 'Kampala Medical Center',
-    avatar: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAAY37c-fstO13vILJbLMwYIR9LpymZ26ih1qt3v-kba_5B2PpugKIIsq0820ra9MqoIPV8FAUjqq4x1b00ntQw_6Nangq_Wjkq5JwlY4TU5y2Dg-UBjRV26_MasUTTnUsz9s27d2rm8XMPJGqMMlFHBt80r4YJt22BmcZfySd-kpHa4jDpRyVtUqq2aGRQ1fZIsuJj6UuAQieZt8mpmUqOapXyCR0sTpQ88Sopj_9Lpu5gVTfB17oy3Eufx0m_4ht_mmlus5bmk9M',
-    rating: 5,
-    highlight: 'Medical Partner',
-  },
-]
+// const testimonials = [
+//   {
+//     id: 't1',
+//     quote: 'Sponsoring baby Jayson and receiving his milestone updates has been one of the most spiritually rewarding journeys of our lives. You see the tangible fruit of love.',
+//     author: 'Sarah & David Jenkins',
+//     role: 'Monthly Baby Sponsors',
+//     location: 'Dallas, Texas',
+//     avatar: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDokPv7xL4QxzKaXFGE9JHtcX8mDUpqXr0wRYOec9evJdlzrT_dCiPQuJgTZqlL8pmUpk3NogeqfXtDKpgUNVRyWxfuJMk3Xj7uBb61Y7yp373WHqyvIGC68iqpT06r7nYFafNlMQxOafiS3RAJAxLv9cSmeOpfMd8XLGmutOsP6sJrYDaYu4BKGhqr0zchZ-IrwSP61z__ZJiaLHLfwq7cOmHg3yWxWSvOjI_VPUdb-qBWzNM6qoXpxMkmPMd0ZeuS1lDnEpziIjs',
+//     rating: 5,
+//     highlight: 'Sponsor Story',
+//   },
+//   {
+//     id: 't2',
+//     quote: 'When a fragile baby arrives in the middle of the night weighing under 2 kg, our whole team rallies. Seeing that same child laughing 6 months later is nothing short of a miracle.',
+//     author: 'Nurse Grace Atuhaire',
+//     role: 'Lead Pediatric Nurse',
+//     location: 'Emmanuel Baby\'s Home',
+//     avatar: 'https://lh3.googleusercontent.com/aida-public/AB6AXuB6y56oBsMWN9DQPev8ZmKzLaWamFuXAwYYwLoKyfk07pdytAjs0fVZmgddCllkNH2KAPh7QOU9_oCjLHpXItxzryFuwiyQIRx1CwGCvNeoYq16DMXOFDgEEogrnxUV18fg7z1aULbkGVw1CiuinfA8TVZmoNbYKPX1ovWExMuivq9rpFVcB2uuLsg70plzLz-8gEMm2YM9Lno-rJNlWPPB0aOdc8KNVoiiZ6mv7CiIHwe_onrToEaqx0cPmP7_03aPcXCJTNwL5LI',
+//     rating: 5,
+//     highlight: 'Staff Reflection',
+//   },
+//   {
+//     id: 't3',
+//     quote: 'Receiving these precious babies into our village home when they reach two years old is a gift. They come already healthy, loved, and ready to call me Mama.',
+//     author: 'Mama Phiona',
+//     role: 'KTM Village Mother',
+//     location: 'Kyasenya Village',
+//     avatar: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBIhxRIEgCK4R58S2_Yi2_g3H70zVyfYoVCJkvMonBkpymscyRKLR76ztqzxY-IYZfgN7GDuJEe-9x21_1JyjONBj7mobd2h8nJ-f07MCofzmkBLOAz8hL3DoK6wmee6L3r6HEgNpR26GivhE86k55lODdglHr_natLaSWjEZApuTOGZDqVYUmgbmPIITEySdw8GHdk3B66v3cPSLTIPQfc_0WGi1xAWY3vdd0N8a9JrN6S12dA9WNe0M7DJfmHdLh0IJhTandGHuI',
+//     rating: 5,
+//     highlight: 'Family Journey',
+//   },
+//   {
+//     id: 't4',
+//     quote: 'The level of hygiene, clinical precision, and individual nurturing at Emmanuel Baby\'s Home is world-class. Every single dollar given directly restores a child’s future.',
+//     author: 'Dr. Michael Chen',
+//     role: 'Pediatric Health Partner',
+//     location: 'Kampala Medical Center',
+//     avatar: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAAY37c-fstO13vILJbLMwYIR9LpymZ26ih1qt3v-kba_5B2PpugKIIsq0820ra9MqoIPV8FAUjqq4x1b00ntQw_6Nangq_Wjkq5JwlY4TU5y2Dg-UBjRV26_MasUTTnUsz9s27d2rm8XMPJGqMMlFHBt80r4YJt22BmcZfySd-kpHa4jDpRyVtUqq2aGRQ1fZIsuJj6UuAQieZt8mpmUqOapXyCR0sTpQ88Sopj_9Lpu5gVTfB17oy3Eufx0m_4ht_mmlus5bmk9M',
+//     rating: 5,
+//     highlight: 'Medical Partner',
+//   },
+// ]
 
 export default function BabyWatotoPage() {
   const [activeGalleryCategory, setActiveGalleryCategory] = useState<string>('all')
@@ -632,7 +632,7 @@ export default function BabyWatotoPage() {
         </section>
 
         {/* ── TESTIMONIALS SECTION ── */}
-        <section className="py-24 bg-surface-container-low border-b border-outline-variant/30">
+        {/* <section className="py-24 bg-surface-container-low border-b border-outline-variant/30">
           <div className="max-w-(--spacing-container-max) mx-auto px-4 md:px-margin-desktop space-y-16">
             <div data-aos="fade-up" className="text-center space-y-3 max-w-xl mx-auto">
               <span className="text-[10px] uppercase font-extrabold tracking-widest text-vibrant-green block">
@@ -688,7 +688,7 @@ export default function BabyWatotoPage() {
               ))}
             </div>
           </div>
-        </section>
+        </section> */}
 
         {/* ── CLOSING QUOTE ── */}
         <section className="bg-deep-black py-20 text-center relative overflow-hidden">

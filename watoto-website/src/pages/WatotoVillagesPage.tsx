@@ -57,7 +57,7 @@ export default function WatotoVillagesPage() {
                 </h1>
 
                 <p className="text-sm sm:text-base text-pure-white/90 font-light leading-relaxed max-w-lg">
-                  Reviving the joy and security of family life for orphaned and vulnerable Ugandan children through compassionate, Christ-anchored village communities.
+                  Reviving the joy and security of family life for orphaned and vulnerable Ugandan children through compassionate, Christ-anchored care.
                 </p>
 
                 {/* Key feature cards (sharp rectangular chips) */}
@@ -65,15 +65,15 @@ export default function WatotoVillagesPage() {
                   <div className="border border-pure-white/20 bg-deep-black/70 backdrop-blur-sm p-4 flex flex-col justify-between gap-3 rounded-none">
                     <MaterialIcon name="cottage" className="text-action-yellow text-2xl" />
                     <span className="text-[11px] font-headline font-black uppercase tracking-wider text-pure-white">
-                      Christ-Anchored Homes
+                      Christ-Anchored care
                     </span>
                   </div>
-                  <div className="border border-pure-white/20 bg-deep-black/70 backdrop-blur-sm p-4 flex flex-col justify-between gap-3 rounded-none">
+                  {/* <div className="border border-pure-white/20 bg-deep-black/70 backdrop-blur-sm p-4 flex flex-col justify-between gap-3 rounded-none">
                     <MaterialIcon name="favorite" className="text-vibrant-green text-2xl" />
                     <span className="text-[11px] font-headline font-black uppercase tracking-wider text-pure-white">
                       Loving House Mothers
                     </span>
-                  </div>
+                  </div> */}
                   <div className="border border-pure-white/20 bg-deep-black/70 backdrop-blur-sm p-4 flex flex-col justify-between gap-3 rounded-none">
                     <MaterialIcon name="school" className="text-action-yellow text-2xl" />
                     <span className="text-[11px] font-headline font-black uppercase tracking-wider text-pure-white">

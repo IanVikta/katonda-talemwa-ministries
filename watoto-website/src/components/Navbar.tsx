@@ -34,10 +34,10 @@ const menuConfig: MenuItem[] = [
     label: 'Get Involved',
     submenu: [
       { label: 'Donate Now', to: '/donate', icon: 'volunteer_activism', desc: 'Immediate financial support' },
-      { label: 'Volunteer / Go', to: '/volunteer', icon: 'flight_takeoff', desc: 'Volunteer opportunities' },
-      { label: 'Exchange Program', to: '/exchange-program', icon: 'public', desc: 'Mission trips & cultural exchange' },
-      { label: 'Pray With Us', to: '/pray-with-us', icon: 'brightness_high', desc: 'Spiritual intercession & updates' },
-      { label: 'Careers', to: '/careers', icon: 'work', desc: 'Join our team & make impact' },
+      //   { label: 'Volunteer / Go', to: '/volunteer', icon: 'flight_takeoff', desc: 'Volunteer opportunities' },
+      //   { label: 'Exchange Program', to: '/exchange-program', icon: 'public', desc: 'Mission trips & cultural exchange' },
+      //   { label: 'Pray With Us', to: '/pray-with-us', icon: 'brightness_high', desc: 'Spiritual intercession & updates' },
+      //   { label: 'Careers', to: '/careers', icon: 'work', desc: 'Join our team & make impact' },
     ]
   },
   { label: 'Contact Us', to: '/contact' },
