@@ -460,7 +460,7 @@ export default function WhoWeArePage() {
                     initials: 'GN',
                     bio: 'Oversees community skilling, practical craftsmanship workshops, and vocational empowerment initiatives for vulnerable youth and women.',
                   },
-                ].map((member) => (
+                ].map((member: { name: string; role: string; badge: string; initials: string; bio: string; image?: string }) => (
                   <div
                     key={member.name}
                     className="bg-surface border border-outline-variant/60 hover:border-vibrant-green rounded-none overflow-hidden shadow-xs hover:shadow-md transition-all duration-300 flex flex-col group"
