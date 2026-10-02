@@ -47,7 +47,7 @@ interface GalleryItem {
   location: string
 }
 
-const galleryItems: GalleryItem[] = [
+export const galleryItems: GalleryItem[] = [
   {
     id: 'g1',
     title: 'Morning Sensory Play',
@@ -158,16 +158,16 @@ const galleryItems: GalleryItem[] = [
 // ]
 
 export default function BabyWatotoPage() {
-  const [activeGalleryCategory, setActiveGalleryCategory] = useState<string>('all')
+  // const [activeGalleryCategory, setActiveGalleryCategory] = useState<string>('all')
   const [lightboxItem, setLightboxItem] = useState<GalleryItem | null>(null)
 
   useEffect(() => {
     AOS.init({ duration: 700, easing: 'ease-out-cubic', once: true, offset: 60 })
   }, [])
 
-  const filteredGallery = galleryItems.filter(
-    (item) => activeGalleryCategory === 'all' || item.category === activeGalleryCategory
-  )
+  // const filteredGallery = galleryItems.filter(
+  //   (item) => activeGalleryCategory === 'all' || item.category === activeGalleryCategory
+  // )
 
   return (
     <div className="bg-surface text-on-surface selection:bg-action-yellow selection:text-deep-black overflow-x-hidden font-body page-enter">
@@ -225,7 +225,7 @@ export default function BabyWatotoPage() {
             {/* Floating stat */}
             <div className="absolute bottom-8 left-8 bg-vibrant-green text-pure-white p-6 border-t-4 border-action-yellow max-w-[180px] rounded-none">
               <div className="font-headline text-3xl font-black text-action-yellow">
-                <CountUp end={300} suffix="+" />
+                <CountUp end={80} suffix="+" />
               </div>
               <p className="text-xs font-bold uppercase tracking-wider mt-1 opacity-90">Babies Welcomed</p>
             </div>
@@ -557,10 +557,10 @@ export default function BabyWatotoPage() {
         </section>
 
         {/* ── INTERACTIVE PHOTO GALLERY ── */}
-        <section className="py-24 bg-surface border-b border-outline-variant/30">
-          <div className="max-w-(--spacing-container-max) mx-auto px-4 md:px-margin-desktop space-y-12">
-            <div data-aos="fade-up" className="flex flex-col md:flex-row md:items-end justify-between gap-6">
-              <div className="space-y-3">
+        {/* <section className="py-24 bg-surface border-b border-outline-variant/30"> */}
+        {/* <div className="max-w-(--spacing-container-max) mx-auto px-4 md:px-margin-desktop space-y-12"> */}
+        {/* <div data-aos="fade-up" className="flex flex-col md:flex-row md:items-end justify-between gap-6"> */}
+        {/* <div className="space-y-3">
                 <span className="text-[10px] uppercase font-extrabold tracking-widest text-vibrant-green block border-l-4 border-vibrant-green pl-3">
                   Life at Emmanuel Baby's Home
                 </span>
@@ -570,11 +570,11 @@ export default function BabyWatotoPage() {
                 <p className="text-sm text-on-surface-variant font-light leading-relaxed max-w-lg">
                   A visual window into the daily rhythm of care, medical healing, milestones, and forever families.
                 </p>
-              </div>
+              </div> */}
 
-              {/* Category Filter Tabs */}
-              <div className="flex flex-wrap gap-2">
-                {[
+        {/* Category Filter Tabs */}
+        {/* <div className="flex flex-wrap gap-2"> */}
+        {/* {[
                   { id: 'all', label: 'All Photos' },
                   { id: 'nursery', label: 'Nursery Care' },
                   { id: 'medical', label: 'Medical Clinic' },
@@ -593,10 +593,10 @@ export default function BabyWatotoPage() {
                   </button>
                 ))}
               </div>
-            </div>
+            </div> */}
 
-            {/* Gallery Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {/* Gallery Grid */}
+        {/* <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {filteredGallery.map((item, idx) => (
                 <div
                   key={item.id}
@@ -609,15 +609,15 @@ export default function BabyWatotoPage() {
                     src={item.image}
                     alt={`${item.title} - Emmanuel Baby's Home Katonda Talemwa Ministries`}
                     className="w-full h-full object-cover group-hover:scale-110 group-hover:opacity-85 transition-all duration-700 filter brightness-95"
-                  />
+                  /> */}
 
-                  {/* Category Pill */}
-                  <div className="absolute top-3 left-3 bg-deep-black/80 backdrop-blur-sm text-action-yellow text-[9px] font-extrabold uppercase tracking-widest px-2.5 py-1 z-10 border-l-2 border-action-yellow">
+        {/* Category Pill */}
+        {/* <div className="absolute top-3 left-3 bg-deep-black/80 backdrop-blur-sm text-action-yellow text-[9px] font-extrabold uppercase tracking-widest px-2.5 py-1 z-10 border-l-2 border-action-yellow">
                     {item.location}
-                  </div>
+                  </div> */}
 
-                  {/* Hover Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-deep-black/90 via-deep-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5 text-pure-white space-y-2">
+        {/* Hover Overlay */}
+        {/* <div className="absolute inset-0 bg-gradient-to-t from-deep-black/90 via-deep-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5 text-pure-white space-y-2">
                     <div className="flex items-center gap-1 text-action-yellow">
                       <MaterialIcon name="zoom_in" className="text-xl" />
                       <span className="text-[10px] uppercase font-bold tracking-wider">View Photo</span>
@@ -625,11 +625,11 @@ export default function BabyWatotoPage() {
                     <h3 className="font-headline text-sm font-black uppercase leading-snug">{item.title}</h3>
                     <p className="text-xs text-pure-white/80 font-light line-clamp-2 leading-relaxed">{item.caption}</p>
                   </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
+                </div> */}
+        {/* ))} */}
+        {/* </div> */}
+        {/* </div> */}
+        {/* </section> */}
 
         {/* ── TESTIMONIALS SECTION ── */}
         {/* <section className="py-24 bg-surface-container-low border-b border-outline-variant/30">
@@ -701,7 +701,7 @@ export default function BabyWatotoPage() {
                 &ldquo;Every child abandoned by this world is deeply treasured by God. When we embrace one vulnerable baby with Christ's unconditional love, we rewrite generations to come.&rdquo;
               </p>
               <p className="font-headline text-xs font-black uppercase tracking-widest text-action-yellow">
-                — Pastor Emmy Nyanzi, Founder &amp; Lead Pastor, Katonda Talemwa Ministries
+                — Pastor Emmanuel Nyanzi, Founder &amp; Lead Pastor, Katonda Talemwa Ministries
               </p>
             </div>
           </div>

@@ -18,52 +18,68 @@ interface ChurchGalleryItem {
 
 const churchGallery: ChurchGalleryItem[] = [
   {
-    id: 'worship-gathering',
-    title: 'Sunday Celebration Worship',
+    id: 'central-campus',
+    title: 'Central Campus Sanctuary',
     category: 'worship',
     location: 'Central Campus · Mbarara',
-    caption: 'Lifting praises with passionate congregational singing, expressive African rhythm, and uncompromised Bible teaching.',
-    image: IMAGES.church,
+    caption: 'The main church campus welcoming families and congregants for weekly celebration services, discipleship, and prayer.',
+    image: '/images/ptc6.jpeg',
   },
   {
-    id: 'children-choir',
-    title: 'Youth & Children\'s Choir',
-    category: 'choir',
-    location: 'East Africa Mission Tour',
-    caption: 'Our energetic choir ministers across districts sharing original African praise songs, dance, and testimonies of God’s faithfulness.',
-    image: IMAGES.spiritualGrowth,
+    id: 'nextgen-worship',
+    title: 'Next Generation in Worship',
+    category: 'worship',
+    location: 'Children’s Ministry',
+    caption: 'Children lifting their hands and voices in heartfelt, passionate worship and prayer across our village churches.',
+    image: '/images/ptc7.jpg',
   },
   {
-    id: 'rural-outreach',
-    title: 'Rural Village Evangelism',
+    id: 'praise-ministry',
+    title: 'Praise & Worship Ministry',
+    category: 'worship',
+    location: 'Rural Church Outpost',
+    caption: 'Lifting up the name of Jesus with vibrant vocal praise, indigenous melodies, and thanksgiving in rural congregations.',
+    image: '/images/ptc9.jpg',
+  },
+  {
+    id: 'youth-declaration',
+    title: 'Joyful Praise & Declaration',
+    category: 'worship',
+    location: 'Youth Fellowship',
+    caption: 'Young believers passionately worshiping God and declaring His goodness in fellowship and service.',
+    image: '/images/ptc8.jpg',
+  },
+  {
+    id: 'congregational-prayer',
+    title: 'Congregational Prayer & Intercession',
+    category: 'prayer',
+    location: 'Sanctuary Gathering',
+    caption: 'Believers standing with arms lifted high in unity, seeking God’s presence and interceding for communities across East Africa.',
+    image: '/images/ptc10.jpg',
+  },
+  {
+    id: 'rural-church-plant',
+    title: 'Rural Village Church Plant',
     category: 'outreach',
     location: 'Kyotera & Kalisizo',
-    caption: 'Taking the Good News door-to-door in remote villages, planting churches, and leading families into Christ’s love.',
-    image: IMAGES.villagesHero,
+    caption: 'A newly built brick church in the countryside, providing a spiritual home and community refuge for rural families.',
+    image: '/images/ptc4.jpeg',
   },
   {
-    id: 'family-fellowship',
-    title: 'Community Home Fellowship',
-    category: 'prayer',
-    location: 'Southwestern Uganda',
-    caption: 'Gathering in weekly small group home fellowships for deep biblical study, mutual care, and fervent prayer.',
-    image: IMAGES.heroHome,
-  },
-  {
-    id: 'mothers-prayer',
-    title: 'Women & Mothers of Faith',
-    category: 'prayer',
-    location: 'Mbarara District',
-    caption: 'Devoted mothers interceding for their households, children, and communities, standing as pillars of faith.',
-    image: IMAGES.watotoMother,
-  },
-  {
-    id: 'community-compassion',
-    title: 'Compassion & Relief Outreach',
+    id: 'village-fellowship',
+    title: 'Grassroots Community Fellowship',
     category: 'outreach',
-    location: 'Rural Outposts',
-    caption: 'Demonstrating the love of Christ tangibly through nutrition relief, clean water projects, and supporting vulnerable widows.',
-    image: IMAGES.neighbourhood,
+    location: 'Village Frontier',
+    caption: 'Gathering local families, elders, and children together for Sunday fellowship in rural frontier villages.',
+    image: '/images/ptc3.jpeg',
+  },
+  {
+    id: 'church-construction',
+    title: 'Building Houses of Hope',
+    category: 'outreach',
+    location: 'Church Construction Project',
+    caption: 'Constructing permanent church homes across Southwestern Uganda to anchor growing congregations and community outreach.',
+    image: '/images/ptc5.jpeg',
   },
 ]
 
@@ -293,12 +309,12 @@ export default function ChurchPage() {
             </div>
 
             {/* Gallery Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {churchGallery.map((item, idx) => (
                 <div
                   key={item.id}
                   data-aos="fade-up"
-                  data-aos-delay={(idx % 3) * 100}
+                  data-aos-delay={(idx % 4) * 80}
                   onClick={() => setLightboxItem(item)}
                   className="group relative bg-deep-black aspect-4/3 overflow-hidden cursor-pointer border border-outline-variant/60 shadow-sm"
                 >

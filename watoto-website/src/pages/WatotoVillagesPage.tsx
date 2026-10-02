@@ -327,20 +327,16 @@ export default function WatotoVillagesPage() {
                   location: 'Kyasenya Village, Uganda',
                   quote: 'God kept me alive from a tiny motherless baby into a healthy boy. Today, I am reunited with my family, and dreaming boldly of becoming an engineer.',
                   fallbackDesc: 'On the day Jeremiah was born, his mother died. She bled heavily right after delivery and died on the spot. Rescued as a newborn by a local pastor and brought to Katonda Talemwa Ministries, God kept him alive and healthy. Today, Jeremiah has grown into a bright, obedient boy and has been reunited with his father and brothers.',
-                  cta: 'Sponsor a Child',
-                  link: '/sponsor?tab=child',
                   bgAccent: 'bg-vibrant-green',
                 },
                 {
                   id: 'joseph-gratitude',
-                  fallbackImage: IMAGES.watotoMother,
+                  fallbackImage: IMAGES.josephGratitude,
                   tag: 'Testimony of Gratitude',
                   name: 'Joseph',
                   location: 'Kyasenya Village, Uganda',
                   quote: 'God saved my life from the pit when I had no voice to cry for help. I am filled with endless gratitude to Katonda Talemwa and my loving village mother who held me and loved me back to life. Today I am healthy, going to school, and dreaming of becoming a doctor.',
                   fallbackDesc: 'Discarded into a pit latrine as a newborn, Joseph miraculously survived before being rescued and welcomed into Katonda Talemwa Ministries. Facing critical infection, our caregivers and medical team fought for his life around the clock. Placed in the warm, permanent embrace of a loving village mother, Joseph was nurtured back to vibrant health. Today, he is a joyful, bright pupil whose heart overflows with praise and gratitude for the second chance at life God gave him.',
-                  cta: 'Support a Village Family',
-                  link: '/sponsor',
                   bgAccent: 'bg-secondary',
                 },
               ].map((story, i) => {
@@ -365,7 +361,7 @@ export default function WatotoVillagesPage() {
                     </div>
 
                     {/* Content */}
-                    <div className={`md:col-span-8 p-10 md:p-12 bg-surface flex flex-col justify-between gap-8 ${i === 1 ? 'md:order-1' : ''}`}>
+                    <div className={`md:col-span-8 p-10 md:p-12 bg-surface flex flex-col justify-center gap-6 ${i === 1 ? 'md:order-1' : ''}`}>
                       <div className="space-y-4">
                         <div>
                           <span className="text-[10px] uppercase font-bold tracking-widest text-on-surface-variant">{story.location}</span>
@@ -378,12 +374,6 @@ export default function WatotoVillagesPage() {
                           {profile?.description || story.fallbackDesc}
                         </p>
                       </div>
-                      <Link
-                        to={story.link}
-                        className="w-full sm:w-auto text-center bg-deep-black text-pure-white font-headline text-xs font-black uppercase tracking-widest px-8 py-4 hover:bg-vibrant-green active:scale-95 transition-all rounded-none self-start"
-                      >
-                        {story.cta}
-                      </Link>
                     </div>
                   </div>
                 )

@@ -245,6 +245,7 @@ export const IMAGES = {
   villagesHero: '/images/hope.jpg',
   spiritualGrowth: '/images/choir.jpg',
   watotoMother: '/images/mama joseph.JPG',
+  josephGratitude: '/images/josephl.jpeg',
   samuelCard: 'https://lh3.googleusercontent.com/aida-public/AB6AXuC1d-IqepttNZNtfb4n74R5nN8-AONvFjqf2lw0hkseRunpA4wEKnodClshsbkVCPD-1Kh7enuSQP4O9ykOreb4VLsxQF06IcI-JB9Sc1pVg49XbwDbQLhrFACYPbBDZ7qTGR45Jol2J7-B2oBmoc81DOccpwNWa3IndATWm8JVkdd-9hhwwgkSurBnc-VS4QJ-stykqHU1-J-IFgaTn6HYQSq35NTC9PXNNPqq2yos-DFjtieUy3d_ab1bs3rSH8gdn3trURRb2nQ',
   babyHero: '/images/17.jpeg',
   rescue: '/images/mama joseph.JPG',
