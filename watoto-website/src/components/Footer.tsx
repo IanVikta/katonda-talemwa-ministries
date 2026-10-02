@@ -105,6 +105,13 @@ export function UnifiedFooter() {
             <p className="text-xs leading-relaxed text-pure-white/50 font-light">
               Putting the Father&apos;s Love in Action: Katonda Talemwa Ministries (KTM) is dedicated to creating long-term, Christ-centered solutions for orphaned children, vulnerable youth, and families across Uganda.
             </p>
+
+            <div className="pt-1">
+              <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-none bg-pure-white/5 border border-pure-white/10 text-xs text-pure-white/70">
+                <MaterialIcon name="verified" className="text-vibrant-green text-sm shrink-0" />
+                <span>NGO Permit No: <strong className="font-mono text-pure-white font-semibold tracking-wider">INDR182527597NB</strong></span>
+              </span>
+            </div>
           </div>
 
           {/* Programs Column */}
@@ -183,6 +190,12 @@ export function UnifiedFooter() {
                   +256 705 118 356
                 </a>
               </li>
+              <li className="flex gap-3 items-center">
+                <MaterialIcon name="badge" className="text-vibrant-green text-base shrink-0" />
+                <span className="text-pure-white/70">
+                  NGO Permit No: <strong className="text-pure-white font-mono font-medium tracking-wide">INDR182527597NB</strong>
+                </span>
+              </li>
             </ul>
           </div>
 
@@ -190,9 +203,15 @@ export function UnifiedFooter() {
 
         {/* Footer Bottom Bar */}
         <div className="pt-8 flex flex-col md:flex-row justify-between items-center gap-6 text-xs font-light text-pure-white/40">
-          <div className="flex flex-col md:flex-row items-center gap-6">
+          <div className="flex flex-col md:flex-row items-center gap-3 md:gap-5 text-center md:text-left">
             <span>© 2026 Katonda Talemwa Ministries. All rights reserved.</span>
+            <span className="hidden md:inline text-pure-white/20">•</span>
+            <span className="text-pure-white/60">
+              Permit No: <span className="font-mono text-pure-white/80 font-medium tracking-wider">INDR182527597NB</span>
+            </span>
+          </div>
 
+          <div className="flex flex-col sm:flex-row items-center gap-6">
             {/* Inline SVG Social Icons for maximum visual crispness */}
             <div className="flex gap-4 items-center">
               <a href="https://www.facebook.com/share/1BQ3oj4wte/" aria-label="Facebook" className="hover:text-vibrant-green transition-colors">
