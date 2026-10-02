@@ -579,8 +579,8 @@ export default function SponsorPage() {
                       {/* Verse callout if present */}
                       {sponsoringChild.favoriteVerse && (
                         <div className="p-4 bg-vibrant-green/10 border-l-4 border-vibrant-green rounded-none space-y-1">
-                          <span className="text-[10px] font-black uppercase tracking-wider text-vibrant-green flex items-center gap-1">
-                            <MaterialIcon name="format_quote" className="text-xs" />
+                          <span className="text-[10px] font-black uppercase tracking-wider text-vibrant-green flex items-center gap-1.5">
+                            <MaterialIcon name="format_quote" className="w-3.5 h-3.5" />
                             Favorite Bible Verse
                           </span>
                           <p className="text-xs md:text-sm italic font-semibold text-deep-black leading-relaxed">

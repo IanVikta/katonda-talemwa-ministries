@@ -51,10 +51,10 @@ export default function KeepGirlInSchoolPage() {
               <img className="w-full h-full object-cover filter brightness-90 hover:brightness-100 transition-all" src={IMAGES.girlSchool} alt="Ugandan girls learning in classroom at Katonda Talemwa" />
             </div>
             <div className="aspect-[4/3] overflow-hidden">
-              <img className="w-full h-full object-cover filter brightness-90 hover:brightness-100 transition-all" src={IMAGES.villagesHero} alt="Katonda Talemwa village community in Uganda" />
+              <img className="w-full h-full object-cover filter brightness-90 hover:brightness-100 transition-all" src={IMAGES.em1} alt="Katonda Talemwa The Esther Mission outreach" />
             </div>
             <div className="aspect-[4/3] overflow-hidden">
-              <img className="w-full h-full object-cover filter brightness-90 hover:brightness-100 transition-all" src={IMAGES.spiritualGrowth} alt="Katonda Talemwa children choir singing" />
+              <img className="w-full h-full object-cover filter brightness-90 hover:brightness-100 transition-all" src={IMAGES.em2} alt="Katonda Talemwa The Esther Mission mentorship" />
             </div>
           </div>
         </section>

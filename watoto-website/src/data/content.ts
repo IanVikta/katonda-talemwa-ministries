@@ -143,7 +143,7 @@ export const children: ChildProfile[] = [
     favoriteVerse: '"For God so loved the world..." — John 3:16',
     story: `Catherine is the youngest of five siblings. Her family faced severe hardship after her father spent eight years battling intestinal cancer before passing away in 2024. The prolonged medical treatment exhausted the family's assets, leaving her widowed mother unable to afford education and care for the young children. To ensure Catherine receives a safe upbringing and quality foundational education, Katonda Talemwa Ministries welcomed her into its home. She is a joyful child who dreams of becoming a teacher.`,
     description: `Welcomed into KTM following her father's passing, 6-year-old Catherine is full of joy in Nursery and dreams of becoming a teacher.`,
-    image: '/images/IMG_7961.jpg',
+    image: '/images/catherine2.jpg',
     type: 'child',
   },
   {
@@ -177,14 +177,15 @@ export const children: ChildProfile[] = [
     type: 'child',
   },
   {
-    id: 'gerald',
-    name: 'Gerald',
-    age: 9,
+    id: 'jeremiah',
+    name: 'Jeremiah',
+    age: 10,
     gender: 'boy',
     location: 'Kyasenya, Lwengo',
     dreamCareer: 'Engineer',
-    description: 'Gerald lost both parents but has found a home, a mother, and brothers in a Katonda Talemwa Village. He wants to study and become an engineer.',
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuB7ZFiyCd-zuVvUi-0OmddhdIjLDAn0GyakIFih_rfN_pEnRHog443WYiNg9e1Ss04RBhDxpVA6-LrUhHPJq8Yl1OM7XH2Bzwy5LefcG2GCwLAa3CQuXH3ZL9wxSK4RwB74PlDkW7U7cuUePZTIW3MlqIK1nosuuth3Lbb4JRZG_j04IYTx4T2kwGXx7BIXaOzoZz3-6BDKDzI5HzT8eB1oFrsrojXm72nuu1mVx4FYfUahdZIluvQJ6Kjj_AkjRoxjExTgrVa_kXI',
+    story: 'On the day Jeremiah was born, his mother died. She bled heavily right after delivery and died on the spot. She left behind Jeremiah and his two elder brothers who were still small. Their father was shattered. With no job, no wife, and three little boys to feed, he fell into deep alcoholism and could not take care of his own children. The pastor of the nearby local church rescued Jeremiah and brought him to us. God has kept Jeremiah alive up to now. He grew from a tiny motherless baby into a healthy, bright and obedient boy. Three years back, Jeremiah was reunited with his father and two brothers.',
+    description: 'On the day Jeremiah was born, his mother died. She bled heavily right after delivery and died on the spot. She left behind Jeremiah and his two elder brothers who were still small. Their father was shattered. With no job, no wife, and three little boys to feed, he fell into deep alcoholism and could not take care of his own children. The pastor of the nearby local church rescued Jeremiah and brought him to us. God has kept Jeremiah alive up to now. He grew from a tiny motherless baby into a healthy, bright and obedient boy. Three years back, Jeremiah was reunited with his father and two brothers.',
+    image: '/images/jeremiah.jpg',
     type: 'child',
   },
   {
@@ -241,5 +242,7 @@ export const IMAGES = {
   studentLife: '/images/15.jpeg',
   childSponsorship: '/images/16.jpeg',
   emmanuelBabiesCare: '/images/baby.jpg',
-  kateClinic: '/images/clinic.jpg',
+  kateClinic: '/images/jude.jpg',
+  em1: '/images/em1.JPG',
+  em2: '/images/em2.JPG',
 }

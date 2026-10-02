@@ -320,13 +320,13 @@ export default function WatotoVillagesPage() {
             <div className="space-y-px">
               {[
                 {
-                  id: 'gerald',
-                  fallbackImage: IMAGES.villagesHero,
+                  id: 'jeremiah',
+                  fallbackImage: '/images/jeremiah.jpg',
                   tag: 'Child’s Journey',
-                  name: 'Gerald',
+                  name: 'Jeremiah',
                   location: 'Kyasenya Village, Uganda',
-                  quote: 'I once spent every night crying in fear. Today, I am surrounded by brothers, protected by a loving mother, and dreaming boldly of becoming an engineer.',
-                  fallbackDesc: 'After losing both parents to sickness at just four years old, Gerald arrived at our Kyasenya village fragile, malnourished, and withdrawn. Wrapped in the steady love of a village family and equipped through our school, he now leads his class in mathematics with an infectious smile.',
+                  quote: 'God kept me alive from a tiny motherless baby into a healthy boy. Today, I am reunited with my family, and dreaming boldly of becoming an engineer.',
+                  fallbackDesc: 'On the day Jeremiah was born, his mother died. She bled heavily right after delivery and died on the spot. Rescued as a newborn by a local pastor and brought to Katonda Talemwa Ministries, God kept him alive and healthy. Today, Jeremiah has grown into a bright, obedient boy and has been reunited with his father and brothers.',
                   cta: 'Sponsor a Child',
                   link: '/sponsor?tab=child',
                   bgAccent: 'bg-vibrant-green',
