@@ -270,7 +270,7 @@ export default function KateClinicPage() {
               <div className="flex items-center gap-4">
                 <div className="w-20 h-20 overflow-hidden shrink-0 border-2 border-outline-variant/60 rounded-none">
                   <img
-                    src={IMAGES.kateClinic}
+                    src={IMAGES.jude}
                     alt="Walakira Jude, Head of Kate Clinic"
                     className="w-full h-full object-cover"
                   />

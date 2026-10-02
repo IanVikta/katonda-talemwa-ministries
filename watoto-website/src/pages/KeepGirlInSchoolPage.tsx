@@ -138,7 +138,7 @@ export default function KeepGirlInSchoolPage() {
           </div>
         </section>
 
-        {/* Aisha's Success Journal */}
+        {/* Sherinah's Success Journal */}
         <section className="py-24 bg-surface-container">
           <div className="max-w-(--spacing-container-max) mx-auto px-4 md:px-margin-desktop grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-stretch">
 
@@ -146,12 +146,12 @@ export default function KeepGirlInSchoolPage() {
             <ScrollReveal animation="zoom-in" className="lg:col-span-5 border border-outline-variant/60 p-2 bg-surface flex flex-col justify-between h-full rounded-none shadow-sm">
               <img
                 className="w-full aspect-square object-cover rounded-none"
-                src="/images/aisha.jpg"
-                alt="Aisha, student supported by Katonda Talemwa Keep a Girl in School initiative"
+                src="/images/sherinah.JPG"
+                alt="Sherinah Namulinde, student supported by Katonda Talemwa Keep a Girl in School initiative"
               />
               <div className="p-4 bg-surface-container-low mt-2 border border-outline-variant/30 text-center">
-                <span className="text-[10px] uppercase tracking-widest text-vibrant-green font-bold block mb-1">Aisha&apos;s Profile</span>
-                <p className="text-[11px] font-semibold text-deep-black">Age: 14 | Grade: Primary 7 | Gulu district</p>
+                <span className="text-[10px] uppercase tracking-widest text-vibrant-green font-bold block mb-1">Sherinah&apos;s Profile</span>
+                <p className="text-[11px] font-semibold text-deep-black">Age: 13 | Grade: Primary 6 | Kyasenya, Lwengo</p>
               </div>
             </ScrollReveal>
 
@@ -167,22 +167,22 @@ export default function KeepGirlInSchoolPage() {
                   of class anymore.&rdquo;
                 </h3>
                 <p className="text-sm font-light text-on-surface-variant leading-relaxed">
-                  Before I received my kit, I was missing 4 or 5 days of school every month. When I stayed home, my lessons piled up and my exams were difficult. My father was thinking of pulling me out of school.
+                  Before I received regular sanitary support, managing my period each month was overwhelming. Without proper supplies, I was forced to miss 4 or 5 days of school every month. When I stayed home, my lessons piled up, and I worried constantly that I would fall behind in my studies.
                 </p>
                 <p className="text-sm font-light text-on-surface-variant leading-relaxed">
-                  Once the Katonda Talemwa team visited our school and gave us kits and counseling, everything changed. I had the confidence to attend every class. My scores went up, I came first in my exams, and I got a high school scholarship!
+                  Through Katonda Talemwa&apos;s Esther Mission, everything turned around. We received monthly hygiene kits, menstrual health counseling, and encouragement rooted in God&apos;s love. Now I have the dignity and confidence to attend every class without fear. My grades have improved, I am thriving in Primary 6, and I know God has a bright plan for my life!
                 </p>
               </div>
               <div className="mt-8 pt-6 border-t border-outline-variant/40 flex flex-col sm:flex-row items-center justify-between gap-4">
                 <div className="flex items-center gap-2">
                   <MaterialIcon name="verified" className="text-vibrant-green text-lg" filled />
-                  <span className="font-bold text-xs text-deep-black uppercase tracking-wider">Perfect Attendance Graduate</span>
+                  <span className="font-bold text-xs text-deep-black uppercase tracking-wider">Perfect Attendance Scholar</span>
                 </div>
                 <Link
-                  to="/donate"
+                  to="/donate?designation=The+Esther+Mission"
                   className="w-full sm:w-auto bg-secondary text-pure-white px-8 py-3.5 rounded-none font-headline text-button-text uppercase tracking-widest hover:brightness-110 active:scale-95 transition-all font-black text-center text-xs shadow-md"
                 >
-                  Fund a Kit Like Aisha&apos;s
+                  Fund a Kit Like Sherinah&apos;s
                 </Link>
               </div>
             </ScrollReveal>

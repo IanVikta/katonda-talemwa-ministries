@@ -320,7 +320,7 @@ export default function WatotoVillagesPage() {
             <div className="space-y-px">
               {[
                 {
-                  id: 'jeremiah',
+                  id: 'jeremiah-journey',
                   fallbackImage: '/images/jeremiah.jpg',
                   tag: 'Child’s Journey',
                   name: 'Jeremiah',
@@ -332,13 +332,13 @@ export default function WatotoVillagesPage() {
                   bgAccent: 'bg-vibrant-green',
                 },
                 {
-                  id: 'mama_phiona',
+                  id: 'joseph-gratitude',
                   fallbackImage: IMAGES.watotoMother,
-                  tag: 'Devoted Village Mother',
-                  name: 'Mama Phiona',
+                  tag: 'Testimony of Gratitude',
+                  name: 'Joseph',
                   location: 'Kyasenya Village, Uganda',
-                  quote: 'When I lost my husband, grief made me believe my days had lost all meaning. Katonda Talemwa entrusted me with seven precious children and gave my life a divine purpose.',
-                  fallbackDesc: 'Joining the ministry as a house mother in 2010, Mama Phiona has lovingly mothered more than fifteen boys and girls into capable adulthood, while actively coaching and encouraging newly welcomed mothers.',
+                  quote: 'God saved my life from the pit when I had no voice to cry for help. I am filled with endless gratitude to Katonda Talemwa and my loving village mother who held me and loved me back to life. Today I am healthy, going to school, and dreaming of becoming a doctor.',
+                  fallbackDesc: 'Discarded into a pit latrine as a newborn, Joseph miraculously survived before being rescued and welcomed into Katonda Talemwa Ministries. Facing critical infection, our caregivers and medical team fought for his life around the clock. Placed in the warm, permanent embrace of a loving village mother, Joseph was nurtured back to vibrant health. Today, he is a joyful, bright pupil whose heart overflows with praise and gratitude for the second chance at life God gave him.',
                   cta: 'Support a Village Family',
                   link: '/sponsor',
                   bgAccent: 'bg-secondary',
@@ -394,20 +394,20 @@ export default function WatotoVillagesPage() {
 
         {/* ── CLOSING CTA: Split panel ── */}
         <section className="grid grid-cols-1 md:grid-cols-2 border-t border-outline-variant/30">
-          {/* Left: Samuel sponsor card */}
+          {/* Left: Irene sponsor card */}
           <div data-aos="fade-right" className="bg-surface-container-low p-12 md:p-16 flex flex-col justify-center space-y-6 border-r border-outline-variant/30">
-            <span className="text-[10px] uppercase font-extrabold tracking-widest text-vibrant-green block">Meet Samuel — Age 8</span>
+            <span className="text-[10px] uppercase font-extrabold tracking-widest text-vibrant-green block">Meet Irene — Age 12</span>
             <div className="border border-outline-variant/60 overflow-hidden rounded-none">
-              <img className="w-full aspect-video object-cover" src={IMAGES.samuelCard} alt="Samuel, a sponsored child at Katonda Talemwa Ministries" />
+              <img className="w-full aspect-video object-cover object-top" src="/images/irene.JPG" alt="Irene Ntabadde, a child awaiting sponsorship at Katonda Talemwa Ministries" />
             </div>
             <p className="text-sm text-on-surface-variant font-light leading-relaxed">
-              Energetic and full of joy, Samuel is in Primary 3 and longs to become a medical doctor so he can heal others. An avid football enthusiast, he never ends a day without gathering with his village mother to give thanks in prayer.
+              Bright and full of quiet courage, 12-year-old Irene is in Primary 6 and dreams boldly of taking to the skies as a pilot. Raised by her aunt after her parents&apos; separation left her in an overburdened family of eight siblings, she has found stability, loving village care, and spiritual discipleship at Katonda Talemwa. Anchored in Psalm 23:1, Irene studies diligently every day with a joyful heart.
             </p>
             <Link
               to="/sponsor?tab=child"
               className="w-full text-center bg-vibrant-green text-pure-white font-headline text-xs font-black uppercase tracking-widest px-8 py-4 hover:brightness-110 active:scale-95 transition-all rounded-none"
             >
-              Sponsor Samuel — $38/mo
+              Sponsor Irene — $38/mo
             </Link>
           </div>
 

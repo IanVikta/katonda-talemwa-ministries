@@ -274,12 +274,12 @@ export default function WhoWeArePage() {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 {[
                   {
-                    name: 'Pr. Emmy & Sarah Nnyanzi',
+                    name: 'Pr. Emmanuel & Sarah Nnyanzi',
                     role: 'Founding Directors',
                     badge: 'Founding Directors',
                     initials: 'ES',
                     image: '/images/founders.jpg',
-                    bio: 'Founded Katonda Talemwa Ministries in 1989. Pastor Emmy and Sarah provide visionary apostolic oversight, spiritual shepherding, and pastoral care across all KTM community initiatives and church fellowships in Uganda.',
+                    bio: 'Founded Katonda Talemwa Ministries in 1989. Pastor Emmanuel and Sarah provide visionary apostolic oversight, spiritual shepherding, and pastoral care across all KTM community initiatives and church fellowships in Uganda.',
                   },
                   {
                     name: 'Solomon SSerwadda',
@@ -371,7 +371,7 @@ export default function WhoWeArePage() {
                     role: 'Head of Kate Clinic',
                     badge: 'Healthcare Lead',
                     initials: 'WJ',
-                    // image: '/images/clinic.jpg',
+                    image: IMAGES.jude,
                     bio: 'Directs clinical triage, emergency pediatric care, routine immunizations, and community healthcare outreach serving mothers and children at Kate Clinic.',
                   },
                   {
