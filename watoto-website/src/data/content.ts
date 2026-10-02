@@ -257,7 +257,7 @@ export const IMAGES = {
   studentLife: '/images/15.jpeg',
   childSponsorship: '/images/16.jpeg',
   emmanuelBabiesCare: '/images/baby.jpg',
-  kateClinic: '/images/clinic.jpg',
+  kateClinic: '/images/kate.jpg',
   jude: '/images/jude.jpg',
   irene: '/images/irene.JPG',
   em1: '/images/em1.JPG',
