@@ -62,14 +62,24 @@ export default function WhoWeArePage() {
                 </p>
               </div>
 
-              {/* Right Column: Image Placeholder & Quick Stats */}
-              <div className="lg:col-span-5 relative">
+              {/* Right Column: Founders Image */}
+              <div className="lg:col-span-5 relative group">
                 <div className="absolute -right-4 -bottom-4 w-full h-full bg-vibrant-green/10 -z-10 rounded-lg" />
-                <div className="w-full aspect-[4/3] bg-surface-container rounded-lg border-b-8 border-vibrant-green flex items-center justify-center overflow-hidden shadow-lg">
-                  <div className="text-center p-6 space-y-2">
-                    <MaterialIcon name="groups" className="text-vibrant-green text-5xl" />
-                    <p className="font-headline text-xs font-black uppercase tracking-widest text-deep-black">KTM Founders & Team</p>
-                    <p className="text-xxs text-on-surface-variant max-w-[240px] font-semibold">Empowering and rescuing communities in East Africa</p>
+                <div className="w-full aspect-[4/3] bg-surface rounded-lg border-b-8 border-vibrant-green overflow-hidden shadow-lg relative">
+                  <img
+                    src="/images/pr and mama.jpg"
+                    alt="Pastor Emmanuel and Sarah Nnyanzi - Katonda Talemwa Ministries Founders"
+                    className="w-full h-full object-cover object-[center_20%] group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-deep-black/85 via-deep-black/25 to-transparent pointer-events-none" />
+                  <div className="absolute bottom-4 left-4 right-4 text-pure-white space-y-1">
+                    <div className="flex items-center gap-1.5 text-action-yellow font-headline text-xs font-black uppercase tracking-widest">
+                      <MaterialIcon name="groups" className="text-base" />
+                      <span>KTM Founders</span>
+                    </div>
+                    <p className="text-xxs text-pure-white/90 font-medium leading-tight">
+                      Pastor Emmanuel &amp; Sarah Nnyanzi &bull; Empowering communities in East Africa
+                    </p>
                   </div>
                 </div>
               </div>
@@ -279,6 +289,7 @@ export default function WhoWeArePage() {
                     badge: 'Founding Directors',
                     initials: 'ES',
                     image: '/images/founders.jpg',
+                    imagePos: 'object-center',
                     bio: 'Founded Katonda Talemwa Ministries in 1989. Pastor Emmanuel and Sarah provide visionary apostolic oversight, spiritual shepherding, and pastoral care across all KTM community initiatives and church fellowships in Uganda.',
                   },
                   {
@@ -286,6 +297,8 @@ export default function WhoWeArePage() {
                     role: 'Executive Director',
                     badge: 'Executive Director',
                     initials: 'SS',
+                    image: '/images/solomon.jpeg',
+                    imagePos: 'object-[center_12%]',
                     bio: 'Leads strategic execution, institutional governance, administrative development, and international partner relations to advance KTM\'s long-term mission and sustainable community impact.',
                   },
                   {
@@ -293,19 +306,21 @@ export default function WhoWeArePage() {
                     role: 'Operations Manager',
                     badge: 'Operations Manager',
                     initials: 'NF',
+                    image: '/images/nsereko faith.jpeg',
+                    imagePos: 'object-[center_20%]',
                     bio: 'Directs day-to-day ministry operations, staff coordination, facility logistics, compliance, and campus-wide program implementation across all Katonda Talemwa centers.',
                   },
-                ].map((member) => (
+                ].map((member: { name: string; role: string; badge: string; initials: string; bio: string; image?: string; imagePos?: string }) => (
                   <div
                     key={member.name}
                     className="bg-surface border-2 border-outline-variant/60 hover:border-vibrant-green rounded-none overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 flex flex-col group"
                   >
-                    <div className="relative aspect-[4/3] bg-deep-black overflow-hidden">
+                    <div className="relative aspect-square bg-deep-black overflow-hidden">
                       {member.image ? (
                         <img
                           src={member.image}
                           alt={`${member.name} - ${member.role}`}
-                          className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500 filter brightness-95"
+                          className={`w-full h-full object-cover ${member.imagePos || 'object-top'} group-hover:scale-105 transition-transform duration-500`}
                         />
                       ) : (
                         <div className="w-full h-full bg-gradient-to-br from-[#0c2214] via-[#05180c] to-deep-black flex flex-col items-center justify-center relative overflow-hidden">
@@ -314,7 +329,7 @@ export default function WhoWeArePage() {
                           </div>
                         </div>
                       )}
-                      <div className="absolute inset-0 bg-gradient-to-t from-deep-black/80 via-transparent to-transparent" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-deep-black/50 via-transparent to-transparent pointer-events-none" />
                       <div className="absolute top-3 left-3 bg-action-yellow text-deep-black text-[9px] font-black uppercase tracking-widest px-2.5 py-1">
                         {member.badge}
                       </div>
@@ -364,6 +379,7 @@ export default function WhoWeArePage() {
                     role: 'Accountant',
                     badge: 'Finance & Accounts',
                     initials: 'NJ',
+                    image: '/images/juliet nnyanzi.jpeg',
                     bio: 'Stewards financial planning, budget management, donor fund accountability, and institutional reporting with integrity and transparency.',
                   },
                   {
@@ -371,7 +387,7 @@ export default function WhoWeArePage() {
                     role: 'Head of Kate Clinic',
                     badge: 'Healthcare Lead',
                     initials: 'WJ',
-                    image: IMAGES.jude,
+                    image: '/images/jude walakira.jpeg',
                     bio: 'Directs clinical triage, emergency pediatric care, routine immunizations, and community healthcare outreach serving mothers and children at Kate Clinic.',
                   },
                   {
@@ -379,10 +395,10 @@ export default function WhoWeArePage() {
                     role: 'KTM Churches Coordinator',
                     badge: 'Church Ministries',
                     initials: 'KE',
-                    // image: '/images/church-1.jpg',
+                    image: '/images/kimbugwe emmanuel.jpeg',
                     bio: 'Coordinates community church fellowships, discipleship initiatives, pastoral care networks, and evangelistic outreaches across rural villages.',
                   },
-                ].map((member) => (
+                ].map((member: { name: string; role: string; badge: string; initials: string; bio: string; image?: string; imagePos?: string }) => (
                   <div
                     key={member.name}
                     className="bg-surface border border-outline-variant/60 hover:border-vibrant-green/80 rounded-none overflow-hidden shadow-xs hover:shadow-md transition-all duration-300 flex flex-col group"
@@ -392,7 +408,7 @@ export default function WhoWeArePage() {
                         <img
                           src={member.image}
                           alt={`${member.name} - ${member.role}`}
-                          className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500 filter brightness-95"
+                          className={`w-full h-full object-cover ${member.imagePos || 'object-top'} group-hover:scale-105 transition-transform duration-500`}
                         />
                       ) : (
                         <div className="w-full h-full bg-gradient-to-br from-[#0c2214] via-[#05180c] to-deep-black flex flex-col items-center justify-center relative overflow-hidden">
@@ -401,7 +417,7 @@ export default function WhoWeArePage() {
                           </div>
                         </div>
                       )}
-                      <div className="absolute inset-0 bg-gradient-to-t from-deep-black/70 via-transparent to-transparent" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-deep-black/50 via-transparent to-transparent pointer-events-none" />
                       <div className="absolute top-2.5 left-2.5 bg-deep-black/85 text-pure-white text-[8px] font-bold uppercase tracking-widest px-2 py-0.5 border-l-2 border-action-yellow">
                         {member.badge}
                       </div>
@@ -443,7 +459,8 @@ export default function WhoWeArePage() {
                     role: 'The Esther Mission Coordinator',
                     badge: 'The Esther Mission',
                     initials: 'MN',
-                    // image: '/images/girl.jpg',
+                    image: '/images/milly namukwaya.jpeg',
+                    imagePos: 'object-[center_15%]',
                     bio: 'Leads The Esther Mission initiatives, coordinating menstrual hygiene kit distribution, health workshops, and school retention programs for young girls.',
                   },
                   {
@@ -451,6 +468,8 @@ export default function WhoWeArePage() {
                     role: 'Media & IT Support',
                     badge: 'Media & Technology',
                     initials: 'IV',
+                    image: '/images/ian victor.jpg',
+                    imagePos: 'object-[center_15%]',
                     bio: 'Drives digital infrastructure, media production, systems support, and online communications to amplify KTM\'s story and global engagement.',
                   },
                   {
@@ -458,19 +477,21 @@ export default function WhoWeArePage() {
                     role: 'Skilling Coordinator',
                     badge: 'Vocational Skilling',
                     initials: 'GN',
+                    image: '/images/grace nnyanzi.jpeg',
+                    imagePos: 'object-[30%_center]',
                     bio: 'Oversees community skilling, practical craftsmanship workshops, and vocational empowerment initiatives for vulnerable youth and women.',
                   },
-                ].map((member: { name: string; role: string; badge: string; initials: string; bio: string; image?: string }) => (
+                ].map((member: { name: string; role: string; badge: string; initials: string; bio: string; image?: string; imagePos?: string }) => (
                   <div
                     key={member.name}
                     className="bg-surface border border-outline-variant/60 hover:border-vibrant-green rounded-none overflow-hidden shadow-xs hover:shadow-md transition-all duration-300 flex flex-col group"
                   >
-                    <div className="relative aspect-[4/3] bg-deep-black overflow-hidden">
+                    <div className="relative aspect-square bg-deep-black overflow-hidden">
                       {member.image ? (
                         <img
                           src={member.image}
                           alt={`${member.name} - ${member.role}`}
-                          className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500 filter brightness-95"
+                          className={`w-full h-full object-cover ${member.imagePos || 'object-top'} group-hover:scale-105 transition-transform duration-500`}
                         />
                       ) : (
                         <div className="w-full h-full bg-gradient-to-br from-[#0c2214] via-[#05180c] to-deep-black flex flex-col items-center justify-center relative overflow-hidden">
@@ -479,7 +500,7 @@ export default function WhoWeArePage() {
                           </div>
                         </div>
                       )}
-                      <div className="absolute inset-0 bg-gradient-to-t from-deep-black/70 via-transparent to-transparent" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-deep-black/50 via-transparent to-transparent pointer-events-none" />
                       <div className="absolute top-3 left-3 bg-vibrant-green text-pure-white text-[9px] font-extrabold uppercase tracking-widest px-2.5 py-1">
                         {member.badge}
                       </div>
