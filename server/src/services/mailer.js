@@ -277,7 +277,12 @@ function buildHtmlEmail({
  * @param {Object} options.data
  */
 export async function sendNotification({ type, data }) {
-  const recipient = process.env.NOTIFICATION_EMAIL || 'kategereian@gmail.com';
+  const rawRecipients = process.env.NOTIFICATION_EMAIL || 'kategereian@gmail.com';
+  const recipients = rawRecipients
+    .split(',')
+    .map(email => email.trim())
+    .filter(Boolean);
+
   const transporter = getTransporter();
 
   let subject = '';
@@ -579,7 +584,7 @@ export async function sendNotification({ type, data }) {
   // If SMTP is not yet configured with user/pass in .env, simulate delivery
   if (!transporter) {
     console.log(`\n📨 [Mailer Simulation] Notice: SMTP_USER and SMTP_PASS are not set`);
-    console.log(`   To: ${recipient}`);
+    console.log(`   To: ${recipients.join(', ')}`);
     console.log(`   Subject: ${subject}\n`);
     return { success: true, simulated: true };
   }
@@ -589,15 +594,15 @@ export async function sendNotification({ type, data }) {
     const sender = process.env.SMTP_USER;
     const info = await transporter.sendMail({
       from: `"Katonda Talemwa Ministries" <${sender}>`,
-      to: recipient,
+      to: recipients,
       subject,
       html
     });
 
-    console.log(`✉️ Notification email sent to ${recipient} (Message ID: ${info.messageId})`);
+    console.log(`✉️ Notification email sent to [${recipients.join(', ')}] (Message ID: ${info.messageId})`);
     return { success: true, messageId: info.messageId };
   } catch (error) {
-    console.error(`⚠️ Failed to send notification email to ${recipient}:`, error.message);
+    console.error(`⚠️ Failed to send notification email to [${recipients.join(', ')}]:`, error.message);
     return { success: false, error: error.message };
   }
 }
