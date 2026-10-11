@@ -32,11 +32,13 @@ app.use(cors({
     // Allow requests with no origin (like mobile apps, curl, postman)
     if (!origin) return callback(null, true);
     
-    // Check if origin matches allowed list or cloudflare / railway domains
+    // Check if origin matches allowed list or cloudflare / railway / vercel domains
     const isAllowed = allowedOrigins.some(allowed => origin === allowed) ||
       origin.endsWith('.pages.dev') ||
       origin.endsWith('.railway.app') ||
-      origin.includes('localhost');
+      origin.endsWith('.vercel.app') ||
+      origin.includes('localhost') ||
+      origin.includes('127.0.0.1');
 
     if (isAllowed) {
       return callback(null, true);
