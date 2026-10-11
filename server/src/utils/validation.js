@@ -57,8 +57,8 @@ export function validateName(name, fieldName = 'Name', isRequired = true) {
     };
   }
 
-  // Allow international unicode letters, spaces, hyphens, and apostrophes
-  const nameRegex = /^[\p{L}\s\-'.]+$/u;
+  // Allow international unicode letters, spaces, hyphens, mobile curly apostrophes, and periods
+  const nameRegex = /^[\p{L}\s\-'’‘.—–]+$/u;
   if (!nameRegex.test(trimmed)) {
     return {
       isValid: false,

@@ -23,8 +23,8 @@ export function isValidName(name: string): boolean {
   if (trimmed.length < 2) return false;
   // Disallow any numeric digits
   if (/\d/.test(trimmed)) return false;
-  // Allow unicode letters, spaces, hyphens, apostrophes, and periods
-  return /^[\p{L}\s\-'.]+$/u.test(trimmed);
+  // Allow unicode letters, spaces, hyphens, mobile curly apostrophes, and periods
+  return /^[\p{L}\s\-'’‘.—–]+$/u.test(trimmed);
 }
 
 export function isValidEmail(email: string): boolean {
