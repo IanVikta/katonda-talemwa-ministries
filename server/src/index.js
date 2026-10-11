@@ -32,8 +32,9 @@ app.use(cors({
     // Allow requests with no origin (like mobile apps, curl, postman)
     if (!origin) return callback(null, true);
     
-    // Check if origin matches allowed list or cloudflare / railway / vercel domains
+    // Check if origin matches allowed list or cloudflare / railway / vercel / KTM domains
     const isAllowed = allowedOrigins.some(allowed => origin === allowed) ||
+      origin.includes('katondatalemwa') ||
       origin.endsWith('.pages.dev') ||
       origin.endsWith('.railway.app') ||
       origin.endsWith('.vercel.app') ||
