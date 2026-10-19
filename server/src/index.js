@@ -12,6 +12,7 @@ import careersRoutes from './routes/careers.js';
 import exchangeRoutes from './routes/exchange.js';
 import prayersRoutes from './routes/prayers.js';
 import newsletterRoutes from './routes/newsletter.js';
+import { sendNotification } from './services/mailer.js';
 
 dotenv.config();
 
@@ -62,6 +63,24 @@ app.get(['/health', '/api/health'], (req, res) => {
     timestamp: new Date().toISOString(),
     uptime: process.uptime()
   });
+});
+
+// Diagnostic Email Verification Endpoint
+app.get('/api/test-email', async (req, res) => {
+  try {
+    const result = await sendNotification({
+      type: 'contact',
+      data: {
+        name: 'Railway Diagnostic Probe',
+        email: 'probe@katondatalemwa.org',
+        subject: 'Railway Live Mailer Test',
+        message: 'Verifying that Railway container can connect to Gmail SMTP and deliver emails.'
+      }
+    });
+    return res.json({ success: true, result });
+  } catch (err) {
+    return res.status(500).json({ success: false, error: err.message, stack: err.stack });
+  }
 });
 
 // Root / Welcome Endpoint
