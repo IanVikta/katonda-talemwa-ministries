@@ -8,15 +8,31 @@ dotenv.config();
  * Supports Gmail SMTP or any custom SMTP provider.
  */
 function getTransporter() {
-  const host = process.env.SMTP_HOST || 'smtp.gmail.com';
-  const port = parseInt(process.env.SMTP_PORT || '465', 10);
-  const secure = process.env.SMTP_SECURE !== 'false'; // true for 465
   const user = process.env.SMTP_USER;
   const pass = process.env.SMTP_PASS;
 
   if (!user || !pass) {
     return null;
   }
+
+  const host = process.env.SMTP_HOST || 'smtp.gmail.com';
+
+  // If using Gmail, nodemailer's built-in 'service: gmail' handles SSL/TLS ports (587/465) automatically
+  if (host.includes('gmail')) {
+    return nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user,
+        pass
+      },
+      connectionTimeout: 10000,
+      greetingTimeout: 10000,
+      socketTimeout: 15000
+    });
+  }
+
+  const port = parseInt(process.env.SMTP_PORT || '587', 10);
+  const secure = process.env.SMTP_SECURE === 'true' || port === 465;
 
   return nodemailer.createTransport({
     host,
@@ -25,7 +41,10 @@ function getTransporter() {
     auth: {
       user,
       pass
-    }
+    },
+    connectionTimeout: 10000,
+    greetingTimeout: 10000,
+    socketTimeout: 15000
   });
 }
 
