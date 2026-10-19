@@ -3,7 +3,11 @@
  * Connects frontend forms to backend on Railway or Localhost
  */
 
-const API_BASE_URL = (import.meta.env.VITE_API_URL || 'http://localhost:5000').replace(/\/$/, '');
+const RAILWAY_PROD_URL = 'https://katonda-talemwa-ministries-production.up.railway.app';
+const API_BASE_URL = (
+  import.meta.env.VITE_API_URL ||
+  (import.meta.env.PROD ? RAILWAY_PROD_URL : 'http://localhost:5000')
+).replace(/\/$/, '');
 
 async function postJSON<T = any>(endpoint: string, data: any): Promise<{ success: boolean; message?: string; error?: string; data?: T }> {
   try {
