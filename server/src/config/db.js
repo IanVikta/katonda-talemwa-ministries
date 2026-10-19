@@ -22,6 +22,7 @@ function getDbConfig() {
       waitForConnections: true,
       connectionLimit: 10,
       queueLimit: 0,
+      connectTimeout: 4000,
       enableKeepAlive: true,
       keepAliveInitialDelay: 0
     };
@@ -36,6 +37,7 @@ function getDbConfig() {
     waitForConnections: true,
     connectionLimit: 10,
     queueLimit: 0,
+    connectTimeout: 4000,
     enableKeepAlive: true,
     keepAliveInitialDelay: 0
   };

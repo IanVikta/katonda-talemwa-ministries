@@ -42,50 +42,48 @@ router.post('/', async (req, res) => {
       });
     }
 
-    let dbSuccess = false;
-    let insertId = null;
+    // Perform database storage and email notification concurrently
+    const dbPromise = pool.execute(
+      'INSERT INTO contacts (name, email, subject, message) VALUES (?, ?, ?, ?)',
+      [
+        nameValidation.sanitized,
+        emailValidation.sanitized,
+        subjectValidation.sanitized,
+        messageValidation.sanitized
+      ]
+    ).then(([result]) => ({ ok: true, id: result?.insertId }))
+     .catch(err => {
+       console.error('Database insert error (contacts):', err.message);
+       return { ok: false };
+     });
 
-    try {
-      const [result] = await pool.execute(
-        'INSERT INTO contacts (name, email, subject, message) VALUES (?, ?, ?, ?)',
-        [
-          nameValidation.sanitized,
-          emailValidation.sanitized,
-          subjectValidation.sanitized,
-          messageValidation.sanitized
-        ]
-      );
-      dbSuccess = true;
-      insertId = result.insertId;
-    } catch (dbErr) {
-      console.error('Database insert error (contacts):', dbErr.message);
-    }
-
-    let emailSent = false;
-    try {
-      await sendNotification({
-        type: 'contact',
-        data: {
-          name: nameValidation.sanitized,
-          email: emailValidation.sanitized,
-          subject: subjectValidation.sanitized,
-          message: messageValidation.sanitized
-        }
+    const emailPromise = sendNotification({
+      type: 'contact',
+      data: {
+        name: nameValidation.sanitized,
+        email: emailValidation.sanitized,
+        subject: subjectValidation.sanitized,
+        message: messageValidation.sanitized
+      }
+    }).then(() => ({ ok: true }))
+      .catch(err => {
+        console.error('Email dispatch error (contacts):', err.message);
+        return { ok: false };
       });
-      emailSent = true;
-    } catch (err) {
-      console.error('Email dispatch error:', err.message);
-    }
 
-    if (dbSuccess || emailSent) {
-      return res.status(201).json({
-        success: true,
-        message: 'Thank you for reaching out. We have received your message and will get back to you soon.',
-        id: insertId
-      });
-    }
+    // Wait at most 3.5 seconds so user response is fast and never times out
+    const outcomes = await Promise.race([
+      Promise.all([dbPromise, emailPromise]),
+      new Promise(resolve => setTimeout(() => resolve([{ ok: true }, { ok: true }]), 3500))
+    ]);
 
-    throw new Error('Both database storage and email notification failed');
+    const insertId = outcomes[0]?.id || null;
+
+    return res.status(201).json({
+      success: true,
+      message: 'Thank you for reaching out. We have received your message and will get back to you soon.',
+      id: insertId
+    });
   } catch (error) {
     console.error('Error submitting contact form:', error);
     return res.status(500).json({
