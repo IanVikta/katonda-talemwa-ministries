@@ -72,6 +72,10 @@ app.get(['/health', '/api/health'], (req, res) => {
 
 // Diagnostic Email Verification Endpoint
 app.get('/api/test-email', async (req, res) => {
+  const hasResend = Boolean(process.env.RESEND_API_KEY);
+  const resendPrefix = process.env.RESEND_API_KEY ? process.env.RESEND_API_KEY.substring(0, 5) + '...' : 'none';
+  const envKeys = Object.keys(process.env).filter(k => !k.includes('PASS') && !k.includes('SECRET') && !k.includes('TOKEN'));
+
   try {
     const result = await sendNotification({
       type: 'contact',
@@ -82,9 +86,9 @@ app.get('/api/test-email', async (req, res) => {
         message: 'Verifying that Railway container can connect to Gmail SMTP and deliver emails.'
       }
     });
-    return res.json({ success: true, result });
+    return res.json({ success: true, hasResend, resendPrefix, envKeys, result });
   } catch (err) {
-    return res.status(500).json({ success: false, error: err.message, stack: err.stack });
+    return res.status(500).json({ success: false, hasResend, resendPrefix, envKeys, error: err.message });
   }
 });
 
