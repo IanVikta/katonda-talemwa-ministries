@@ -598,15 +598,37 @@ export async function sendNotification({ type, data }) {
 
   const html = buildHtmlEmail(payload);
 
-  // If SMTP is not yet configured with user/pass in .env, simulate delivery
-  if (!transporter) {
-    console.log(`\n📨 [Mailer Simulation] Notice: SMTP_USER and SMTP_PASS are not set`);
-    console.log(`   To: ${recipients.join(', ')}`);
-    console.log(`   Subject: ${subject}\n`);
-    return { success: true, simulated: true };
+  // 1. Preferred Cloud Method: Resend HTTPS API (Port 443 - never blocked by cloud firewalls like Railway)
+  if (process.env.RESEND_API_KEY) {
+    try {
+      const fromEmail = process.env.EMAIL_FROM || 'Katonda Talemwa Ministries <onboarding@resend.dev>';
+      const res = await fetch('https://api.resend.com/emails', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${process.env.RESEND_API_KEY}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          from: fromEmail,
+          to: recipients,
+          subject,
+          html
+        })
+      });
+
+      const resJson = await res.json();
+      if (res.ok) {
+        console.log(`✉️ Notification email sent via Resend HTTPS to [${recipients.join(', ')}] (ID: ${resJson.id})`);
+        return { success: true, messageId: resJson.id, provider: 'resend' };
+      } else {
+        console.error('⚠️ Resend HTTPS delivery warning:', resJson);
+      }
+    } catch (apiErr) {
+      console.error('⚠️ Resend fetch failed, falling back to SMTP:', apiErr.message);
+    }
   }
 
-  // Real SMTP sending
+  // 2. Fallback: SMTP delivery
   try {
     const sender = process.env.SMTP_USER;
     const info = await transporter.sendMail({
