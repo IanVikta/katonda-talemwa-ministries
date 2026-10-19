@@ -602,15 +602,18 @@ export async function sendNotification({ type, data }) {
   if (process.env.RESEND_API_KEY) {
     try {
       const fromEmail = process.env.EMAIL_FROM || 'Katonda Talemwa Ministries <onboarding@resend.dev>';
+      const isDevSandbox = fromEmail.includes('onboarding@resend.dev');
+      const sendToList = isDevSandbox ? [recipients[0]] : recipients;
+
       const res = await fetch('https://api.resend.com/emails', {
         method: 'POST',
         headers: {
-          'Authorization': `Bearer ${process.env.RESEND_API_KEY}`,
+          'Authorization': `Bearer ${process.env.RESEND_API_KEY.trim()}`,
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
           from: fromEmail,
-          to: recipients,
+          to: sendToList,
           subject,
           html
         })
@@ -618,10 +621,11 @@ export async function sendNotification({ type, data }) {
 
       const resJson = await res.json();
       if (res.ok) {
-        console.log(`✉️ Notification email sent via Resend HTTPS to [${recipients.join(', ')}] (ID: ${resJson.id})`);
+        console.log(`✉️ Notification email sent via Resend HTTPS to [${sendToList.join(', ')}] (ID: ${resJson.id})`);
         return { success: true, messageId: resJson.id, provider: 'resend' };
       } else {
         console.error('⚠️ Resend HTTPS delivery warning:', resJson);
+        return { success: false, error: resJson.message || JSON.stringify(resJson), provider: 'resend' };
       }
     } catch (apiErr) {
       console.error('⚠️ Resend fetch failed, falling back to SMTP:', apiErr.message);
