@@ -32,7 +32,7 @@ function getTransporter() {
     host: isGmail ? 'smtp.gmail.com' : host,
     port,
     secure,
-    family: 4, // Explicitly force IPv4 socket to avoid ENETUNREACH
+    lookup: (hostname, options, callback) => dns.lookup(hostname, { family: 4 }, callback),
     auth: {
       user,
       pass
