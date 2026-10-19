@@ -1,5 +1,13 @@
 import nodemailer from 'nodemailer';
 import dotenv from 'dotenv';
+import dns from 'dns';
+
+// Force Node.js to prioritize IPv4 over IPv6.
+// Cloud environments like Railway and Docker containers do not have public IPv6 routes,
+// which causes Gmail connections to fail with ENETUNREACH when resolving IPv6 addresses.
+if (dns.setDefaultResultOrder) {
+  dns.setDefaultResultOrder('ipv4first');
+}
 
 dotenv.config();
 
@@ -16,31 +24,21 @@ function getTransporter() {
   }
 
   const host = process.env.SMTP_HOST || 'smtp.gmail.com';
-
-  // If using Gmail, nodemailer's built-in 'service: gmail' handles SSL/TLS ports (587/465) automatically
-  if (host.includes('gmail')) {
-    return nodemailer.createTransport({
-      service: 'gmail',
-      auth: {
-        user,
-        pass
-      },
-      connectionTimeout: 10000,
-      greetingTimeout: 10000,
-      socketTimeout: 15000
-    });
-  }
-
-  const port = parseInt(process.env.SMTP_PORT || '587', 10);
-  const secure = process.env.SMTP_SECURE === 'true' || port === 465;
+  const isGmail = host.includes('gmail');
+  const port = isGmail ? 587 : parseInt(process.env.SMTP_PORT || '587', 10);
+  const secure = isGmail ? false : (process.env.SMTP_SECURE === 'true' || port === 465);
 
   return nodemailer.createTransport({
-    host,
+    host: isGmail ? 'smtp.gmail.com' : host,
     port,
     secure,
+    family: 4, // Explicitly force IPv4 socket to avoid ENETUNREACH
     auth: {
       user,
       pass
+    },
+    tls: {
+      rejectUnauthorized: false
     },
     connectionTimeout: 10000,
     greetingTimeout: 10000,
