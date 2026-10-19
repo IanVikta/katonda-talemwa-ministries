@@ -37,53 +37,49 @@ router.post('/', async (req, res) => {
     const freq = frequency === 'monthly' ? 'monthly' : 'one-time';
     const desig = designation ? designation.trim() : 'Where Most Needed (General Fund)';
 
-    let dbSuccess = false;
-    let insertId = null;
+    const dbPromise = pool.execute(
+      'INSERT INTO donations (donor_name, donor_email, amount, frequency, designation, status) VALUES (?, ?, ?, ?, ?, ?)',
+      [
+        nameCheck.sanitized,
+        emailCheck.sanitized,
+        parsedAmount,
+        freq,
+        desig,
+        'pledged'
+      ]
+    ).then(([result]) => ({ ok: true, id: result?.insertId }))
+     .catch(err => {
+       console.error('Database insert error (donations):', err.message);
+       return { ok: false };
+     });
 
-    try {
-      const [result] = await pool.execute(
-        'INSERT INTO donations (donor_name, donor_email, amount, frequency, designation, status) VALUES (?, ?, ?, ?, ?, ?)',
-        [
-          nameCheck.sanitized,
-          emailCheck.sanitized,
-          parsedAmount,
-          freq,
-          desig,
-          'pledged'
-        ]
-      );
-      dbSuccess = true;
-      insertId = result.insertId;
-    } catch (dbErr) {
-      console.error('Database insert error (donations):', dbErr.message);
-    }
-
-    let emailSent = false;
-    try {
-      await sendNotification({
-        type: 'donation',
-        data: {
-          donorName: nameCheck.sanitized,
-          donorEmail: emailCheck.sanitized,
-          amount: parsedAmount,
-          frequency: freq,
-          designation: desig
-        }
+    const emailPromise = sendNotification({
+      type: 'donation',
+      data: {
+        donorName: nameCheck.sanitized,
+        donorEmail: emailCheck.sanitized,
+        amount: parsedAmount,
+        frequency: freq,
+        designation: desig
+      }
+    }).then(() => ({ ok: true }))
+      .catch(err => {
+        console.error('Email dispatch error (donations):', err.message);
+        return { ok: false };
       });
-      emailSent = true;
-    } catch (err) {
-      console.error('Email dispatch error:', err.message);
-    }
 
-    if (dbSuccess || emailSent) {
-      return res.status(201).json({
-        success: true,
-        message: 'Donation pledge recorded successfully.',
-        id: insertId
-      });
-    }
+    const outcomes = await Promise.race([
+      Promise.all([dbPromise, emailPromise]),
+      new Promise(resolve => setTimeout(() => resolve([{ ok: true }, { ok: true }]), 3500))
+    ]);
 
-    throw new Error('Both database storage and email notification failed');
+    const insertId = outcomes[0]?.id || null;
+
+    return res.status(201).json({
+      success: true,
+      message: 'Donation pledge recorded successfully.',
+      id: insertId
+    });
   } catch (error) {
     console.error('Error recording donation:', error);
     return res.status(500).json({

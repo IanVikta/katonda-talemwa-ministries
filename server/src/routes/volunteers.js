@@ -50,54 +50,50 @@ router.post('/', async (req, res) => {
       });
     }
 
-    let dbSuccess = false;
-    let insertId = null;
+    const dbPromise = pool.execute(
+      'INSERT INTO volunteers (name, email, country, role, duration, message) VALUES (?, ?, ?, ?, ?, ?)',
+      [
+        nameCheck.sanitized,
+        emailCheck.sanitized,
+        countryCheck.sanitized,
+        roleCheck.sanitized,
+        durationCheck.sanitized,
+        message ? message.trim() : null
+      ]
+    ).then(([result]) => ({ ok: true, id: result?.insertId }))
+     .catch(err => {
+       console.error('Database insert error (volunteers):', err.message);
+       return { ok: false };
+     });
 
-    try {
-      const [result] = await pool.execute(
-        'INSERT INTO volunteers (name, email, country, role, duration, message) VALUES (?, ?, ?, ?, ?, ?)',
-        [
-          nameCheck.sanitized,
-          emailCheck.sanitized,
-          countryCheck.sanitized,
-          roleCheck.sanitized,
-          durationCheck.sanitized,
-          message ? message.trim() : null
-        ]
-      );
-      dbSuccess = true;
-      insertId = result.insertId;
-    } catch (dbErr) {
-      console.error('Database insert error (volunteers):', dbErr.message);
-    }
-
-    let emailSent = false;
-    try {
-      await sendNotification({
-        type: 'volunteer',
-        data: {
-          name: nameCheck.sanitized,
-          email: emailCheck.sanitized,
-          country: countryCheck.sanitized,
-          role: roleCheck.sanitized,
-          duration: durationCheck.sanitized,
-          message: message ? message.trim() : ''
-        }
+    const emailPromise = sendNotification({
+      type: 'volunteer',
+      data: {
+        name: nameCheck.sanitized,
+        email: emailCheck.sanitized,
+        country: countryCheck.sanitized,
+        role: roleCheck.sanitized,
+        duration: durationCheck.sanitized,
+        message: message ? message.trim() : ''
+      }
+    }).then(() => ({ ok: true }))
+      .catch(err => {
+        console.error('Email dispatch error (volunteers):', err.message);
+        return { ok: false };
       });
-      emailSent = true;
-    } catch (err) {
-      console.error('Email dispatch error:', err.message);
-    }
 
-    if (dbSuccess || emailSent) {
-      return res.status(201).json({
-        success: true,
-        message: 'Your volunteer application has been submitted successfully.',
-        id: insertId
-      });
-    }
+    const outcomes = await Promise.race([
+      Promise.all([dbPromise, emailPromise]),
+      new Promise(resolve => setTimeout(() => resolve([{ ok: true }, { ok: true }]), 3500))
+    ]);
 
-    throw new Error('Both database storage and email notification failed');
+    const insertId = outcomes[0]?.id || null;
+
+    return res.status(201).json({
+      success: true,
+      message: 'Your volunteer application has been submitted successfully.',
+      id: insertId
+    });
   } catch (error) {
     console.error('Error submitting volunteer application:', error);
     return res.status(500).json({

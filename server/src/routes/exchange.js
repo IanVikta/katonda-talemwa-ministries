@@ -41,56 +41,52 @@ router.post('/', async (req, res) => {
       });
     }
 
-    let dbSuccess = false;
-    let insertId = null;
+    const dbPromise = pool.execute(
+      'INSERT INTO exchange_inquiries (name, email, phone, group_type, team_size, preferred_date, message) VALUES (?, ?, ?, ?, ?, ?, ?)',
+      [
+        nameCheck.sanitized,
+        emailCheck.sanitized,
+        phone.trim(),
+        groupTypeCheck.sanitized,
+        teamSize ? teamSize.trim() : null,
+        preferredDate ? preferredDate.trim() : null,
+        message ? message.trim() : null
+      ]
+    ).then(([result]) => ({ ok: true, id: result?.insertId }))
+     .catch(err => {
+       console.error('Database insert error (exchange):', err.message);
+       return { ok: false };
+     });
 
-    try {
-      const [result] = await pool.execute(
-        'INSERT INTO exchange_inquiries (name, email, phone, group_type, team_size, preferred_date, message) VALUES (?, ?, ?, ?, ?, ?, ?)',
-        [
-          nameCheck.sanitized,
-          emailCheck.sanitized,
-          phone.trim(),
-          groupTypeCheck.sanitized,
-          teamSize ? teamSize.trim() : null,
-          preferredDate ? preferredDate.trim() : null,
-          message ? message.trim() : null
-        ]
-      );
-      dbSuccess = true;
-      insertId = result.insertId;
-    } catch (dbErr) {
-      console.error('Database insert error (exchange):', dbErr.message);
-    }
-
-    let emailSent = false;
-    try {
-      await sendNotification({
-        type: 'exchange',
-        data: {
-          name: nameCheck.sanitized,
-          email: emailCheck.sanitized,
-          phone: phone.trim(),
-          groupType: groupTypeCheck.sanitized,
-          teamSize: teamSize ? teamSize.trim() : '',
-          preferredDate: preferredDate ? preferredDate.trim() : '',
-          message: message ? message.trim() : ''
-        }
+    const emailPromise = sendNotification({
+      type: 'exchange',
+      data: {
+        name: nameCheck.sanitized,
+        email: emailCheck.sanitized,
+        phone: phone.trim(),
+        groupType: groupTypeCheck.sanitized,
+        teamSize: teamSize ? teamSize.trim() : '',
+        preferredDate: preferredDate ? preferredDate.trim() : '',
+        message: message ? message.trim() : ''
+      }
+    }).then(() => ({ ok: true }))
+      .catch(err => {
+        console.error('Email dispatch error (exchange):', err.message);
+        return { ok: false };
       });
-      emailSent = true;
-    } catch (err) {
-      console.error('Email dispatch error:', err.message);
-    }
 
-    if (dbSuccess || emailSent) {
-      return res.status(201).json({
-        success: true,
-        message: 'Your exchange trip inquiry has been received. Our team will contact you within 24 hours.',
-        id: insertId
-      });
-    }
+    const outcomes = await Promise.race([
+      Promise.all([dbPromise, emailPromise]),
+      new Promise(resolve => setTimeout(() => resolve([{ ok: true }, { ok: true }]), 3500))
+    ]);
 
-    throw new Error('Both database storage and email notification failed');
+    const insertId = outcomes[0]?.id || null;
+
+    return res.status(201).json({
+      success: true,
+      message: 'Your exchange trip inquiry has been received. Our team will contact you within 24 hours.',
+      id: insertId
+    });
   } catch (error) {
     console.error('Error submitting exchange inquiry:', error);
     return res.status(500).json({

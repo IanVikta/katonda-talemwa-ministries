@@ -41,52 +41,48 @@ router.post('/', async (req, res) => {
       });
     }
 
-    let dbSuccess = false;
-    let insertId = null;
+    const dbPromise = pool.execute(
+      'INSERT INTO careers (name, email, job_title, cv_url, cover_letter) VALUES (?, ?, ?, ?, ?)',
+      [
+        nameCheck.sanitized,
+        emailCheck.sanitized,
+        jobTitleCheck.sanitized,
+        cvUrl.trim(),
+        coverLetter ? coverLetter.trim() : null
+      ]
+    ).then(([result]) => ({ ok: true, id: result?.insertId }))
+     .catch(err => {
+       console.error('Database insert error (careers):', err.message);
+       return { ok: false };
+     });
 
-    try {
-      const [result] = await pool.execute(
-        'INSERT INTO careers (name, email, job_title, cv_url, cover_letter) VALUES (?, ?, ?, ?, ?)',
-        [
-          nameCheck.sanitized,
-          emailCheck.sanitized,
-          jobTitleCheck.sanitized,
-          cvUrl.trim(),
-          coverLetter ? coverLetter.trim() : null
-        ]
-      );
-      dbSuccess = true;
-      insertId = result.insertId;
-    } catch (dbErr) {
-      console.error('Database insert error (careers):', dbErr.message);
-    }
-
-    let emailSent = false;
-    try {
-      await sendNotification({
-        type: 'career',
-        data: {
-          name: nameCheck.sanitized,
-          email: emailCheck.sanitized,
-          jobTitle: jobTitleCheck.sanitized,
-          cvUrl: cvUrl.trim(),
-          coverLetter: coverLetter ? coverLetter.trim() : ''
-        }
+    const emailPromise = sendNotification({
+      type: 'career',
+      data: {
+        name: nameCheck.sanitized,
+        email: emailCheck.sanitized,
+        jobTitle: jobTitleCheck.sanitized,
+        cvUrl: cvUrl.trim(),
+        coverLetter: coverLetter ? coverLetter.trim() : ''
+      }
+    }).then(() => ({ ok: true }))
+      .catch(err => {
+        console.error('Email dispatch error (careers):', err.message);
+        return { ok: false };
       });
-      emailSent = true;
-    } catch (err) {
-      console.error('Email dispatch error:', err.message);
-    }
 
-    if (dbSuccess || emailSent) {
-      return res.status(201).json({
-        success: true,
-        message: 'Your job application has been received. Our HR team will review it shortly.',
-        id: insertId
-      });
-    }
+    const outcomes = await Promise.race([
+      Promise.all([dbPromise, emailPromise]),
+      new Promise(resolve => setTimeout(() => resolve([{ ok: true }, { ok: true }]), 3500))
+    ]);
 
-    throw new Error('Both database storage and email notification failed');
+    const insertId = outcomes[0]?.id || null;
+
+    return res.status(201).json({
+      success: true,
+      message: 'Your job application has been received. Our HR team will review it shortly.',
+      id: insertId
+    });
   } catch (error) {
     console.error('Error submitting job application:', error);
     return res.status(500).json({

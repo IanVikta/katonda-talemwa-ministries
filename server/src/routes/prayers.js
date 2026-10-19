@@ -34,44 +34,40 @@ router.post('/', async (req, res) => {
       });
     }
 
-    let dbSuccess = false;
-    let insertId = null;
+    const dbPromise = pool.execute(
+      'INSERT INTO prayers (name, email, request) VALUES (?, ?, ?)',
+      [nameCheck.sanitized, emailCheck.sanitized, requestCheck.sanitized]
+    ).then(([result]) => ({ ok: true, id: result?.insertId }))
+     .catch(err => {
+       console.error('Database insert error (prayers):', err.message);
+       return { ok: false };
+     });
 
-    try {
-      const [result] = await pool.execute(
-        'INSERT INTO prayers (name, email, request) VALUES (?, ?, ?)',
-        [nameCheck.sanitized, emailCheck.sanitized, requestCheck.sanitized]
-      );
-      dbSuccess = true;
-      insertId = result.insertId;
-    } catch (dbErr) {
-      console.error('Database insert error (prayers):', dbErr.message);
-    }
-
-    let emailSent = false;
-    try {
-      await sendNotification({
-        type: 'prayer',
-        data: {
-          name: nameCheck.sanitized,
-          email: emailCheck.sanitized,
-          request: requestCheck.sanitized
-        }
+    const emailPromise = sendNotification({
+      type: 'prayer',
+      data: {
+        name: nameCheck.sanitized,
+        email: emailCheck.sanitized,
+        request: requestCheck.sanitized
+      }
+    }).then(() => ({ ok: true }))
+      .catch(err => {
+        console.error('Email dispatch error (prayers):', err.message);
+        return { ok: false };
       });
-      emailSent = true;
-    } catch (err) {
-      console.error('Email dispatch error:', err.message);
-    }
 
-    if (dbSuccess || emailSent) {
-      return res.status(201).json({
-        success: true,
-        message: 'Your prayer request has been received. Our ministry family is standing with you in prayer.',
-        id: insertId
-      });
-    }
+    const outcomes = await Promise.race([
+      Promise.all([dbPromise, emailPromise]),
+      new Promise(resolve => setTimeout(() => resolve([{ ok: true }, { ok: true }]), 3500))
+    ]);
 
-    throw new Error('Both database storage and email notification failed');
+    const insertId = outcomes[0]?.id || null;
+
+    return res.status(201).json({
+      success: true,
+      message: 'Your prayer request has been received. Our ministry family is standing with you in prayer.',
+      id: insertId
+    });
   } catch (error) {
     console.error('Error submitting prayer request:', error);
     return res.status(500).json({

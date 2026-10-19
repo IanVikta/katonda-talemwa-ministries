@@ -20,38 +20,35 @@ router.post('/', async (req, res) => {
 
     const cleanEmail = emailCheck.sanitized;
 
-    let dbSuccess = false;
+    const dbPromise = pool.execute(
+      'INSERT INTO newsletter_subscribers (email, is_active) VALUES (?, 1) ON DUPLICATE KEY UPDATE is_active = 1',
+      [cleanEmail]
+    ).then(() => ({ ok: true }))
+     .catch(err => {
+       console.error('Database insert error (newsletter):', err.message);
+       return { ok: false };
+     });
 
-    try {
-      // Use INSERT ... ON DUPLICATE KEY UPDATE so existing subscribers don't crash
-      await pool.execute(
-        'INSERT INTO newsletter_subscribers (email, is_active) VALUES (?, 1) ON DUPLICATE KEY UPDATE is_active = 1',
-        [cleanEmail]
-      );
-      dbSuccess = true;
-    } catch (dbErr) {
-      console.error('Database insert error (newsletter):', dbErr.message);
-    }
-
-    let emailSent = false;
-    try {
-      await sendNotification({
-        type: 'newsletter',
-        data: {
-          email: cleanEmail
-        }
+    const emailPromise = sendNotification({
+      type: 'newsletter',
+      data: {
+        email: cleanEmail
+      }
+    }).then(() => ({ ok: true }))
+      .catch(err => {
+        console.error('Email dispatch error (newsletter):', err.message);
+        return { ok: false };
       });
-      emailSent = true;
-    } catch (err) {
-      console.error('Email dispatch error:', err.message);
-    }
 
-    if (dbSuccess || emailSent) {
-      return res.status(200).json({
-        success: true,
-        message: 'Thank you for subscribing to the Katonda Talemwa Ministries newsletter!'
-      });
-    }
+    await Promise.race([
+      Promise.all([dbPromise, emailPromise]),
+      new Promise(resolve => setTimeout(resolve, 3500))
+    ]);
+
+    return res.status(200).json({
+      success: true,
+      message: 'Thank you for subscribing to the Katonda Talemwa Ministries newsletter!'
+    });
 
     throw new Error('Both database storage and email notification failed');
   } catch (error) {
