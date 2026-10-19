@@ -50,36 +50,54 @@ router.post('/', async (req, res) => {
       });
     }
 
-    const [result] = await pool.execute(
-      'INSERT INTO volunteers (name, email, country, role, duration, message) VALUES (?, ?, ?, ?, ?, ?)',
-      [
-        nameCheck.sanitized,
-        emailCheck.sanitized,
-        countryCheck.sanitized,
-        roleCheck.sanitized,
-        durationCheck.sanitized,
-        message ? message.trim() : null
-      ]
-    );
+    let dbSuccess = false;
+    let insertId = null;
 
-    // Send email notification to website owners
-    sendNotification({
-      type: 'volunteer',
-      data: {
-        name: nameCheck.sanitized,
-        email: emailCheck.sanitized,
-        country: countryCheck.sanitized,
-        role: roleCheck.sanitized,
-        duration: durationCheck.sanitized,
-        message: message ? message.trim() : ''
-      }
-    }).catch(err => console.error('Email dispatch error:', err));
+    try {
+      const [result] = await pool.execute(
+        'INSERT INTO volunteers (name, email, country, role, duration, message) VALUES (?, ?, ?, ?, ?, ?)',
+        [
+          nameCheck.sanitized,
+          emailCheck.sanitized,
+          countryCheck.sanitized,
+          roleCheck.sanitized,
+          durationCheck.sanitized,
+          message ? message.trim() : null
+        ]
+      );
+      dbSuccess = true;
+      insertId = result.insertId;
+    } catch (dbErr) {
+      console.error('Database insert error (volunteers):', dbErr.message);
+    }
 
-    return res.status(201).json({
-      success: true,
-      message: 'Your volunteer application has been submitted successfully.',
-      id: result.insertId
-    });
+    let emailSent = false;
+    try {
+      await sendNotification({
+        type: 'volunteer',
+        data: {
+          name: nameCheck.sanitized,
+          email: emailCheck.sanitized,
+          country: countryCheck.sanitized,
+          role: roleCheck.sanitized,
+          duration: durationCheck.sanitized,
+          message: message ? message.trim() : ''
+        }
+      });
+      emailSent = true;
+    } catch (err) {
+      console.error('Email dispatch error:', err.message);
+    }
+
+    if (dbSuccess || emailSent) {
+      return res.status(201).json({
+        success: true,
+        message: 'Your volunteer application has been submitted successfully.',
+        id: insertId
+      });
+    }
+
+    throw new Error('Both database storage and email notification failed');
   } catch (error) {
     console.error('Error submitting volunteer application:', error);
     return res.status(500).json({

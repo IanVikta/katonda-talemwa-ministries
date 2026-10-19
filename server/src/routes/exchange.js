@@ -41,38 +41,56 @@ router.post('/', async (req, res) => {
       });
     }
 
-    const [result] = await pool.execute(
-      'INSERT INTO exchange_inquiries (name, email, phone, group_type, team_size, preferred_date, message) VALUES (?, ?, ?, ?, ?, ?, ?)',
-      [
-        nameCheck.sanitized,
-        emailCheck.sanitized,
-        phone.trim(),
-        groupTypeCheck.sanitized,
-        teamSize ? teamSize.trim() : null,
-        preferredDate ? preferredDate.trim() : null,
-        message ? message.trim() : null
-      ]
-    );
+    let dbSuccess = false;
+    let insertId = null;
 
-    // Send email notification to website owners
-    sendNotification({
-      type: 'exchange',
-      data: {
-        name: nameCheck.sanitized,
-        email: emailCheck.sanitized,
-        phone: phone.trim(),
-        groupType: groupTypeCheck.sanitized,
-        teamSize: teamSize ? teamSize.trim() : '',
-        preferredDate: preferredDate ? preferredDate.trim() : '',
-        message: message ? message.trim() : ''
-      }
-    }).catch(err => console.error('Email dispatch error:', err));
+    try {
+      const [result] = await pool.execute(
+        'INSERT INTO exchange_inquiries (name, email, phone, group_type, team_size, preferred_date, message) VALUES (?, ?, ?, ?, ?, ?, ?)',
+        [
+          nameCheck.sanitized,
+          emailCheck.sanitized,
+          phone.trim(),
+          groupTypeCheck.sanitized,
+          teamSize ? teamSize.trim() : null,
+          preferredDate ? preferredDate.trim() : null,
+          message ? message.trim() : null
+        ]
+      );
+      dbSuccess = true;
+      insertId = result.insertId;
+    } catch (dbErr) {
+      console.error('Database insert error (exchange):', dbErr.message);
+    }
 
-    return res.status(201).json({
-      success: true,
-      message: 'Your exchange trip inquiry has been received. Our team will contact you within 24 hours.',
-      id: result.insertId
-    });
+    let emailSent = false;
+    try {
+      await sendNotification({
+        type: 'exchange',
+        data: {
+          name: nameCheck.sanitized,
+          email: emailCheck.sanitized,
+          phone: phone.trim(),
+          groupType: groupTypeCheck.sanitized,
+          teamSize: teamSize ? teamSize.trim() : '',
+          preferredDate: preferredDate ? preferredDate.trim() : '',
+          message: message ? message.trim() : ''
+        }
+      });
+      emailSent = true;
+    } catch (err) {
+      console.error('Email dispatch error:', err.message);
+    }
+
+    if (dbSuccess || emailSent) {
+      return res.status(201).json({
+        success: true,
+        message: 'Your exchange trip inquiry has been received. Our team will contact you within 24 hours.',
+        id: insertId
+      });
+    }
+
+    throw new Error('Both database storage and email notification failed');
   } catch (error) {
     console.error('Error submitting exchange inquiry:', error);
     return res.status(500).json({

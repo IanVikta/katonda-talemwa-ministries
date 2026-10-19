@@ -4,9 +4,14 @@ import pool from './db.js';
 export async function initDb() {
   console.log('🔄 Initializing database & tables...');
 
-  // 1. If running locally without DATABASE_URL, ensure database exists
-  const connectionUrl = process.env.DATABASE_URL || process.env.MYSQL_URL;
-  if (!connectionUrl) {
+  // 1. If running locally without DATABASE_URL or Railway MySQL, ensure local database exists
+  const rawUrl = process.env.DATABASE_URL || process.env.MYSQL_URL;
+  const connectionUrl = (rawUrl && !rawUrl.startsWith('${{') && (rawUrl.startsWith('mysql://') || rawUrl.startsWith('mysql2://')))
+    ? rawUrl
+    : null;
+  const isCloudEnv = Boolean(process.env.MYSQLHOST || process.env.RAILWAY_ENVIRONMENT || connectionUrl);
+
+  if (!isCloudEnv) {
     try {
       const dbName = process.env.DB_NAME || 'katonda_talemwa';
       const rootConn = await mysql.createConnection({

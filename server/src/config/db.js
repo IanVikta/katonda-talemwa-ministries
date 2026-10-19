@@ -10,7 +10,11 @@ dotenv.config();
  * 3. Local Laragon MySQL (DB_HOST, DB_USER, etc.)
  */
 function getDbConfig() {
-  const connectionUrl = process.env.DATABASE_URL || process.env.MYSQL_URL;
+  const rawUrl = process.env.DATABASE_URL || process.env.MYSQL_URL;
+  // Ignore unresolved Railway template variable strings like ${{MySQL.DATABASE_URL}}
+  const connectionUrl = (rawUrl && !rawUrl.startsWith('${{') && (rawUrl.startsWith('mysql://') || rawUrl.startsWith('mysql2://')))
+    ? rawUrl
+    : null;
 
   if (connectionUrl) {
     return {

@@ -41,34 +41,52 @@ router.post('/', async (req, res) => {
       });
     }
 
-    const [result] = await pool.execute(
-      'INSERT INTO careers (name, email, job_title, cv_url, cover_letter) VALUES (?, ?, ?, ?, ?)',
-      [
-        nameCheck.sanitized,
-        emailCheck.sanitized,
-        jobTitleCheck.sanitized,
-        cvUrl.trim(),
-        coverLetter ? coverLetter.trim() : null
-      ]
-    );
+    let dbSuccess = false;
+    let insertId = null;
 
-    // Send email notification to website owners
-    sendNotification({
-      type: 'career',
-      data: {
-        name: nameCheck.sanitized,
-        email: emailCheck.sanitized,
-        jobTitle: jobTitleCheck.sanitized,
-        cvUrl: cvUrl.trim(),
-        coverLetter: coverLetter ? coverLetter.trim() : ''
-      }
-    }).catch(err => console.error('Email dispatch error:', err));
+    try {
+      const [result] = await pool.execute(
+        'INSERT INTO careers (name, email, job_title, cv_url, cover_letter) VALUES (?, ?, ?, ?, ?)',
+        [
+          nameCheck.sanitized,
+          emailCheck.sanitized,
+          jobTitleCheck.sanitized,
+          cvUrl.trim(),
+          coverLetter ? coverLetter.trim() : null
+        ]
+      );
+      dbSuccess = true;
+      insertId = result.insertId;
+    } catch (dbErr) {
+      console.error('Database insert error (careers):', dbErr.message);
+    }
 
-    return res.status(201).json({
-      success: true,
-      message: 'Your job application has been received. Our HR team will review it shortly.',
-      id: result.insertId
-    });
+    let emailSent = false;
+    try {
+      await sendNotification({
+        type: 'career',
+        data: {
+          name: nameCheck.sanitized,
+          email: emailCheck.sanitized,
+          jobTitle: jobTitleCheck.sanitized,
+          cvUrl: cvUrl.trim(),
+          coverLetter: coverLetter ? coverLetter.trim() : ''
+        }
+      });
+      emailSent = true;
+    } catch (err) {
+      console.error('Email dispatch error:', err.message);
+    }
+
+    if (dbSuccess || emailSent) {
+      return res.status(201).json({
+        success: true,
+        message: 'Your job application has been received. Our HR team will review it shortly.',
+        id: insertId
+      });
+    }
+
+    throw new Error('Both database storage and email notification failed');
   } catch (error) {
     console.error('Error submitting job application:', error);
     return res.status(500).json({

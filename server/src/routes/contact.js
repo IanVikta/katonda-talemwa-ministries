@@ -42,32 +42,50 @@ router.post('/', async (req, res) => {
       });
     }
 
-    const [result] = await pool.execute(
-      'INSERT INTO contacts (name, email, subject, message) VALUES (?, ?, ?, ?)',
-      [
-        nameValidation.sanitized,
-        emailValidation.sanitized,
-        subjectValidation.sanitized,
-        messageValidation.sanitized
-      ]
-    );
+    let dbSuccess = false;
+    let insertId = null;
 
-    // Send email notification to website owners
-    sendNotification({
-      type: 'contact',
-      data: {
-        name: nameValidation.sanitized,
-        email: emailValidation.sanitized,
-        subject: subjectValidation.sanitized,
-        message: messageValidation.sanitized
-      }
-    }).catch(err => console.error('Email dispatch error:', err));
+    try {
+      const [result] = await pool.execute(
+        'INSERT INTO contacts (name, email, subject, message) VALUES (?, ?, ?, ?)',
+        [
+          nameValidation.sanitized,
+          emailValidation.sanitized,
+          subjectValidation.sanitized,
+          messageValidation.sanitized
+        ]
+      );
+      dbSuccess = true;
+      insertId = result.insertId;
+    } catch (dbErr) {
+      console.error('Database insert error (contacts):', dbErr.message);
+    }
 
-    return res.status(201).json({
-      success: true,
-      message: 'Thank you for reaching out. We have received your message and will get back to you soon.',
-      id: result.insertId
-    });
+    let emailSent = false;
+    try {
+      await sendNotification({
+        type: 'contact',
+        data: {
+          name: nameValidation.sanitized,
+          email: emailValidation.sanitized,
+          subject: subjectValidation.sanitized,
+          message: messageValidation.sanitized
+        }
+      });
+      emailSent = true;
+    } catch (err) {
+      console.error('Email dispatch error:', err.message);
+    }
+
+    if (dbSuccess || emailSent) {
+      return res.status(201).json({
+        success: true,
+        message: 'Thank you for reaching out. We have received your message and will get back to you soon.',
+        id: insertId
+      });
+    }
+
+    throw new Error('Both database storage and email notification failed');
   } catch (error) {
     console.error('Error submitting contact form:', error);
     return res.status(500).json({

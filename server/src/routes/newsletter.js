@@ -20,24 +20,40 @@ router.post('/', async (req, res) => {
 
     const cleanEmail = emailCheck.sanitized;
 
-    // Use INSERT ... ON DUPLICATE KEY UPDATE so existing subscribers don't crash
-    await pool.execute(
-      'INSERT INTO newsletter_subscribers (email, is_active) VALUES (?, 1) ON DUPLICATE KEY UPDATE is_active = 1',
-      [cleanEmail]
-    );
+    let dbSuccess = false;
 
-    // Send email notification to website owners
-    sendNotification({
-      type: 'newsletter',
-      data: {
-        email: cleanEmail
-      }
-    }).catch(err => console.error('Email dispatch error:', err));
+    try {
+      // Use INSERT ... ON DUPLICATE KEY UPDATE so existing subscribers don't crash
+      await pool.execute(
+        'INSERT INTO newsletter_subscribers (email, is_active) VALUES (?, 1) ON DUPLICATE KEY UPDATE is_active = 1',
+        [cleanEmail]
+      );
+      dbSuccess = true;
+    } catch (dbErr) {
+      console.error('Database insert error (newsletter):', dbErr.message);
+    }
 
-    return res.status(200).json({
-      success: true,
-      message: 'Thank you for subscribing to the Katonda Talemwa Ministries newsletter!'
-    });
+    let emailSent = false;
+    try {
+      await sendNotification({
+        type: 'newsletter',
+        data: {
+          email: cleanEmail
+        }
+      });
+      emailSent = true;
+    } catch (err) {
+      console.error('Email dispatch error:', err.message);
+    }
+
+    if (dbSuccess || emailSent) {
+      return res.status(200).json({
+        success: true,
+        message: 'Thank you for subscribing to the Katonda Talemwa Ministries newsletter!'
+      });
+    }
+
+    throw new Error('Both database storage and email notification failed');
   } catch (error) {
     console.error('Error subscribing to newsletter:', error);
     return res.status(500).json({

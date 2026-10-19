@@ -36,36 +36,54 @@ router.post('/', async (req, res) => {
 
     const pledgeAmount = Number(amount) || 38.00;
 
-    const [result] = await pool.execute(
-      'INSERT INTO sponsorships (child_id, child_name, sponsor_name, sponsor_email, amount, frequency, status) VALUES (?, ?, ?, ?, ?, ?, ?)',
-      [
-        childId ? String(childId).trim() : null,
-        childNameCheck.sanitized,
-        sponsorNameCheck.sanitized,
-        sponsorEmailCheck.sanitized,
-        pledgeAmount,
-        'monthly',
-        'pledged'
-      ]
-    );
+    let dbSuccess = false;
+    let insertId = null;
 
-    // Send email notification to website owners
-    sendNotification({
-      type: 'sponsorship',
-      data: {
-        childId: childId ? String(childId).trim() : null,
-        childName: childNameCheck.sanitized,
-        sponsorName: sponsorNameCheck.sanitized,
-        sponsorEmail: sponsorEmailCheck.sanitized,
-        amount: pledgeAmount
-      }
-    }).catch(err => console.error('Email dispatch error:', err));
+    try {
+      const [result] = await pool.execute(
+        'INSERT INTO sponsorships (child_id, child_name, sponsor_name, sponsor_email, amount, frequency, status) VALUES (?, ?, ?, ?, ?, ?, ?)',
+        [
+          childId ? String(childId).trim() : null,
+          childNameCheck.sanitized,
+          sponsorNameCheck.sanitized,
+          sponsorEmailCheck.sanitized,
+          pledgeAmount,
+          'monthly',
+          'pledged'
+        ]
+      );
+      dbSuccess = true;
+      insertId = result.insertId;
+    } catch (dbErr) {
+      console.error('Database insert error (sponsorships):', dbErr.message);
+    }
 
-    return res.status(201).json({
-      success: true,
-      message: 'Sponsorship pledge recorded successfully.',
-      id: result.insertId
-    });
+    let emailSent = false;
+    try {
+      await sendNotification({
+        type: 'sponsorship',
+        data: {
+          childId: childId ? String(childId).trim() : null,
+          childName: childNameCheck.sanitized,
+          sponsorName: sponsorNameCheck.sanitized,
+          sponsorEmail: sponsorEmailCheck.sanitized,
+          amount: pledgeAmount
+        }
+      });
+      emailSent = true;
+    } catch (err) {
+      console.error('Email dispatch error:', err.message);
+    }
+
+    if (dbSuccess || emailSent) {
+      return res.status(201).json({
+        success: true,
+        message: 'Sponsorship pledge recorded successfully.',
+        id: insertId
+      });
+    }
+
+    throw new Error('Both database storage and email notification failed');
   } catch (error) {
     console.error('Error recording sponsorship:', error);
     return res.status(500).json({
